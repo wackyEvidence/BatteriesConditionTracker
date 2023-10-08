@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatteriesConditionTrackerUI", "BatteriesConditionTrackerUI.csproj", "{567D479F-9525-4607-BA46-4ED7FE9EBEC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatteriesConditionTrackerLib", "..\BatteriesConditionTrackerLib\BatteriesConditionTrackerLib.csproj", "{04A327C7-86D7-4383-BFD1-955FA37FEDF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{567D479F-9525-4607-BA46-4ED7FE9EBEC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{567D479F-9525-4607-BA46-4ED7FE9EBEC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{567D479F-9525-4607-BA46-4ED7FE9EBEC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{567D479F-9525-4607-BA46-4ED7FE9EBEC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04A327C7-86D7-4383-BFD1-955FA37FEDF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A327C7-86D7-4383-BFD1-955FA37FEDF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A327C7-86D7-4383-BFD1-955FA37FEDF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A327C7-86D7-4383-BFD1-955FA37FEDF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {061C20D2-82A4-49CD-98EE-7E387A149851}
+	EndGlobalSection
+EndGlobal
