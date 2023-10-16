@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTracker\\BatteriesConditionTrackerUI.csproj": {}
+    "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\BatteriesConditionTrackerUI.csproj": {}
   },
   "projects": {
-    "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTracker\\BatteriesConditionTrackerUI.csproj": {
+    "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\BatteriesConditionTrackerUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTracker\\BatteriesConditionTrackerUI.csproj",
+        "projectUniqueName": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\BatteriesConditionTrackerUI.csproj",
         "projectName": "BatteriesConditionTrackerUI",
-        "projectPath": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTracker\\BatteriesConditionTrackerUI.csproj",
+        "projectPath": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\BatteriesConditionTrackerUI.csproj",
         "packagesPath": "C:\\Users\\Huawei\\.nuget\\packages\\",
-        "outputPath": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTracker\\obj\\",
+        "outputPath": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
