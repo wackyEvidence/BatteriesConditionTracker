@@ -44,7 +44,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(211, 12);
+            pictureBox1.Location = new Point(180, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(234, 149);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -59,7 +59,7 @@
             authorizationGroupBox.Controls.Add(loginLabel);
             authorizationGroupBox.Controls.Add(loginTextBox);
             authorizationGroupBox.Controls.Add(passwordLabel);
-            authorizationGroupBox.Location = new Point(148, 258);
+            authorizationGroupBox.Location = new Point(117, 258);
             authorizationGroupBox.Name = "authorizationGroupBox";
             authorizationGroupBox.Size = new Size(361, 296);
             authorizationGroupBox.TabIndex = 8;
@@ -67,6 +67,10 @@
             // 
             // authorizeButton
             // 
+            authorizeButton.FlatAppearance.BorderColor = Color.Silver;
+            authorizeButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            authorizeButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            authorizeButton.FlatStyle = FlatStyle.Flat;
             authorizeButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             authorizeButton.ForeColor = Color.FromArgb(0, 121, 194);
             authorizeButton.Location = new Point(196, 229);
@@ -79,10 +83,12 @@
             // 
             // passwordTextBox
             // 
-            passwordTextBox.Location = new Point(32, 162);
+            passwordTextBox.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            passwordTextBox.Location = new Point(32, 175);
             passwordTextBox.Name = "passwordTextBox";
-            passwordTextBox.Size = new Size(282, 31);
+            passwordTextBox.Size = new Size(282, 43);
             passwordTextBox.TabIndex = 5;
+            passwordTextBox.UseSystemPasswordChar = true;
             // 
             // loginLabel
             // 
@@ -97,9 +103,10 @@
             // 
             // loginTextBox
             // 
-            loginTextBox.Location = new Point(32, 64);
+            loginTextBox.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            loginTextBox.Location = new Point(32, 72);
             loginTextBox.Name = "loginTextBox";
-            loginTextBox.Size = new Size(282, 31);
+            loginTextBox.Size = new Size(282, 43);
             loginTextBox.TabIndex = 4;
             // 
             // passwordLabel
@@ -107,7 +114,7 @@
             passwordLabel.AutoSize = true;
             passwordLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             passwordLabel.ForeColor = Color.FromArgb(0, 121, 194);
-            passwordLabel.Location = new Point(32, 121);
+            passwordLabel.Location = new Point(32, 126);
             passwordLabel.Name = "passwordLabel";
             passwordLabel.Size = new Size(118, 38);
             passwordLabel.TabIndex = 2;
@@ -118,7 +125,7 @@
             headerLabel.AutoSize = true;
             headerLabel.Font = new Font("Segoe UI Light", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
             headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
-            headerLabel.Location = new Point(164, 196);
+            headerLabel.Location = new Point(132, 196);
             headerLabel.Margin = new Padding(6, 0, 6, 0);
             headerLabel.Name = "headerLabel";
             headerLabel.Size = new Size(330, 62);
@@ -130,7 +137,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(656, 598);
+            ClientSize = new Size(595, 598);
             Controls.Add(authorizationGroupBox);
             Controls.Add(headerLabel);
             Controls.Add(pictureBox1);

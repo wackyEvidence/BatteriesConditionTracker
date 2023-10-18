@@ -78,7 +78,7 @@ namespace BatteriesConditionTrackerUI
 
         private void batterySubsystemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var subsystemsListForm = new BatterySubsystemsListForm(); 
+            var subsystemsListForm = new BatterySubsystemsListForm();
             subsystemsListForm.ShowDialog();
         }
 
