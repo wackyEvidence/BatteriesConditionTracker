@@ -1,0 +1,3 @@
+D:\BatteriesConditionTrackerRelease\BatteriesConditionTrackerLib.dll
+D:\BatteriesConditionTrackerRelease\BatteriesConditionTrackerLib.deps.json
+D:\BatteriesConditionTrackerRelease\BatteriesConditionTrackerLib.pdb

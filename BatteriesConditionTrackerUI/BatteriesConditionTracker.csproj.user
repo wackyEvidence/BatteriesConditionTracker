@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\Properties\PublishProfiles\ClickOnceProfile1.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="BatteryCharacteristicsForms\BatteryClampType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryCharacteristicsForms\BatteryClampTypesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryModelForms\BatteryModelListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryCharacteristicsForms\BatterySubsystemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryCharacteristicsForms\BatterySubsystemsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryCharacteristicsForms\BatteryTechnologiesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryCharacteristicsForms\BatteryTechnologyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ReportForms\BadBatteriesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ReportForms\BadBatteriesReportGeneration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryModelForms\BatteryModelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FilterAndSortForms\AddSortLayerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AdminPanelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AuthorizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteriesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryAddingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryEditingAndViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FilterAndSortForms\UserFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FilterAndSortForms\SortForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PositionForms\PositionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PositionForms\PositionsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StructureForms\StructureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StructureForms\StructuresListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StructureForms\StructureTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StructureForms\StructureTypesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WorkerForms\WorkerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WorkerForms\WorkersListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

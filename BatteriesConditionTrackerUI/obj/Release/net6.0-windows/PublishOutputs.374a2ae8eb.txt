@@ -1,0 +1,6 @@
+D:\BatteriesConditionTrackerRelease\BatteriesConditionTrackerUI.exe
+D:\BatteriesConditionTrackerRelease\BatteriesConditionTrackerUI.dll
+D:\BatteriesConditionTrackerRelease\BatteriesConditionTrackerUI.deps.json
+D:\BatteriesConditionTrackerRelease\BatteriesConditionTrackerUI.runtimeconfig.json
+D:\BatteriesConditionTrackerRelease\BatteriesConditionTrackerUI.pdb
+D:\BatteriesConditionTrackerRelease\BCrypt.Net-Next.dll

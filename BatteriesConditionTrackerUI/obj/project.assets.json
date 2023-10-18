@@ -14,6 +14,16 @@
             "related": ".xml"
           }
         }
+      },
+      "BatteriesConditionTrackerLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/BatteriesConditionTrackerLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BatteriesConditionTrackerLib.dll": {}
+        }
       }
     }
   },
@@ -48,11 +58,17 @@
         "lib/netstandard2.1/BCrypt.Net-Next.xml",
         "readme.md"
       ]
+    },
+    "BatteriesConditionTrackerLib/1.0.0": {
+      "type": "project",
+      "path": "../BatteriesConditionTrackerLib/BatteriesConditionTrackerLib.csproj",
+      "msbuildProject": "../BatteriesConditionTrackerLib/BatteriesConditionTrackerLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "BCrypt.Net-Next >= 4.0.3"
+      "BCrypt.Net-Next >= 4.0.3",
+      "BatteriesConditionTrackerLib >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -62,9 +78,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\BatteriesConditionTrackerUI.csproj",
-      "projectName": "BatteriesConditionTrackerUI",
-      "projectPath": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\BatteriesConditionTrackerUI.csproj",
+      "projectUniqueName": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\BatteriesConditionTracker.csproj",
+      "projectName": "BatteriesConditionTracker",
+      "projectPath": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\BatteriesConditionTracker.csproj",
       "packagesPath": "C:\\Users\\Huawei\\.nuget\\packages\\",
       "outputPath": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\obj\\",
       "projectStyle": "PackageReference",
@@ -87,7 +103,11 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerLib\\BatteriesConditionTrackerLib.csproj": {
+              "projectPath": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerLib\\BatteriesConditionTrackerLib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
