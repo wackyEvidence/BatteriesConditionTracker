@@ -54,6 +54,8 @@
             button3 = new Button();
             applySortButton = new Button();
             button1 = new Button();
+            linkLabel1 = new LinkLabel();
+            linkLabel2 = new LinkLabel();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -304,12 +306,36 @@
             button1.Text = "Удалить фото";
             button1.UseVisualStyleBackColor = true;
             // 
-            // AddNewBatteryModelForm
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            linkLabel1.Location = new Point(440, 102);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(88, 25);
+            linkLabel1.TabIndex = 69;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "добавить";
+            // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            linkLabel2.Location = new Point(440, 192);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(88, 25);
+            linkLabel2.TabIndex = 70;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "добавить";
+            // 
+            // BatteryModelForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(936, 686);
+            Controls.Add(linkLabel2);
+            Controls.Add(linkLabel1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox1);
             Controls.Add(comboBox1);
@@ -330,7 +356,7 @@
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
             Margin = new Padding(6);
-            Name = "AddNewBatteryModelForm";
+            Name = "BatteryModelForm";
             Text = "AddNewBatteryModelForm";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -368,5 +394,7 @@
         private Button button3;
         private Button applySortButton;
         private Button button1;
+        private LinkLabel linkLabel1;
+        private LinkLabel linkLabel2;
     }
 }

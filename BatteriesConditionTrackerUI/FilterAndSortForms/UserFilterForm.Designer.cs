@@ -114,14 +114,14 @@
             filterValueTextBox.Size = new Size(219, 43);
             filterValueTextBox.TabIndex = 7;
             // 
-            // FilterForm
+            // UserFilterForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(848, 256);
+            ClientSize = new Size(848, 255);
             Controls.Add(filterGroupBox);
-            Name = "FilterForm";
+            Name = "UserFilterForm";
             Text = "Настройка фильтра";
             filterGroupBox.ResumeLayout(false);
             filterGroupBox.PerformLayout();

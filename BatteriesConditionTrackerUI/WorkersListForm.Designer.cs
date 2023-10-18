@@ -31,9 +31,9 @@
             dataGridView1 = new DataGridView();
             headerLabel = new Label();
             groupBox1 = new GroupBox();
-            deleteBatteryButton = new Button();
-            addBatteryButton = new Button();
-            editBatteryButton = new Button();
+            deleteWorkerButton = new Button();
+            addWorkerButton = new Button();
+            editWorkerButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -68,51 +68,53 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(deleteBatteryButton);
-            groupBox1.Controls.Add(addBatteryButton);
-            groupBox1.Controls.Add(editBatteryButton);
+            groupBox1.Controls.Add(deleteWorkerButton);
+            groupBox1.Controls.Add(addWorkerButton);
+            groupBox1.Controls.Add(editWorkerButton);
             groupBox1.ForeColor = Color.FromArgb(0, 121, 194);
-            groupBox1.Location = new Point(773, 77);
+            groupBox1.Location = new Point(772, 63);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(352, 259);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "Действия с элементами списка";
             // 
-            // deleteBatteryButton
+            // deleteWorkerButton
             // 
-            deleteBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            deleteBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            deleteBatteryButton.Location = new Point(6, 201);
-            deleteBatteryButton.Name = "deleteBatteryButton";
-            deleteBatteryButton.Size = new Size(153, 52);
-            deleteBatteryButton.TabIndex = 16;
-            deleteBatteryButton.Text = "Удалить";
-            deleteBatteryButton.UseVisualStyleBackColor = true;
+            deleteWorkerButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            deleteWorkerButton.ForeColor = Color.FromArgb(0, 121, 194);
+            deleteWorkerButton.Location = new Point(6, 201);
+            deleteWorkerButton.Name = "deleteWorkerButton";
+            deleteWorkerButton.Size = new Size(153, 52);
+            deleteWorkerButton.TabIndex = 16;
+            deleteWorkerButton.Text = "Удалить";
+            deleteWorkerButton.UseVisualStyleBackColor = true;
             // 
-            // addBatteryButton
+            // addWorkerButton
             // 
-            addBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            addBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            addBatteryButton.Location = new Point(6, 85);
-            addBatteryButton.Name = "addBatteryButton";
-            addBatteryButton.Size = new Size(153, 52);
-            addBatteryButton.TabIndex = 14;
-            addBatteryButton.Text = "Добавить";
-            addBatteryButton.UseVisualStyleBackColor = true;
+            addWorkerButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            addWorkerButton.ForeColor = Color.FromArgb(0, 121, 194);
+            addWorkerButton.Location = new Point(6, 85);
+            addWorkerButton.Name = "addWorkerButton";
+            addWorkerButton.Size = new Size(153, 52);
+            addWorkerButton.TabIndex = 14;
+            addWorkerButton.Text = "Добавить";
+            addWorkerButton.UseVisualStyleBackColor = true;
+            addWorkerButton.Click += addWorkerButton_Click;
             // 
-            // editBatteryButton
+            // editWorkerButton
             // 
-            editBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            editBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            editBatteryButton.Location = new Point(6, 143);
-            editBatteryButton.Name = "editBatteryButton";
-            editBatteryButton.Size = new Size(213, 52);
-            editBatteryButton.TabIndex = 15;
-            editBatteryButton.Text = "Редактировать";
-            editBatteryButton.UseVisualStyleBackColor = true;
+            editWorkerButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            editWorkerButton.ForeColor = Color.FromArgb(0, 121, 194);
+            editWorkerButton.Location = new Point(6, 143);
+            editWorkerButton.Name = "editWorkerButton";
+            editWorkerButton.Size = new Size(213, 52);
+            editWorkerButton.TabIndex = 15;
+            editWorkerButton.Text = "Редактировать";
+            editWorkerButton.UseVisualStyleBackColor = true;
+            editWorkerButton.Click += editWorkerButton_Click;
             // 
-            // WorkersViewForm
+            // WorkersListForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -124,7 +126,7 @@
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
             Margin = new Padding(6);
-            Name = "WorkersViewForm";
+            Name = "WorkersListForm";
             Text = "WorkersViewForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
@@ -137,8 +139,8 @@
         private DataGridView dataGridView1;
         private Label headerLabel;
         private GroupBox groupBox1;
-        private Button deleteBatteryButton;
-        private Button addBatteryButton;
-        private Button editBatteryButton;
+        private Button deleteWorkerButton;
+        private Button addWorkerButton;
+        private Button editWorkerButton;
     }
 }

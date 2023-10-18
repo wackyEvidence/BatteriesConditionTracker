@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             groupBoxSort = new GroupBox();
+            deleteSortLayerButton = new Button();
+            addSortLayerButton = new Button();
+            label1 = new Label();
             listView1 = new ListView();
             columnHeaderFieldName = new ColumnHeader();
             columnHeaderSortOrder = new ColumnHeader();
-            applySortButton = new Button();
-            button1 = new Button();
-            label1 = new Label();
             groupBoxSort.SuspendLayout();
             SuspendLayout();
             // 
             // groupBoxSort
             // 
-            groupBoxSort.Controls.Add(button1);
-            groupBoxSort.Controls.Add(applySortButton);
+            groupBoxSort.Controls.Add(deleteSortLayerButton);
+            groupBoxSort.Controls.Add(addSortLayerButton);
             groupBoxSort.Controls.Add(label1);
             groupBoxSort.Controls.Add(listView1);
             groupBoxSort.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
@@ -52,6 +52,39 @@
             groupBoxSort.TabIndex = 13;
             groupBoxSort.TabStop = false;
             groupBoxSort.Text = "Сортировка";
+            // 
+            // deleteSortLayerButton
+            // 
+            deleteSortLayerButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            deleteSortLayerButton.ForeColor = Color.FromArgb(0, 121, 194);
+            deleteSortLayerButton.Location = new Point(754, 292);
+            deleteSortLayerButton.Name = "deleteSortLayerButton";
+            deleteSortLayerButton.Size = new Size(277, 55);
+            deleteSortLayerButton.TabIndex = 22;
+            deleteSortLayerButton.Text = "Удалить уровень";
+            deleteSortLayerButton.UseVisualStyleBackColor = true;
+            // 
+            // addSortLayerButton
+            // 
+            addSortLayerButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            addSortLayerButton.ForeColor = Color.FromArgb(0, 121, 194);
+            addSortLayerButton.Location = new Point(471, 292);
+            addSortLayerButton.Name = "addSortLayerButton";
+            addSortLayerButton.Size = new Size(277, 55);
+            addSortLayerButton.TabIndex = 21;
+            addSortLayerButton.Text = "Добавить уровень";
+            addSortLayerButton.UseVisualStyleBackColor = true;
+            addSortLayerButton.Click += addSortLayerButton_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(3, 43);
+            label1.Name = "label1";
+            label1.Size = new Size(393, 38);
+            label1.TabIndex = 1;
+            label1.Text = "Текущие уровни сортировки:";
             // 
             // listView1
             // 
@@ -76,38 +109,6 @@
             columnHeaderSortOrder.Text = "Порядок ";
             columnHeaderSortOrder.Width = 418;
             // 
-            // applySortButton
-            // 
-            applySortButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            applySortButton.ForeColor = Color.FromArgb(0, 121, 194);
-            applySortButton.Location = new Point(9, 292);
-            applySortButton.Name = "applySortButton";
-            applySortButton.Size = new Size(277, 55);
-            applySortButton.TabIndex = 21;
-            applySortButton.Text = "Добавить уровень";
-            applySortButton.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.FromArgb(0, 121, 194);
-            button1.Location = new Point(292, 292);
-            button1.Name = "button1";
-            button1.Size = new Size(277, 55);
-            button1.TabIndex = 22;
-            button1.Text = "Удалить уровень";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(3, 43);
-            label1.Name = "label1";
-            label1.Size = new Size(393, 38);
-            label1.TabIndex = 1;
-            label1.Text = "Текущие уровни сортировки:";
-            // 
             // SortForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -126,11 +127,11 @@
         #endregion
 
         private GroupBox groupBoxSort;
-        private Button applySortButton;
+        private Button addSortLayerButton;
         private ListView listView1;
         private ColumnHeader columnHeaderFieldName;
         private ColumnHeader columnHeaderSortOrder;
-        private Button button1;
+        private Button deleteSortLayerButton;
         private Label label1;
     }
 }

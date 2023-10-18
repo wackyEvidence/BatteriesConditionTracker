@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            headerLabel = new Label();
             structureNameColumn = new DataGridViewTextBoxColumn();
             structureTypeColumn = new DataGridViewTextBoxColumn();
             batteriesAmountColumn = new DataGridViewTextBoxColumn();
-            addBatteryButton = new Button();
-            editBatteryButton = new Button();
-            deleteBatteryButton = new Button();
+            headerLabel = new Label();
+            addStructureButton = new Button();
+            editStructureButton = new Button();
+            deleteStructureButton = new Button();
             groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -49,7 +49,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { structureNameColumn, structureTypeColumn, batteriesAmountColumn });
             dataGridView1.Location = new Point(15, 81);
-            dataGridView1.Margin = new Padding(6, 6, 6, 6);
+            dataGridView1.Margin = new Padding(6);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
@@ -57,18 +57,6 @@
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(748, 438);
             dataGridView1.TabIndex = 12;
-            // 
-            // headerLabel
-            // 
-            headerLabel.AutoSize = true;
-            headerLabel.Font = new Font("Segoe UI Light", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
-            headerLabel.Location = new Point(8, 13);
-            headerLabel.Margin = new Padding(11, 0, 11, 0);
-            headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(374, 62);
-            headerLabel.TabIndex = 11;
-            headerLabel.Text = "Список объектов";
             // 
             // structureNameColumn
             // 
@@ -94,44 +82,58 @@
             batteriesAmountColumn.Name = "batteriesAmountColumn";
             batteriesAmountColumn.ReadOnly = true;
             // 
-            // addBatteryButton
+            // headerLabel
             // 
-            addBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            addBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            addBatteryButton.Location = new Point(6, 85);
-            addBatteryButton.Name = "addBatteryButton";
-            addBatteryButton.Size = new Size(153, 52);
-            addBatteryButton.TabIndex = 14;
-            addBatteryButton.Text = "Добавить";
-            addBatteryButton.UseVisualStyleBackColor = true;
+            headerLabel.AutoSize = true;
+            headerLabel.Font = new Font("Segoe UI Light", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
+            headerLabel.Location = new Point(8, 13);
+            headerLabel.Margin = new Padding(11, 0, 11, 0);
+            headerLabel.Name = "headerLabel";
+            headerLabel.Size = new Size(374, 62);
+            headerLabel.TabIndex = 11;
+            headerLabel.Text = "Список объектов";
             // 
-            // editBatteryButton
+            // addStructureButton
             // 
-            editBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            editBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            editBatteryButton.Location = new Point(6, 143);
-            editBatteryButton.Name = "editBatteryButton";
-            editBatteryButton.Size = new Size(213, 52);
-            editBatteryButton.TabIndex = 15;
-            editBatteryButton.Text = "Редактировать";
-            editBatteryButton.UseVisualStyleBackColor = true;
+            addStructureButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            addStructureButton.ForeColor = Color.FromArgb(0, 121, 194);
+            addStructureButton.Location = new Point(6, 85);
+            addStructureButton.Name = "addStructureButton";
+            addStructureButton.Size = new Size(153, 52);
+            addStructureButton.TabIndex = 14;
+            addStructureButton.Text = "Добавить";
+            addStructureButton.UseVisualStyleBackColor = true;
+            addStructureButton.Click += addStructureButton_Click;
             // 
-            // deleteBatteryButton
+            // editStructureButton
             // 
-            deleteBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            deleteBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            deleteBatteryButton.Location = new Point(6, 201);
-            deleteBatteryButton.Name = "deleteBatteryButton";
-            deleteBatteryButton.Size = new Size(153, 52);
-            deleteBatteryButton.TabIndex = 16;
-            deleteBatteryButton.Text = "Удалить";
-            deleteBatteryButton.UseVisualStyleBackColor = true;
+            editStructureButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            editStructureButton.ForeColor = Color.FromArgb(0, 121, 194);
+            editStructureButton.Location = new Point(6, 143);
+            editStructureButton.Name = "editStructureButton";
+            editStructureButton.Size = new Size(213, 52);
+            editStructureButton.TabIndex = 15;
+            editStructureButton.Text = "Редактировать";
+            editStructureButton.UseVisualStyleBackColor = true;
+            editStructureButton.Click += editStructureButton_Click;
+            // 
+            // deleteStructureButton
+            // 
+            deleteStructureButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            deleteStructureButton.ForeColor = Color.FromArgb(0, 121, 194);
+            deleteStructureButton.Location = new Point(6, 201);
+            deleteStructureButton.Name = "deleteStructureButton";
+            deleteStructureButton.Size = new Size(153, 52);
+            deleteStructureButton.TabIndex = 16;
+            deleteStructureButton.Text = "Удалить";
+            deleteStructureButton.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(deleteBatteryButton);
-            groupBox1.Controls.Add(addBatteryButton);
-            groupBox1.Controls.Add(editBatteryButton);
+            groupBox1.Controls.Add(deleteStructureButton);
+            groupBox1.Controls.Add(addStructureButton);
+            groupBox1.Controls.Add(editStructureButton);
             groupBox1.ForeColor = Color.FromArgb(0, 121, 194);
             groupBox1.Location = new Point(772, 63);
             groupBox1.Name = "groupBox1";
@@ -140,7 +142,7 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Действия с элементами списка";
             // 
-            // StructureViewForm
+            // StructuresListForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -151,8 +153,8 @@
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
-            Margin = new Padding(6, 6, 6, 6);
-            Name = "StructureViewForm";
+            Margin = new Padding(6);
+            Name = "StructuresListForm";
             Text = "StructureViewForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
@@ -167,9 +169,9 @@
         private DataGridViewTextBoxColumn structureNameColumn;
         private DataGridViewTextBoxColumn structureTypeColumn;
         private DataGridViewTextBoxColumn batteriesAmountColumn;
-        private Button addBatteryButton;
-        private Button editBatteryButton;
-        private Button deleteBatteryButton;
+        private Button addStructureButton;
+        private Button editStructureButton;
+        private Button deleteStructureButton;
         private GroupBox groupBox1;
     }
 }

@@ -1,6 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="BatteryClampType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryClampTypesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryModelListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatterySubsystemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatterySubsystemsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryTechnologiesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryTechnologyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ReportForms\BadBatteriesReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -40,7 +61,7 @@
     <Compile Update="PositionsListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="StructureEditingAndAddingForm.cs">
+    <Compile Update="StructureForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="StructuresListForm.cs">

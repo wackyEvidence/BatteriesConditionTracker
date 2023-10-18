@@ -36,9 +36,17 @@
             cSVToolStripMenuItem1 = new ToolStripMenuItem();
             выходToolStripMenuItem = new ToolStripMenuItem();
             панельАдминистратораToolStripMenuItem = new ToolStripMenuItem();
-            аккумуляторыToolStripMenuItem = new ToolStripMenuItem();
-            сотрудникиToolStripMenuItem = new ToolStripMenuItem();
-            объектыToolStripMenuItem = new ToolStripMenuItem();
+            batteryModelsToolStripMenuItem = new ToolStripMenuItem();
+            staffToolStripMenuItem = new ToolStripMenuItem();
+            positionsToolStripMenuItem = new ToolStripMenuItem();
+            structuresToolStripMenuItem = new ToolStripMenuItem();
+            structureTypesToolStripMenuItem = new ToolStripMenuItem();
+            batterySpecsToolStripMenuItem = new ToolStripMenuItem();
+            batterySubsystemsToolStripMenuItem = new ToolStripMenuItem();
+            batteryClampTypesToolStripMenuItem = new ToolStripMenuItem();
+            batteryTechnologyToolStripMenuItem = new ToolStripMenuItem();
+            отчётToolStripMenuItem = new ToolStripMenuItem();
+            аккумуляторыТребующиеЗаменыToolStripMenuItem = new ToolStripMenuItem();
             dataGridView1 = new DataGridView();
             deleteBatteryButton = new Button();
             editBatteryButton = new Button();
@@ -65,9 +73,6 @@
             highlightButton = new Button();
             groupBoxSort = new GroupBox();
             colorDialog1 = new ColorDialog();
-            отчётToolStripMenuItem = new ToolStripMenuItem();
-            аккумуляторыТребующиеЗаменыToolStripMenuItem = new ToolStripMenuItem();
-            замененныеАккумуляторыToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBoxFilters.SuspendLayout();
@@ -107,14 +112,14 @@
             // печатьToolStripMenuItem
             // 
             печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
-            печатьToolStripMenuItem.Size = new Size(224, 26);
+            печатьToolStripMenuItem.Size = new Size(148, 26);
             печатьToolStripMenuItem.Text = "Печать";
             // 
             // экспортToolStripMenuItem1
             // 
             экспортToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { cSVToolStripMenuItem1 });
             экспортToolStripMenuItem1.Name = "экспортToolStripMenuItem1";
-            экспортToolStripMenuItem1.Size = new Size(224, 26);
+            экспортToolStripMenuItem1.Size = new Size(148, 26);
             экспортToolStripMenuItem1.Text = "Экспорт";
             // 
             // cSVToolStripMenuItem1
@@ -126,33 +131,92 @@
             // выходToolStripMenuItem
             // 
             выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(224, 26);
+            выходToolStripMenuItem.Size = new Size(148, 26);
             выходToolStripMenuItem.Text = "Выход";
             // 
             // панельАдминистратораToolStripMenuItem
             // 
-            панельАдминистратораToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { аккумуляторыToolStripMenuItem, сотрудникиToolStripMenuItem, объектыToolStripMenuItem });
+            панельАдминистратораToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { batteryModelsToolStripMenuItem, staffToolStripMenuItem, positionsToolStripMenuItem, structuresToolStripMenuItem, structureTypesToolStripMenuItem, batterySpecsToolStripMenuItem });
             панельАдминистратораToolStripMenuItem.Name = "панельАдминистратораToolStripMenuItem";
             панельАдминистратораToolStripMenuItem.Size = new Size(78, 24);
             панельАдминистратораToolStripMenuItem.Text = "Данные";
             // 
-            // аккумуляторыToolStripMenuItem
+            // batteryModelsToolStripMenuItem
             // 
-            аккумуляторыToolStripMenuItem.Name = "аккумуляторыToolStripMenuItem";
-            аккумуляторыToolStripMenuItem.Size = new Size(224, 26);
-            аккумуляторыToolStripMenuItem.Text = "Аккумуляторы";
+            batteryModelsToolStripMenuItem.Name = "batteryModelsToolStripMenuItem";
+            batteryModelsToolStripMenuItem.Size = new Size(311, 26);
+            batteryModelsToolStripMenuItem.Text = "Модели аккумуляторов";
+            batteryModelsToolStripMenuItem.Click += batteryModelsToolStripMenuItem_Click;
             // 
-            // сотрудникиToolStripMenuItem
+            // staffToolStripMenuItem
             // 
-            сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
-            сотрудникиToolStripMenuItem.Size = new Size(224, 26);
-            сотрудникиToolStripMenuItem.Text = "Сотрудники";
+            staffToolStripMenuItem.Name = "staffToolStripMenuItem";
+            staffToolStripMenuItem.Size = new Size(311, 26);
+            staffToolStripMenuItem.Text = "Сотрудники";
+            staffToolStripMenuItem.Click += staffToolStripMenuItem_Click;
             // 
-            // объектыToolStripMenuItem
+            // positionsToolStripMenuItem
             // 
-            объектыToolStripMenuItem.Name = "объектыToolStripMenuItem";
-            объектыToolStripMenuItem.Size = new Size(224, 26);
-            объектыToolStripMenuItem.Text = "Объекты";
+            positionsToolStripMenuItem.Name = "positionsToolStripMenuItem";
+            positionsToolStripMenuItem.Size = new Size(311, 26);
+            positionsToolStripMenuItem.Text = "Должности";
+            positionsToolStripMenuItem.Click += positionsToolStripMenuItem_Click;
+            // 
+            // structuresToolStripMenuItem
+            // 
+            structuresToolStripMenuItem.Name = "structuresToolStripMenuItem";
+            structuresToolStripMenuItem.Size = new Size(311, 26);
+            structuresToolStripMenuItem.Text = "Объекты";
+            structuresToolStripMenuItem.Click += structuresToolStripMenuItem_Click;
+            // 
+            // structureTypesToolStripMenuItem
+            // 
+            structureTypesToolStripMenuItem.Name = "structureTypesToolStripMenuItem";
+            structureTypesToolStripMenuItem.Size = new Size(311, 26);
+            structureTypesToolStripMenuItem.Text = "Типы объектов";
+            structureTypesToolStripMenuItem.Click += structureTypesToolStripMenuItem_Click;
+            // 
+            // batterySpecsToolStripMenuItem
+            // 
+            batterySpecsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { batterySubsystemsToolStripMenuItem, batteryClampTypesToolStripMenuItem, batteryTechnologyToolStripMenuItem });
+            batterySpecsToolStripMenuItem.Name = "batterySpecsToolStripMenuItem";
+            batterySpecsToolStripMenuItem.Size = new Size(311, 26);
+            batterySpecsToolStripMenuItem.Text = "Характеристики аккумуляторов";
+            // 
+            // batterySubsystemsToolStripMenuItem
+            // 
+            batterySubsystemsToolStripMenuItem.Name = "batterySubsystemsToolStripMenuItem";
+            batterySubsystemsToolStripMenuItem.Size = new Size(224, 26);
+            batterySubsystemsToolStripMenuItem.Text = "Подсистемы";
+            batterySubsystemsToolStripMenuItem.Click += batterySubsystemsToolStripMenuItem_Click;
+            // 
+            // batteryClampTypesToolStripMenuItem
+            // 
+            batteryClampTypesToolStripMenuItem.Name = "batteryClampTypesToolStripMenuItem";
+            batteryClampTypesToolStripMenuItem.Size = new Size(224, 26);
+            batteryClampTypesToolStripMenuItem.Text = "Типы клемм ";
+            batteryClampTypesToolStripMenuItem.Click += batteryClampTypesToolStripMenuItem_Click;
+            // 
+            // batteryTechnologyToolStripMenuItem
+            // 
+            batteryTechnologyToolStripMenuItem.Name = "batteryTechnologyToolStripMenuItem";
+            batteryTechnologyToolStripMenuItem.Size = new Size(224, 26);
+            batteryTechnologyToolStripMenuItem.Text = "Технологии";
+            batteryTechnologyToolStripMenuItem.Click += batteryTechnologyToolStripMenuItem_Click;
+            // 
+            // отчётToolStripMenuItem
+            // 
+            отчётToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { аккумуляторыТребующиеЗаменыToolStripMenuItem });
+            отчётToolStripMenuItem.Name = "отчётToolStripMenuItem";
+            отчётToolStripMenuItem.Size = new Size(66, 24);
+            отчётToolStripMenuItem.Text = "Отчёт ";
+            // 
+            // аккумуляторыТребующиеЗаменыToolStripMenuItem
+            // 
+            аккумуляторыТребующиеЗаменыToolStripMenuItem.Name = "аккумуляторыТребующиеЗаменыToolStripMenuItem";
+            аккумуляторыТребующиеЗаменыToolStripMenuItem.Size = new Size(337, 26);
+            аккумуляторыТребующиеЗаменыToolStripMenuItem.Text = "Аккумуляторы, требующие замены";
+            аккумуляторыТребующиеЗаменыToolStripMenuItem.Click += аккумуляторыТребующиеЗаменыToolStripMenuItem_Click;
             // 
             // dataGridView1
             // 
@@ -189,6 +253,7 @@
             editBatteryButton.TabIndex = 14;
             editBatteryButton.Text = "Редактировать";
             editBatteryButton.UseVisualStyleBackColor = true;
+            editBatteryButton.Click += editBatteryButton_Click;
             // 
             // addBatteryButton
             // 
@@ -200,6 +265,7 @@
             addBatteryButton.TabIndex = 13;
             addBatteryButton.Text = "Добавить";
             addBatteryButton.UseVisualStyleBackColor = true;
+            addBatteryButton.Click += addBatteryButton_Click;
             // 
             // groupBoxFilters
             // 
@@ -233,7 +299,7 @@
             // 
             comboBox1.ForeColor = Color.Gray;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "только эксплуатируемые", "только выведенные из эксплуатации ", "все" });
+            comboBox1.Items.AddRange(new object[] { "требует замены", "не требует замены ", "заменен", "все" });
             comboBox1.Location = new Point(345, 39);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(326, 45);
@@ -244,7 +310,7 @@
             // 
             batterStatusComboBox.ForeColor = Color.Gray;
             batterStatusComboBox.FormattingEnabled = true;
-            batterStatusComboBox.Items.AddRange(new object[] { "только эксплуатируемые", "только выведенные из эксплуатации ", "все" });
+            batterStatusComboBox.Items.AddRange(new object[] { "эксплуатируемые", "выведенные из эксплуатации ", "все" });
             batterStatusComboBox.Location = new Point(6, 39);
             batterStatusComboBox.Name = "batterStatusComboBox";
             batterStatusComboBox.Size = new Size(326, 45);
@@ -431,25 +497,6 @@
             groupBoxSort.TabStop = false;
             groupBoxSort.Text = "Сортировка";
             // 
-            // отчётToolStripMenuItem
-            // 
-            отчётToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { аккумуляторыТребующиеЗаменыToolStripMenuItem, замененныеАккумуляторыToolStripMenuItem });
-            отчётToolStripMenuItem.Name = "отчётToolStripMenuItem";
-            отчётToolStripMenuItem.Size = new Size(66, 24);
-            отчётToolStripMenuItem.Text = "Отчёт ";
-            // 
-            // аккумуляторыТребующиеЗаменыToolStripMenuItem
-            // 
-            аккумуляторыТребующиеЗаменыToolStripMenuItem.Name = "аккумуляторыТребующиеЗаменыToolStripMenuItem";
-            аккумуляторыТребующиеЗаменыToolStripMenuItem.Size = new Size(337, 26);
-            аккумуляторыТребующиеЗаменыToolStripMenuItem.Text = "Аккумуляторы, требующие замены";
-            // 
-            // замененныеАккумуляторыToolStripMenuItem
-            // 
-            замененныеАккумуляторыToolStripMenuItem.Name = "замененныеАккумуляторыToolStripMenuItem";
-            замененныеАккумуляторыToolStripMenuItem.Size = new Size(337, 26);
-            замененныеАккумуляторыToolStripMenuItem.Text = "Замененные аккумуляторы";
-            // 
             // BatteriesListForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
@@ -487,9 +534,9 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem настройкиToolStripMenuItem;
         private ToolStripMenuItem панельАдминистратораToolStripMenuItem;
-        private ToolStripMenuItem аккумуляторыToolStripMenuItem;
-        private ToolStripMenuItem сотрудникиToolStripMenuItem;
-        private ToolStripMenuItem объектыToolStripMenuItem;
+        private ToolStripMenuItem batteryModelsToolStripMenuItem;
+        private ToolStripMenuItem staffToolStripMenuItem;
+        private ToolStripMenuItem structuresToolStripMenuItem;
         private DataGridView dataGridView1;
         private GroupBox groupBoxFilters;
         private Button deleteBatteryButton;
@@ -522,6 +569,11 @@
         private ColorDialog colorDialog1;
         private ToolStripMenuItem отчётToolStripMenuItem;
         private ToolStripMenuItem аккумуляторыТребующиеЗаменыToolStripMenuItem;
-        private ToolStripMenuItem замененныеАккумуляторыToolStripMenuItem;
+        private ToolStripMenuItem structureTypesToolStripMenuItem;
+        private ToolStripMenuItem batterySpecsToolStripMenuItem;
+        private ToolStripMenuItem batterySubsystemsToolStripMenuItem;
+        private ToolStripMenuItem batteryClampTypesToolStripMenuItem;
+        private ToolStripMenuItem batteryTechnologyToolStripMenuItem;
+        private ToolStripMenuItem positionsToolStripMenuItem;
     }
 }

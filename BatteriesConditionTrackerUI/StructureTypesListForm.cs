@@ -16,5 +16,17 @@ namespace BatteriesConditionTrackerUI
         {
             InitializeComponent();
         }
+
+        private void addStructureTypeButton_Click(object sender, EventArgs e)
+        {
+            var structureTypeAddingForm = new StructureTypeForm(); 
+            structureTypeAddingForm.ShowDialog();
+        }
+
+        private void editStructureTypeButton_Click(object sender, EventArgs e)
+        {
+            var structureTypeEditingForm = new StructureTypeForm();
+            structureTypeEditingForm.ShowDialog();
+        }
     }
 }

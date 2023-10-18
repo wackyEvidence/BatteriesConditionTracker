@@ -1,6 +1,6 @@
 ﻿namespace BatteriesConditionTrackerUI
 {
-    partial class StructureEditingAndAddingForm
+    partial class StructureForm
     {
         /// <summary>
         /// Required designer variable.

@@ -16,5 +16,17 @@ namespace BatteriesConditionTrackerUI
         {
             InitializeComponent();
         }
+
+        private void addWorkerButton_Click(object sender, EventArgs e)
+        {
+            var workerAddingForm = new WorkerForm(); 
+            workerAddingForm.ShowDialog(); 
+        }
+
+        private void editWorkerButton_Click(object sender, EventArgs e)
+        {
+            var workerEditingForm = new WorkerForm();
+            workerEditingForm.ShowDialog();
+        }
     }
 }

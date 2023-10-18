@@ -16,5 +16,11 @@ namespace BatteriesConditionTrackerUI
         {
             InitializeComponent();
         }
+
+        private void addSortLayerButton_Click(object sender, EventArgs e)
+        {
+            var sortLayerAddingForm = new AddSortLayerForm();
+            sortLayerAddingForm.ShowDialog();
+        }
     }
 }

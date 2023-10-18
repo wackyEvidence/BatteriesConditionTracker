@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BatteriesConditionTrackerUI
 {
-    public partial class StructureEditingAndAddingForm : Form
+    public partial class BatterySubsystemForm : Form
     {
-        public StructureEditingAndAddingForm()
+        public BatterySubsystemForm()
         {
             InitializeComponent();
         }

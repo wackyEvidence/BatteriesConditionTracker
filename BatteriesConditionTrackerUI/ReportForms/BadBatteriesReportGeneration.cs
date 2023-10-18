@@ -16,5 +16,11 @@ namespace BatteriesConditionTrackerUI
         {
             InitializeComponent();
         }
+
+        private void generateReportButton_Click(object sender, EventArgs e)
+        {
+            var reportForm = new BadBatteriesReport(); 
+            reportForm.ShowDialog();
+        }
     }
 }
