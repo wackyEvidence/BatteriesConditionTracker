@@ -45,6 +45,10 @@ namespace BatteriesConditionTrackerLib
         /// </summary>
         public BatteryClampType ClampType { get; set; }
         /// <summary>
+        /// Стоимость данной модели аккумулятора
+        /// </summary>
+        public decimal Cost { get; set; }
+        /// <summary>
         /// Срок службы в буферном режиме (лет)
         /// </summary>
         public int BufferModeServiceTime { get; set; }

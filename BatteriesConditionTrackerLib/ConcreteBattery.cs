@@ -49,6 +49,10 @@ namespace BatteriesConditionTrackerLib
         /// </summary>
         public BatteryReplacementStatus ReplacementStatus { get; set; }
         /// <summary>
+        /// Дата последнего измерения емкости
+        /// </summary>
+        public DateTime? LastCapacityMeasureDate { get; set; }
+        /// <summary>
         /// Примечания по аккумулятору 
         /// </summary>
         public string AdditionalNotes { get; set; }
