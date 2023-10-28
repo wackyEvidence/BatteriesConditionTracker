@@ -76,10 +76,10 @@
     <Compile Update="StructureForms\StructureTypesListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="WorkerForms\WorkerForm.cs">
+    <Compile Update="UserForms\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="WorkerForms\WorkersListForm.cs">
+    <Compile Update="UserForms\UsersListForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

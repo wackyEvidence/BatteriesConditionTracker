@@ -93,9 +93,10 @@
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(146, 89);
+            linkLabel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            linkLabel1.Location = new Point(212, 99);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(238, 38);
+            linkLabel1.Size = new Size(172, 28);
             linkLabel1.TabIndex = 13;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Добавить новую ";
@@ -117,6 +118,7 @@
             // comboBox8
             // 
             comboBox8.FormattingEnabled = true;
+            comboBox8.Items.AddRange(new object[] { "не требует замены", "требует замены", "заменен" });
             comboBox8.Location = new Point(319, 228);
             comboBox8.Name = "comboBox8";
             comboBox8.Size = new Size(249, 45);
@@ -125,7 +127,7 @@
             // comboBox7
             // 
             comboBox7.FormattingEnabled = true;
-            comboBox7.Location = new Point(12, 755);
+            comboBox7.Location = new Point(15, 755);
             comboBox7.Name = "comboBox7";
             comboBox7.Size = new Size(553, 45);
             comboBox7.TabIndex = 59;
@@ -142,7 +144,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(12, 714);
+            label18.Location = new Point(15, 714);
             label18.Name = "label18";
             label18.Size = new Size(339, 38);
             label18.TabIndex = 57;
@@ -151,6 +153,7 @@
             // comboBox9
             // 
             comboBox9.FormattingEnabled = true;
+            comboBox9.Items.AddRange(new object[] { "эксплуатируется ", "выведен из эксплуатации " });
             comboBox9.Location = new Point(15, 228);
             comboBox9.Name = "comboBox9";
             comboBox9.Size = new Size(250, 45);
@@ -159,11 +162,11 @@
             // richTextBox1
             // 
             richTextBox1.ForeColor = Color.Gray;
-            richTextBox1.Location = new Point(12, 589);
+            richTextBox1.Location = new Point(15, 589);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(553, 122);
             richTextBox1.TabIndex = 55;
-            richTextBox1.Text = "Место установки, особенности эксплуатации АКБ и т.д. и т.п.";
+            richTextBox1.Text = "Место установки, особенности эксплуатации АКБ и т.п.";
             // 
             // label20
             // 
@@ -177,7 +180,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(12, 548);
+            label17.Location = new Point(15, 548);
             label17.Name = "label17";
             label17.Size = new Size(180, 38);
             label17.TabIndex = 53;
@@ -330,7 +333,7 @@
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(987, 811);
+            ClientSize = new Size(987, 808);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(groupBox3);

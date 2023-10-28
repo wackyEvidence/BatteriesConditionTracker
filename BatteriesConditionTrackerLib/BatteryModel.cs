@@ -13,6 +13,10 @@ namespace BatteriesConditionTrackerLib
         /// </summary>
         public int Id { get; set; }
         /// <summary>
+        /// Наименование аккумулятора. Обычно: бренд + емкость (напряжение)
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
         /// Бренд аккумулятора
         /// </summary>
         public string Brand { get; set; }
@@ -27,15 +31,15 @@ namespace BatteriesConditionTrackerLib
         /// <summary>
         /// Длина аккумулятора (мм)
         /// </summary>
-        public double Length { get; set; }
+        public int Length { get; set; }
         /// <summary>
         /// Высота аккумулятора (мм)
         /// </summary>
-        public double Height { get; set; }
+        public int Height { get; set; }
         /// <summary>
         /// Ширина аккумулятора (мм)
         /// </summary>
-        public double Width { get; set; }
+        public int Width { get; set; }
         /// <summary>
         /// Технология, используемая в аккумуляторе
         /// </summary>
@@ -55,10 +59,32 @@ namespace BatteriesConditionTrackerLib
         /// <summary>
         /// Срок службы в циклическом режиме (число циклов)
         /// </summary>
-        public int CycleModeServiceTime { get; set; }
+        public int MinSoH { get; set; }
         /// <summary>
         /// Список фотографий этой модели аккумулятора
         /// </summary>
-        public List<string> Photos { get; set; } = new List<string>(); 
+        public List<string> Photos { get; set; } = new List<string>();
+
+        public BatteryModel() { }
+
+        // TODO - Разобраться с назначением полей Technology и ClampType в конструкторе.
+        public BatteryModel(string name, string brand, string capacity, string voltage, 
+            string length, string height, string width, string technology, string clampType, string cost, 
+            string bufferModeServiceTime, string minSoH, List<string> photoPaths)
+        {
+            Name = name; 
+            Brand = brand;
+            Capacity = double.Parse(capacity); 
+            Voltage = double.Parse(voltage);
+            Length = int.Parse(length); 
+            Height = int.Parse(height);
+            Width = int.Parse(width);
+            Technology = new BatteryTechnology() { Id = int.Parse(technology) }; 
+            ClampType = new BatteryClampType() { Id = int.Parse(clampType) };
+            Cost = decimal.Parse(cost);
+            BufferModeServiceTime = int.Parse(bufferModeServiceTime); 
+            MinSoH = int.Parse(minSoH);
+            Photos = photoPaths;
+        }
     }
 }

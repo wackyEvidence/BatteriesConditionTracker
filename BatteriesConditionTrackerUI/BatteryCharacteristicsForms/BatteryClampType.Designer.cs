@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             button5 = new Button();
-            button4 = new Button();
+            OkButton = new Button();
             textBox2 = new TextBox();
             label2 = new Label();
             headerLabel = new Label();
@@ -46,17 +46,17 @@
             button5.Text = "Отмена";
             button5.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // OkButton
             // 
-            button4.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.ForeColor = Color.FromArgb(0, 121, 194);
-            button4.Location = new Point(512, 159);
-            button4.Name = "button4";
-            button4.Size = new Size(129, 55);
-            button4.TabIndex = 84;
-            button4.Text = "ОК";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            OkButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            OkButton.ForeColor = Color.FromArgb(0, 121, 194);
+            OkButton.Location = new Point(512, 159);
+            OkButton.Name = "OkButton";
+            OkButton.Size = new Size(129, 55);
+            OkButton.TabIndex = 84;
+            OkButton.Text = "ОК";
+            OkButton.UseVisualStyleBackColor = true;
+            OkButton.Click += button4_Click;
             // 
             // textBox2
             // 
@@ -93,7 +93,7 @@
             BackColor = Color.White;
             ClientSize = new Size(653, 226);
             Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(OkButton);
             Controls.Add(textBox2);
             Controls.Add(label2);
             Controls.Add(headerLabel);
@@ -109,7 +109,7 @@
         #endregion
 
         private Button button5;
-        private Button button4;
+        private Button OkButton;
         private TextBox textBox2;
         private Label label2;
         private Label headerLabel;

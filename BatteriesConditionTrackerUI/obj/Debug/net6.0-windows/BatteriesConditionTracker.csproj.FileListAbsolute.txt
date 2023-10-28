@@ -32,7 +32,6 @@ D:\Автоматизация учета состояния аккумулято
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.StructuresListForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.StructureTypeForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.StructureTypesListForm.resources
-D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.WorkerForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.WorkersListForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTracker.csproj.GenerateResource.cache
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTracker.GeneratedMSBuildEditorConfig.editorconfig
@@ -45,3 +44,4 @@ D:\Автоматизация учета состояния аккумулято
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTracker.pdb
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTracker.genruntimeconfig.cache
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\ref\BatteriesConditionTracker.dll
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.UserForm.resources

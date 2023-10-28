@@ -72,6 +72,7 @@
             sortSettingsButton = new Button();
             highlightButton = new Button();
             groupBoxSort = new GroupBox();
+            toolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBoxFilters.SuspendLayout();
@@ -83,7 +84,7 @@
             menuStrip1.BackColor = Color.WhiteSmoke;
             menuStrip1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { настройкиToolStripMenuItem, панельАдминистратораToolStripMenuItem, отчётToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { настройкиToolStripMenuItem, панельАдминистратораToolStripMenuItem, отчётToolStripMenuItem, toolStripMenuItem1 });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1466, 46);
@@ -528,6 +529,12 @@
             groupBoxSort.TabStop = false;
             groupBoxSort.Text = "Сортировка";
             // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(44, 42);
+            toolStripMenuItem1.Text = "?";
+            // 
             // BatteriesListForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
@@ -547,7 +554,8 @@
             MainMenuStrip = menuStrip1;
             Margin = new Padding(6);
             Name = "BatteriesListForm";
-            Text = "Таблица";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Список аккумуляторов";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -603,5 +611,6 @@
         private ToolStripMenuItem batteryTechnologyToolStripMenuItem;
         private ToolStripMenuItem positionsToolStripMenuItem;
         private LinkLabel linkLabel1;
+        private ToolStripMenuItem toolStripMenuItem1;
     }
 }
