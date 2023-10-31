@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using BatteriesConditionTrackerLib.Models;
 
-namespace BatteriesConditionTrackerLib
+namespace BatteriesConditionTrackerLib.DataAccess
 {
-    public class TextConnector : IDataConnection
+    public class SqlConnector : IDataConnection
     {
-        // TODO - Реализовать методы сохранения в текстовые файлы
+        // TODO - Реализовать методы сохранения в БД 
         public BatteryClampType CreateBatteryClampType(BatteryClampType clampTypeModel)
         {
             throw new NotImplementedException();

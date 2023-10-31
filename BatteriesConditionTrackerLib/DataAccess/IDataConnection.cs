@@ -6,18 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using BatteriesConditionTrackerLib.Models;
 
-namespace BatteriesConditionTrackerLib
+namespace BatteriesConditionTrackerLib.DataAccess
 {
     public interface IDataConnection
     {
-        BatteryClampType CreateBatteryClampType (BatteryClampType clampTypeModel);
-        BatterySubsystem CreateBatterySubsystem (BatterySubsystem batterySubsystemModel);
-        BatteryTechnology CreateBatteryTechnology (BatteryTechnology batteryTechnologyModel);
+        BatteryClampType CreateBatteryClampType(BatteryClampType clampTypeModel);
+        BatterySubsystem CreateBatterySubsystem(BatterySubsystem batterySubsystemModel);
+        BatteryTechnology CreateBatteryTechnology(BatteryTechnology batteryTechnologyModel);
         BatteryModel CreateBatteryModel(BatteryModel batteryModel);
-        Position CreatePosition(Position positionModel); 
+        Position CreatePosition(Position positionModel);
         Structure CreateStructure(Structure structureModel);
         StructureType CreateStructureType(StructureType structureTypeModel);
-        User CreateUser(User userModel); 
+        User CreateUser(User userModel);
         ConcreteBattery CreateConcreteBattery(ConcreteBattery concreteBatteryModel);
 
     }
