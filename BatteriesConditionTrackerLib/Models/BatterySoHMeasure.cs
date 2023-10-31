@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BatteriesConditionTrackerLib.Models;
 
 namespace BatteriesConditionTrackerLib
 {
-    public class BatteryCapacityMeasure
+    public class BatterySoHMeasure
     {
         /// <summary>
         /// Id замера емкости
@@ -23,7 +24,7 @@ namespace BatteriesConditionTrackerLib
         /// <summary>
         /// Измеренное значение емкости
         /// </summary>
-        public double CapacityValue { get; set; }
+        public double SoHValue { get; set; }
         /// <summary>
         /// Дата проведения измерения
         /// </summary>

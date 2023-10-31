@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yto1fkqPWutIMxFEL7zSbElV9FrwdAUGyl86RTJz4uTqqBBmgVfjMFRiQ5TVYCmdpwvGGpZnvQymONiOD+VG1A==",
+  "dgSpecHash": "vP7iTfkexrSKz96rpbniSc7R9PKboGUnyfGbQU4ZdEa1y/KWu0vkCdeOhq+vKKxaLvqRKKuPdtMaXAycaH3mtQ==",
   "success": true,
   "projectFilePath": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\BatteriesConditionTracker.csproj",
   "expectedPackageFiles": [

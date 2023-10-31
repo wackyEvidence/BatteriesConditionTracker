@@ -12,7 +12,7 @@ namespace BatteriesConditionTrackerLib
 
         public static void InitializeConnections(bool database, bool textFiles)
         {
-            if(database)
+            if (database)
             {
                 var connector = new SqlConnector(); 
                 Connections.Add(connector);

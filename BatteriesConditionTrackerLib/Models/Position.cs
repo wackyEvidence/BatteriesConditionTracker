@@ -4,21 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BatteriesConditionTrackerLib
+namespace BatteriesConditionTrackerLib.Models
 {
-    public class Structure
+    public class Position
     {
         /// <summary>
-        /// Id объекта
+        /// Id должности
         /// </summary>
         public int Id { get; set; }
         /// <summary>
-        /// Наименование объекта
+        /// Наименование должности
         /// </summary>
         public string Name { get; set; }
-        /// <summary>
-        /// Тип объекта
-        /// </summary>
-        public StructureType Type { get; set; }
     }
 }

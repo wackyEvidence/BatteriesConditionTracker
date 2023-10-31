@@ -1,3 +1,5 @@
+using BatteriesConditionTrackerLib;
+
 namespace BatteriesConditionTracker
 {
     internal static class Program
@@ -10,6 +12,7 @@ namespace BatteriesConditionTracker
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            GlobalConfig.InitializeConnections(true, true); 
             ApplicationConfiguration.Initialize();
             Application.Run(new AuthorizationForm());
         }

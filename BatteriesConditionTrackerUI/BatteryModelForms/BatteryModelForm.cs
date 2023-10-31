@@ -16,18 +16,13 @@ namespace BatteriesConditionTrackerUI
     public partial class BatteryModelForm : Form, IValidatable
     {
         private List<string> photosList = new List<string>();
+        private FormMode mode; 
 
-        public BatteryModelForm()
+        public BatteryModelForm(FormMode mode)
         {
             InitializeComponent();
+            this.mode = mode;
         }
-
-
-        // Возможное решение: 
-        // Сделать класс Validator, который будет содержать в себе логику проверки различных типов полей. У каждой формы реализовать метод
-        // ValidateForm(), который будет вызывать соответствующие методы класса Validator. Метод ValidateForm создаст словарь вида
-        // [Имя поля] - [Текст ошибки]. Если в конце всех проверок длина словаря будет >0, он отправляется классу  ValidationErrorsDisplayer,
-        // который умеет выводить ошибки на экран. 
 
         private void OkButton_Click(object sender, EventArgs e)
         {
@@ -51,11 +46,11 @@ namespace BatteriesConditionTrackerUI
                 minSoHValue.Text,
                 photosList
                 );
-
-                foreach (var connection in GlobalConfig.Connections)
-                {
-                    connection.CreateBatteryModel(batteryModel);
-                }
+                
+                if(mode == FormMode.Adding)
+                    foreach (var connection in GlobalConfig.Connections)
+                        connection.CreateBatteryModel(batteryModel);
+                    // TODO - дописать обработку случая изменения аккумулятора
             }
             else
                 ValidationErrorsDisplayer.DisplayErrors(errors);
@@ -64,18 +59,32 @@ namespace BatteriesConditionTrackerUI
         public Dictionary<string, string> ValidateForm()
         {
             var errors = new Dictionary<string, string>();
-            GetBatteryModelSizes(out string length, out string width , out string height);  
+            GetBatteryModelSizes(out string length, out string width , out string height);
 
-            FieldValidator.ValidateStringEmptiness(errors, nameValue.Text, nameLabel.Text);
-            FieldValidator.ValidateStringEmptiness(errors, brandValue.Text, brandLabel.Text);
-            FieldValidator.ValidatePositiveDoubleParameter(errors, capacityValue.Text, capacityLabel.Text);
-            FieldValidator.ValidatePositiveDoubleParameter(errors, voltageValue.Text, voltageLabel.Text);
-            FieldValidator.ValidatePositiveIntParameter(errors, costValue.Text, costLabel.Text);
-            FieldValidator.ValidatePositiveDoubleParameter(errors, bufferServiceTimeValue.Text, bufferServiceTimeLabel.Text);
-            FieldValidator.ValidatePositiveIntParameter(errors, minSoHValue.Text, minSoHLabel.Text);
-            FieldValidator.ValidatePositiveIntParameter(errors, length, "Длина");
-            FieldValidator.ValidatePositiveIntParameter(errors, width, "Ширина");
-            FieldValidator.ValidatePositiveIntParameter(errors, height, "Высота");
+            var stringParams = new List<Parameter> 
+            { 
+                new Parameter(nameLabel.Text, nameValue.Text), 
+                new Parameter(brandLabel.Text, brandValue.Text) 
+            };
+            var intParams = new List<Parameter>
+            {
+                new Parameter(length, "Длина"),
+                new Parameter(width, "Ширина"),
+                new Parameter(height, "Высота"),
+                new Parameter(costLabel.Text, costValue.Text), 
+                new Parameter(minSoHLabel.Text, minSoHValue.Text)
+            };
+            var doubleParams = new List<Parameter>
+            {
+                new Parameter(capacityLabel.Text, capacityValue.Text),
+                new Parameter(voltageLabel.Text, voltageValue.Text), 
+                new Parameter(bufferServiceTimeLabel.Text, bufferServiceTimeValue.Text)
+            };
+
+            FieldValidator.ValidateStringEmptiness(errors, stringParams);
+            FieldValidator.ValidatePositiveIntParameter(errors, intParams);
+            FieldValidator.ValidatePositiveDoubleParameter(errors, doubleParams);
+
             return errors;
         }
 

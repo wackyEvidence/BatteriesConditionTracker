@@ -17,7 +17,7 @@ namespace BatteriesConditionTrackerLib.Validation
         /// <param name="errors">Словарь вида [Имя поля]-[Текст ошибки]</param>
         /// <param name="parameterValue">Значение проверяемого параметра</param>
         /// <param name="parameterLabel">Название проверяемого параметра</param>
-        public static void ValidateStringEmptiness(Dictionary<string, string> errors, string parameterValue, string parameterLabel)
+        public static void ValidateStringEmptiness(Dictionary<string, string> errors, string parameterLabel, string parameterValue)
         {
             if (parameterValue.Length == 0)
                 errors.Add(parameterLabel, $"Пожалуйста, заполните поле {parameterLabel}. Его значение не должно быть пустым.");
@@ -42,7 +42,7 @@ namespace BatteriesConditionTrackerLib.Validation
         /// <param name="errors">Словарь вида [Имя поля]-[Текст ошибки]</param>
         /// <param name="parameterValue">Значение проверяемого параметра</param>
         /// <param name="parameterLabel">Название проверяемого параметра</param>
-        public static void ValidatePositiveIntParameter(Dictionary<string, string> errors, string parameterValue, string parameterLabel)
+        public static void ValidatePositiveIntParameter(Dictionary<string, string> errors, string parameterLabel, string parameterValue)
         {
             ValidateStringEmptiness(errors, parameterValue, parameterLabel);
             // случай пустого поля 
@@ -93,7 +93,7 @@ namespace BatteriesConditionTrackerLib.Validation
         /// <param name="errors">Словарь вида [Имя поля]-[Текст ошибки]</param>
         /// <param name="parameterValue">Значение проверяемого параметра</param>
         /// <param name="parameterLabel">Название проверяемого параметра</param>
-        public static void ValidatePositiveDoubleParameter(Dictionary<string, string> errors, string parameterValue, string parameterLabel)
+        public static void ValidatePositiveDoubleParameter(Dictionary<string, string> errors, string parameterLabel,string parameterValue)
         {
             ValidateStringEmptiness(errors, parameterValue, parameterLabel);
             // случай пустого поля 
