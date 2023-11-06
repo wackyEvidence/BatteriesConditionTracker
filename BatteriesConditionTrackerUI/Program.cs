@@ -12,7 +12,7 @@ namespace BatteriesConditionTracker
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            GlobalConfig.InitializeConnections(true, true); 
+            GlobalConfig.InitializeConnections(true, false); 
             ApplicationConfiguration.Initialize();
             Application.Run(new AuthorizationForm());
         }

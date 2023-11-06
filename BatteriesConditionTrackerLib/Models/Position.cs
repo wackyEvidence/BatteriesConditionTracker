@@ -16,5 +16,12 @@ namespace BatteriesConditionTrackerLib.Models
         /// Наименование должности
         /// </summary>
         public string Name { get; set; }
+
+        public Position() { }
+        public Position(string Id, string Name)
+        {
+            this.Id = int.Parse(Id);
+            this.Name = Name;   
+        }
     }
 }

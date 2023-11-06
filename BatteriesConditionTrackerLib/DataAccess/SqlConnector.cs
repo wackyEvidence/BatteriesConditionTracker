@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data; 
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BatteriesConditionTrackerLib.Models;
+using Dapper;
 
 namespace BatteriesConditionTrackerLib.DataAccess
 {
@@ -37,7 +40,17 @@ namespace BatteriesConditionTrackerLib.DataAccess
 
         public Position CreatePosition(Position positionModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@PositionName", positionModel.Name);
+                parameters.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spPosition_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                positionModel.Id = parameters.Get<int>("id");
+                return positionModel;
+            }
         }
 
         public Structure CreateStructure(Structure structureModel)

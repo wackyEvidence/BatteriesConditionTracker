@@ -1,4 +1,5 @@
 ﻿using BatteriesConditionTrackerLib;
+using BatteriesConditionTrackerLib.Models;
 using BatteriesConditionTrackerLib.Validation;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace BatteriesConditionTrackerUI
     public partial class BatteryModelForm : Form, IValidatable
     {
         private List<string> photosList = new List<string>();
-        private FormMode mode; 
+        private FormMode mode;
+        private BatteryModel? batteryModel; 
 
         public BatteryModelForm(FormMode mode)
         {
@@ -24,33 +26,48 @@ namespace BatteriesConditionTrackerUI
             this.mode = mode;
         }
 
+        public BatteryModelForm(FormMode mode, BatteryModel batteryModel)
+        {
+            InitializeComponent();
+            this.mode = mode;
+            this.batteryModel = batteryModel;
+        }
+
         private void OkButton_Click(object sender, EventArgs e)
         {
             var errors = ValidateForm();
+
             if (errors.Count == 0) // ввод верен 
             {
-                GetBatteryModelSizes(out string length, out string width, out string height);
-
-                var batteryModel = new BatteryModel(
-                nameValue.Text,
-                brandValue.Text,
-                capacityValue.Text,
-                voltageValue.Text,
-                length,
-                height,
-                width,
-                technologyComboBox.ValueMember,
-                clampTypeComboBox.ValueMember,
-                costValue.Text,
-                bufferServiceTimeValue.Text,
-                minSoHValue.Text,
-                photosList
-                );
-                
                 if(mode == FormMode.Adding)
+                {
+                    GetBatteryModelSizes(out string length, out string width, out string height);
+                    // Создание модели
+                    #region 
+                    var batteryModel = new BatteryModel(
+                    nameValue.Text,
+                    brandValue.Text,
+                    capacityValue.Text,
+                    voltageValue.Text,
+                    length,
+                    height,
+                    width,
+                    technologyComboBox.ValueMember,
+                    clampTypeComboBox.ValueMember,
+                    costValue.Text,
+                    bufferServiceTimeValue.Text,
+                    minSoHValue.Text,
+                    photosList
+                    );
+                    #endregion
+
                     foreach (var connection in GlobalConfig.Connections)
                         connection.CreateBatteryModel(batteryModel);
+                }
+                else
+                {
                     // TODO - дописать обработку случая изменения аккумулятора
+                }
             }
             else
                 ValidationErrorsDisplayer.DisplayErrors(errors);
@@ -59,7 +76,7 @@ namespace BatteriesConditionTrackerUI
         public Dictionary<string, string> ValidateForm()
         {
             var errors = new Dictionary<string, string>();
-            GetBatteryModelSizes(out string length, out string width , out string height);
+            GetBatteryModelSizes(out string length, out string width, out string height);
 
             var stringParams = new List<Parameter> 
             { 

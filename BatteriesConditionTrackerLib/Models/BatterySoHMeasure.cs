@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BatteriesConditionTrackerLib.Models;
 
-namespace BatteriesConditionTrackerLib
+
+namespace BatteriesConditionTrackerLib.Models
 {
     public class BatterySoHMeasure
     {

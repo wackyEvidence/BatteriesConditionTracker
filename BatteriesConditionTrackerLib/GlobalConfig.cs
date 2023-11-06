@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,11 @@ namespace BatteriesConditionTrackerLib
                 var connection = new TextConnector(); 
                 Connections.Add(connection);
             }
+        }
+
+        public static string GetConnectionString(string name) 
+        {
+            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
     }
 }

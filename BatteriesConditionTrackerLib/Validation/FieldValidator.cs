@@ -20,7 +20,7 @@ namespace BatteriesConditionTrackerLib.Validation
         public static void ValidateStringEmptiness(Dictionary<string, string> errors, string parameterLabel, string parameterValue)
         {
             if (parameterValue.Length == 0)
-                errors.Add(parameterLabel, $"Пожалуйста, заполните поле {parameterLabel}. Его значение не должно быть пустым.");
+                errors.Add(parameterLabel, $"Поле \"{parameterLabel}\" не заполнено.");
         }
         /// <summary>
         /// Проверяет правильность ввода списка обязательных текстовых полей. При неправильном вводе добавляет в словарь текст сообщения об ошибке.
@@ -32,7 +32,7 @@ namespace BatteriesConditionTrackerLib.Validation
             foreach (var parameter in parameters)
             {
                 if (parameter.Value.Length == 0)
-                    errors.Add(parameter.Name, $"Пожалуйста, заполните поле {parameter.Name}. Его значение не должно быть пустым.");
+                    errors.Add(parameter.Name, $"Поле \"{parameter.Name}\" не заполнено.");
             }
         }
 
@@ -50,14 +50,14 @@ namespace BatteriesConditionTrackerLib.Validation
                 return;
 
             if (!int.TryParse(parameterValue, out int parsedParameter))
-                errors.Add(parameterLabel, $"Неверное значение поля \"{parameterLabel}\".");
+                errors.Add(parameterLabel, $"Неверное значение поля \"{parameterLabel}\". Должно быть целым положительным числом.");
             else
             {
                 if (parsedParameter <= 0)
-                    errors.Add(parameterLabel, $"Неверное значение поля \"{parameterLabel}\", оно должно быть больше 0.");
+                    errors.Add(parameterLabel, $"Неверное значение поля \"{parameterLabel}\", должно быть больше 0.");
 
                 if (parsedParameter % 1 != 0)
-                    errors.Add(parameterLabel, $"Неверное значение поля \"{parameterLabel}\", оно должно быть целым числом."); 
+                    errors.Add(parameterLabel, $"Неверное значение поля \"{parameterLabel}\", должно быть целым числом."); 
             }
         }
         /// <summary>
@@ -76,14 +76,14 @@ namespace BatteriesConditionTrackerLib.Validation
                     continue;
 
                 if (!int.TryParse(parameter.Value, out int parsedParameter))
-                    errors.Add(parameter.Name, $"Неверное значение поля \"{parameter.Name}\".");
+                    errors.Add(parameter.Name, $"Неверное значение поля \"{parameter.Name}\". Должно быть целым положительным числом.");
                 else
                 {
                     if (parsedParameter <= 0)
-                        errors.Add(parameter.Name, $"Неверное значение поля \"{parameter.Name}\", оно должно быть больше 0.");
+                        errors.Add(parameter.Name, $"Неверное значение поля \"{parameter.Name}\", должно быть больше 0.");
 
                     if (parsedParameter % 1 != 0)
-                        errors.Add(parameter.Name, $"Неверное значение поля \"{parameter.Name}\", оно должно быть целым числом.");
+                        errors.Add(parameter.Name, $"Неверное значение поля \"{parameter.Name}\", должно быть целым числом.");
                 }
             }
         }
