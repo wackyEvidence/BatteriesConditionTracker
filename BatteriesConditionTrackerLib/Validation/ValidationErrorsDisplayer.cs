@@ -19,7 +19,10 @@ namespace BatteriesConditionTrackerLib.Validation
 
             var errorNumber = 1; 
             foreach (var error in errorMessages)
+            {
                 message.AppendLine($"{errorNumber}. " + error.Value.ToString());
+                errorNumber++;
+            }
 
             MessageBox.Show(message.ToString(), "Ошибки при заполнении формы", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

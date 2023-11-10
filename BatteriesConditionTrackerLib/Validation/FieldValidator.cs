@@ -19,7 +19,7 @@ namespace BatteriesConditionTrackerLib.Validation
         /// <param name="parameterLabel">Название проверяемого параметра</param>
         public static void ValidateStringEmptiness(Dictionary<string, string> errors, string parameterLabel, string parameterValue)
         {
-            if (parameterValue.Length == 0)
+            if (string.IsNullOrEmpty(parameterValue))
                 errors.Add(parameterLabel, $"Поле \"{parameterLabel}\" не заполнено.");
         }
         /// <summary>

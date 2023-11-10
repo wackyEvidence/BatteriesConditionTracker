@@ -11,4 +11,11 @@ namespace BatteriesConditionTrackerLib
         Adding, 
         Editing
     }
+
+    public enum DatabaseType
+    {
+        SQL, 
+        TextFile, 
+        PostgreSQL
+    }
 }

@@ -50,8 +50,7 @@ namespace BatteriesConditionTrackerUI
                 {
                     var positionModel = new Position() { Name = positionNameValue.Text };
 
-                    foreach (var connection in GlobalConfig.Connections)
-                        connection.CreatePosition(positionModel);
+                    GlobalConfig.Connection.CreatePosition(positionModel); 
                 }
                 else
                 {

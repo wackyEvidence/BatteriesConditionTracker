@@ -533,7 +533,6 @@ D:\Автоматизация учета состояния аккумулято
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\win-x64\BatteriesConditionTrackerUI.StructuresListForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\win-x64\BatteriesConditionTrackerUI.StructureTypeForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\win-x64\BatteriesConditionTrackerUI.StructureTypesListForm.resources
-D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\win-x64\BatteriesConditionTrackerUI.WorkerForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\win-x64\BatteriesConditionTrackerUI.WorkersListForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\win-x64\BatteriesConditionTrackerUI.csproj.GenerateResource.cache
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\win-x64\BatteriesConditionTrackerUI.GeneratedMSBuildEditorConfig.editorconfig
@@ -548,3 +547,10 @@ D:\Автоматизация учета состояния аккумулято
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\win-x64\refint\BatteriesConditionTrackerUI.dll
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\win-x64\BatteriesConditionTrackerUI.pdb
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\win-x64\ref\BatteriesConditionTrackerUI.dll
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\win-x64\BatteriesConditionTrackerUI.dll.config
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\win-x64\Dapper.dll
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\win-x64\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\win-x64\Npgsql.dll
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\win-x64\System.Data.SqlClient.dll
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\win-x64\sni.dll
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\win-x64\BatteriesConditionTrackerUI.UserForm.resources

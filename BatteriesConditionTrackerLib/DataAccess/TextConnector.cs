@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BatteriesConditionTrackerLib.Models;
+using BatteriesConditionTrackerLib.DataAccess.TextHelper;
 
 namespace BatteriesConditionTrackerLib.DataAccess
 {
     public class TextConnector : IDataConnection
     {
+        private const string PositionsFileName = "Positions.csv"; 
         // TODO - Реализовать методы сохранения в текстовые файлы
         public BatteryClampType CreateBatteryClampType(BatteryClampType clampTypeModel)
         {
@@ -37,7 +39,16 @@ namespace BatteriesConditionTrackerLib.DataAccess
 
         public Position CreatePosition(Position positionModel)
         {
-            throw new NotImplementedException();
+            var positions = PositionsFileName.GetFullFilePath().LoadFile().ConvertToPositionModels();
+
+            int newId = positions.Count == 0? 1: positions.OrderByDescending(position => position.Id).First().Id + 1;
+
+            positionModel.Id = newId;
+            positions.Add(positionModel);
+
+            positions.SaveToPositionsFile(PositionsFileName);
+
+            return positionModel;
         }
 
         public Structure CreateStructure(Structure structureModel)

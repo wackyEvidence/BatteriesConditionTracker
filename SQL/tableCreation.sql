@@ -1,119 +1,127 @@
-CREATE TABLE tblBatterySubsystem -- создана 
+create table BatterySubsystems
 (
-	id INT PRIMARY KEY IDENTITY, 
-	name NVARCHAR(50) NOT NULL 
+	id int primary key identity, 
+	name nvarchar(50) not null, 
+	unique(name)
+)	
+
+create table BatteryReplacementStatuses
+(
+	id int primary key identity, 
+	name nvarchar(50) not null, 
+	unique(name)
 )
 
-CREATE TABLE tblBatteryReplacementStatus -- создана
+create table BatteryExploitationStatuses
 (
-	id INT PRIMARY KEY IDENTITY, 
-	name NVARCHAR(50) NOT NULL 
+	id int primary key identity, 
+	name nvarchar(50) not null 
+	unique(name)
 )
 
-CREATE TABLE tblBatteryExploitationStatus -- создана 
+create table BatteryClampTypes
 (
-	id INT PRIMARY KEY IDENTITY, 
-	name NVARCHAR(50) NOT NULL 
+	id int primary key identity, 
+	name nvarchar(50) not null 
+	unique(name)
 )
 
-CREATE TABLE tblBatteryClampType -- создана
+create table BatteryTechnologies
 (
-	id INT PRIMARY KEY IDENTITY, 
-	name NVARCHAR(50) NOT NULL 
+	id int primary key identity, 
+	name nvarchar(50) not null,
+	unique(name)
 )
 
-CREATE TABLE tblBatteryTechnology -- создана
+create table StructureTypes 
 (
-	id INT PRIMARY KEY IDENTITY, 
-	name NVARCHAR(50) NOT NULL 
+	id int primary key identity, 
+	name nvarchar(50) not null, 
+	unique(name)
 )
 
-CREATE TABLE tblStructure -- создана
+
+create table Structures 
 (
-	id INT PRIMARY KEY IDENTITY, 
-	name NVARCHAR(100) NOT NULL, 
-	type INT FOREIGN KEY REFERENCES tblStructureType(id) 
+	id int primary key identity, 
+	name nvarchar(100) not null, 
+	type int foreign key references StructureTypes(id) -- исправить на type_id 
 )
 
-CREATE TABLE tblStructureType -- cоздана 
+create table Positions 
 (
-	id INT PRIMARY KEY IDENTITY, 
-	name NVARCHAR(50) NOT NULL
+	id int primary key identity, 
+	name nvarchar(50) not null, 
+	unique(name)
 )
 
-CREATE TABLE tblPosition -- создана
+create table Users
 (
-	id INT PRIMARY KEY IDENTITY, 
-	name NVARCHAR(50) NOT NULL, 
+	id int primary key identity, 
+	name nvarchar(100) not null, 
+	surname nvarchar(100) not null, 
+	patronymic nvarchar(100), 
+	phone_number nvarchar(16), 
+	email nvarchar(200), 
+	position_id int foreign key references Positions(id) on delete set null,
+	supervisor_id int foreign key references Users(id) on delete no action, 
+	login nvarchar(100) not null, 
+	password text not null, 
+	is_admin bit not null, 
+	unique(login, email, phone_number)
 )
 
-CREATE TABLE tblUser -- создана 
+create table BatteryModels
 (
-	id INT PRIMARY KEY IDENTITY, 
-	name NVARCHAR(100) NOT NULL, 
-	surname NVARCHAR(100) NOT NULL, 
-	patronymic NVARCHAR(100), 
-	phone_number NVARCHAR(16), 
-	email NVARCHAR(200) NOT NULL, 
-	position_id INT FOREIGN KEY REFERENCES tblPosition(id) ON DELETE SET NULL,
-	supervisor_id INT FOREIGN KEY REFERENCES tblUser(id), 
-	login NVARCHAR(100) NOT NULL, 
-	password NVARCHAR(500) NOT NULL, 
-	is_admin BIT NOT NULL 
+	id int primary key identity, 
+	brand nvarchar(50) not null, 
+	capacity float not null check(capacity > 0), 
+	voltage float not null check(voltage > 0), 
+	length float not null check (length > 0), 
+	height float not null check (height > 0), 
+	width float not null check (width > 0), 
+	technology_id int foreign key references BatteryTechnologies(id) on delete set null, 
+	clamp_type_id int foreign key references BatteryClampTypes(id) on delete set null,
+	cost money not null check (cost > 0),
+	buffer_mode_service_time float not null check (buffer_mode_service_time > 0), 
+	soh_threshold int not null check (soh_threshold > 0)
 )
 
-ALTER TABLE tblConcreteBattery
-ADD last_capacity_measure_date DATE
-
-CREATE TABLE tblConcreteBattery
+create table ConcreteBatteries 
 (
-	id INT PRIMARY KEY IDENTITY, 
-	model_id INT FOREIGN KEY REFERENCES tblBatteryModel(id) ON DELETE SET NULL, 
-	exploitation_start DATE, 
-	exploitation_end DATE,
-	structure INT FOREIGN KEY REFERENCES tblStructure(id) ON DELETE SET NULL, 
-	subsystem INT FOREIGN KEY REFERENCES tblBatterySubsystem(id) ON DELETE SET NULL, 
-	manufacture_date DATE, 
-	responsible_employee INT FOREIGN KEY REFERENCES tblUser(id) ON DELETE SET NULL, 
-	exploitation_status INT FOREIGN KEY REFERENCES tblBatteryExploitationStatus(id) ON DELETE SET NULL, 
-	replacement_status INT FOREIGN KEY REFERENCES tblBatteryReplacementStatus(id) ON DELETE SET NULL, 
-	additional_notes TEXT
+	id int primary key identity, 
+	model_id int foreign key references BatteryModels(id) on delete cascade, 
+	exploitation_start date default getdate(), 
+	exploitation_end date,
+	structure int foreign key references Structures(id) on delete set null, -- дописать _id
+	subsystem int foreign key references BatterySubsystems(id) on delete set null, -- дописать _id
+	responsible_employee int foreign key references Users(id) on delete set null,  -- дописать _id
+	exploitation_status int foreign key references BatteryExploitationStatuses(id) on delete set null,  -- дописать _id
+	replacement_status int foreign key references BatteryReplacementStatuses(id) on delete set null,  -- дописать _id
+	additional_notes text, 
+	last_capacity_measure_date date	null
 )
 
-CREATE TABLE tblBatteryModel
+
+create table BatterySoHMeasures -- проверить
 (
-	id INT PRIMARY KEY IDENTITY, 
-	brand NVARCHAR(50) NOT NULL, 
-	capacity FLOAT NOT NULL, 
-	voltage FLOAT NOT NULL, 
-	length FLOAT NOT NULL, 
-	height FLOAT NOT NULL, 
-	width FLOAT NOT NULL, 
-	technology_id INT FOREIGN KEY REFERENCES tblBatteryTechnology(id) ON DELETE SET NULL, 
-	clamp_type INT FOREIGN KEY REFERENCES tblBatteryClampType(id) ON DELETE SET NULL, 
-	buffer_mode_service_time INT NOT NULL, 
-	cycle_mode_service_time INT, 
-	cost MONEY NOT NULL, 
+	id int primary key identity, 
+	battery_id int foreign key references ConcreteBatteries(id) on delete cascade not null , 
+	performing_employee int foreign key references Users(id) on delete set null, 
+	measure_date date not null default getdate(),
+	soh float not null check(soh > 0)
 )
 
-CREATE TABLE tblBatteryCapacityMeasure
+create table BatteryModelPhotos 
 (
-	id INT PRIMARY KEY IDENTITY, 
-	battery_id INT FOREIGN KEY REFERENCES tblConcreteBattery(id) NULL, 
-	performing_employee INT FOREIGN KEY REFERENCES tblUser(id) NOT NULL, 
-	measured_capacity FLOAT NOT NULL
+	id int primary key identity, 
+	model_id int foreign key references BatteryModels(id) on delete cascade not null, 
+	file_path text not null 
 )
 
-CREATE TABLE tblBatteryModelPhotos
+create table ConcreteBatteryPhotos 
 (
-	id INT PRIMARY KEY IDENTITY, 
-	model_id INT FOREIGN KEY REFERENCES tblBatteryModel(id) NOT NULL, 
-	file_path TEXT NOT NULL 
-)
-
-CREATE TABLE tblConcreteBatteryPhotos
-(
-	id INT PRIMARY KEY IDENTITY, 
-	battery_id INT FOREIGN KEY REFERENCES tblConcreteBattery(id) NOT NULL, 
-	file_path TEXT NOT NULL 
+	id int primary key identity, 
+	battery_id int foreign key references ConcreteBatteries(id) on delete cascade not null, 
+	file_path text not null 
 )

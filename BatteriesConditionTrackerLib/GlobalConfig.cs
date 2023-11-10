@@ -10,20 +10,26 @@ namespace BatteriesConditionTrackerLib
 {
     public static class GlobalConfig
     {
-        public static List<IDataConnection> Connections { get; private set; } = new List<IDataConnection>(); 
+        public static IDataConnection Connection { get; private set; } 
 
-        public static void InitializeConnections(bool database, bool textFiles)
+        public static void InitializeConnection(DatabaseType databaseType)
         {
-            if (database)
+            switch (databaseType)
             {
-                var connector = new SqlConnector(); 
-                Connections.Add(connector);
-            }
-
-            if (textFiles)
-            {
-                var connection = new TextConnector(); 
-                Connections.Add(connection);
+                case DatabaseType.SQL:
+                    var sqlConnector = new SqlConnector();
+                    Connection = sqlConnector; 
+                    break;
+                case DatabaseType.TextFile:
+                    var textConnector = new TextConnector(); 
+                    Connection = textConnector;
+                    break;
+                case DatabaseType.PostgreSQL:
+                    var postgreConnector = new PostgreConnector();
+                    Connection = postgreConnector;
+                    break;
+                default:
+                    break;
             }
         }
 

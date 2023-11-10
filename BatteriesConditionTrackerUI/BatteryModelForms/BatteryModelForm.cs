@@ -61,8 +61,7 @@ namespace BatteriesConditionTrackerUI
                     );
                     #endregion
 
-                    foreach (var connection in GlobalConfig.Connections)
-                        connection.CreateBatteryModel(batteryModel);
+                    GlobalConfig.Connection.CreateBatteryModel(batteryModel);
                 }
                 else
                 {
@@ -85,9 +84,9 @@ namespace BatteriesConditionTrackerUI
             };
             var intParams = new List<Parameter>
             {
-                new Parameter(length, "Длина"),
-                new Parameter(width, "Ширина"),
-                new Parameter(height, "Высота"),
+                new Parameter("Длина", length),
+                new Parameter("Ширина", width),
+                new Parameter("Высота", height),
                 new Parameter(costLabel.Text, costValue.Text), 
                 new Parameter(minSoHLabel.Text, minSoHValue.Text)
             };
