@@ -37,6 +37,7 @@
             loginTextBox = new TextBox();
             passwordLabel = new Label();
             headerLabel = new Label();
+            resetPasswordLinkLabel = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             authorizationGroupBox.SuspendLayout();
             SuspendLayout();
@@ -54,14 +55,14 @@
             // authorizationGroupBox
             // 
             authorizationGroupBox.BackColor = Color.White;
-            authorizationGroupBox.Controls.Add(authorizeButton);
+            authorizationGroupBox.Controls.Add(resetPasswordLinkLabel);
             authorizationGroupBox.Controls.Add(passwordTextBox);
             authorizationGroupBox.Controls.Add(loginLabel);
             authorizationGroupBox.Controls.Add(loginTextBox);
             authorizationGroupBox.Controls.Add(passwordLabel);
             authorizationGroupBox.Location = new Point(117, 258);
             authorizationGroupBox.Name = "authorizationGroupBox";
-            authorizationGroupBox.Size = new Size(361, 296);
+            authorizationGroupBox.Size = new Size(361, 253);
             authorizationGroupBox.TabIndex = 8;
             authorizationGroupBox.TabStop = false;
             // 
@@ -73,7 +74,7 @@
             authorizeButton.FlatStyle = FlatStyle.Flat;
             authorizeButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             authorizeButton.ForeColor = Color.FromArgb(0, 121, 194);
-            authorizeButton.Location = new Point(196, 229);
+            authorizeButton.Location = new Point(360, 517);
             authorizeButton.Name = "authorizeButton";
             authorizeButton.Size = new Size(118, 52);
             authorizeButton.TabIndex = 3;
@@ -106,6 +107,7 @@
             loginTextBox.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             loginTextBox.Location = new Point(32, 72);
             loginTextBox.Name = "loginTextBox";
+            loginTextBox.PlaceholderText = "mailaddress@mail.ru";
             loginTextBox.Size = new Size(282, 43);
             loginTextBox.TabIndex = 4;
             // 
@@ -132,13 +134,24 @@
             headerLabel.TabIndex = 7;
             headerLabel.Text = "Вход в систему";
             // 
+            // resetPasswordLinkLabel
+            // 
+            resetPasswordLinkLabel.AutoSize = true;
+            resetPasswordLinkLabel.Location = new Point(169, 221);
+            resetPasswordLinkLabel.Name = "resetPasswordLinkLabel";
+            resetPasswordLinkLabel.Size = new Size(145, 25);
+            resetPasswordLinkLabel.TabIndex = 6;
+            resetPasswordLinkLabel.TabStop = true;
+            resetPasswordLinkLabel.Text = "Забыли пароль?";
+            // 
             // AuthorizationForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(595, 598);
+            ClientSize = new Size(595, 587);
             Controls.Add(authorizationGroupBox);
+            Controls.Add(authorizeButton);
             Controls.Add(headerLabel);
             Controls.Add(pictureBox1);
             Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
@@ -164,5 +177,6 @@
         private TextBox loginTextBox;
         private Label passwordLabel;
         private Label headerLabel;
+        private LinkLabel resetPasswordLinkLabel;
     }
 }

@@ -18,7 +18,7 @@ namespace BatteriesConditionTrackerUI
     {
         private List<string> photosList = new List<string>();
         private FormMode mode;
-        private BatteryModel? batteryModel; 
+        private BatteryModel? batteryModel;
 
         public BatteryModelForm(FormMode mode)
         {
@@ -39,7 +39,7 @@ namespace BatteriesConditionTrackerUI
 
             if (errors.Count == 0) // ввод верен 
             {
-                if(mode == FormMode.Adding)
+                if (mode == FormMode.Adding)
                 {
                     GetBatteryModelSizes(out string length, out string width, out string height);
                     // Создание модели
@@ -77,23 +77,23 @@ namespace BatteriesConditionTrackerUI
             var errors = new Dictionary<string, string>();
             GetBatteryModelSizes(out string length, out string width, out string height);
 
-            var stringParams = new List<Parameter> 
-            { 
-                new Parameter(nameLabel.Text, nameValue.Text), 
-                new Parameter(brandLabel.Text, brandValue.Text) 
+            var stringParams = new List<Parameter>
+            {
+                new Parameter(nameLabel.Text, nameValue.Text),
+                new Parameter(brandLabel.Text, brandValue.Text)
             };
             var intParams = new List<Parameter>
             {
                 new Parameter("Длина", length),
                 new Parameter("Ширина", width),
                 new Parameter("Высота", height),
-                new Parameter(costLabel.Text, costValue.Text), 
+                new Parameter(costLabel.Text, costValue.Text),
                 new Parameter(minSoHLabel.Text, minSoHValue.Text)
             };
             var doubleParams = new List<Parameter>
             {
                 new Parameter(capacityLabel.Text, capacityValue.Text),
-                new Parameter(voltageLabel.Text, voltageValue.Text), 
+                new Parameter(voltageLabel.Text, voltageValue.Text),
                 new Parameter(bufferServiceTimeLabel.Text, bufferServiceTimeValue.Text)
             };
 

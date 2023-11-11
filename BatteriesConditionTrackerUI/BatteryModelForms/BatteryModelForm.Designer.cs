@@ -47,7 +47,6 @@
             minSoHLabel = new Label();
             minSoHValue = new TextBox();
             bufferServiceTimeLabel = new Label();
-            bufferServiceTimeValue = new TextBox();
             batteryPhotosGroupBox = new GroupBox();
             pictureBox = new PictureBox();
             previousPhotoButton = new Button();
@@ -60,9 +59,11 @@
             OkButton = new Button();
             costValue = new TextBox();
             costLabel = new Label();
+            bufferServiceTimeValue = new NumericUpDown();
             serviceTimeGroupBox.SuspendLayout();
             batteryPhotosGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bufferServiceTimeValue).BeginInit();
             SuspendLayout();
             // 
             // headerLabel
@@ -195,10 +196,10 @@
             // serviceTimeGroupBox
             // 
             serviceTimeGroupBox.BackColor = Color.Transparent;
+            serviceTimeGroupBox.Controls.Add(bufferServiceTimeValue);
             serviceTimeGroupBox.Controls.Add(minSoHLabel);
             serviceTimeGroupBox.Controls.Add(minSoHValue);
             serviceTimeGroupBox.Controls.Add(bufferServiceTimeLabel);
-            serviceTimeGroupBox.Controls.Add(bufferServiceTimeValue);
             serviceTimeGroupBox.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             serviceTimeGroupBox.ForeColor = Color.FromArgb(0, 121, 194);
             serviceTimeGroupBox.Location = new Point(15, 451);
@@ -234,13 +235,6 @@
             bufferServiceTimeLabel.Size = new Size(355, 38);
             bufferServiceTimeLabel.TabIndex = 40;
             bufferServiceTimeLabel.Text = "В буферном режиме (лет):";
-            // 
-            // bufferServiceTimeValue
-            // 
-            bufferServiceTimeValue.Location = new Point(368, 34);
-            bufferServiceTimeValue.Name = "bufferServiceTimeValue";
-            bufferServiceTimeValue.Size = new Size(92, 43);
-            bufferServiceTimeValue.TabIndex = 41;
             // 
             // batteryPhotosGroupBox
             // 
@@ -371,6 +365,14 @@
             costLabel.TabIndex = 73;
             costLabel.Text = "Стоимость (руб)";
             // 
+            // bufferServiceTimeValue
+            // 
+            bufferServiceTimeValue.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
+            bufferServiceTimeValue.Location = new Point(368, 34);
+            bufferServiceTimeValue.Name = "bufferServiceTimeValue";
+            bufferServiceTimeValue.Size = new Size(70, 43);
+            bufferServiceTimeValue.TabIndex = 44;
+            // 
             // BatteryModelForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
@@ -409,6 +411,7 @@
             serviceTimeGroupBox.PerformLayout();
             batteryPhotosGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bufferServiceTimeValue).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -434,7 +437,6 @@
         private Label minSoHLabel;
         private TextBox minSoHValue;
         private Label bufferServiceTimeLabel;
-        private TextBox bufferServiceTimeValue;
         private GroupBox batteryPhotosGroupBox;
         private PictureBox pictureBox;
         private Button previousPhotoButton;
@@ -447,5 +449,6 @@
         private Button OkButton;
         private TextBox costValue;
         private Label costLabel;
+        private NumericUpDown bufferServiceTimeValue;
     }
 }

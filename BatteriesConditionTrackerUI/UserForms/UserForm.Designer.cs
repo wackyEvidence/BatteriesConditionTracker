@@ -62,6 +62,7 @@
             // 
             textBox2.Location = new Point(265, 112);
             textBox2.Name = "textBox2";
+            textBox2.PlaceholderText = "Иван";
             textBox2.Size = new Size(230, 43);
             textBox2.TabIndex = 18;
             // 
@@ -78,6 +79,7 @@
             // 
             textBox1.Location = new Point(12, 112);
             textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Иванов";
             textBox1.Size = new Size(230, 43);
             textBox1.TabIndex = 16;
             // 
@@ -94,6 +96,7 @@
             // 
             textBox3.Location = new Point(514, 112);
             textBox3.Name = "textBox3";
+            textBox3.PlaceholderText = "Иванович";
             textBox3.Size = new Size(243, 43);
             textBox3.TabIndex = 20;
             // 
@@ -110,6 +113,7 @@
             // 
             textBox4.Location = new Point(12, 199);
             textBox4.Name = "textBox4";
+            textBox4.PlaceholderText = "mailaddress@mail.ru";
             textBox4.Size = new Size(325, 43);
             textBox4.TabIndex = 22;
             // 
