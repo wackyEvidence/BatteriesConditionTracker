@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BatteriesConditionTrackerLib.Models
 {
-    public class Position
+    public class Position : IHaveId
     {
         /// <summary>
         /// Id должности
@@ -18,10 +18,17 @@ namespace BatteriesConditionTrackerLib.Models
         public string Name { get; set; }
 
         public Position() { }
+
         public Position(string Id, string Name)
         {
             this.Id = int.Parse(Id);
             this.Name = Name;   
+        }
+
+        public Position(string[] columns)
+        {
+            Id = int.Parse(columns[0]);
+            Name = columns[1];
         }
     }
 }

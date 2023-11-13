@@ -73,7 +73,7 @@
             label14 = new Label();
             label6 = new Label();
             label7 = new Label();
-            tabPageCapacityMeasures = new TabPage();
+            tabPageSoHMeasures = new TabPage();
             groupBox2 = new GroupBox();
             comboBox3 = new ComboBox();
             label22 = new Label();
@@ -85,21 +85,21 @@
             button5 = new Button();
             button4 = new Button();
             dataGridView1 = new DataGridView();
+            columnSoHMeasure = new DataGridViewTextBoxColumn();
+            columnMeasureDate = new DataGridViewTextBoxColumn();
+            columnPerformingWorker = new DataGridViewTextBoxColumn();
             addBatteryButton = new Button();
             applySortButton = new Button();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
             groupBox3 = new GroupBox();
-            columnSoHMeasure = new DataGridViewTextBoxColumn();
-            columnMeasureDate = new DataGridViewTextBoxColumn();
-            columnPerformingWorker = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             tabPageMainInfo.SuspendLayout();
             groupBox1.SuspendLayout();
             tabPageExtraInfo.SuspendLayout();
-            tabPageCapacityMeasures.SuspendLayout();
+            tabPageSoHMeasures.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox3.SuspendLayout();
@@ -113,9 +113,9 @@
             headerLabel.Location = new Point(15, 9);
             headerLabel.Margin = new Padding(6, 0, 6, 0);
             headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(655, 62);
+            headerLabel.Size = new Size(270, 62);
             headerLabel.TabIndex = 8;
-            headerLabel.Text = "Информация об аккумуляторе:";
+            headerLabel.Text = "headerLabel";
             // 
             // batterNameLabel
             // 
@@ -142,7 +142,7 @@
             // 
             tabControl1.Controls.Add(tabPageMainInfo);
             tabControl1.Controls.Add(tabPageExtraInfo);
-            tabControl1.Controls.Add(tabPageCapacityMeasures);
+            tabControl1.Controls.Add(tabPageSoHMeasures);
             tabControl1.Location = new Point(12, 87);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -536,19 +536,19 @@
             label7.TabIndex = 32;
             label7.Text = "Дата окончания эксплуатации";
             // 
-            // tabPageCapacityMeasures
+            // tabPageSoHMeasures
             // 
-            tabPageCapacityMeasures.Controls.Add(groupBox2);
-            tabPageCapacityMeasures.Controls.Add(button6);
-            tabPageCapacityMeasures.Controls.Add(button5);
-            tabPageCapacityMeasures.Controls.Add(button4);
-            tabPageCapacityMeasures.Controls.Add(dataGridView1);
-            tabPageCapacityMeasures.Location = new Point(4, 46);
-            tabPageCapacityMeasures.Name = "tabPageCapacityMeasures";
-            tabPageCapacityMeasures.Size = new Size(565, 634);
-            tabPageCapacityMeasures.TabIndex = 2;
-            tabPageCapacityMeasures.Text = "Замеры емкости";
-            tabPageCapacityMeasures.UseVisualStyleBackColor = true;
+            tabPageSoHMeasures.Controls.Add(groupBox2);
+            tabPageSoHMeasures.Controls.Add(button6);
+            tabPageSoHMeasures.Controls.Add(button5);
+            tabPageSoHMeasures.Controls.Add(button4);
+            tabPageSoHMeasures.Controls.Add(dataGridView1);
+            tabPageSoHMeasures.Location = new Point(4, 46);
+            tabPageSoHMeasures.Name = "tabPageSoHMeasures";
+            tabPageSoHMeasures.Size = new Size(565, 634);
+            tabPageSoHMeasures.TabIndex = 2;
+            tabPageSoHMeasures.Text = "Замеры SoH";
+            tabPageSoHMeasures.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -665,6 +665,30 @@
             dataGridView1.Size = new Size(559, 318);
             dataGridView1.TabIndex = 0;
             // 
+            // columnSoHMeasure
+            // 
+            columnSoHMeasure.HeaderText = "Значение SoH (%)";
+            columnSoHMeasure.MinimumWidth = 6;
+            columnSoHMeasure.Name = "columnSoHMeasure";
+            columnSoHMeasure.ReadOnly = true;
+            columnSoHMeasure.Width = 140;
+            // 
+            // columnMeasureDate
+            // 
+            columnMeasureDate.HeaderText = "Дата замера";
+            columnMeasureDate.MinimumWidth = 6;
+            columnMeasureDate.Name = "columnMeasureDate";
+            columnMeasureDate.ReadOnly = true;
+            columnMeasureDate.Width = 150;
+            // 
+            // columnPerformingWorker
+            // 
+            columnPerformingWorker.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            columnPerformingWorker.HeaderText = "Работник";
+            columnPerformingWorker.MinimumWidth = 6;
+            columnPerformingWorker.Name = "columnPerformingWorker";
+            columnPerformingWorker.ReadOnly = true;
+            // 
             // addBatteryButton
             // 
             addBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
@@ -735,30 +759,6 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "groupBoxName";
             // 
-            // columnSoHMeasure
-            // 
-            columnSoHMeasure.HeaderText = "Значение SoH (%)";
-            columnSoHMeasure.MinimumWidth = 6;
-            columnSoHMeasure.Name = "columnSoHMeasure";
-            columnSoHMeasure.ReadOnly = true;
-            columnSoHMeasure.Width = 140;
-            // 
-            // columnMeasureDate
-            // 
-            columnMeasureDate.HeaderText = "Дата замера";
-            columnMeasureDate.MinimumWidth = 6;
-            columnMeasureDate.Name = "columnMeasureDate";
-            columnMeasureDate.ReadOnly = true;
-            columnMeasureDate.Width = 150;
-            // 
-            // columnPerformingWorker
-            // 
-            columnPerformingWorker.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            columnPerformingWorker.HeaderText = "Работник";
-            columnPerformingWorker.MinimumWidth = 6;
-            columnPerformingWorker.Name = "columnPerformingWorker";
-            columnPerformingWorker.ReadOnly = true;
-            // 
             // BatteryEditingAndViewForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
@@ -783,7 +783,7 @@
             groupBox1.PerformLayout();
             tabPageExtraInfo.ResumeLayout(false);
             tabPageExtraInfo.PerformLayout();
-            tabPageCapacityMeasures.ResumeLayout(false);
+            tabPageSoHMeasures.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -837,7 +837,7 @@
         private ComboBox comboBox9;
         private Label label20;
         private Button addBatteryButton;
-        private TabPage tabPageCapacityMeasures;
+        private TabPage tabPageSoHMeasures;
         private Button applySortButton;
         private Button button1;
         private Button button2;

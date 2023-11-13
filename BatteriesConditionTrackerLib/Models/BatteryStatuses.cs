@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BatteriesConditionTrackerLib.Models
 {
-    public class BatteryExploitationStatus
+    public class BatteryExploitationStatus : IHaveId
     {
         /// <summary>
         /// Id статуса эксплуатации аккумулятора
@@ -18,7 +18,7 @@ namespace BatteriesConditionTrackerLib.Models
         public string Status { get; set; }
     }
 
-    public class BatteryReplacementStatus
+    public class BatteryReplacementStatus : IHaveId
     {
         /// <summary>
         /// Id статуса замены аккумулятора 

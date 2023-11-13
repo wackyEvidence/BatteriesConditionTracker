@@ -18,5 +18,8 @@ namespace BatteriesConditionTrackerLib.DataAccess
         StructureType CreateStructureType(StructureType structureTypeModel);
         User CreateUser(User userModel);
         ConcreteBattery CreateConcreteBattery(ConcreteBattery concreteBatteryModel);
+        BatterySoHMeasure CreateBatterySoHMeasure(BatterySoHMeasure batterySoHMeasureModel);
+        void CreateBatteryModelPhoto(string filePath);
+        void CreateConcreteBatteryPhoto(string filePath);
     }
 }

@@ -131,6 +131,7 @@
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
           "Dapper": "2.1.15",
+          "Npgsql": "7.0.6",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {

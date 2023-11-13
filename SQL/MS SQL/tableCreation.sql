@@ -40,12 +40,11 @@ create table StructureTypes
 	unique(name)
 )
 
-
 create table Structures 
 (
 	id int primary key identity, 
 	name nvarchar(100) not null, 
-	type int foreign key references StructureTypes(id) -- исправить на type_id 
+	type_id int foreign key references StructureTypes(id)
 )
 
 create table Positions 
@@ -62,13 +61,12 @@ create table Users
 	surname nvarchar(100) not null, 
 	patronymic nvarchar(100), 
 	phone_number nvarchar(16), 
-	email nvarchar(200), 
+	email nvarchar(200) not null, 
 	position_id int foreign key references Positions(id) on delete set null,
-	supervisor_id int foreign key references Users(id) on delete no action, 
-	login nvarchar(100) not null, 
+	supervisor_id int foreign key references Users(id) on delete no action,
 	password text not null, 
 	is_admin bit not null, 
-	unique(login, email, phone_number)
+	unique(email, phone_number)
 )
 
 create table BatteryModels
@@ -93,21 +91,20 @@ create table ConcreteBatteries
 	model_id int foreign key references BatteryModels(id) on delete cascade, 
 	exploitation_start date default getdate(), 
 	exploitation_end date,
-	structure int foreign key references Structures(id) on delete set null, -- дописать _id
-	subsystem int foreign key references BatterySubsystems(id) on delete set null, -- дописать _id
-	responsible_employee int foreign key references Users(id) on delete set null,  -- дописать _id
-	exploitation_status int foreign key references BatteryExploitationStatuses(id) on delete set null,  -- дописать _id
-	replacement_status int foreign key references BatteryReplacementStatuses(id) on delete set null,  -- дописать _id
+	structure_id int foreign key references Structures(id) on delete set null,
+	subsystem_id int foreign key references BatterySubsystems(id) on delete set null,
+	responsible_employee_id int foreign key references Users(id) on delete set null,
+	exploitation_status_id int foreign key references BatteryExploitationStatuses(id) on delete set null,
+	replacement_status_id int foreign key references BatteryReplacementStatuses(id) on delete set null,
 	additional_notes text, 
 	last_capacity_measure_date date	null
 )
 
-
-create table BatterySoHMeasures -- проверить
+create table BatterySoHMeasures
 (
 	id int primary key identity, 
 	battery_id int foreign key references ConcreteBatteries(id) on delete cascade not null , 
-	performing_employee int foreign key references Users(id) on delete set null, 
+	performing_employee_id int foreign key references Users(id) on delete set null, 
 	measure_date date not null default getdate(),
 	soh float not null check(soh > 0)
 )

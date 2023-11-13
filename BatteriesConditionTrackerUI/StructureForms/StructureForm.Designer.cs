@@ -35,6 +35,7 @@
             label2 = new Label();
             button5 = new Button();
             button4 = new Button();
+            addStructureTypeLinkLabel = new LinkLabel();
             SuspendLayout();
             // 
             // headerLabel
@@ -70,7 +71,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(12, 210);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(175, 45);
+            comboBox1.Size = new Size(327, 45);
             comboBox1.TabIndex = 15;
             // 
             // label2
@@ -104,12 +105,24 @@
             button4.Text = "ОК";
             button4.UseVisualStyleBackColor = true;
             // 
-            // StructureEditingAndAddingForm
+            // addStructureTypeLinkLabel
+            // 
+            addStructureTypeLinkLabel.AutoSize = true;
+            addStructureTypeLinkLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            addStructureTypeLinkLabel.Location = new Point(236, 176);
+            addStructureTypeLinkLabel.Name = "addStructureTypeLinkLabel";
+            addStructureTypeLinkLabel.Size = new Size(103, 28);
+            addStructureTypeLinkLabel.TabIndex = 72;
+            addStructureTypeLinkLabel.TabStop = true;
+            addStructureTypeLinkLabel.Text = "добавить ";
+            // 
+            // StructureForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(558, 331);
+            Controls.Add(addStructureTypeLinkLabel);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(label2);
@@ -120,7 +133,7 @@
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
             Margin = new Padding(6);
-            Name = "StructureEditingAndAddingForm";
+            Name = "StructureForm";
             Text = "StructureEditingAndAddingForm";
             ResumeLayout(false);
             PerformLayout();
@@ -135,5 +148,6 @@
         private Label label2;
         private Button button5;
         private Button button4;
+        private LinkLabel addStructureTypeLinkLabel;
     }
 }

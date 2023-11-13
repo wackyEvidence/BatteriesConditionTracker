@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BatteriesConditionTrackerLib.Models
 {
-    public class Structure
+    public class Structure : IHaveId
     {
         /// <summary>
         /// Id объекта
@@ -20,5 +20,15 @@ namespace BatteriesConditionTrackerLib.Models
         /// Тип объекта
         /// </summary>
         public StructureType Type { get; set; }
+
+        public Structure() { }
+
+        public Structure(string[] columns)
+        {
+            // TO DO Как и в остальных конструкторах 
+            Id = int.Parse(columns[0]); 
+            Name = columns[1];
+            Type = new StructureType() { Id = int.Parse(columns[2]) };
+        }
     }
 }

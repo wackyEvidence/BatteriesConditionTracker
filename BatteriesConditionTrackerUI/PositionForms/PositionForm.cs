@@ -16,7 +16,7 @@ namespace BatteriesConditionTrackerUI
     public partial class PositionForm : Form, IValidatable
     {
         private FormMode mode;
-        private Position? positionModel; 
+        private Position? oldPositionModel; 
 
         public PositionForm(FormMode mode)
         {
@@ -29,7 +29,7 @@ namespace BatteriesConditionTrackerUI
         {
             InitializeComponent();
             this.mode = mode;
-            this.positionModel = positionModel;
+            oldPositionModel = positionModel;
             headerLabel.Text = "Изменение должности"; 
         }
 
@@ -54,8 +54,8 @@ namespace BatteriesConditionTrackerUI
                 }
                 else
                 {
-                    // TO DO Дописать случай изменения
-                    throw new NotImplementedException();
+                    var positionModel = new Position() { Id = oldPositionModel.Id, Name = positionNameValue.Text };
+                    GlobalConfig.Connection.UpdatePosition(positionModel);
                 }
             }
             else

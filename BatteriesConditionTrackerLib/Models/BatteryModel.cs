@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BatteriesConditionTrackerLib.Models
 {
-    public class BatteryModel
+    public class BatteryModel : IHaveId, IHavePhotos
     {
         /// <summary>
         /// Id модели аккумулятора
@@ -55,7 +55,7 @@ namespace BatteriesConditionTrackerLib.Models
         /// <summary>
         /// Срок службы в буферном режиме (лет)
         /// </summary>
-        public int BufferModeServiceTime { get; set; }
+        public double BufferModeServiceTime { get; set; }
         /// <summary>
         /// Срок службы в циклическом режиме (число циклов)
         /// </summary>
@@ -67,7 +67,7 @@ namespace BatteriesConditionTrackerLib.Models
 
         public BatteryModel() { }
 
-        // TODO - Разобраться с назначением полей Technology и ClampType в конструкторе.
+        // TODO - Разобраться с назначением полей Technology и ClampType в конструкторах.
         public BatteryModel(string name, string brand, string capacity, string voltage, 
             string length, string height, string width, string technology, string clampType, string cost, 
             string bufferModeServiceTime, string minSoH, List<string> photoPaths)
@@ -85,6 +85,38 @@ namespace BatteriesConditionTrackerLib.Models
             BufferModeServiceTime = int.Parse(bufferModeServiceTime); 
             MinSoH = int.Parse(minSoH);
             Photos = photoPaths;
+        }
+
+        public BatteryModel(string[] columns)
+        {
+            Id = int.Parse(columns[0]); 
+            Name = columns[1];
+            Brand = columns[2];
+            Capacity = double.Parse(columns[3]);
+            Voltage = double.Parse(columns[4]); 
+            Length = int.Parse(columns[5]);
+            Height = int.Parse(columns[6]);
+            Width = int.Parse(columns[7]);
+            Technology = new BatteryTechnology() { Id = int.Parse(columns[8]) };
+            ClampType = new BatteryClampType() { Id = int.Parse(columns[9]) };
+            Cost = decimal.Parse(columns[10]);
+            BufferModeServiceTime = double.Parse(columns[11]);
+            MinSoH = int.Parse(columns[12]); 
+        }
+
+        public void SavePhotos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeletePhotos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> GetPhotos()
+        {
+            throw new NotImplementedException();
         }
     }
 }

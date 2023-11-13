@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BatteriesConditionTrackerLib.Models
 {
-    public class ConcreteBattery
+    public class ConcreteBattery : IHaveId, IHavePhotos
     {
         /// <summary>
         /// Id данного аккумулятора
@@ -33,10 +33,6 @@ namespace BatteriesConditionTrackerLib.Models
         /// </summary>
         public BatterySubsystem Subsystem { get; set; }
         /// <summary>
-        /// Дата производства аккумулятора
-        /// </summary>
-        public DateTime ManufactureDate { get; set; }
-        /// <summary>
         /// Ответственный работник
         /// </summary> 
         public User ResponsibleWorker { get; set; }
@@ -49,17 +45,50 @@ namespace BatteriesConditionTrackerLib.Models
         /// </summary>
         public BatteryReplacementStatus ReplacementStatus { get; set; }
         /// <summary>
-        /// Дата последнего измерения емкости
-        /// </summary>
-        public DateTime? LastCapacityMeasureDate { get; set; }
-        /// <summary>
         /// Примечания по аккумулятору 
         /// </summary>
         public string AdditionalNotes { get; set; }
+        /// <summary>
+        /// Дата последнего измерения емкости
+        /// </summary>
+        public DateTime? LastCapacityMeasureDate { get; set; }
 
         /// <summary>
         /// Список фотографий этого аккумулятора
         /// </summary>
         public List<string> Photos { get; set; } = new List<string>();
+
+        public ConcreteBattery() { }
+
+        public ConcreteBattery(string[] columns)
+        {
+            Id = int.Parse(columns[0]);
+            Model = new BatteryModel() { Id = int.Parse(columns[1]) };
+            ExploitationStart = DateTime.Parse(columns[2]);
+            DateTime.TryParse(columns[3], out DateTime exploitationEnd);
+            ExploitationEnd = exploitationEnd;
+            InstallationStructure = new Structure() { Id = int.Parse(columns[4]) }; 
+            Subsystem = new BatterySubsystem() {  Id = int.Parse(columns[5]) };
+            ResponsibleWorker = new User() { Id = int.Parse(columns[6]) }; 
+            ExploitationStatus = new BatteryExploitationStatus() {  Id = int.Parse(columns[7]) };
+            ReplacementStatus = new BatteryReplacementStatus() {  Id = int.Parse(columns[8]) };
+            AdditionalNotes = columns[9];
+            LastCapacityMeasureDate = DateTime.Parse(columns[10]);
+        }
+
+        public void DeletePhotos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> GetPhotos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SavePhotos()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
