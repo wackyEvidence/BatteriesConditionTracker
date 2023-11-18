@@ -46,15 +46,15 @@
             batteryTechnologyToolStripMenuItem = new ToolStripMenuItem();
             отчётToolStripMenuItem = new ToolStripMenuItem();
             аккумуляторыТребующиеЗаменыToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            dataGridView1 = new DataGridView();
+            aboutMenuItem = new ToolStripMenuItem();
+            dataGridView = new DataGridView();
             deleteBatteryButton = new Button();
             editBatteryButton = new Button();
             addBatteryButton = new Button();
             groupBoxFilters = new GroupBox();
-            linkLabel1 = new LinkLabel();
-            comboBox1 = new ComboBox();
-            batterStatusComboBox = new ComboBox();
+            resetAllFiltersLinkLabel = new LinkLabel();
+            replacementStatusComboBox = new ComboBox();
+            exploitationStatusComboBox = new ComboBox();
             structureTypesLabel = new Label();
             structureTypesCheckedListBox = new CheckedListBox();
             subsystemLabel = new Label();
@@ -74,7 +74,7 @@
             highlightButton = new Button();
             groupBoxSort = new GroupBox();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             groupBoxFilters.SuspendLayout();
             groupBoxSort.SuspendLayout();
             SuspendLayout();
@@ -84,7 +84,7 @@
             menuStrip1.BackColor = Color.WhiteSmoke;
             menuStrip1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { настройкиToolStripMenuItem, панельАдминистратораToolStripMenuItem, отчётToolStripMenuItem, toolStripMenuItem1 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { настройкиToolStripMenuItem, панельАдминистратораToolStripMenuItem, отчётToolStripMenuItem, aboutMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1466, 46);
@@ -207,25 +207,25 @@
             аккумуляторыТребующиеЗаменыToolStripMenuItem.Text = "Аккумуляторы, требующие замены";
             аккумуляторыТребующиеЗаменыToolStripMenuItem.Click += аккумуляторыТребующиеЗаменыToolStripMenuItem_Click;
             // 
-            // toolStripMenuItem1
+            // aboutMenuItem
             // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(44, 42);
-            toolStripMenuItem1.Text = "?";
+            aboutMenuItem.Name = "aboutMenuItem";
+            aboutMenuItem.Size = new Size(44, 42);
+            aboutMenuItem.Text = "?";
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.BackgroundColor = Color.Gainsboro;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(11, 64);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(809, 808);
-            dataGridView1.TabIndex = 10;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.BackgroundColor = Color.Gainsboro;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Location = new Point(11, 64);
+            dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
+            dataGridView.RowHeadersWidth = 51;
+            dataGridView.RowTemplate.Height = 29;
+            dataGridView.Size = new Size(809, 808);
+            dataGridView.TabIndex = 10;
             // 
             // deleteBatteryButton
             // 
@@ -276,9 +276,9 @@
             // groupBoxFilters
             // 
             groupBoxFilters.BackColor = Color.White;
-            groupBoxFilters.Controls.Add(linkLabel1);
-            groupBoxFilters.Controls.Add(comboBox1);
-            groupBoxFilters.Controls.Add(batterStatusComboBox);
+            groupBoxFilters.Controls.Add(resetAllFiltersLinkLabel);
+            groupBoxFilters.Controls.Add(replacementStatusComboBox);
+            groupBoxFilters.Controls.Add(exploitationStatusComboBox);
             groupBoxFilters.Controls.Add(structureTypesLabel);
             groupBoxFilters.Controls.Add(structureTypesCheckedListBox);
             groupBoxFilters.Controls.Add(subsystemLabel);
@@ -302,38 +302,38 @@
             groupBoxFilters.TabStop = false;
             groupBoxFilters.Text = "Фильтрация";
             // 
-            // linkLabel1
+            // resetAllFiltersLinkLabel
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            linkLabel1.Location = new Point(376, 104);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(252, 31);
-            linkLabel1.TabIndex = 36;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Сбросить все фильтры";
+            resetAllFiltersLinkLabel.AutoSize = true;
+            resetAllFiltersLinkLabel.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            resetAllFiltersLinkLabel.Location = new Point(376, 104);
+            resetAllFiltersLinkLabel.Name = "resetAllFiltersLinkLabel";
+            resetAllFiltersLinkLabel.Size = new Size(252, 31);
+            resetAllFiltersLinkLabel.TabIndex = 36;
+            resetAllFiltersLinkLabel.TabStop = true;
+            resetAllFiltersLinkLabel.Text = "Сбросить все фильтры";
             // 
-            // comboBox1
+            // replacementStatusComboBox
             // 
-            comboBox1.ForeColor = Color.Gray;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "требует замены", "не требует замены ", "заменен", "все" });
-            comboBox1.Location = new Point(6, 90);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(288, 45);
-            comboBox1.TabIndex = 35;
-            comboBox1.Text = "Статус замены";
+            replacementStatusComboBox.ForeColor = Color.Gray;
+            replacementStatusComboBox.FormattingEnabled = true;
+            replacementStatusComboBox.Items.AddRange(new object[] { "требует замены", "не требует замены ", "заменен", "все" });
+            replacementStatusComboBox.Location = new Point(6, 90);
+            replacementStatusComboBox.Name = "replacementStatusComboBox";
+            replacementStatusComboBox.Size = new Size(288, 45);
+            replacementStatusComboBox.TabIndex = 35;
+            replacementStatusComboBox.Text = "Статус замены";
             // 
-            // batterStatusComboBox
+            // exploitationStatusComboBox
             // 
-            batterStatusComboBox.ForeColor = Color.Gray;
-            batterStatusComboBox.FormattingEnabled = true;
-            batterStatusComboBox.Items.AddRange(new object[] { "эксплуатируемые", "выведенные из эксплуатации ", "все" });
-            batterStatusComboBox.Location = new Point(6, 39);
-            batterStatusComboBox.Name = "batterStatusComboBox";
-            batterStatusComboBox.Size = new Size(421, 45);
-            batterStatusComboBox.TabIndex = 34;
-            batterStatusComboBox.Text = "Статус эксплуатации";
+            exploitationStatusComboBox.ForeColor = Color.Gray;
+            exploitationStatusComboBox.FormattingEnabled = true;
+            exploitationStatusComboBox.Items.AddRange(new object[] { "эксплуатируемые", "выведенные из эксплуатации ", "все" });
+            exploitationStatusComboBox.Location = new Point(6, 39);
+            exploitationStatusComboBox.Name = "exploitationStatusComboBox";
+            exploitationStatusComboBox.Size = new Size(421, 45);
+            exploitationStatusComboBox.TabIndex = 34;
+            exploitationStatusComboBox.Text = "Статус эксплуатации";
             // 
             // structureTypesLabel
             // 
@@ -547,7 +547,7 @@
             Controls.Add(groupBoxFilters);
             Controls.Add(editBatteryButton);
             Controls.Add(addBatteryButton);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridView);
             Controls.Add(menuStrip1);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
@@ -558,7 +558,7 @@
             Text = "Список аккумуляторов";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             groupBoxFilters.ResumeLayout(false);
             groupBoxFilters.PerformLayout();
             groupBoxSort.ResumeLayout(false);
@@ -573,7 +573,7 @@
         private ToolStripMenuItem batteryModelsToolStripMenuItem;
         private ToolStripMenuItem staffToolStripMenuItem;
         private ToolStripMenuItem structuresToolStripMenuItem;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridView;
         private GroupBox groupBoxFilters;
         private Button deleteBatteryButton;
         private Button editBatteryButton;
@@ -599,9 +599,9 @@
         private ToolStripMenuItem экспортToolStripMenuItem1;
         private ToolStripMenuItem cSVToolStripMenuItem1;
         private ToolStripMenuItem выходToolStripMenuItem;
-        private ComboBox batterStatusComboBox;
+        private ComboBox exploitationStatusComboBox;
         private GroupBox groupBoxSort;
-        private ComboBox comboBox1;
+        private ComboBox replacementStatusComboBox;
         private ToolStripMenuItem отчётToolStripMenuItem;
         private ToolStripMenuItem аккумуляторыТребующиеЗаменыToolStripMenuItem;
         private ToolStripMenuItem structureTypesToolStripMenuItem;
@@ -610,7 +610,7 @@
         private ToolStripMenuItem batteryClampTypesToolStripMenuItem;
         private ToolStripMenuItem batteryTechnologyToolStripMenuItem;
         private ToolStripMenuItem positionsToolStripMenuItem;
-        private LinkLabel linkLabel1;
-        private ToolStripMenuItem toolStripMenuItem1;
+        private LinkLabel resetAllFiltersLinkLabel;
+        private ToolStripMenuItem aboutMenuItem;
     }
 }

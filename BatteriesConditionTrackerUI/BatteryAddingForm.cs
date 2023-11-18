@@ -24,5 +24,9 @@ namespace BatteriesConditionTrackerUI
         {
             InitializeComponent();
         }
+
+        private void WireUpLists()
+        {
+        }
     }
 }

@@ -29,34 +29,34 @@
         private void InitializeComponent()
         {
             headerLabel = new Label();
-            comboBox1 = new ComboBox();
-            label1 = new Label();
+            modelComboBox = new ComboBox();
+            modelLabel = new Label();
             linkLabel1 = new LinkLabel();
-            dateTimePicker2 = new DateTimePicker();
-            dateTimePicker1 = new DateTimePicker();
-            comboBox8 = new ComboBox();
-            comboBox7 = new ComboBox();
-            label19 = new Label();
-            label18 = new Label();
-            comboBox9 = new ComboBox();
-            richTextBox1 = new RichTextBox();
-            label20 = new Label();
-            label17 = new Label();
-            comboBox6 = new ComboBox();
-            comboBox2 = new ComboBox();
-            label15 = new Label();
-            label14 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            groupBox3 = new GroupBox();
+            exploitationEndValue = new DateTimePicker();
+            exploitationStartValue = new DateTimePicker();
+            replacementStatusComboBox = new ComboBox();
+            responsibleEmployeeComboBox = new ComboBox();
+            replacementStatusLabel = new Label();
+            responsibleEmployeeLabel = new Label();
+            exploitationStatusComboBox = new ComboBox();
+            additionalNotesValue = new RichTextBox();
+            exploitationStatusLabel = new Label();
+            additionalNotesLabel = new Label();
+            structureComboBox = new ComboBox();
+            subsystemComboBox = new ComboBox();
+            subsystemLabel = new Label();
+            structureLabel = new Label();
+            exploitationStartLabel = new Label();
+            exploitationEndLabel = new Label();
+            photosGroupBox = new GroupBox();
             pictureBox1 = new PictureBox();
-            button2 = new Button();
-            button3 = new Button();
-            applySortButton = new Button();
-            button1 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            groupBox3.SuspendLayout();
+            previousPhotoButton = new Button();
+            nextPhotoButton = new Button();
+            addPhotoButton = new Button();
+            deletePhotoButton = new Button();
+            addBatteryButton = new Button();
+            cancelButton = new Button();
+            photosGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -72,23 +72,23 @@
             headerLabel.TabIndex = 9;
             headerLabel.Text = "headerLabelText";
             // 
-            // comboBox1
+            // modelComboBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(15, 130);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(369, 45);
-            comboBox1.TabIndex = 11;
+            modelComboBox.FormattingEnabled = true;
+            modelComboBox.Location = new Point(15, 130);
+            modelComboBox.Name = "modelComboBox";
+            modelComboBox.Size = new Size(369, 45);
+            modelComboBox.TabIndex = 11;
             // 
-            // label1
+            // modelLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(15, 89);
-            label1.Name = "label1";
-            label1.Size = new Size(117, 38);
-            label1.TabIndex = 12;
-            label1.Text = "Модель";
+            modelLabel.AutoSize = true;
+            modelLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            modelLabel.Location = new Point(15, 89);
+            modelLabel.Name = "modelLabel";
+            modelLabel.Size = new Size(117, 38);
+            modelLabel.TabIndex = 12;
+            modelLabel.Text = "Модель";
             // 
             // linkLabel1
             // 
@@ -101,157 +101,157 @@
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Добавить новую ";
             // 
-            // dateTimePicker2
+            // exploitationEndValue
             // 
-            dateTimePicker2.Location = new Point(15, 404);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(250, 43);
-            dateTimePicker2.TabIndex = 61;
+            exploitationEndValue.Location = new Point(15, 404);
+            exploitationEndValue.Name = "exploitationEndValue";
+            exploitationEndValue.Size = new Size(250, 43);
+            exploitationEndValue.TabIndex = 61;
             // 
-            // dateTimePicker1
+            // exploitationStartValue
             // 
-            dateTimePicker1.Location = new Point(15, 317);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(250, 43);
-            dateTimePicker1.TabIndex = 60;
+            exploitationStartValue.Location = new Point(15, 317);
+            exploitationStartValue.Name = "exploitationStartValue";
+            exploitationStartValue.Size = new Size(250, 43);
+            exploitationStartValue.TabIndex = 60;
             // 
-            // comboBox8
+            // replacementStatusComboBox
             // 
-            comboBox8.FormattingEnabled = true;
-            comboBox8.Items.AddRange(new object[] { "не требует замены", "требует замены", "заменен" });
-            comboBox8.Location = new Point(319, 228);
-            comboBox8.Name = "comboBox8";
-            comboBox8.Size = new Size(249, 45);
-            comboBox8.TabIndex = 58;
+            replacementStatusComboBox.FormattingEnabled = true;
+            replacementStatusComboBox.Items.AddRange(new object[] { "не требует замены", "требует замены", "заменен" });
+            replacementStatusComboBox.Location = new Point(319, 228);
+            replacementStatusComboBox.Name = "replacementStatusComboBox";
+            replacementStatusComboBox.Size = new Size(249, 45);
+            replacementStatusComboBox.TabIndex = 58;
             // 
-            // comboBox7
+            // responsibleEmployeeComboBox
             // 
-            comboBox7.FormattingEnabled = true;
-            comboBox7.Location = new Point(15, 755);
-            comboBox7.Name = "comboBox7";
-            comboBox7.Size = new Size(553, 45);
-            comboBox7.TabIndex = 59;
+            responsibleEmployeeComboBox.FormattingEnabled = true;
+            responsibleEmployeeComboBox.Location = new Point(15, 755);
+            responsibleEmployeeComboBox.Name = "responsibleEmployeeComboBox";
+            responsibleEmployeeComboBox.Size = new Size(553, 45);
+            responsibleEmployeeComboBox.TabIndex = 59;
             // 
-            // label19
+            // replacementStatusLabel
             // 
-            label19.AutoSize = true;
-            label19.Location = new Point(319, 187);
-            label19.Name = "label19";
-            label19.Size = new Size(202, 38);
-            label19.TabIndex = 56;
-            label19.Text = "Статус замены";
+            replacementStatusLabel.AutoSize = true;
+            replacementStatusLabel.Location = new Point(319, 187);
+            replacementStatusLabel.Name = "replacementStatusLabel";
+            replacementStatusLabel.Size = new Size(202, 38);
+            replacementStatusLabel.TabIndex = 56;
+            replacementStatusLabel.Text = "Статус замены";
             // 
-            // label18
+            // responsibleEmployeeLabel
             // 
-            label18.AutoSize = true;
-            label18.Location = new Point(15, 714);
-            label18.Name = "label18";
-            label18.Size = new Size(339, 38);
-            label18.TabIndex = 57;
-            label18.Text = "Ответственный работник";
+            responsibleEmployeeLabel.AutoSize = true;
+            responsibleEmployeeLabel.Location = new Point(15, 714);
+            responsibleEmployeeLabel.Name = "responsibleEmployeeLabel";
+            responsibleEmployeeLabel.Size = new Size(339, 38);
+            responsibleEmployeeLabel.TabIndex = 57;
+            responsibleEmployeeLabel.Text = "Ответственный работник";
             // 
-            // comboBox9
+            // exploitationStatusComboBox
             // 
-            comboBox9.FormattingEnabled = true;
-            comboBox9.Items.AddRange(new object[] { "эксплуатируется ", "выведен из эксплуатации " });
-            comboBox9.Location = new Point(15, 228);
-            comboBox9.Name = "comboBox9";
-            comboBox9.Size = new Size(250, 45);
-            comboBox9.TabIndex = 54;
+            exploitationStatusComboBox.FormattingEnabled = true;
+            exploitationStatusComboBox.Items.AddRange(new object[] { "эксплуатируется ", "выведен из эксплуатации " });
+            exploitationStatusComboBox.Location = new Point(15, 228);
+            exploitationStatusComboBox.Name = "exploitationStatusComboBox";
+            exploitationStatusComboBox.Size = new Size(250, 45);
+            exploitationStatusComboBox.TabIndex = 54;
             // 
-            // richTextBox1
+            // additionalNotesValue
             // 
-            richTextBox1.ForeColor = Color.Gray;
-            richTextBox1.Location = new Point(15, 589);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(553, 122);
-            richTextBox1.TabIndex = 55;
-            richTextBox1.Text = "Место установки, особенности эксплуатации АКБ и т.п.";
+            additionalNotesValue.ForeColor = Color.Gray;
+            additionalNotesValue.Location = new Point(15, 589);
+            additionalNotesValue.Name = "additionalNotesValue";
+            additionalNotesValue.Size = new Size(553, 122);
+            additionalNotesValue.TabIndex = 55;
+            additionalNotesValue.Text = "Место установки, особенности эксплуатации АКБ и т.п.";
             // 
-            // label20
+            // exploitationStatusLabel
             // 
-            label20.AutoSize = true;
-            label20.Location = new Point(15, 187);
-            label20.Name = "label20";
-            label20.Size = new Size(278, 38);
-            label20.TabIndex = 52;
-            label20.Text = "Статус эксплуатации";
+            exploitationStatusLabel.AutoSize = true;
+            exploitationStatusLabel.Location = new Point(15, 187);
+            exploitationStatusLabel.Name = "exploitationStatusLabel";
+            exploitationStatusLabel.Size = new Size(278, 38);
+            exploitationStatusLabel.TabIndex = 52;
+            exploitationStatusLabel.Text = "Статус эксплуатации";
             // 
-            // label17
+            // additionalNotesLabel
             // 
-            label17.AutoSize = true;
-            label17.Location = new Point(15, 548);
-            label17.Name = "label17";
-            label17.Size = new Size(180, 38);
-            label17.TabIndex = 53;
-            label17.Text = "Примечания";
+            additionalNotesLabel.AutoSize = true;
+            additionalNotesLabel.Location = new Point(15, 548);
+            additionalNotesLabel.Name = "additionalNotesLabel";
+            additionalNotesLabel.Size = new Size(180, 38);
+            additionalNotesLabel.TabIndex = 53;
+            additionalNotesLabel.Text = "Примечания";
             // 
-            // comboBox6
+            // structureComboBox
             // 
-            comboBox6.FormattingEnabled = true;
-            comboBox6.Location = new Point(15, 491);
-            comboBox6.Name = "comboBox6";
-            comboBox6.Size = new Size(283, 45);
-            comboBox6.TabIndex = 51;
+            structureComboBox.FormattingEnabled = true;
+            structureComboBox.Location = new Point(15, 491);
+            structureComboBox.Name = "structureComboBox";
+            structureComboBox.Size = new Size(283, 45);
+            structureComboBox.TabIndex = 51;
             // 
-            // comboBox2
+            // subsystemComboBox
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(319, 491);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(249, 45);
-            comboBox2.TabIndex = 50;
+            subsystemComboBox.FormattingEnabled = true;
+            subsystemComboBox.Location = new Point(319, 491);
+            subsystemComboBox.Name = "subsystemComboBox";
+            subsystemComboBox.Size = new Size(249, 45);
+            subsystemComboBox.TabIndex = 50;
             // 
-            // label15
+            // subsystemLabel
             // 
-            label15.AutoSize = true;
-            label15.Location = new Point(319, 450);
-            label15.Name = "label15";
-            label15.Size = new Size(170, 38);
-            label15.TabIndex = 49;
-            label15.Text = "Подсистема";
+            subsystemLabel.AutoSize = true;
+            subsystemLabel.Location = new Point(319, 450);
+            subsystemLabel.Name = "subsystemLabel";
+            subsystemLabel.Size = new Size(170, 38);
+            subsystemLabel.TabIndex = 49;
+            subsystemLabel.Text = "Подсистема";
             // 
-            // label14
+            // structureLabel
             // 
-            label14.AutoSize = true;
-            label14.Location = new Point(15, 450);
-            label14.Name = "label14";
-            label14.Size = new Size(111, 38);
-            label14.TabIndex = 48;
-            label14.Text = "Объект";
+            structureLabel.AutoSize = true;
+            structureLabel.Location = new Point(15, 450);
+            structureLabel.Name = "structureLabel";
+            structureLabel.Size = new Size(111, 38);
+            structureLabel.TabIndex = 48;
+            structureLabel.Text = "Объект";
             // 
-            // label6
+            // exploitationStartLabel
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(15, 276);
-            label6.Name = "label6";
-            label6.Size = new Size(353, 38);
-            label6.TabIndex = 46;
-            label6.Text = "Дата начала эксплуатации";
+            exploitationStartLabel.AutoSize = true;
+            exploitationStartLabel.Location = new Point(15, 276);
+            exploitationStartLabel.Name = "exploitationStartLabel";
+            exploitationStartLabel.Size = new Size(353, 38);
+            exploitationStartLabel.TabIndex = 46;
+            exploitationStartLabel.Text = "Дата начала эксплуатации";
             // 
-            // label7
+            // exploitationEndLabel
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(15, 363);
-            label7.Name = "label7";
-            label7.Size = new Size(402, 38);
-            label7.TabIndex = 47;
-            label7.Text = "Дата окончания эксплуатации";
+            exploitationEndLabel.AutoSize = true;
+            exploitationEndLabel.Location = new Point(15, 363);
+            exploitationEndLabel.Name = "exploitationEndLabel";
+            exploitationEndLabel.Size = new Size(402, 38);
+            exploitationEndLabel.TabIndex = 47;
+            exploitationEndLabel.Text = "Дата окончания эксплуатации";
             // 
-            // groupBox3
+            // photosGroupBox
             // 
-            groupBox3.Controls.Add(pictureBox1);
-            groupBox3.Controls.Add(button2);
-            groupBox3.Controls.Add(button3);
-            groupBox3.Controls.Add(applySortButton);
-            groupBox3.Controls.Add(button1);
-            groupBox3.ForeColor = Color.FromArgb(0, 121, 194);
-            groupBox3.Location = new Point(574, 107);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(402, 604);
-            groupBox3.TabIndex = 68;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "groupBoxName";
+            photosGroupBox.Controls.Add(pictureBox1);
+            photosGroupBox.Controls.Add(previousPhotoButton);
+            photosGroupBox.Controls.Add(nextPhotoButton);
+            photosGroupBox.Controls.Add(addPhotoButton);
+            photosGroupBox.Controls.Add(deletePhotoButton);
+            photosGroupBox.ForeColor = Color.FromArgb(0, 121, 194);
+            photosGroupBox.Location = new Point(574, 107);
+            photosGroupBox.Name = "photosGroupBox";
+            photosGroupBox.Size = new Size(402, 604);
+            photosGroupBox.TabIndex = 68;
+            photosGroupBox.TabStop = false;
+            photosGroupBox.Text = "Фотографии";
             // 
             // pictureBox1
             // 
@@ -262,71 +262,71 @@
             pictureBox1.TabIndex = 16;
             pictureBox1.TabStop = false;
             // 
-            // button2
+            // previousPhotoButton
             // 
-            button2.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ForeColor = Color.FromArgb(0, 121, 194);
-            button2.Location = new Point(6, 468);
-            button2.Name = "button2";
-            button2.Size = new Size(78, 55);
-            button2.TabIndex = 27;
-            button2.Text = "<";
-            button2.UseVisualStyleBackColor = true;
+            previousPhotoButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            previousPhotoButton.ForeColor = Color.FromArgb(0, 121, 194);
+            previousPhotoButton.Location = new Point(6, 468);
+            previousPhotoButton.Name = "previousPhotoButton";
+            previousPhotoButton.Size = new Size(78, 55);
+            previousPhotoButton.TabIndex = 27;
+            previousPhotoButton.Text = "<";
+            previousPhotoButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // nextPhotoButton
             // 
-            button3.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.ForeColor = Color.FromArgb(0, 121, 194);
-            button3.Location = new Point(313, 467);
-            button3.Name = "button3";
-            button3.Size = new Size(81, 55);
-            button3.TabIndex = 28;
-            button3.Text = ">";
-            button3.UseVisualStyleBackColor = true;
+            nextPhotoButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            nextPhotoButton.ForeColor = Color.FromArgb(0, 121, 194);
+            nextPhotoButton.Location = new Point(313, 467);
+            nextPhotoButton.Name = "nextPhotoButton";
+            nextPhotoButton.Size = new Size(81, 55);
+            nextPhotoButton.TabIndex = 28;
+            nextPhotoButton.Text = ">";
+            nextPhotoButton.UseVisualStyleBackColor = true;
             // 
-            // applySortButton
+            // addPhotoButton
             // 
-            applySortButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            applySortButton.ForeColor = Color.FromArgb(0, 121, 194);
-            applySortButton.Location = new Point(90, 468);
-            applySortButton.Name = "applySortButton";
-            applySortButton.Size = new Size(217, 55);
-            applySortButton.TabIndex = 25;
-            applySortButton.Text = "Добавить фото";
-            applySortButton.UseVisualStyleBackColor = true;
+            addPhotoButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            addPhotoButton.ForeColor = Color.FromArgb(0, 121, 194);
+            addPhotoButton.Location = new Point(90, 468);
+            addPhotoButton.Name = "addPhotoButton";
+            addPhotoButton.Size = new Size(217, 55);
+            addPhotoButton.TabIndex = 25;
+            addPhotoButton.Text = "Добавить фото";
+            addPhotoButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // deletePhotoButton
             // 
-            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.FromArgb(0, 121, 194);
-            button1.Location = new Point(90, 526);
-            button1.Name = "button1";
-            button1.Size = new Size(217, 55);
-            button1.TabIndex = 26;
-            button1.Text = "Удалить фото";
-            button1.UseVisualStyleBackColor = true;
+            deletePhotoButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            deletePhotoButton.ForeColor = Color.FromArgb(0, 121, 194);
+            deletePhotoButton.Location = new Point(90, 526);
+            deletePhotoButton.Name = "deletePhotoButton";
+            deletePhotoButton.Size = new Size(217, 55);
+            deletePhotoButton.TabIndex = 26;
+            deletePhotoButton.Text = "Удалить фото";
+            deletePhotoButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // addBatteryButton
             // 
-            button4.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.ForeColor = Color.FromArgb(0, 121, 194);
-            button4.Location = new Point(847, 745);
-            button4.Name = "button4";
-            button4.Size = new Size(129, 55);
-            button4.TabIndex = 29;
-            button4.Text = "ОК";
-            button4.UseVisualStyleBackColor = true;
+            addBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            addBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
+            addBatteryButton.Location = new Point(847, 745);
+            addBatteryButton.Name = "addBatteryButton";
+            addBatteryButton.Size = new Size(129, 55);
+            addBatteryButton.TabIndex = 29;
+            addBatteryButton.Text = "ОК";
+            addBatteryButton.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // cancelButton
             // 
-            button5.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button5.ForeColor = Color.FromArgb(0, 121, 194);
-            button5.Location = new Point(712, 745);
-            button5.Name = "button5";
-            button5.Size = new Size(129, 55);
-            button5.TabIndex = 69;
-            button5.Text = "Отмена";
-            button5.UseVisualStyleBackColor = true;
+            cancelButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cancelButton.ForeColor = Color.FromArgb(0, 121, 194);
+            cancelButton.Location = new Point(712, 745);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(129, 55);
+            cancelButton.TabIndex = 69;
+            cancelButton.Text = "Отмена";
+            cancelButton.UseVisualStyleBackColor = true;
             // 
             // BatteryAddingForm
             // 
@@ -334,35 +334,35 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(987, 808);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(groupBox3);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(comboBox8);
-            Controls.Add(comboBox7);
-            Controls.Add(label19);
-            Controls.Add(label18);
-            Controls.Add(comboBox9);
-            Controls.Add(richTextBox1);
-            Controls.Add(label20);
-            Controls.Add(label17);
-            Controls.Add(comboBox6);
-            Controls.Add(comboBox2);
-            Controls.Add(label15);
-            Controls.Add(label14);
-            Controls.Add(label6);
-            Controls.Add(label7);
+            Controls.Add(cancelButton);
+            Controls.Add(addBatteryButton);
+            Controls.Add(photosGroupBox);
+            Controls.Add(exploitationEndValue);
+            Controls.Add(exploitationStartValue);
+            Controls.Add(replacementStatusComboBox);
+            Controls.Add(responsibleEmployeeComboBox);
+            Controls.Add(replacementStatusLabel);
+            Controls.Add(responsibleEmployeeLabel);
+            Controls.Add(exploitationStatusComboBox);
+            Controls.Add(additionalNotesValue);
+            Controls.Add(exploitationStatusLabel);
+            Controls.Add(additionalNotesLabel);
+            Controls.Add(structureComboBox);
+            Controls.Add(subsystemComboBox);
+            Controls.Add(subsystemLabel);
+            Controls.Add(structureLabel);
+            Controls.Add(exploitationStartLabel);
+            Controls.Add(exploitationEndLabel);
             Controls.Add(linkLabel1);
-            Controls.Add(label1);
+            Controls.Add(modelLabel);
             Controls.Add(headerLabel);
-            Controls.Add(comboBox1);
+            Controls.Add(modelComboBox);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
             Margin = new Padding(6);
             Name = "BatteryAddingForm";
             Text = "BatteryAddingForm";
-            groupBox3.ResumeLayout(false);
+            photosGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -371,32 +371,32 @@
         #endregion
 
         private Label headerLabel;
-        private ComboBox comboBox1;
-        private Label label1;
+        private ComboBox modelComboBox;
+        private Label modelLabel;
         private LinkLabel linkLabel1;
-        private DateTimePicker dateTimePicker2;
-        private DateTimePicker dateTimePicker1;
-        private ComboBox comboBox8;
-        private ComboBox comboBox7;
-        private Label label19;
-        private Label label18;
-        private ComboBox comboBox9;
-        private RichTextBox richTextBox1;
-        private Label label20;
-        private Label label17;
-        private ComboBox comboBox6;
-        private ComboBox comboBox2;
-        private Label label15;
-        private Label label14;
-        private Label label6;
-        private Label label7;
-        private GroupBox groupBox3;
+        private DateTimePicker exploitationEndValue;
+        private DateTimePicker exploitationStartValue;
+        private ComboBox replacementStatusComboBox;
+        private ComboBox responsibleEmployeeComboBox;
+        private Label replacementStatusLabel;
+        private Label responsibleEmployeeLabel;
+        private ComboBox exploitationStatusComboBox;
+        private RichTextBox additionalNotesValue;
+        private Label exploitationStatusLabel;
+        private Label additionalNotesLabel;
+        private ComboBox structureComboBox;
+        private ComboBox subsystemComboBox;
+        private Label subsystemLabel;
+        private Label structureLabel;
+        private Label exploitationStartLabel;
+        private Label exploitationEndLabel;
+        private GroupBox photosGroupBox;
         private PictureBox pictureBox1;
-        private Button button2;
-        private Button button3;
-        private Button applySortButton;
-        private Button button1;
-        private Button button4;
-        private Button button5;
+        private Button previousPhotoButton;
+        private Button nextPhotoButton;
+        private Button addPhotoButton;
+        private Button deletePhotoButton;
+        private Button addBatteryButton;
+        private Button cancelButton;
     }
 }

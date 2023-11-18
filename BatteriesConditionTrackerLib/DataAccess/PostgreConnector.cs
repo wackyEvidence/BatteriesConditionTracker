@@ -295,6 +295,16 @@ namespace BatteriesConditionTrackerLib.DataAccess
             throw new NotImplementedException();
         }
 
+        public List<BatteryExploitationStatus> GetBatteryExploitationStatus_All()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<BatteryReplacementStatus> GetBatteryReplacementStatus_All()
+        {
+            throw new NotImplementedException();
+        }
+
         public BatteryClampType UpdateBatteryClampType(BatteryClampType clampTypeModel)
         {
             throw new NotImplementedException();

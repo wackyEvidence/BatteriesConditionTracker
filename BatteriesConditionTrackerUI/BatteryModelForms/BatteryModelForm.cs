@@ -16,7 +16,7 @@ namespace BatteriesConditionTrackerUI
 {
     public partial class BatteryModelForm : Form, IValidatable
     {
-        private List<BatteryTechnology> availableTechnologies = new List<BatteryTechnology>();
+        private BindingList<BatteryTechnology> availableTechnologies = new BindingList<BatteryTechnology>();
         private List<BatteryClampType> availableClampTypes = new List<BatteryClampType>();
 
         private List<Photo> photosList = new List<Photo>();
