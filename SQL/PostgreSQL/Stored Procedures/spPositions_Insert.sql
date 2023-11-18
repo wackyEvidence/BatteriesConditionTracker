@@ -1,7 +1,7 @@
-create procedure spPositions_Insert(position_name varchar(50), inout position_id integer)
+create procedure spPositions_Insert(p_name varchar(50), inout p_id integer)
 as $$ 
 begin 
-	insert into Positions (name) values (position_name)
-	returning id into position_id; 
+	insert into Positions (name) values (p_name)
+	returning id into p_id; 
 end; 
 $$ language plpgsql; 

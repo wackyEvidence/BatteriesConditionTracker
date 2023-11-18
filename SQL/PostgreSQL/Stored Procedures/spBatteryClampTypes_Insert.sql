@@ -1,7 +1,7 @@
-create procedure spBatteryClampTypes_Insert(inout clamp_type_id integer, clamp_type_name varchar(50))
+create procedure spBatteryClampTypes_Insert(inout p_id integer, p_name varchar(50))
 as $$ 
 begin 
-	insert into BatteryClampTypes (name) values (clamp_type_name)
-	returning id into clamp_type_id;
+	insert into BatteryClampTypes (name) values (p_name)
+	returning id into p_id;
 end; 
 $$ language plpgsql; 

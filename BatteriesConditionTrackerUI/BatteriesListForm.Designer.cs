@@ -46,6 +46,7 @@
             batteryTechnologyToolStripMenuItem = new ToolStripMenuItem();
             отчётToolStripMenuItem = new ToolStripMenuItem();
             аккумуляторыТребующиеЗаменыToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
             dataGridView1 = new DataGridView();
             deleteBatteryButton = new Button();
             editBatteryButton = new Button();
@@ -54,16 +55,16 @@
             linkLabel1 = new LinkLabel();
             comboBox1 = new ComboBox();
             batterStatusComboBox = new ComboBox();
-            batteryPlannedReplacementDateLabel = new Label();
-            plannedReplacementDateCheckedListBox = new CheckedListBox();
-            batterySubsystemLabel = new Label();
+            structureTypesLabel = new Label();
+            structureTypesCheckedListBox = new CheckedListBox();
+            subsystemLabel = new Label();
             subsystemCheckedListBox = new CheckedListBox();
-            batteryStructureLabel = new Label();
-            structureCheckedListBox = new CheckedListBox();
-            batteryCapacityLabel = new Label();
-            capacityCheckedListBox = new CheckedListBox();
-            batteryManufacturerLabel = new Label();
-            manufacturerCheckedListBox = new CheckedListBox();
+            structureLabel = new Label();
+            structuresCheckedListBox = new CheckedListBox();
+            capacityLabel = new Label();
+            capacitiesCheckedListBox = new CheckedListBox();
+            brandLabel = new Label();
+            brandsCheckedListBox = new CheckedListBox();
             deleteUserFilterButton = new Button();
             addUserFilterButton = new Button();
             userFiltersLabel = new Label();
@@ -72,7 +73,6 @@
             sortSettingsButton = new Button();
             highlightButton = new Button();
             groupBoxSort = new GroupBox();
-            toolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBoxFilters.SuspendLayout();
@@ -207,6 +207,12 @@
             аккумуляторыТребующиеЗаменыToolStripMenuItem.Text = "Аккумуляторы, требующие замены";
             аккумуляторыТребующиеЗаменыToolStripMenuItem.Click += аккумуляторыТребующиеЗаменыToolStripMenuItem_Click;
             // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(44, 42);
+            toolStripMenuItem1.Text = "?";
+            // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
@@ -273,16 +279,16 @@
             groupBoxFilters.Controls.Add(linkLabel1);
             groupBoxFilters.Controls.Add(comboBox1);
             groupBoxFilters.Controls.Add(batterStatusComboBox);
-            groupBoxFilters.Controls.Add(batteryPlannedReplacementDateLabel);
-            groupBoxFilters.Controls.Add(plannedReplacementDateCheckedListBox);
-            groupBoxFilters.Controls.Add(batterySubsystemLabel);
+            groupBoxFilters.Controls.Add(structureTypesLabel);
+            groupBoxFilters.Controls.Add(structureTypesCheckedListBox);
+            groupBoxFilters.Controls.Add(subsystemLabel);
             groupBoxFilters.Controls.Add(subsystemCheckedListBox);
-            groupBoxFilters.Controls.Add(batteryStructureLabel);
-            groupBoxFilters.Controls.Add(structureCheckedListBox);
-            groupBoxFilters.Controls.Add(batteryCapacityLabel);
-            groupBoxFilters.Controls.Add(capacityCheckedListBox);
-            groupBoxFilters.Controls.Add(batteryManufacturerLabel);
-            groupBoxFilters.Controls.Add(manufacturerCheckedListBox);
+            groupBoxFilters.Controls.Add(structureLabel);
+            groupBoxFilters.Controls.Add(structuresCheckedListBox);
+            groupBoxFilters.Controls.Add(capacityLabel);
+            groupBoxFilters.Controls.Add(capacitiesCheckedListBox);
+            groupBoxFilters.Controls.Add(brandLabel);
+            groupBoxFilters.Controls.Add(brandsCheckedListBox);
             groupBoxFilters.Controls.Add(deleteUserFilterButton);
             groupBoxFilters.Controls.Add(addUserFilterButton);
             groupBoxFilters.Controls.Add(userFiltersLabel);
@@ -329,33 +335,33 @@
             batterStatusComboBox.TabIndex = 34;
             batterStatusComboBox.Text = "Статус эксплуатации";
             // 
-            // batteryPlannedReplacementDateLabel
+            // structureTypesLabel
             // 
-            batteryPlannedReplacementDateLabel.AutoSize = true;
-            batteryPlannedReplacementDateLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            batteryPlannedReplacementDateLabel.Location = new Point(291, 462);
-            batteryPlannedReplacementDateLabel.Name = "batteryPlannedReplacementDateLabel";
-            batteryPlannedReplacementDateLabel.Size = new Size(320, 38);
-            batteryPlannedReplacementDateLabel.TabIndex = 33;
-            batteryPlannedReplacementDateLabel.Text = "Требует замены через: ";
+            structureTypesLabel.AutoSize = true;
+            structureTypesLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            structureTypesLabel.Location = new Point(291, 462);
+            structureTypesLabel.Name = "structureTypesLabel";
+            structureTypesLabel.Size = new Size(189, 38);
+            structureTypesLabel.TabIndex = 33;
+            structureTypesLabel.Text = "Тип объекта: ";
             // 
-            // plannedReplacementDateCheckedListBox
+            // structureTypesCheckedListBox
             // 
-            plannedReplacementDateCheckedListBox.FormattingEnabled = true;
-            plannedReplacementDateCheckedListBox.Location = new Point(291, 503);
-            plannedReplacementDateCheckedListBox.Name = "plannedReplacementDateCheckedListBox";
-            plannedReplacementDateCheckedListBox.Size = new Size(333, 118);
-            plannedReplacementDateCheckedListBox.TabIndex = 32;
+            structureTypesCheckedListBox.FormattingEnabled = true;
+            structureTypesCheckedListBox.Location = new Point(291, 503);
+            structureTypesCheckedListBox.Name = "structureTypesCheckedListBox";
+            structureTypesCheckedListBox.Size = new Size(333, 118);
+            structureTypesCheckedListBox.TabIndex = 32;
             // 
-            // batterySubsystemLabel
+            // subsystemLabel
             // 
-            batterySubsystemLabel.AutoSize = true;
-            batterySubsystemLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            batterySubsystemLabel.Location = new Point(6, 462);
-            batterySubsystemLabel.Name = "batterySubsystemLabel";
-            batterySubsystemLabel.Size = new Size(176, 38);
-            batterySubsystemLabel.TabIndex = 31;
-            batterySubsystemLabel.Text = "Подсистема:";
+            subsystemLabel.AutoSize = true;
+            subsystemLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            subsystemLabel.Location = new Point(6, 462);
+            subsystemLabel.Name = "subsystemLabel";
+            subsystemLabel.Size = new Size(176, 38);
+            subsystemLabel.TabIndex = 31;
+            subsystemLabel.Text = "Подсистема:";
             // 
             // subsystemCheckedListBox
             // 
@@ -365,59 +371,59 @@
             subsystemCheckedListBox.Size = new Size(256, 118);
             subsystemCheckedListBox.TabIndex = 30;
             // 
-            // batteryStructureLabel
+            // structureLabel
             // 
-            batteryStructureLabel.AutoSize = true;
-            batteryStructureLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            batteryStructureLabel.Location = new Point(291, 138);
-            batteryStructureLabel.Name = "batteryStructureLabel";
-            batteryStructureLabel.Size = new Size(117, 38);
-            batteryStructureLabel.TabIndex = 29;
-            batteryStructureLabel.Text = "Объект:";
+            structureLabel.AutoSize = true;
+            structureLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            structureLabel.Location = new Point(291, 138);
+            structureLabel.Name = "structureLabel";
+            structureLabel.Size = new Size(117, 38);
+            structureLabel.TabIndex = 29;
+            structureLabel.Text = "Объект:";
             // 
-            // structureCheckedListBox
+            // structuresCheckedListBox
             // 
-            structureCheckedListBox.FormattingEnabled = true;
-            structureCheckedListBox.Location = new Point(291, 179);
-            structureCheckedListBox.Name = "structureCheckedListBox";
-            structureCheckedListBox.Size = new Size(329, 270);
-            structureCheckedListBox.TabIndex = 28;
+            structuresCheckedListBox.FormattingEnabled = true;
+            structuresCheckedListBox.Location = new Point(291, 179);
+            structuresCheckedListBox.Name = "structuresCheckedListBox";
+            structuresCheckedListBox.Size = new Size(329, 270);
+            structuresCheckedListBox.TabIndex = 28;
             // 
-            // batteryCapacityLabel
+            // capacityLabel
             // 
-            batteryCapacityLabel.AutoSize = true;
-            batteryCapacityLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            batteryCapacityLabel.Location = new Point(6, 300);
-            batteryCapacityLabel.Name = "batteryCapacityLabel";
-            batteryCapacityLabel.Size = new Size(125, 38);
-            batteryCapacityLabel.TabIndex = 27;
-            batteryCapacityLabel.Text = "Емкость:";
+            capacityLabel.AutoSize = true;
+            capacityLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            capacityLabel.Location = new Point(6, 300);
+            capacityLabel.Name = "capacityLabel";
+            capacityLabel.Size = new Size(125, 38);
+            capacityLabel.TabIndex = 27;
+            capacityLabel.Text = "Емкость:";
             // 
-            // capacityCheckedListBox
+            // capacitiesCheckedListBox
             // 
-            capacityCheckedListBox.FormattingEnabled = true;
-            capacityCheckedListBox.Location = new Point(6, 341);
-            capacityCheckedListBox.Name = "capacityCheckedListBox";
-            capacityCheckedListBox.Size = new Size(256, 118);
-            capacityCheckedListBox.TabIndex = 26;
+            capacitiesCheckedListBox.FormattingEnabled = true;
+            capacitiesCheckedListBox.Location = new Point(6, 341);
+            capacitiesCheckedListBox.Name = "capacitiesCheckedListBox";
+            capacitiesCheckedListBox.Size = new Size(256, 118);
+            capacitiesCheckedListBox.TabIndex = 26;
             // 
-            // batteryManufacturerLabel
+            // brandLabel
             // 
-            batteryManufacturerLabel.AutoSize = true;
-            batteryManufacturerLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            batteryManufacturerLabel.Location = new Point(6, 138);
-            batteryManufacturerLabel.Name = "batteryManufacturerLabel";
-            batteryManufacturerLabel.Size = new Size(220, 38);
-            batteryManufacturerLabel.TabIndex = 25;
-            batteryManufacturerLabel.Text = "Производитель:";
+            brandLabel.AutoSize = true;
+            brandLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            brandLabel.Location = new Point(6, 138);
+            brandLabel.Name = "brandLabel";
+            brandLabel.Size = new Size(101, 38);
+            brandLabel.TabIndex = 25;
+            brandLabel.Text = "Бренд:";
             // 
-            // manufacturerCheckedListBox
+            // brandsCheckedListBox
             // 
-            manufacturerCheckedListBox.FormattingEnabled = true;
-            manufacturerCheckedListBox.Location = new Point(6, 179);
-            manufacturerCheckedListBox.Name = "manufacturerCheckedListBox";
-            manufacturerCheckedListBox.Size = new Size(256, 118);
-            manufacturerCheckedListBox.TabIndex = 24;
+            brandsCheckedListBox.FormattingEnabled = true;
+            brandsCheckedListBox.Location = new Point(6, 179);
+            brandsCheckedListBox.Name = "brandsCheckedListBox";
+            brandsCheckedListBox.Size = new Size(256, 118);
+            brandsCheckedListBox.TabIndex = 24;
             // 
             // deleteUserFilterButton
             // 
@@ -529,12 +535,6 @@
             groupBoxSort.TabStop = false;
             groupBoxSort.Text = "Сортировка";
             // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(44, 42);
-            toolStripMenuItem1.Text = "?";
-            // 
             // BatteriesListForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
@@ -585,16 +585,16 @@
         private Button removeSortButton;
         private Button deleteUserFilterButton;
         private Button addUserFilterButton;
-        private Label batteryStructureLabel;
-        private CheckedListBox structureCheckedListBox;
-        private Label batteryCapacityLabel;
-        private CheckedListBox capacityCheckedListBox;
-        private Label batteryManufacturerLabel;
-        private CheckedListBox manufacturerCheckedListBox;
-        private Label batterySubsystemLabel;
+        private Label structureLabel;
+        private CheckedListBox structuresCheckedListBox;
+        private Label capacityLabel;
+        private CheckedListBox capacitiesCheckedListBox;
+        private Label brandLabel;
+        private CheckedListBox brandsCheckedListBox;
+        private Label subsystemLabel;
         private CheckedListBox subsystemCheckedListBox;
-        private Label batteryPlannedReplacementDateLabel;
-        private CheckedListBox plannedReplacementDateCheckedListBox;
+        private Label structureTypesLabel;
+        private CheckedListBox structureTypesCheckedListBox;
         private ToolStripMenuItem печатьToolStripMenuItem;
         private ToolStripMenuItem экспортToolStripMenuItem1;
         private ToolStripMenuItem cSVToolStripMenuItem1;

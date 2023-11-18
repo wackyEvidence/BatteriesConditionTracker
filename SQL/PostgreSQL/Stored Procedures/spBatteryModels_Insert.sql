@@ -10,14 +10,15 @@ create procedure spBatteryModels_Insert(
 	p_clamp_type_id int, 
 	p_cost money,
 	p_buffer_mode_service_time real, 
-	p_soh_threshold int
+	p_soh_threshold int, 
+	p_name varchar(100)
 )
 as $$ 
 begin 
 	insert into BatteryModels 
-	(brand, capacity, voltage, length, height, width, technology_id, clamp_type_id, cost, buffer_mode_service_time, soh_threshold) 
+	(brand, capacity, voltage, length, height, width, technology_id, clamp_type_id, cost, buffer_mode_service_time, soh_threshold, name) 
 	values 
-	(p_brand, p_capacity, p_voltage, p_length, p_height, p_width, p_technology_id, p_clamp_type_id, p_cost,p_buffer_mode_service_time, p_soh_threshold)
+	(p_brand, p_capacity, p_voltage, p_length, p_height, p_width, p_technology_id, p_clamp_type_id, p_cost,p_buffer_mode_service_time, p_soh_threshold, p_name)
 	returning id into p_id;
 end; 
 $$ language plpgsql; 

@@ -1,6 +1,6 @@
 ﻿namespace BatteriesConditionTrackerUI
 {
-    partial class BatteryClampType
+    partial class BatteryClampTypeForm
     {
         /// <summary>
         /// Required designer variable.

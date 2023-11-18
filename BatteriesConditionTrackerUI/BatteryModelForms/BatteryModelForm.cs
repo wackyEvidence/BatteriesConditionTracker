@@ -16,7 +16,10 @@ namespace BatteriesConditionTrackerUI
 {
     public partial class BatteryModelForm : Form, IValidatable
     {
-        private List<string> photosList = new List<string>();
+        private List<BatteryTechnology> availableTechnologies = new List<BatteryTechnology>();
+        private List<BatteryClampType> availableClampTypes = new List<BatteryClampType>();
+
+        private List<Photo> photosList = new List<Photo>();
         private FormMode mode;
         private BatteryModel? batteryModel;
 
@@ -24,6 +27,8 @@ namespace BatteriesConditionTrackerUI
         {
             InitializeComponent();
             this.mode = mode;
+            //CreateSampleData();
+            WireUpLists();
         }
 
         public BatteryModelForm(FormMode mode, BatteryModel batteryModel)
@@ -31,6 +36,24 @@ namespace BatteriesConditionTrackerUI
             InitializeComponent();
             this.mode = mode;
             this.batteryModel = batteryModel;
+            //CreateSampleData();
+            WireUpLists();
+        }
+
+        private void CreateSampleData()
+        {
+            availableTechnologies.Add(new BatteryTechnology() { Id = 1, Name = "AGM" });
+            availableTechnologies.Add(new BatteryTechnology() { Id = 2, Name = "Li-On" });
+            availableClampTypes.Add(new BatteryClampType() { Id = 1, Name = "F1" });
+            availableClampTypes.Add(new BatteryClampType() { Id = 2, Name = "F2" });
+        }
+
+        private void WireUpLists()
+        {
+            technologyComboBox.DataSource = availableTechnologies;
+            technologyComboBox.DisplayMember = "Name";
+            clampTypeComboBox.DataSource = availableClampTypes;
+            clampTypeComboBox.DisplayMember = "Name";
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -60,7 +83,6 @@ namespace BatteriesConditionTrackerUI
                     photosList
                     );
                     #endregion
-
                     GlobalConfig.Connection.CreateBatteryModel(batteryModel);
                 }
                 else

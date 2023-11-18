@@ -4,7 +4,10 @@
     <_LastSelectedProfileId>D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\Properties\PublishProfiles\ClickOnceProfile1.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="BatteryCharacteristicsForms\BatteryClampType.cs">
+    <Compile Update="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BatteryCharacteristicsForms\BatteryClampTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="BatteryCharacteristicsForms\BatteryClampTypesListForm.cs">

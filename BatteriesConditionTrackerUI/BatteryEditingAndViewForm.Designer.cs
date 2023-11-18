@@ -29,39 +29,36 @@
         private void InitializeComponent()
         {
             headerLabel = new Label();
-            batterNameLabel = new Label();
             pictureBox1 = new PictureBox();
             tabControl1 = new TabControl();
             tabPageMainInfo = new TabPage();
-            dateTimePicker3 = new DateTimePicker();
-            label3 = new Label();
-            textBox10 = new TextBox();
-            label16 = new Label();
-            textBox3 = new TextBox();
+            nameLabel = new Label();
+            nameValue = new TextBox();
+            comboBox8 = new ComboBox();
+            costValue = new TextBox();
+            technologyLabel = new Label();
+            brandLabel = new Label();
+            technologyValue = new ComboBox();
+            brandValue = new TextBox();
+            clampTypeLabel = new Label();
+            clampTypeValue = new ComboBox();
             groupBox1 = new GroupBox();
+            bufferServiceTimeValue = new NumericUpDown();
             label5 = new Label();
             textBox2 = new TextBox();
-            label4 = new Label();
-            textBox1 = new TextBox();
-            label2 = new Label();
-            comboBox1 = new ComboBox();
-            label1 = new Label();
-            comboBox5 = new ComboBox();
-            textBox6 = new TextBox();
-            label12 = new Label();
-            maskedTextBox2 = new MaskedTextBox();
-            label13 = new Label();
-            label9 = new Label();
-            label11 = new Label();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            label10 = new Label();
+            bufferModeServiceTimeLabel = new Label();
+            costLabel = new Label();
+            label19 = new Label();
+            voltageValue = new TextBox();
+            sizesValue = new MaskedTextBox();
+            sizesLabel = new Label();
+            voltageLabel = new Label();
+            capacityValue = new TextBox();
+            capacityLabel = new Label();
             tabPageExtraInfo = new TabPage();
             dateTimePicker2 = new DateTimePicker();
             dateTimePicker1 = new DateTimePicker();
-            comboBox8 = new ComboBox();
             comboBox7 = new ComboBox();
-            label19 = new Label();
             label18 = new Label();
             comboBox9 = new ComboBox();
             richTextBox1 = new RichTextBox();
@@ -74,16 +71,16 @@
             label6 = new Label();
             label7 = new Label();
             tabPageSoHMeasures = new TabPage();
-            groupBox2 = new GroupBox();
-            comboBox3 = new ComboBox();
-            label22 = new Label();
-            dateTimePicker4 = new DateTimePicker();
-            label21 = new Label();
+            sohMeasureGroupBox = new GroupBox();
+            performingEmployeeValue = new ComboBox();
+            performingEmployeeLabel = new Label();
+            measureDateValue = new DateTimePicker();
+            measureDateLabel = new Label();
             sohValue = new TextBox();
-            label8 = new Label();
-            button6 = new Button();
-            button5 = new Button();
-            button4 = new Button();
+            sohLabel = new Label();
+            deleteSoHMeasure = new Button();
+            editSoHMeasure = new Button();
+            addSoHMeasure = new Button();
             dataGridView1 = new DataGridView();
             columnSoHMeasure = new DataGridViewTextBoxColumn();
             columnMeasureDate = new DataGridViewTextBoxColumn();
@@ -98,9 +95,10 @@
             tabControl1.SuspendLayout();
             tabPageMainInfo.SuspendLayout();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)bufferServiceTimeValue).BeginInit();
             tabPageExtraInfo.SuspendLayout();
             tabPageSoHMeasures.SuspendLayout();
-            groupBox2.SuspendLayout();
+            sohMeasureGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox3.SuspendLayout();
             SuspendLayout();
@@ -117,24 +115,12 @@
             headerLabel.TabIndex = 8;
             headerLabel.Text = "headerLabel";
             // 
-            // batterNameLabel
-            // 
-            batterNameLabel.AutoSize = true;
-            batterNameLabel.Font = new Font("Segoe UI Light", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            batterNameLabel.ForeColor = Color.FromArgb(0, 121, 194);
-            batterNameLabel.Location = new Point(654, 9);
-            batterNameLabel.Margin = new Padding(6, 0, 6, 0);
-            batterNameLabel.Name = "batterNameLabel";
-            batterNameLabel.Size = new Size(349, 62);
-            batterNameLabel.TabIndex = 9;
-            batterNameLabel.Text = "<batteryName>";
-            // 
             // pictureBox1
             // 
             pictureBox1.InitialImage = null;
             pictureBox1.Location = new Point(6, 42);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(388, 419);
+            pictureBox1.Size = new Size(388, 435);
             pictureBox1.TabIndex = 16;
             pictureBox1.TabStop = false;
             // 
@@ -151,25 +137,25 @@
             // 
             // tabPageMainInfo
             // 
-            tabPageMainInfo.Controls.Add(dateTimePicker3);
-            tabPageMainInfo.Controls.Add(label3);
-            tabPageMainInfo.Controls.Add(textBox10);
-            tabPageMainInfo.Controls.Add(label16);
-            tabPageMainInfo.Controls.Add(textBox3);
+            tabPageMainInfo.Controls.Add(nameLabel);
+            tabPageMainInfo.Controls.Add(nameValue);
+            tabPageMainInfo.Controls.Add(comboBox8);
+            tabPageMainInfo.Controls.Add(costValue);
+            tabPageMainInfo.Controls.Add(technologyLabel);
+            tabPageMainInfo.Controls.Add(brandLabel);
+            tabPageMainInfo.Controls.Add(technologyValue);
+            tabPageMainInfo.Controls.Add(brandValue);
+            tabPageMainInfo.Controls.Add(clampTypeLabel);
+            tabPageMainInfo.Controls.Add(clampTypeValue);
             tabPageMainInfo.Controls.Add(groupBox1);
-            tabPageMainInfo.Controls.Add(label2);
-            tabPageMainInfo.Controls.Add(comboBox1);
-            tabPageMainInfo.Controls.Add(label1);
-            tabPageMainInfo.Controls.Add(comboBox5);
-            tabPageMainInfo.Controls.Add(textBox6);
-            tabPageMainInfo.Controls.Add(label12);
-            tabPageMainInfo.Controls.Add(maskedTextBox2);
-            tabPageMainInfo.Controls.Add(label13);
-            tabPageMainInfo.Controls.Add(label9);
-            tabPageMainInfo.Controls.Add(label11);
-            tabPageMainInfo.Controls.Add(textBox4);
-            tabPageMainInfo.Controls.Add(textBox5);
-            tabPageMainInfo.Controls.Add(label10);
+            tabPageMainInfo.Controls.Add(costLabel);
+            tabPageMainInfo.Controls.Add(label19);
+            tabPageMainInfo.Controls.Add(voltageValue);
+            tabPageMainInfo.Controls.Add(sizesValue);
+            tabPageMainInfo.Controls.Add(sizesLabel);
+            tabPageMainInfo.Controls.Add(voltageLabel);
+            tabPageMainInfo.Controls.Add(capacityValue);
+            tabPageMainInfo.Controls.Add(capacityLabel);
             tabPageMainInfo.Location = new Point(4, 46);
             tabPageMainInfo.Name = "tabPageMainInfo";
             tabPageMainInfo.Padding = new Padding(3);
@@ -178,60 +164,111 @@
             tabPageMainInfo.Text = "Основные";
             tabPageMainInfo.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker3
+            // nameLabel
             // 
-            dateTimePicker3.Location = new Point(310, 399);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(250, 43);
-            dateTimePicker3.TabIndex = 48;
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new Point(6, 3);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new Size(139, 38);
+            nameLabel.TabIndex = 46;
+            nameLabel.Text = "Название";
             // 
-            // label3
+            // nameValue
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(6, 3);
-            label3.Name = "label3";
-            label3.Size = new Size(139, 38);
-            label3.TabIndex = 46;
-            label3.Text = "Название";
+            nameValue.Location = new Point(6, 44);
+            nameValue.Name = "nameValue";
+            nameValue.Size = new Size(553, 43);
+            nameValue.TabIndex = 47;
             // 
-            // textBox10
+            // comboBox8
             // 
-            textBox10.Location = new Point(6, 44);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(553, 43);
-            textBox10.TabIndex = 47;
+            comboBox8.FormattingEnabled = true;
+            comboBox8.Items.AddRange(new object[] { "требует замены", "не требует замены", "заменен" });
+            comboBox8.Location = new Point(7, 131);
+            comboBox8.Name = "comboBox8";
+            comboBox8.Size = new Size(271, 45);
+            comboBox8.TabIndex = 43;
             // 
-            // label16
+            // costValue
             // 
-            label16.AutoSize = true;
-            label16.Location = new Point(310, 357);
-            label16.Name = "label16";
-            label16.Size = new Size(189, 38);
-            label16.TabIndex = 44;
-            label16.Text = "Дата выпуска";
+            costValue.Location = new Point(294, 220);
+            costValue.Name = "costValue";
+            costValue.Size = new Size(249, 43);
+            costValue.TabIndex = 43;
             // 
-            // textBox3
+            // technologyLabel
             // 
-            textBox3.Location = new Point(310, 311);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(249, 43);
-            textBox3.TabIndex = 43;
+            technologyLabel.AutoSize = true;
+            technologyLabel.Location = new Point(7, 353);
+            technologyLabel.Name = "technologyLabel";
+            technologyLabel.Size = new Size(164, 38);
+            technologyLabel.TabIndex = 29;
+            technologyLabel.Text = "Технология";
+            // 
+            // brandLabel
+            // 
+            brandLabel.AutoSize = true;
+            brandLabel.Location = new Point(13, 179);
+            brandLabel.Name = "brandLabel";
+            brandLabel.Size = new Size(95, 38);
+            brandLabel.TabIndex = 26;
+            brandLabel.Text = "Бренд";
+            // 
+            // technologyValue
+            // 
+            technologyValue.FormattingEnabled = true;
+            technologyValue.Location = new Point(8, 394);
+            technologyValue.Name = "technologyValue";
+            technologyValue.Size = new Size(249, 45);
+            technologyValue.TabIndex = 30;
+            // 
+            // brandValue
+            // 
+            brandValue.Location = new Point(8, 220);
+            brandValue.Name = "brandValue";
+            brandValue.Size = new Size(249, 43);
+            brandValue.TabIndex = 27;
+            // 
+            // clampTypeLabel
+            // 
+            clampTypeLabel.AutoSize = true;
+            clampTypeLabel.Location = new Point(295, 353);
+            clampTypeLabel.Name = "clampTypeLabel";
+            clampTypeLabel.Size = new Size(156, 38);
+            clampTypeLabel.TabIndex = 34;
+            clampTypeLabel.Text = "Тип клемм";
+            // 
+            // clampTypeValue
+            // 
+            clampTypeValue.FormattingEnabled = true;
+            clampTypeValue.Location = new Point(295, 394);
+            clampTypeValue.Name = "clampTypeValue";
+            clampTypeValue.Size = new Size(249, 45);
+            clampTypeValue.TabIndex = 35;
             // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(bufferServiceTimeValue);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(bufferModeServiceTimeLabel);
             groupBox1.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.ForeColor = Color.FromArgb(0, 121, 194);
-            groupBox1.Location = new Point(6, 457);
+            groupBox1.Location = new Point(7, 454);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(553, 169);
             groupBox1.TabIndex = 42;
             groupBox1.TabStop = false;
             groupBox1.Text = "Срок службы";
+            // 
+            // bufferServiceTimeValue
+            // 
+            bufferServiceTimeValue.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
+            bufferServiceTimeValue.Location = new Point(367, 34);
+            bufferServiceTimeValue.Name = "bufferServiceTimeValue";
+            bufferServiceTimeValue.Size = new Size(70, 43);
+            bufferServiceTimeValue.TabIndex = 45;
             // 
             // label5
             // 
@@ -239,149 +276,99 @@
             label5.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             label5.Location = new Point(6, 83);
             label5.Name = "label5";
-            label5.Size = new Size(374, 76);
+            label5.Size = new Size(249, 76);
             label5.TabIndex = 42;
-            label5.Text = "В циклическом режиме \r\n(циклов при 100% разряде):";
+            label5.Text = "Минимальное\r\nзначение SoH (%):\r\n";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(386, 116);
+            textBox2.Location = new Point(261, 120);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(69, 43);
             textBox2.TabIndex = 43;
             // 
-            // label4
+            // bufferModeServiceTimeLabel
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(6, 39);
-            label4.Name = "label4";
-            label4.Size = new Size(355, 38);
-            label4.TabIndex = 40;
-            label4.Text = "В буферном режиме (лет):";
+            bufferModeServiceTimeLabel.AutoSize = true;
+            bufferModeServiceTimeLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            bufferModeServiceTimeLabel.Location = new Point(6, 41);
+            bufferModeServiceTimeLabel.Name = "bufferModeServiceTimeLabel";
+            bufferModeServiceTimeLabel.Size = new Size(355, 38);
+            bufferModeServiceTimeLabel.TabIndex = 40;
+            bufferModeServiceTimeLabel.Text = "В буферном режиме (лет):";
             // 
-            // textBox1
+            // costLabel
             // 
-            textBox1.Location = new Point(367, 34);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(42, 43);
-            textBox1.TabIndex = 41;
+            costLabel.AutoSize = true;
+            costLabel.Location = new Point(293, 179);
+            costLabel.Name = "costLabel";
+            costLabel.Size = new Size(221, 38);
+            costLabel.TabIndex = 36;
+            costLabel.Text = "Стоимость (руб)";
             // 
-            // label2
+            // label19
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(310, 270);
-            label2.Name = "label2";
-            label2.Size = new Size(221, 38);
-            label2.TabIndex = 36;
-            label2.Text = "Стоимость (руб)";
+            label19.AutoSize = true;
+            label19.Location = new Point(12, 90);
+            label19.Name = "label19";
+            label19.Size = new Size(202, 38);
+            label19.TabIndex = 42;
+            label19.Text = "Статус замены";
             // 
-            // comboBox1
+            // voltageValue
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(310, 222);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(249, 45);
-            comboBox1.TabIndex = 35;
+            voltageValue.Location = new Point(294, 307);
+            voltageValue.Name = "voltageValue";
+            voltageValue.Size = new Size(249, 43);
+            voltageValue.TabIndex = 31;
             // 
-            // label1
+            // sizesValue
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(310, 181);
-            label1.Name = "label1";
-            label1.Size = new Size(156, 38);
-            label1.TabIndex = 34;
-            label1.Text = "Тип клемм";
+            sizesValue.Location = new Point(295, 131);
+            sizesValue.Mask = "999x999x999";
+            sizesValue.Name = "sizesValue";
+            sizesValue.Size = new Size(221, 43);
+            sizesValue.TabIndex = 28;
             // 
-            // comboBox5
+            // sizesLabel
             // 
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(310, 133);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(249, 45);
-            comboBox5.TabIndex = 30;
+            sizesLabel.AutoSize = true;
+            sizesLabel.Location = new Point(289, 92);
+            sizesLabel.Name = "sizesLabel";
+            sizesLabel.Size = new Size(276, 38);
+            sizesLabel.TabIndex = 27;
+            sizesLabel.Text = "Размер (ДxШxВ, мм)";
             // 
-            // textBox6
+            // voltageLabel
             // 
-            textBox6.Location = new Point(6, 311);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(221, 43);
-            textBox6.TabIndex = 31;
+            voltageLabel.AutoSize = true;
+            voltageLabel.Location = new Point(294, 266);
+            voltageLabel.Name = "voltageLabel";
+            voltageLabel.Size = new Size(220, 38);
+            voltageLabel.TabIndex = 30;
+            voltageLabel.Text = "Напряжение (В)";
             // 
-            // label12
+            // capacityValue
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(310, 92);
-            label12.Name = "label12";
-            label12.Size = new Size(164, 38);
-            label12.TabIndex = 29;
-            label12.Text = "Технология";
+            capacityValue.Location = new Point(6, 307);
+            capacityValue.Name = "capacityValue";
+            capacityValue.Size = new Size(249, 43);
+            capacityValue.TabIndex = 29;
             // 
-            // maskedTextBox2
+            // capacityLabel
             // 
-            maskedTextBox2.Location = new Point(6, 399);
-            maskedTextBox2.Mask = "999x999x999";
-            maskedTextBox2.Name = "maskedTextBox2";
-            maskedTextBox2.Size = new Size(221, 43);
-            maskedTextBox2.TabIndex = 28;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(6, 357);
-            label13.Name = "label13";
-            label13.Size = new Size(222, 38);
-            label13.TabIndex = 27;
-            label13.Text = "Размер (ДxШxВ)";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(6, 92);
-            label9.Name = "label9";
-            label9.Size = new Size(95, 38);
-            label9.TabIndex = 26;
-            label9.Text = "Бренд";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(6, 270);
-            label11.Name = "label11";
-            label11.Size = new Size(220, 38);
-            label11.TabIndex = 30;
-            label11.Text = "Напряжение (В)";
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(6, 133);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(221, 43);
-            textBox4.TabIndex = 27;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(6, 220);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(221, 43);
-            textBox5.TabIndex = 29;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(6, 179);
-            label10.Name = "label10";
-            label10.Size = new Size(177, 38);
-            label10.TabIndex = 28;
-            label10.Text = "Емкость (Ач)";
+            capacityLabel.AutoSize = true;
+            capacityLabel.Location = new Point(6, 266);
+            capacityLabel.Name = "capacityLabel";
+            capacityLabel.Size = new Size(177, 38);
+            capacityLabel.TabIndex = 28;
+            capacityLabel.Text = "Емкость (Ач)";
             // 
             // tabPageExtraInfo
             // 
             tabPageExtraInfo.Controls.Add(dateTimePicker2);
             tabPageExtraInfo.Controls.Add(dateTimePicker1);
-            tabPageExtraInfo.Controls.Add(comboBox8);
             tabPageExtraInfo.Controls.Add(comboBox7);
-            tabPageExtraInfo.Controls.Add(label19);
             tabPageExtraInfo.Controls.Add(label18);
             tabPageExtraInfo.Controls.Add(comboBox9);
             tabPageExtraInfo.Controls.Add(richTextBox1);
@@ -393,10 +380,10 @@
             tabPageExtraInfo.Controls.Add(label14);
             tabPageExtraInfo.Controls.Add(label6);
             tabPageExtraInfo.Controls.Add(label7);
-            tabPageExtraInfo.Location = new Point(4, 46);
+            tabPageExtraInfo.Location = new Point(4, 29);
             tabPageExtraInfo.Name = "tabPageExtraInfo";
             tabPageExtraInfo.Padding = new Padding(3);
-            tabPageExtraInfo.Size = new Size(565, 634);
+            tabPageExtraInfo.Size = new Size(565, 651);
             tabPageExtraInfo.TabIndex = 1;
             tabPageExtraInfo.Text = "Дополнительно";
             tabPageExtraInfo.UseVisualStyleBackColor = true;
@@ -415,30 +402,13 @@
             dateTimePicker1.Size = new Size(250, 43);
             dateTimePicker1.TabIndex = 44;
             // 
-            // comboBox8
-            // 
-            comboBox8.FormattingEnabled = true;
-            comboBox8.Location = new Point(310, 44);
-            comboBox8.Name = "comboBox8";
-            comboBox8.Size = new Size(249, 45);
-            comboBox8.TabIndex = 43;
-            // 
             // comboBox7
             // 
             comboBox7.FormattingEnabled = true;
             comboBox7.Location = new Point(6, 572);
             comboBox7.Name = "comboBox7";
-            comboBox7.Size = new Size(538, 45);
+            comboBox7.Size = new Size(553, 45);
             comboBox7.TabIndex = 43;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Location = new Point(310, 3);
-            label19.Name = "label19";
-            label19.Size = new Size(202, 38);
-            label19.TabIndex = 42;
-            label19.Text = "Статус замены";
             // 
             // label18
             // 
@@ -454,7 +424,7 @@
             comboBox9.FormattingEnabled = true;
             comboBox9.Location = new Point(6, 44);
             comboBox9.Name = "comboBox9";
-            comboBox9.Size = new Size(278, 45);
+            comboBox9.Size = new Size(553, 45);
             comboBox9.TabIndex = 41;
             // 
             // richTextBox1
@@ -462,7 +432,7 @@
             richTextBox1.ForeColor = Color.Gray;
             richTextBox1.Location = new Point(6, 406);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(538, 122);
+            richTextBox1.Size = new Size(553, 122);
             richTextBox1.TabIndex = 41;
             richTextBox1.Text = "Место установки, особенности эксплуатации АКБ и т.д. и т.п.";
             // 
@@ -538,69 +508,69 @@
             // 
             // tabPageSoHMeasures
             // 
-            tabPageSoHMeasures.Controls.Add(groupBox2);
-            tabPageSoHMeasures.Controls.Add(button6);
-            tabPageSoHMeasures.Controls.Add(button5);
-            tabPageSoHMeasures.Controls.Add(button4);
+            tabPageSoHMeasures.Controls.Add(sohMeasureGroupBox);
+            tabPageSoHMeasures.Controls.Add(deleteSoHMeasure);
+            tabPageSoHMeasures.Controls.Add(editSoHMeasure);
+            tabPageSoHMeasures.Controls.Add(addSoHMeasure);
             tabPageSoHMeasures.Controls.Add(dataGridView1);
-            tabPageSoHMeasures.Location = new Point(4, 46);
+            tabPageSoHMeasures.Location = new Point(4, 29);
             tabPageSoHMeasures.Name = "tabPageSoHMeasures";
-            tabPageSoHMeasures.Size = new Size(565, 634);
+            tabPageSoHMeasures.Size = new Size(565, 651);
             tabPageSoHMeasures.TabIndex = 2;
             tabPageSoHMeasures.Text = "Замеры SoH";
             tabPageSoHMeasures.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // sohMeasureGroupBox
             // 
-            groupBox2.Controls.Add(comboBox3);
-            groupBox2.Controls.Add(label22);
-            groupBox2.Controls.Add(dateTimePicker4);
-            groupBox2.Controls.Add(label21);
-            groupBox2.Controls.Add(sohValue);
-            groupBox2.Controls.Add(label8);
-            groupBox2.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox2.ForeColor = Color.FromArgb(0, 121, 194);
-            groupBox2.Location = new Point(6, 327);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(556, 227);
-            groupBox2.TabIndex = 4;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Замер емкости";
+            sohMeasureGroupBox.Controls.Add(performingEmployeeValue);
+            sohMeasureGroupBox.Controls.Add(performingEmployeeLabel);
+            sohMeasureGroupBox.Controls.Add(measureDateValue);
+            sohMeasureGroupBox.Controls.Add(measureDateLabel);
+            sohMeasureGroupBox.Controls.Add(sohValue);
+            sohMeasureGroupBox.Controls.Add(sohLabel);
+            sohMeasureGroupBox.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            sohMeasureGroupBox.ForeColor = Color.FromArgb(0, 121, 194);
+            sohMeasureGroupBox.Location = new Point(6, 327);
+            sohMeasureGroupBox.Name = "sohMeasureGroupBox";
+            sohMeasureGroupBox.Size = new Size(556, 227);
+            sohMeasureGroupBox.TabIndex = 4;
+            sohMeasureGroupBox.TabStop = false;
+            sohMeasureGroupBox.Text = "Замер емкости";
             // 
-            // comboBox3
+            // performingEmployeeValue
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(6, 166);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(544, 45);
-            comboBox3.TabIndex = 5;
+            performingEmployeeValue.FormattingEnabled = true;
+            performingEmployeeValue.Location = new Point(6, 166);
+            performingEmployeeValue.Name = "performingEmployeeValue";
+            performingEmployeeValue.Size = new Size(544, 45);
+            performingEmployeeValue.TabIndex = 5;
             // 
-            // label22
+            // performingEmployeeLabel
             // 
-            label22.AutoSize = true;
-            label22.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label22.Location = new Point(6, 126);
-            label22.Name = "label22";
-            label22.Size = new Size(136, 38);
-            label22.TabIndex = 4;
-            label22.Text = "Работник";
+            performingEmployeeLabel.AutoSize = true;
+            performingEmployeeLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            performingEmployeeLabel.Location = new Point(6, 126);
+            performingEmployeeLabel.Name = "performingEmployeeLabel";
+            performingEmployeeLabel.Size = new Size(136, 38);
+            performingEmployeeLabel.TabIndex = 4;
+            performingEmployeeLabel.Text = "Работник";
             // 
-            // dateTimePicker4
+            // measureDateValue
             // 
-            dateTimePicker4.Location = new Point(279, 81);
-            dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(271, 43);
-            dateTimePicker4.TabIndex = 3;
+            measureDateValue.Location = new Point(279, 81);
+            measureDateValue.Name = "measureDateValue";
+            measureDateValue.Size = new Size(271, 43);
+            measureDateValue.TabIndex = 3;
             // 
-            // label21
+            // measureDateLabel
             // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label21.Location = new Point(279, 40);
-            label21.Name = "label21";
-            label21.Size = new Size(174, 38);
-            label21.TabIndex = 2;
-            label21.Text = "Дата замера";
+            measureDateLabel.AutoSize = true;
+            measureDateLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            measureDateLabel.Location = new Point(279, 40);
+            measureDateLabel.Name = "measureDateLabel";
+            measureDateLabel.Size = new Size(174, 38);
+            measureDateLabel.TabIndex = 2;
+            measureDateLabel.Text = "Дата замера";
             // 
             // sohValue
             // 
@@ -609,42 +579,42 @@
             sohValue.Size = new Size(158, 43);
             sohValue.TabIndex = 1;
             // 
-            // label8
+            // sohLabel
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(6, 39);
-            label8.Name = "label8";
-            label8.Size = new Size(246, 38);
-            label8.TabIndex = 0;
-            label8.Text = "Значение SoH (%)";
+            sohLabel.AutoSize = true;
+            sohLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            sohLabel.Location = new Point(6, 39);
+            sohLabel.Name = "sohLabel";
+            sohLabel.Size = new Size(246, 38);
+            sohLabel.TabIndex = 0;
+            sohLabel.Text = "Значение SoH (%)";
             // 
-            // button6
+            // deleteSoHMeasure
             // 
-            button6.Location = new Point(415, 572);
-            button6.Name = "button6";
-            button6.Size = new Size(147, 58);
-            button6.TabIndex = 3;
-            button6.Text = "Удалить";
-            button6.UseVisualStyleBackColor = true;
+            deleteSoHMeasure.Location = new Point(415, 572);
+            deleteSoHMeasure.Name = "deleteSoHMeasure";
+            deleteSoHMeasure.Size = new Size(147, 58);
+            deleteSoHMeasure.TabIndex = 3;
+            deleteSoHMeasure.Text = "Удалить";
+            deleteSoHMeasure.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // editSoHMeasure
             // 
-            button5.Location = new Point(159, 572);
-            button5.Name = "button5";
-            button5.Size = new Size(216, 58);
-            button5.TabIndex = 2;
-            button5.Text = "Редактировать";
-            button5.UseVisualStyleBackColor = true;
+            editSoHMeasure.Location = new Point(159, 572);
+            editSoHMeasure.Name = "editSoHMeasure";
+            editSoHMeasure.Size = new Size(216, 58);
+            editSoHMeasure.TabIndex = 2;
+            editSoHMeasure.Text = "Редактировать";
+            editSoHMeasure.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // addSoHMeasure
             // 
-            button4.Location = new Point(6, 572);
-            button4.Name = "button4";
-            button4.Size = new Size(147, 58);
-            button4.TabIndex = 1;
-            button4.Text = "Добавить";
-            button4.UseVisualStyleBackColor = true;
+            addSoHMeasure.Location = new Point(6, 572);
+            addSoHMeasure.Name = "addSoHMeasure";
+            addSoHMeasure.Size = new Size(147, 58);
+            addSoHMeasure.TabIndex = 1;
+            addSoHMeasure.Text = "Добавить";
+            addSoHMeasure.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -704,7 +674,7 @@
             // 
             applySortButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             applySortButton.ForeColor = Color.FromArgb(0, 121, 194);
-            applySortButton.Location = new Point(90, 468);
+            applySortButton.Location = new Point(91, 483);
             applySortButton.Name = "applySortButton";
             applySortButton.Size = new Size(217, 55);
             applySortButton.TabIndex = 25;
@@ -715,7 +685,7 @@
             // 
             button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.FromArgb(0, 121, 194);
-            button1.Location = new Point(90, 526);
+            button1.Location = new Point(91, 544);
             button1.Name = "button1";
             button1.Size = new Size(217, 55);
             button1.TabIndex = 26;
@@ -726,7 +696,7 @@
             // 
             button2.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             button2.ForeColor = Color.FromArgb(0, 121, 194);
-            button2.Location = new Point(6, 468);
+            button2.Location = new Point(7, 483);
             button2.Name = "button2";
             button2.Size = new Size(78, 55);
             button2.TabIndex = 27;
@@ -737,7 +707,7 @@
             // 
             button3.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             button3.ForeColor = Color.FromArgb(0, 121, 194);
-            button3.Location = new Point(313, 467);
+            button3.Location = new Point(314, 483);
             button3.Name = "button3";
             button3.Size = new Size(81, 55);
             button3.TabIndex = 28;
@@ -754,7 +724,7 @@
             groupBox3.ForeColor = Color.FromArgb(0, 121, 194);
             groupBox3.Location = new Point(594, 87);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(402, 600);
+            groupBox3.Size = new Size(402, 605);
             groupBox3.TabIndex = 67;
             groupBox3.TabStop = false;
             groupBox3.Text = "groupBoxName";
@@ -764,28 +734,28 @@
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1004, 777);
+            ClientSize = new Size(1004, 775);
             Controls.Add(groupBox3);
             Controls.Add(addBatteryButton);
             Controls.Add(tabControl1);
-            Controls.Add(batterNameLabel);
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
             Margin = new Padding(6);
             Name = "BatteryEditingAndViewForm";
-            Text = "цц";
+            Text = "BatteryEditingForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControl1.ResumeLayout(false);
             tabPageMainInfo.ResumeLayout(false);
             tabPageMainInfo.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)bufferServiceTimeValue).EndInit();
             tabPageExtraInfo.ResumeLayout(false);
             tabPageExtraInfo.PerformLayout();
             tabPageSoHMeasures.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            sohMeasureGroupBox.ResumeLayout(false);
+            sohMeasureGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox3.ResumeLayout(false);
             ResumeLayout(false);
@@ -795,31 +765,28 @@
         #endregion
 
         private Label headerLabel;
-        private Label batterNameLabel;
         private PictureBox pictureBox1;
         private TabControl tabControl1;
         private TabPage tabPageMainInfo;
         private TabPage tabPageExtraInfo;
-        private ComboBox comboBox5;
-        private Label label12;
-        private MaskedTextBox maskedTextBox2;
-        private TextBox textBox6;
-        private Label label13;
-        private Label label9;
-        private Label label11;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private Label label10;
-        private Label label2;
-        private ComboBox comboBox1;
-        private Label label1;
+        private ComboBox technologyValue;
+        private Label technologyLabel;
+        private MaskedTextBox sizesValue;
+        private TextBox voltageValue;
+        private Label sizesLabel;
+        private Label brandLabel;
+        private Label voltageLabel;
+        private TextBox brandValue;
+        private TextBox capacityValue;
+        private Label capacityLabel;
+        private Label costLabel;
+        private ComboBox clampTypeValue;
+        private Label clampTypeLabel;
         private GroupBox groupBox1;
         private Label label5;
         private TextBox textBox2;
-        private Label label4;
-        private TextBox textBox1;
-        private TextBox textBox3;
-        private Label label16;
+        private Label bufferModeServiceTimeLabel;
+        private TextBox costValue;
         private ComboBox comboBox6;
         private ComboBox comboBox2;
         private Label label15;
@@ -830,8 +797,8 @@
         private RichTextBox richTextBox1;
         private ComboBox comboBox7;
         private Label label18;
-        private Label label3;
-        private TextBox textBox10;
+        private Label nameLabel;
+        private TextBox nameValue;
         private ComboBox comboBox8;
         private Label label19;
         private ComboBox comboBox9;
@@ -842,23 +809,23 @@
         private Button button1;
         private Button button2;
         private Button button3;
-        private Button button6;
-        private Button button5;
-        private Button button4;
+        private Button deleteSoHMeasure;
+        private Button editSoHMeasure;
+        private Button addSoHMeasure;
         private DataGridView dataGridView1;
-        private DateTimePicker dateTimePicker3;
         private DateTimePicker dateTimePicker2;
         private DateTimePicker dateTimePicker1;
-        private GroupBox groupBox2;
+        private GroupBox sohMeasureGroupBox;
         private TextBox sohValue;
-        private Label label8;
-        private ComboBox comboBox3;
-        private Label label22;
-        private DateTimePicker dateTimePicker4;
-        private Label label21;
+        private Label sohLabel;
+        private ComboBox performingEmployeeValue;
+        private Label performingEmployeeLabel;
+        private DateTimePicker measureDateValue;
+        private Label measureDateLabel;
         private GroupBox groupBox3;
         private DataGridViewTextBoxColumn columnSoHMeasure;
         private DataGridViewTextBoxColumn columnMeasureDate;
         private DataGridViewTextBoxColumn columnPerformingWorker;
+        private NumericUpDown bufferServiceTimeValue;
     }
 }

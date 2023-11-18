@@ -1,9 +1,9 @@
-create procedure spBatteryClampTypes_Insert
-	@Name nvarchar(50), 
-	@Id int = 0 output 
-as 
-begin 
-	set nocount on;
-	insert into BatteryClampTypes values (@Name); 
-	select @Id = SCOPE_IDENTITY(); 
-end
+CREATE PROCEDURE spBatteryClampTypes_Insert
+	@Name NVARCHAR(50), 
+	@Id INT = 0 output 
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO BatteryClampTypes VALUES (@Name); 
+	SELECT @Id = SCOPE_IDENTITY(); 
+END

@@ -71,7 +71,8 @@ create table Users
 
 create table BatteryModels
 (
-	id int primary key identity, 
+	id int primary key identity,
+	name nvarchar(100) not null, 
 	brand nvarchar(50) not null, 
 	capacity float not null check(capacity > 0), 
 	voltage float not null check(voltage > 0), 

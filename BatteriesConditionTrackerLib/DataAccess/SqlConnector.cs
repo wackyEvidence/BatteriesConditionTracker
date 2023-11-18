@@ -18,12 +18,12 @@ namespace BatteriesConditionTrackerLib.DataAccess
             { 
                 // TO DO исправить в коде процедуры id на Id
                 var parameters = new DynamicParameters();
-                parameters.Add("@PositionName", positionModel.Name);
-                parameters.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                parameters.Add("@Name", positionModel.Name);
+                parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute("dbo.spPositions_Insert", parameters, commandType: CommandType.StoredProcedure);
 
-                positionModel.Id = parameters.Get<int>("id");
+                positionModel.Id = parameters.Get<int>("Id");
                 return positionModel;
             }
         }
@@ -38,17 +38,38 @@ namespace BatteriesConditionTrackerLib.DataAccess
 
                 connection.Execute("dbo.spBatteryClampTypes_Insert", parameters, commandType: CommandType.StoredProcedure);
 
-                clampTypeModel.Id = parameters.Get<int>("id");
+                clampTypeModel.Id = parameters.Get<int>("Id");
                 return clampTypeModel;
             }
         }
 
         public BatteryModel CreateBatteryModel(BatteryModel batteryModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Name", batteryModel.Name);
+                parameters.Add("@Brand", batteryModel.Brand);
+                parameters.Add("@Capacity", batteryModel.Capacity);
+                parameters.Add("@Voltage", batteryModel.Voltage);
+                parameters.Add("@Length", batteryModel.Length);
+                parameters.Add("@Height", batteryModel.Height);
+                parameters.Add("@Width", batteryModel.Width);
+                parameters.Add("@TechnologyId", batteryModel.Technology.Id);
+                parameters.Add("@ClampTypeId", batteryModel.ClampType.Id);
+                parameters.Add("@Cost", batteryModel.Cost);
+                parameters.Add("@BufferModeServiceTime", batteryModel.BufferModeServiceTime);
+                parameters.Add("@SoHThreshold", batteryModel.MinSoH);
+                parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spBatteryModels_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                batteryModel.Id = parameters.Get<int>("@Id");
+                return batteryModel;
+            }
         }
 
-        public void CreateBatteryModelPhoto(string filePath)
+        public void CreateBatteryModelPhotos(string filePath)
         {
             throw new NotImplementedException();
         }
@@ -59,7 +80,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@BatteryId", batterySoHMeasureModel.Battery.Id);
-                parameters.Add("@PerformingEmployee", batterySoHMeasureModel.PerformingEmployee.Id);
+                parameters.Add("@PerformingEmployeeId", batterySoHMeasureModel.PerformingEmployee.Id);
                 parameters.Add("@MeasureDate", batterySoHMeasureModel.MeasureDate);
                 parameters.Add("@SoH", batterySoHMeasureModel.SoHValue);
                 parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -73,37 +94,107 @@ namespace BatteriesConditionTrackerLib.DataAccess
 
         public BatterySubsystem CreateBatterySubsystem(BatterySubsystem batterySubsystemModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Name", batterySubsystemModel.Name);
+                parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spBatterySubsystems_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                batterySubsystemModel.Id = parameters.Get<int>("@Id");
+                return batterySubsystemModel;
+            }
         }
 
         public BatteryTechnology CreateBatteryTechnology(BatteryTechnology batteryTechnologyModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Name", batteryTechnologyModel.Name);
+                parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spBatteryTechnologies_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                batteryTechnologyModel.Id = parameters.Get<int>("@Id");
+                return batteryTechnologyModel;
+            }
         }
 
         public ConcreteBattery CreateConcreteBattery(ConcreteBattery concreteBatteryModel)
         {
-            throw new NotImplementedException();
-        }
+            using (var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ModelId", concreteBatteryModel.Model.Id);
+                parameters.Add("@ExploitationStart", concreteBatteryModel.ExploitationStart.ToShortDateString());
+                parameters.Add("@ExploitationEnd", concreteBatteryModel.ExploitationEnd == null? null : concreteBatteryModel.ExploitationEnd);
+                parameters.Add("@StructureId", concreteBatteryModel.InstallationStructure.Id);
+                parameters.Add("@SubsystemId", concreteBatteryModel.Subsystem.Id);
+                parameters.Add("@ResponsibleEmployeeId", concreteBatteryModel.ResponsibleWorker.Id);
+                parameters.Add("@ExploitationStatusId", concreteBatteryModel.ExploitationStatus.Id);
+                parameters.Add("@ReplacementStatusId", concreteBatteryModel.ReplacementStatus.Id);
+                parameters.Add("@AdditionalNotes", concreteBatteryModel.AdditionalNotes);
+                parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-        public void CreateConcreteBatteryPhoto(string filePath)
-        {
-            throw new NotImplementedException();
+                connection.Execute("dbo.spConcreteBatteries_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                concreteBatteryModel.Id = parameters.Get<int>("@Id");
+                return concreteBatteryModel;
+            }
         }
 
         public Structure CreateStructure(Structure structureModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL")))
+            {   
+                var parameters = new DynamicParameters();
+                parameters.Add("@Name", structureModel.Name);
+                parameters.Add("@TypeId", structureModel.Type.Id);
+                parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spStructures_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                structureModel.Id = parameters.Get<int>("@Id");
+                return structureModel;
+            }
         }
 
         public StructureType CreateStructureType(StructureType structureTypeModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Name", structureTypeModel.Name);
+                parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spStructureTypes_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                structureTypeModel.Id = parameters.Get<int>("@Id");
+                return structureTypeModel;
+            }
         }
 
         public User CreateUser(User userModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Name", userModel.Name);
+                parameters.Add("@Surname", userModel.Surname);
+                parameters.Add("@Patronymic", userModel.PhoneNumber);
+                parameters.Add("@Email", userModel.Email);
+                parameters.Add("@PositionId", userModel.Position.Id);
+                parameters.Add("@SupervisorId", userModel.Supervisor == null? null : userModel.Supervisor.Id);
+                parameters.Add("@Password", userModel.Password);
+                parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spUsers_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                userModel.Id = parameters.Get<int>("@Id");
+                return userModel;
+            }
         }
 
         public BatteryClampType DeleteBatteryClampType(BatteryClampType clampTypeModel)
@@ -112,11 +203,6 @@ namespace BatteriesConditionTrackerLib.DataAccess
         }
 
         public BatteryModel DeleteBatteryModel(BatteryModel batteryModel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteBatteryModelPhoto(string filePath)
         {
             throw new NotImplementedException();
         }
@@ -137,11 +223,6 @@ namespace BatteriesConditionTrackerLib.DataAccess
         }
 
         public ConcreteBattery DeleteConcreteBattery(ConcreteBattery concreteBatteryModel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteConcreteBatteryPhoto(string filePath)
         {
             throw new NotImplementedException();
         }
@@ -212,6 +293,26 @@ namespace BatteriesConditionTrackerLib.DataAccess
         }
 
         public User UpdateUser(User userModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteBatteryModelPhoto(List<Photo> photos, BatteryModel batteryModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteConcreteBatteryPhoto(List<Photo> photos, ConcreteBattery concreteBattery)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateBatteryModelPhotos(List<Photo> photos, BatteryModel batteryModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateConcreteBatteryPhotos(List<Photo> photos, ConcreteBattery concreteBattery)
         {
             throw new NotImplementedException();
         }

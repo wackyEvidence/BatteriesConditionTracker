@@ -63,14 +63,16 @@ namespace BatteriesConditionTrackerLib.Models
         /// <summary>
         /// Список фотографий этой модели аккумулятора
         /// </summary>
-        public List<string> Photos { get; set; } = new List<string>();
+        public List<Photo> DisplayedPhotos { get; set; }
+        public List<Photo> AddedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<Photo> DeletedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public BatteryModel() { }
 
         // TODO - Разобраться с назначением полей Technology и ClampType в конструкторах.
         public BatteryModel(string name, string brand, string capacity, string voltage, 
             string length, string height, string width, string technology, string clampType, string cost, 
-            string bufferModeServiceTime, string minSoH, List<string> photoPaths)
+            string bufferModeServiceTime, string minSoH, List<Photo> photoPaths)
         {
             Name = name; 
             Brand = brand;
@@ -84,7 +86,7 @@ namespace BatteriesConditionTrackerLib.Models
             Cost = decimal.Parse(cost);
             BufferModeServiceTime = int.Parse(bufferModeServiceTime); 
             MinSoH = int.Parse(minSoH);
-            Photos = photoPaths;
+            DisplayedPhotos = photoPaths;
         }
 
         public BatteryModel(string[] columns)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BatteriesConditionTrackerLib.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,14 @@ namespace BatteriesConditionTrackerUI
 {
     public partial class BatteriesListForm : Form
     {
+        private List<BatteryExploitationStatus> availableExploitationStatuses = new List<BatteryExploitationStatus>();
+        private List<BatteryReplacementStatus> availableReplacementStatuses = new List<BatteryReplacementStatus>();
+        private List<string> availableBrands = new List<string>();
+        private List<string> availableCapacities = new List<string>();
+        private List<BatterySubsystem> availableBatterySubsystems = new List<BatterySubsystem>();
+        private List<Structure> availableStructures = new List<Structure>();
+        private List<StructureType> availableStructureTypes = new List<StructureType>(); 
+
         public BatteriesListForm()
         {
             InitializeComponent();
@@ -84,12 +93,14 @@ namespace BatteriesConditionTrackerUI
 
         private void batteryClampTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var batteryClampTypesListForm = new BatteryClampTypesListForm();
+            batteryClampTypesListForm.ShowDialog(); 
         }
 
         private void batteryTechnologyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var batteryTechnologiesListForm = new BatteryTechnologiesListForm();
+            batteryTechnologiesListForm.ShowDialog();
         }
     }
 }

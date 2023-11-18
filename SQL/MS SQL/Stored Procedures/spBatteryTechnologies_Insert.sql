@@ -1,0 +1,9 @@
+CREATE PROCEDURE spBatteryTechnologies_Insert
+	@Name NVARCHAR(50), 
+	@Id INT = 0 OUTPUT 
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO BatteryTechnologies VALUES (@Name); 
+	SELECT @Id = SCOPE_IDENTITY(); 
+END

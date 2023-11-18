@@ -44,7 +44,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
             models.Add(model);
 
             if(model is IHavePhotos modelWithPhotos)
-                modelWithPhotos.SavePhotos(); 
+                // TO-DO Дописать сюда что-то 
 
             models.SaveToTextFile(fileName, modelToCSV);
             return model;
@@ -105,7 +105,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
             $"{b.InstallationStructure.Id},{b.Subsystem.Id},{b.ResponsibleWorker.Id},{b.ExploitationStatus.Id}," +
             $"{b.ReplacementStatus.Id},{b.AdditionalNotes},{b.LastCapacityMeasureDate}";
 
-            return CreateModel(concreteBatteryModel, PositionsFileName, modelCreation, modelToCSV);
+            return CreateModel(concreteBatteryModel, ConcreteBatteriesFileName, modelCreation, modelToCSV);
         }
 
         public Position CreatePosition(Position positionModel)
@@ -245,22 +245,22 @@ namespace BatteriesConditionTrackerLib.DataAccess
             throw new NotImplementedException();
         }
 
-        public void CreateBatteryModelPhoto(string filePath)
+        public void DeleteBatteryModelPhoto(List<Photo> photos, BatteryModel batteryModel)
         {
             throw new NotImplementedException();
         }
 
-        public void CreateConcreteBatteryPhoto(string filePath)
+        public void DeleteConcreteBatteryPhoto(List<Photo> photos, ConcreteBattery concreteBattery)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteBatteryModelPhoto(string filePath)
+        public void CreateBatteryModelPhotos(List<Photo> photos, BatteryModel batteryModel)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteConcreteBatteryPhoto(string filePath)
+        public void CreateConcreteBatteryPhotos(List<Photo> photos, ConcreteBattery concreteBattery)
         {
             throw new NotImplementedException();
         }

@@ -7,9 +7,9 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[spPositions_Update]
 	@Id INT,
-	@PositionName NVARCHAR(50)
+	@Name NVARCHAR(50)
 AS
 BEGIN
 	SET NOCOUNT ON;
-    UPDATE Positions SET name = @PositionName WHERE id = @Id
+    UPDATE Positions SET name = @Name WHERE id = @Id
 END

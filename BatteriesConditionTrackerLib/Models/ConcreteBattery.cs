@@ -19,7 +19,7 @@ namespace BatteriesConditionTrackerLib.Models
         /// <summary>
         /// Дата начала эксплуатации аккумулятора
         /// </summary>
-        public DateTime? ExploitationStart { get; set; }
+        public DateTime ExploitationStart { get; set; }
         /// <summary>
         /// Дата окончания эксплуатации аккумулятора 
         /// </summary>
@@ -56,7 +56,10 @@ namespace BatteriesConditionTrackerLib.Models
         /// <summary>
         /// Список фотографий этого аккумулятора
         /// </summary>
-        public List<string> Photos { get; set; } = new List<string>();
+     
+        public List<Photo> DisplayedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<Photo> AddedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<Photo> DeletedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public ConcreteBattery() { }
 

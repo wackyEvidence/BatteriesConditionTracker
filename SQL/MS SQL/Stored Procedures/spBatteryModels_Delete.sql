@@ -1,0 +1,7 @@
+CREATE PROCEDURE spBatteryModels_Delete
+	@Id INT
+AS
+BEGIN 
+	SET NOCOUNT ON;
+	DELETE FROM BatteryModels WHERE id = @Id;
+END

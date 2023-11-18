@@ -15,42 +15,153 @@ namespace BatteriesConditionTrackerLib.DataAccess
     {
         public BatteryClampType CreateBatteryClampType(BatteryClampType clampTypeModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("p_name", clampTypeModel.Name);
+                parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+
+                connection.Execute("spBatteryClampTypes_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                clampTypeModel.Id = parameters.Get<int>("p_id");
+                return clampTypeModel;
+            }
         }
 
         public BatteryModel CreateBatteryModel(BatteryModel batteryModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
+            {
+                var parameters = new DynamicParameters();
+               
+                parameters.Add("p_brand", batteryModel.Brand);
+                parameters.Add("p_capacity", batteryModel.Capacity);
+                parameters.Add("p_voltage", batteryModel.Voltage);
+                parameters.Add("p_length", batteryModel.Length);
+                parameters.Add("p_height", batteryModel.Height);
+                parameters.Add("p_width", batteryModel.Width);
+                parameters.Add("p_technology_id", batteryModel.Technology.Id);
+                parameters.Add("p_clamp_type_id", batteryModel.ClampType.Id);
+                parameters.Add("p_cost", batteryModel.Cost);
+                parameters.Add("p_buffer_mode_service_time", batteryModel.BufferModeServiceTime);
+                parameters.Add("p_soh_threshold", batteryModel.MinSoH);
+                parameters.Add("p_name", batteryModel.Name);
+                parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+
+                connection.Execute("spBatteryModels_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                batteryModel.Id = parameters.Get<int>("p_id");
+                return batteryModel;
+            }
         }
 
-        public void CreateBatteryModelPhoto(string filePath)
+        public void CreateBatteryModelPhotos(List<Photo> photos, BatteryModel batteryModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
+            {
+                //  TO-DO реализовать сохранение в Яндекс.Диск
+                foreach (var photo in photos)
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+                    parameters.Add("p_battery_id", batteryModel.Id);
+                    parameters.Add("p_file_path", photo.DiskFilePath);
+
+                    connection.Execute("spBatteryModelPhotos_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                    photo.Id = parameters.Get<int>("p_id");
+                }
+            }
         }
 
         public BatterySoHMeasure CreateBatterySoHMeasure(BatterySoHMeasure batterySoHMeasureModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("p_battery_id", batterySoHMeasureModel.Battery.Id);
+                parameters.Add("p_performing_employee_id", batterySoHMeasureModel.PerformingEmployee.Id);
+                parameters.Add("p_measure_date", batterySoHMeasureModel.MeasureDate.ToShortDateString());    
+                parameters.Add("p_soh", batterySoHMeasureModel.SoHValue);    
+                parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+
+                connection.Execute("spBatterySoHMeasures_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                batterySoHMeasureModel.Id = parameters.Get<int>("p_id");
+                return batterySoHMeasureModel;
+            }
         }
 
         public BatterySubsystem CreateBatterySubsystem(BatterySubsystem batterySubsystemModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("p_name", batterySubsystemModel.Name);
+                parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+
+                connection.Execute("spBatterySubsystems_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                batterySubsystemModel.Id = parameters.Get<int>("p_id");
+                return batterySubsystemModel;
+            }
         }
 
         public BatteryTechnology CreateBatteryTechnology(BatteryTechnology batteryTechnologyModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("p_name", batteryTechnologyModel.Name);
+                parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+
+                connection.Execute("spBatteryTechnologies_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                batteryTechnologyModel.Id = parameters.Get<int>("p_id");
+                return batteryTechnologyModel;
+            }
         }
 
         public ConcreteBattery CreateConcreteBattery(ConcreteBattery concreteBatteryModel)
         {
-            throw new NotImplementedException();
-        }
+            using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("p_model_id", concreteBatteryModel.Model.Id);
+                parameters.Add("p_exploitation_start", concreteBatteryModel.ExploitationStart.ToShortDateString());
+                parameters.Add("p_exploitation_end", concreteBatteryModel.ExploitationEnd);
+                parameters.Add("p_structure_id", concreteBatteryModel.InstallationStructure.Id);
+                parameters.Add("p_subsystem_id", concreteBatteryModel.Subsystem.Id);
+                parameters.Add("p_responsible_employee_id", concreteBatteryModel.ResponsibleWorker.Id);
+                parameters.Add("p_exploitation_status_id", concreteBatteryModel.ExploitationStatus.Id);
+                parameters.Add("p_replacement_status_id", concreteBatteryModel.ReplacementStatus.Id);
+                parameters.Add("p_additional_notes", concreteBatteryModel.AdditionalNotes);
+                parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
 
-        public void CreateConcreteBatteryPhoto(string filePath)
+                connection.Execute("spConcreteBatteries_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                concreteBatteryModel.Id = parameters.Get<int>("p_id");
+                return concreteBatteryModel;
+            }
+        }
+        
+        public void CreateConcreteBatteryPhotos(List<Photo> photos, ConcreteBattery concreteBattery)
         {
-            throw new NotImplementedException();
+            using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
+            {
+                //  TO-DO реализовать сохранение в Яндекс.Диск
+                foreach (var photo in photos) 
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+                    parameters.Add("p_battery_id", concreteBattery.Id);
+                    parameters.Add("p_file_path", photo.DiskFilePath);
+
+                    connection.Execute("spConcreteBatteryPhotos_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                    photo.Id = parameters.Get<int>("p_id");
+                }
+            }
         }
 
         public Position CreatePosition(Position positionModel)
@@ -58,29 +169,70 @@ namespace BatteriesConditionTrackerLib.DataAccess
             using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("position_name", positionModel.Name);
-                parameters.Add("position_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+                parameters.Add("p_name", positionModel.Name);
+                parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
 
                 connection.Execute("spPositions_Insert", parameters, commandType: CommandType.StoredProcedure);
 
-                positionModel.Id = parameters.Get<int>("position_id");
+                positionModel.Id = parameters.Get<int>("p_id");
                 return positionModel;
             }
         }
 
         public Structure CreateStructure(Structure structureModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("p_name", structureModel.Name);
+                parameters.Add("p_type_id", structureModel.Type.Id);
+                parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+
+                connection.Execute("spStructures_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                structureModel.Id = parameters.Get<int>("p_id");
+                return structureModel;
+            }
         }
 
         public StructureType CreateStructureType(StructureType structureTypeModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("p_name", structureTypeModel.Name);
+                parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+
+                connection.Execute("spStructureTypes_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                structureTypeModel.Id = parameters.Get<int>("p_id");
+                return structureTypeModel;
+            }
         }
 
         public User CreateUser(User userModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("p_name", userModel.Name);
+                parameters.Add("p_surname", userModel.Surname);
+                parameters.Add("p_patronymic", userModel.Patronymic);
+                parameters.Add("p_phone_number", userModel.PhoneNumber);
+                parameters.Add("p_email", userModel.Email);
+                parameters.Add("p_position_id", userModel.Position.Id);
+                parameters.Add("p_supervisor_id", userModel.Supervisor == null? null: userModel.Supervisor.Id);
+                parameters.Add("p_password", userModel.Password); 
+                parameters.Add("p_is_admin", userModel.IsAdmin); 
+
+
+                parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+
+                connection.Execute("spUsers_Insert", parameters, commandType: CommandType.StoredProcedure);
+
+                userModel.Id = parameters.Get<int>("p_id");
+                return userModel;
+            }
         }
 
         public BatteryClampType DeleteBatteryClampType(BatteryClampType clampTypeModel)
@@ -93,7 +245,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
             throw new NotImplementedException();
         }
 
-        public void DeleteBatteryModelPhoto(string filePath)
+        public void DeleteBatteryModelPhoto(List<Photo> photos, BatteryModel batteryModel)
         {
             throw new NotImplementedException();
         }
@@ -118,7 +270,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
             throw new NotImplementedException();
         }
 
-        public void DeleteConcreteBatteryPhoto(string filePath)
+        public void DeleteConcreteBatteryPhoto(List<Photo> photos, ConcreteBattery concreteBattery)
         {
             throw new NotImplementedException();
         }

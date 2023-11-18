@@ -1,0 +1,10 @@
+CREATE PROCEDURE spStructures_Insert
+	@Name NVARCHAR(50),
+	@TypeId INT,
+	@Id INT = 0 OUTPUT 
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO Structures VALUES (@Name, @TypeId); 
+	SELECT @Id = SCOPE_IDENTITY(); 
+END

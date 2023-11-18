@@ -8,17 +8,16 @@ create procedure spConcreteBatteries_Insert(
 	p_responsible_employee_id int, 
 	p_exploitation_status_id int, 
 	p_replacement_status_id int, 
-	p_additional_notes text,
-	p_last_capacity_measure_date date
+	p_additional_notes text
 )
 as $$ 
 begin 
 	insert into ConcreteBatteries
 	(model_id, exploitation_start, exploitation_end, structure_id, subsystem_id,
-	 responsible_employee_id, replacement_status_id, additional_notes, last_capacity_measure_date) 
+	 responsible_employee_id, replacement_status_id, additional_notes) 
 	values 
 	(p_model_id, p_exploitation_start, p_exploitation_end, p_structure_id, p_subsystem_id,
-	 p_responsible_employee_id, p_replacement_status_id, p_additional_notes, p_last_capacity_measure_date)
+	 p_responsible_employee_id, p_replacement_status_id, p_additional_notes)
 	returning id into p_id;
 end; 
 $$ language plpgsql; 

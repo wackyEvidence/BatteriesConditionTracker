@@ -19,7 +19,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
         User DeleteUser(User userModel);
         ConcreteBattery DeleteConcreteBattery(ConcreteBattery concreteBatteryModel);
         BatterySoHMeasure DeleteBatterySoHMeasure(BatterySoHMeasure batterySoHMeasureModel);
-        void DeleteBatteryModelPhoto(string filePath);
-        void DeleteConcreteBatteryPhoto(string filePath); 
+        void DeleteBatteryModelPhoto(List<Photo> photos, BatteryModel batteryModel);
+        void DeleteConcreteBatteryPhoto(List<Photo> photos, ConcreteBattery concreteBattery); 
     }
 }

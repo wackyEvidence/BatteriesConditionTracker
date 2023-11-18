@@ -1,0 +1,9 @@
+CREATE PROCEDURE spBatterySubsystems_Insert
+	@Name NVARCHAR(50), 
+	@Id INT = 0 OUTPUT 
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO BatterySubsystems VALUES (@Name); 
+	SELECT @Id = SCOPE_IDENTITY(); 
+END
