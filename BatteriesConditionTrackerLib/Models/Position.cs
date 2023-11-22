@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BatteriesConditionTrackerLib.Models.Interfaces;
 
 namespace BatteriesConditionTrackerLib.Models
 {
@@ -17,13 +18,11 @@ namespace BatteriesConditionTrackerLib.Models
         /// </summary>
         public string Name { get; set; }
 
-        public Position() { }
+        public static readonly Func<string[], Position> ModelCreation = columns => new Position(columns);
+        public static readonly Func<Position, string> ModelToCSV = position => $"{position.Id},{position.Name}";
 
-        public Position(string Id, string Name)
-        {
-            this.Id = int.Parse(Id);
-            this.Name = Name;   
-        }
+
+        public Position() { }
 
         public Position(string[] columns)
         {

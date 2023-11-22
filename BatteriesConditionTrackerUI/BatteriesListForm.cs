@@ -1,4 +1,5 @@
-﻿using BatteriesConditionTrackerLib.Models;
+﻿using BatteriesConditionTrackerLib;
+using BatteriesConditionTrackerLib.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,17 +14,35 @@ namespace BatteriesConditionTrackerUI
 {
     public partial class BatteriesListForm : Form
     {
-        private BindingList<BatteryExploitationStatus> availableExploitationStatuses = new BindingList<BatteryExploitationStatus>();
-        private List<BatteryReplacementStatus> availableReplacementStatuses = new List<BatteryReplacementStatus>();
+        private List<BatteryExploitationStatus> availableExploitationStatuses = GlobalConfig.Connection.GetBatteryExploitationStatus_All();
+        private List<BatteryReplacementStatus> availableReplacementStatuses = GlobalConfig.Connection.GetBatteryReplacementStatus_All();
         private List<string> availableBrands = new List<string>();
         private List<string> availableCapacities = new List<string>();
-        private List<BatterySubsystem> availableBatterySubsystems = new List<BatterySubsystem>();
-        private List<Structure> availableStructures = new List<Structure>();
-        private List<StructureType> availableStructureTypes = new List<StructureType>();
+        private BindingList<BatterySubsystem> availableBatterySubsystems = new BindingList<BatterySubsystem>();
+        private BindingList<Structure> availableStructures = new BindingList<Structure>();
 
         public BatteriesListForm()
         {
             InitializeComponent();
+            WireUpLists();
+        }
+
+        private void WireUpLists()
+        {
+            exploitationStatusComboBox.DataSource = availableExploitationStatuses;
+            exploitationStatusComboBox.DisplayMember = "Name";
+
+            replacementStatusComboBox.DataSource = availableReplacementStatuses;
+            replacementStatusComboBox.DisplayMember = "Name";
+
+            brandsCheckedListBox.DataSource = availableBrands;
+            capacitiesCheckedListBox.DataSource = availableCapacities;
+
+            subsystemCheckedListBox.DataSource = availableBatterySubsystems;
+            subsystemCheckedListBox.DisplayMember = "Name";
+
+            structuresCheckedListBox.DataSource = availableStructures;
+            structuresCheckedListBox.DisplayMember = "Name";
         }
 
         private void addUserFilterButton_Click(object sender, EventArgs e)
@@ -101,6 +120,12 @@ namespace BatteriesConditionTrackerUI
         {
             var batteryTechnologiesListForm = new BatteryTechnologiesListForm();
             batteryTechnologiesListForm.ShowDialog();
+        }
+
+        private void aboutMenuItem_Click(object sender, EventArgs e)
+        {
+            var aboutForm = new About();
+            aboutForm.ShowDialog();
         }
     }
 }

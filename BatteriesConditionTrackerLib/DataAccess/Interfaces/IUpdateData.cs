@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BatteriesConditionTrackerLib.DataAccess
+namespace BatteriesConditionTrackerLib.DataAccess.Interfaces
 {
     public interface IUpdateData
     {

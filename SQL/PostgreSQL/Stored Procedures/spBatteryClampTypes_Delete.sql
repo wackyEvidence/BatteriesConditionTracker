@@ -1,6 +1,6 @@
-create procedure spBatteryClampTypes_Delete(clamp_type_id integer)
+create or replace procedure spBatteryClampTypes_Delete(p_id integer)
 as $$ 
 begin 
-	delete from BatteryClampTypes where id = clamp_type_id; 
+	delete from BatteryClampTypes where id = p_id; 
 end; 
-$$ language plpgsql; 
+$$ language plpgsql;

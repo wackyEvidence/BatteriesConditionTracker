@@ -14,8 +14,8 @@ namespace BatteriesConditionTrackerLib
 
     public enum DatabaseType
     {
-        SQL, 
+        SqlServer, 
         TextFile, 
-        PostgreSQL
+        PostgreSql
     }
 }

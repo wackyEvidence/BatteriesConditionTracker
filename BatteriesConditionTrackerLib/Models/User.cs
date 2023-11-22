@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using BatteriesConditionTrackerLib.Models.Interfaces;
 
 namespace BatteriesConditionTrackerLib.Models
 {
@@ -50,7 +50,14 @@ namespace BatteriesConditionTrackerLib.Models
         /// Администраторские права пользователя 
         /// </summary>
         public bool IsAdmin { get; set; }
-        
+        /// <summary>
+        /// ФИО пользователя
+        /// </summary>
+        public string FullName { get { return Surname + Name + Patronymic; } }
+
+        public static readonly Func<string[], User> ModelCreation = columns => new User(columns);
+        public static readonly Func<User, string> ModelToCSV = user => $"{user.Id},{user.Name},{user.Surname},{user.Patronymic}," +
+            $"{user.Password},{user.PhoneNumber},{user.Email},{user.Position.Id},{user.Supervisor.Id},{user.IsAdmin}";
 
         public User() { }
 
@@ -63,8 +70,8 @@ namespace BatteriesConditionTrackerLib.Models
             Password = columns[4];
             PhoneNumber = columns[5];
             Email = columns[6];
-            Position = new Position() { Id = int.Parse(columns[7]) };
-            Supervisor = new User() { Id = int.Parse(columns[8]) };
+            Position = GlobalConfig.Connection.GetPosition_ById(int.Parse(columns[7]));
+            Supervisor = GlobalConfig.Connection.GetUser_ById(int.Parse(columns[8]));
             IsAdmin = bool.Parse(columns[9]);   
         }
     }

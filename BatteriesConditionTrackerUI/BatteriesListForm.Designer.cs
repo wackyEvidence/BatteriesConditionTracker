@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BatteriesListForm));
             menuStrip1 = new MenuStrip();
             настройкиToolStripMenuItem = new ToolStripMenuItem();
             печатьToolStripMenuItem = new ToolStripMenuItem();
@@ -55,8 +56,6 @@
             resetAllFiltersLinkLabel = new LinkLabel();
             replacementStatusComboBox = new ComboBox();
             exploitationStatusComboBox = new ComboBox();
-            structureTypesLabel = new Label();
-            structureTypesCheckedListBox = new CheckedListBox();
             subsystemLabel = new Label();
             subsystemCheckedListBox = new CheckedListBox();
             structureLabel = new Label();
@@ -212,6 +211,7 @@
             aboutMenuItem.Name = "aboutMenuItem";
             aboutMenuItem.Size = new Size(44, 42);
             aboutMenuItem.Text = "?";
+            aboutMenuItem.Click += aboutMenuItem_Click;
             // 
             // dataGridView
             // 
@@ -279,8 +279,6 @@
             groupBoxFilters.Controls.Add(resetAllFiltersLinkLabel);
             groupBoxFilters.Controls.Add(replacementStatusComboBox);
             groupBoxFilters.Controls.Add(exploitationStatusComboBox);
-            groupBoxFilters.Controls.Add(structureTypesLabel);
-            groupBoxFilters.Controls.Add(structureTypesCheckedListBox);
             groupBoxFilters.Controls.Add(subsystemLabel);
             groupBoxFilters.Controls.Add(subsystemCheckedListBox);
             groupBoxFilters.Controls.Add(structureLabel);
@@ -317,7 +315,6 @@
             // 
             replacementStatusComboBox.ForeColor = Color.Gray;
             replacementStatusComboBox.FormattingEnabled = true;
-            replacementStatusComboBox.Items.AddRange(new object[] { "требует замены", "не требует замены ", "заменен", "все" });
             replacementStatusComboBox.Location = new Point(6, 90);
             replacementStatusComboBox.Name = "replacementStatusComboBox";
             replacementStatusComboBox.Size = new Size(288, 45);
@@ -328,30 +325,11 @@
             // 
             exploitationStatusComboBox.ForeColor = Color.Gray;
             exploitationStatusComboBox.FormattingEnabled = true;
-            exploitationStatusComboBox.Items.AddRange(new object[] { "эксплуатируемые", "выведенные из эксплуатации ", "все" });
             exploitationStatusComboBox.Location = new Point(6, 39);
             exploitationStatusComboBox.Name = "exploitationStatusComboBox";
             exploitationStatusComboBox.Size = new Size(421, 45);
             exploitationStatusComboBox.TabIndex = 34;
             exploitationStatusComboBox.Text = "Статус эксплуатации";
-            // 
-            // structureTypesLabel
-            // 
-            structureTypesLabel.AutoSize = true;
-            structureTypesLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            structureTypesLabel.Location = new Point(291, 462);
-            structureTypesLabel.Name = "structureTypesLabel";
-            structureTypesLabel.Size = new Size(189, 38);
-            structureTypesLabel.TabIndex = 33;
-            structureTypesLabel.Text = "Тип объекта: ";
-            // 
-            // structureTypesCheckedListBox
-            // 
-            structureTypesCheckedListBox.FormattingEnabled = true;
-            structureTypesCheckedListBox.Location = new Point(291, 503);
-            structureTypesCheckedListBox.Name = "structureTypesCheckedListBox";
-            structureTypesCheckedListBox.Size = new Size(333, 118);
-            structureTypesCheckedListBox.TabIndex = 32;
             // 
             // subsystemLabel
             // 
@@ -386,7 +364,7 @@
             structuresCheckedListBox.FormattingEnabled = true;
             structuresCheckedListBox.Location = new Point(291, 179);
             structuresCheckedListBox.Name = "structuresCheckedListBox";
-            structuresCheckedListBox.Size = new Size(329, 270);
+            structuresCheckedListBox.Size = new Size(329, 422);
             structuresCheckedListBox.TabIndex = 28;
             // 
             // capacityLabel
@@ -551,6 +529,7 @@
             Controls.Add(menuStrip1);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Margin = new Padding(6);
             Name = "BatteriesListForm";
@@ -593,8 +572,6 @@
         private CheckedListBox brandsCheckedListBox;
         private Label subsystemLabel;
         private CheckedListBox subsystemCheckedListBox;
-        private Label structureTypesLabel;
-        private CheckedListBox structureTypesCheckedListBox;
         private ToolStripMenuItem печатьToolStripMenuItem;
         private ToolStripMenuItem экспортToolStripMenuItem1;
         private ToolStripMenuItem cSVToolStripMenuItem1;

@@ -31,7 +31,7 @@ namespace BatteriesConditionTrackerLib.Validation
         {
             foreach (var parameter in parameters)
             {
-                if (parameter.Value.Length == 0)
+                if (parameter.Value.Length == 0 || string.IsNullOrWhiteSpace(parameter.Value))
                     errors.Add(parameter.Name, $"Поле \"{parameter.Name}\" не заполнено.");
             }
         }

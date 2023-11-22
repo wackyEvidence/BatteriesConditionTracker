@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BatteriesConditionTrackerLib.Models.Interfaces;
 
 namespace BatteriesConditionTrackerLib.Models
 {
@@ -17,13 +18,11 @@ namespace BatteriesConditionTrackerLib.Models
         /// </summary>
         public string Name { get; set; }
 
-        public BatterySubsystem() { }
+        public static readonly Func<string[], BatterySubsystem> ModelCreation = columns => new BatterySubsystem(columns);
+        public static readonly Func<BatterySubsystem, string> ModelToCSV = subsystem => ($"{subsystem.Id},{subsystem.Name}");
 
-        public BatterySubsystem(string id, string name)
-        {
-            Id = int.Parse(id); 
-            Name = name;
-        }
+
+        public BatterySubsystem() { }
 
         public BatterySubsystem(string[] columns)
         {
@@ -43,13 +42,10 @@ namespace BatteriesConditionTrackerLib.Models
         /// </summary>
         public string Name { get; set; }
 
-        public BatteryClampType() { }
+        public static readonly Func<string[], BatteryClampType> ModelCreation = columns => new BatteryClampType(columns);
+        public static readonly Func<BatteryClampType, string> ModelToCSV = clampType => ($"{clampType.Id},{clampType.Name}");
 
-        public BatteryClampType(string id, string name)
-        {
-            Id = int.Parse(id); 
-            Name = name;
-        }
+        public BatteryClampType() { }
 
         public BatteryClampType(string[] columns)
         {
@@ -69,13 +65,10 @@ namespace BatteriesConditionTrackerLib.Models
         /// </summary>
         public string Name { get; set; }
 
-        public BatteryTechnology() { }
+        public static readonly Func<string[], BatteryTechnology> ModelCreation = columns => new BatteryTechnology(columns);
+        public static readonly Func<BatteryTechnology, string> ModelToCSV = technology => ($"{technology.Id},{technology.Name}");
 
-        public BatteryTechnology(string id, string name)
-        {
-            Id = int.Parse(id);
-            Name = name;
-        }
+        public BatteryTechnology() { }
 
         public BatteryTechnology(string[] columns)
         {

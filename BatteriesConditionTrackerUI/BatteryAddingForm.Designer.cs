@@ -103,14 +103,14 @@
             // 
             // exploitationEndValue
             // 
-            exploitationEndValue.Location = new Point(15, 404);
+            exploitationEndValue.Location = new Point(15, 395);
             exploitationEndValue.Name = "exploitationEndValue";
             exploitationEndValue.Size = new Size(250, 43);
             exploitationEndValue.TabIndex = 61;
             // 
             // exploitationStartValue
             // 
-            exploitationStartValue.Location = new Point(15, 317);
+            exploitationStartValue.Location = new Point(15, 308);
             exploitationStartValue.Name = "exploitationStartValue";
             exploitationStartValue.Size = new Size(250, 43);
             exploitationStartValue.TabIndex = 60;
@@ -118,8 +118,7 @@
             // replacementStatusComboBox
             // 
             replacementStatusComboBox.FormattingEnabled = true;
-            replacementStatusComboBox.Items.AddRange(new object[] { "не требует замены", "требует замены", "заменен" });
-            replacementStatusComboBox.Location = new Point(319, 228);
+            replacementStatusComboBox.Location = new Point(319, 219);
             replacementStatusComboBox.Name = "replacementStatusComboBox";
             replacementStatusComboBox.Size = new Size(249, 45);
             replacementStatusComboBox.TabIndex = 58;
@@ -127,7 +126,7 @@
             // responsibleEmployeeComboBox
             // 
             responsibleEmployeeComboBox.FormattingEnabled = true;
-            responsibleEmployeeComboBox.Location = new Point(15, 755);
+            responsibleEmployeeComboBox.Location = new Point(12, 737);
             responsibleEmployeeComboBox.Name = "responsibleEmployeeComboBox";
             responsibleEmployeeComboBox.Size = new Size(553, 45);
             responsibleEmployeeComboBox.TabIndex = 59;
@@ -135,7 +134,7 @@
             // replacementStatusLabel
             // 
             replacementStatusLabel.AutoSize = true;
-            replacementStatusLabel.Location = new Point(319, 187);
+            replacementStatusLabel.Location = new Point(319, 178);
             replacementStatusLabel.Name = "replacementStatusLabel";
             replacementStatusLabel.Size = new Size(202, 38);
             replacementStatusLabel.TabIndex = 56;
@@ -144,7 +143,7 @@
             // responsibleEmployeeLabel
             // 
             responsibleEmployeeLabel.AutoSize = true;
-            responsibleEmployeeLabel.Location = new Point(15, 714);
+            responsibleEmployeeLabel.Location = new Point(12, 696);
             responsibleEmployeeLabel.Name = "responsibleEmployeeLabel";
             responsibleEmployeeLabel.Size = new Size(339, 38);
             responsibleEmployeeLabel.TabIndex = 57;
@@ -153,16 +152,15 @@
             // exploitationStatusComboBox
             // 
             exploitationStatusComboBox.FormattingEnabled = true;
-            exploitationStatusComboBox.Items.AddRange(new object[] { "эксплуатируется ", "выведен из эксплуатации " });
-            exploitationStatusComboBox.Location = new Point(15, 228);
+            exploitationStatusComboBox.Location = new Point(15, 219);
             exploitationStatusComboBox.Name = "exploitationStatusComboBox";
-            exploitationStatusComboBox.Size = new Size(250, 45);
+            exploitationStatusComboBox.Size = new Size(278, 45);
             exploitationStatusComboBox.TabIndex = 54;
             // 
             // additionalNotesValue
             // 
             additionalNotesValue.ForeColor = Color.Gray;
-            additionalNotesValue.Location = new Point(15, 589);
+            additionalNotesValue.Location = new Point(12, 571);
             additionalNotesValue.Name = "additionalNotesValue";
             additionalNotesValue.Size = new Size(553, 122);
             additionalNotesValue.TabIndex = 55;
@@ -171,7 +169,7 @@
             // exploitationStatusLabel
             // 
             exploitationStatusLabel.AutoSize = true;
-            exploitationStatusLabel.Location = new Point(15, 187);
+            exploitationStatusLabel.Location = new Point(12, 178);
             exploitationStatusLabel.Name = "exploitationStatusLabel";
             exploitationStatusLabel.Size = new Size(278, 38);
             exploitationStatusLabel.TabIndex = 52;
@@ -180,7 +178,7 @@
             // additionalNotesLabel
             // 
             additionalNotesLabel.AutoSize = true;
-            additionalNotesLabel.Location = new Point(15, 548);
+            additionalNotesLabel.Location = new Point(12, 530);
             additionalNotesLabel.Name = "additionalNotesLabel";
             additionalNotesLabel.Size = new Size(180, 38);
             additionalNotesLabel.TabIndex = 53;
@@ -189,7 +187,7 @@
             // structureComboBox
             // 
             structureComboBox.FormattingEnabled = true;
-            structureComboBox.Location = new Point(15, 491);
+            structureComboBox.Location = new Point(15, 482);
             structureComboBox.Name = "structureComboBox";
             structureComboBox.Size = new Size(283, 45);
             structureComboBox.TabIndex = 51;
@@ -197,7 +195,7 @@
             // subsystemComboBox
             // 
             subsystemComboBox.FormattingEnabled = true;
-            subsystemComboBox.Location = new Point(319, 491);
+            subsystemComboBox.Location = new Point(319, 482);
             subsystemComboBox.Name = "subsystemComboBox";
             subsystemComboBox.Size = new Size(249, 45);
             subsystemComboBox.TabIndex = 50;
@@ -205,7 +203,7 @@
             // subsystemLabel
             // 
             subsystemLabel.AutoSize = true;
-            subsystemLabel.Location = new Point(319, 450);
+            subsystemLabel.Location = new Point(319, 441);
             subsystemLabel.Name = "subsystemLabel";
             subsystemLabel.Size = new Size(170, 38);
             subsystemLabel.TabIndex = 49;
@@ -214,7 +212,7 @@
             // structureLabel
             // 
             structureLabel.AutoSize = true;
-            structureLabel.Location = new Point(15, 450);
+            structureLabel.Location = new Point(15, 441);
             structureLabel.Name = "structureLabel";
             structureLabel.Size = new Size(111, 38);
             structureLabel.TabIndex = 48;
@@ -223,7 +221,7 @@
             // exploitationStartLabel
             // 
             exploitationStartLabel.AutoSize = true;
-            exploitationStartLabel.Location = new Point(15, 276);
+            exploitationStartLabel.Location = new Point(15, 267);
             exploitationStartLabel.Name = "exploitationStartLabel";
             exploitationStartLabel.Size = new Size(353, 38);
             exploitationStartLabel.TabIndex = 46;
@@ -232,7 +230,7 @@
             // exploitationEndLabel
             // 
             exploitationEndLabel.AutoSize = true;
-            exploitationEndLabel.Location = new Point(15, 363);
+            exploitationEndLabel.Location = new Point(15, 354);
             exploitationEndLabel.Name = "exploitationEndLabel";
             exploitationEndLabel.Size = new Size(402, 38);
             exploitationEndLabel.TabIndex = 47;
@@ -310,7 +308,7 @@
             // 
             addBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             addBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            addBatteryButton.Location = new Point(847, 745);
+            addBatteryButton.Location = new Point(847, 727);
             addBatteryButton.Name = "addBatteryButton";
             addBatteryButton.Size = new Size(129, 55);
             addBatteryButton.TabIndex = 29;
@@ -321,7 +319,7 @@
             // 
             cancelButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             cancelButton.ForeColor = Color.FromArgb(0, 121, 194);
-            cancelButton.Location = new Point(712, 745);
+            cancelButton.Location = new Point(712, 727);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(129, 55);
             cancelButton.TabIndex = 69;
@@ -333,7 +331,7 @@
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(987, 808);
+            ClientSize = new Size(987, 791);
             Controls.Add(cancelButton);
             Controls.Add(addBatteryButton);
             Controls.Add(photosGroupBox);

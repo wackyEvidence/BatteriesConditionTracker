@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BatteriesConditionTrackerLib.DataAccess;
+using BatteriesConditionTrackerLib.DataAccess.Interfaces;
 
 namespace BatteriesConditionTrackerLib
 {
@@ -16,7 +17,7 @@ namespace BatteriesConditionTrackerLib
         {
             switch (databaseType)
             {
-                case DatabaseType.SQL:
+                case DatabaseType.SqlServer:
                     var sqlConnector = new SqlConnector();
                     Connection = sqlConnector; 
                     break;
@@ -24,7 +25,7 @@ namespace BatteriesConditionTrackerLib
                     var textConnector = new TextConnector(); 
                     Connection = textConnector;
                     break;
-                case DatabaseType.PostgreSQL:
+                case DatabaseType.PostgreSql:
                     var postgreConnector = new PostgreConnector();
                     Connection = postgreConnector;
                     break;

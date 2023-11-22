@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PositionsListForm));
             groupBox1 = new GroupBox();
             deletePositionButton = new Button();
             addPositionButton = new Button();
             editPositionButton = new Button();
             dataGridView1 = new DataGridView();
-            structureTypeColumn = new DataGridViewTextBoxColumn();
             headerLabel = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -45,7 +45,7 @@
             groupBox1.Controls.Add(addPositionButton);
             groupBox1.Controls.Add(editPositionButton);
             groupBox1.ForeColor = Color.FromArgb(0, 121, 194);
-            groupBox1.Location = new Point(376, 78);
+            groupBox1.Location = new Point(453, 79);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(352, 259);
             groupBox1.TabIndex = 19;
@@ -62,6 +62,7 @@
             deletePositionButton.TabIndex = 16;
             deletePositionButton.Text = "Удалить";
             deletePositionButton.UseVisualStyleBackColor = true;
+            deletePositionButton.Click += deletePositionButton_Click;
             // 
             // addPositionButton
             // 
@@ -91,26 +92,22 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dataGridView1.BackgroundColor = Color.Gainsboro;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { structureTypeColumn });
             dataGridView1.Location = new Point(20, 96);
             dataGridView1.Margin = new Padding(11);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(342, 241);
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(415, 241);
             dataGridView1.TabIndex = 18;
-            // 
-            // structureTypeColumn
-            // 
-            structureTypeColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            structureTypeColumn.HeaderText = "Наименование";
-            structureTypeColumn.MinimumWidth = 6;
-            structureTypeColumn.Name = "structureTypeColumn";
-            structureTypeColumn.ReadOnly = true;
             // 
             // headerLabel
             // 
@@ -129,15 +126,17 @@
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(743, 350);
+            ClientSize = new Size(817, 350);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(6);
             Name = "PositionsListForm";
-            Text = "PositionsListForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Должности";
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -151,7 +150,6 @@
         private Button addPositionButton;
         private Button editPositionButton;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn structureTypeColumn;
         private Label headerLabel;
     }
 }

@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 using BatteriesConditionTrackerLib.Models;
 using BatteriesConditionTrackerLib.DataAccess.TextHelper;
 using System.Web;
+using System.ComponentModel;
+using BatteriesConditionTrackerLib.Models.Interfaces;
+using BatteriesConditionTrackerLib.DataAccess.Interfaces;
+using System.CodeDom;
 
 namespace BatteriesConditionTrackerLib.DataAccess
 {
-    public class TextConnector : IDataConnection
+    public class TextConnector : IDataConnection, IGetData_All, IGetData_ById
     {
+        private const string BatteryExploitationStatusesFileName = "BatteryExploitationStatuses.csv";
+        private const string BatteryReplacementStatusesFileName = "BatteryReplacementStatuses.csv";
         private const string PositionsFileName = "Positions.csv";
         private const string StructuresFileName = "Structures.csv";
         private const string BatteryModelsFileName = "BatteryModels.csv";
@@ -22,8 +28,11 @@ namespace BatteriesConditionTrackerLib.DataAccess
         private const string ConcreteBatteriesFileName = "ConcreteBatteries.csv";
         private const string SoHMeasuresFileName = "SoHMeasures.csv";
         private const string ConcreteBatteryPhotosFileName = "ConcreteBatteryPhotos.csv";
-        private const string BatteryModelPhotosFileName = "BatteryModelPhotos.csv"; 
+        private const string BatteryModelPhotosFileName = "BatteryModelPhotos.csv";
 
+        //
+        // GENERIC METHODS
+        //
         /// <summary>
         /// Добавляет в файл .csv запись о модели. 
         /// </summary>
@@ -39,210 +48,201 @@ namespace BatteriesConditionTrackerLib.DataAccess
             var models = fileName.GetFullFilePath().LoadFile().ConvertToModels(modelCreation); 
 
             int newId = models.Count == 0? 1 : models.OrderByDescending(model => model.Id).First().Id + 1;
-
             model.Id = newId; 
+
             models.Add(model);
-
-            if(model is IHavePhotos modelWithPhotos)
-                // TO-DO Дописать сюда что-то 
-
             models.SaveToTextFile(fileName, modelToCSV);
+
             return model;
         }
 
-        //public T UpdateModel<T>(T model, string fileName)
-        //    where T : IHaveId
-        //{
+        public T UpdateModel<T>(T model, string fileName, Func<string[], T> modelCreation, Func<T, string> modelToCSV)
+            where T : IHaveId
+        {
+            var models = fileName.GetFullFilePath().LoadFile().ConvertToModels(modelCreation);
+            var oldModel = models.Where(m => m.Id == model.Id).FirstOrDefault();
+            oldModel = model;
+            models.SaveToTextFile(fileName, modelToCSV); 
 
-        //}
+            return model;
+        }
 
+        public T DeleteModel<T>(T model, string fileName, Func<string[], T> modelCreation, Func<T, string> modelToCSV)
+            where T : IHaveId
+        {
+            var models = fileName.GetFullFilePath().LoadFile().ConvertToModels(modelCreation);
+            var modelToBeDeleted = models.Where(m => m.Id == model.Id).FirstOrDefault();
+            models.Remove(modelToBeDeleted); 
+            models.SaveToTextFile(fileName, modelToCSV);
+
+            return model;
+        }
+        //
+        // CREATE
+        //
         public BatteryClampType CreateBatteryClampType(BatteryClampType clampTypeModel)
         {
-            Func<string[], BatteryClampType> modelCreation = columns => new BatteryClampType(columns);
-            Func<BatteryClampType, string> modelToCSV = clampType => $"{clampType.Id},{clampType.Name}";
-
-            return CreateModel(clampTypeModel, BatteryClampTypesFileName, modelCreation, modelToCSV); 
-        }
-
-        public BatteryModel CreateBatteryModel(BatteryModel batteryModel)
-        {
-            Func<string[], BatteryModel> modelCreation = columns => new BatteryModel(columns);
-            Func<BatteryModel, string> modelToCSV = bm => 
-            $"{bm.Id},{bm.Name},{bm.Brand},{bm.Capacity},{bm.Voltage},{bm.Length},{bm.Height},{bm.Width},{bm.Technology.Id}," +
-            $"{bm.ClampType.Id},{bm.Cost},{bm.BufferModeServiceTime},{bm.MinSoH}";
-
-            return CreateModel(batteryModel, BatteryModelsFileName, modelCreation, modelToCSV);
-        }
-
-        public BatterySoHMeasure CreateBatterySoHMeasure(BatterySoHMeasure batterySoHMeasureModel)
-        {
-            Func<string[], BatterySoHMeasure> modelCreation = columns => new BatterySoHMeasure(columns);
-            Func<BatterySoHMeasure, string> modelToCSV = soh => $"{soh.Id},{soh.Battery.Id},{soh.PerformingEmployee.Id},{soh.MeasureDate},{soh.SoHValue}";
-
-            return CreateModel(batterySoHMeasureModel, SoHMeasuresFileName, modelCreation, modelToCSV);
+            return CreateModel(clampTypeModel, BatteryClampTypesFileName, BatteryClampType.ModelCreation, BatteryClampType.ModelToCSV); 
         }
 
         public BatterySubsystem CreateBatterySubsystem(BatterySubsystem batterySubsystemModel)
         {
-            Func<string[], BatterySubsystem> modelCreation = columns => new BatterySubsystem(columns);
-            Func<BatterySubsystem, string> modelToCSV = subsystem => $"{subsystem.Id},{subsystem.Name}";
-
-            return CreateModel(batterySubsystemModel, BatterySubsystemsFileName, modelCreation, modelToCSV);
+            return CreateModel(batterySubsystemModel, BatterySubsystemsFileName, BatterySubsystem.ModelCreation, BatterySubsystem.ModelToCSV);
         }
 
         public BatteryTechnology CreateBatteryTechnology(BatteryTechnology batteryTechnologyModel)
         {
-            Func<string[], BatteryTechnology> modelCreation = columns => new BatteryTechnology(columns);
-            Func<BatteryTechnology, string> modelToCSV = technology => $"{technology.Id},{technology.Name}";
-
-            return CreateModel(batteryTechnologyModel, BatteryTechnologiesFileName, modelCreation, modelToCSV);
+            return CreateModel(batteryTechnologyModel, BatteryTechnologiesFileName, BatteryTechnology.ModelCreation, BatteryTechnology.ModelToCSV);
         }
 
-        public ConcreteBattery CreateConcreteBattery(ConcreteBattery concreteBatteryModel)
+        public BatteryModel CreateBatteryModel(BatteryModel batteryModel)
         {
-            Func<string[], ConcreteBattery> modelCreation = columns => new ConcreteBattery(columns);
-            Func<ConcreteBattery, string> modelToCSV = b => $"{b.Id},{b.Model.Id},{b.ExploitationStart},{b.ExploitationEnd}," +
-            $"{b.InstallationStructure.Id},{b.Subsystem.Id},{b.ResponsibleWorker.Id},{b.ExploitationStatus.Id}," +
-            $"{b.ReplacementStatus.Id},{b.AdditionalNotes},{b.LastCapacityMeasureDate}";
-
-            return CreateModel(concreteBatteryModel, ConcreteBatteriesFileName, modelCreation, modelToCSV);
+            return CreateModel(batteryModel, BatteryModelsFileName, BatteryModel.ModelCreation, BatteryModel.ModelToCSV);
         }
 
         public Position CreatePosition(Position positionModel)
         {
-            Func<string[], Position> modelCreation = columns => new Position(columns);
-            Func<Position, string> modelToCSV = position => $"{position.Id},{position.Name}"; 
-
-            return CreateModel(positionModel, PositionsFileName, modelCreation , modelToCSV); 
+            return CreateModel(positionModel, PositionsFileName, Position.ModelCreation, Position.ModelToCSV);
         }
 
         public Structure CreateStructure(Structure structureModel)
         {
-            Func<string[], Structure> modelCreation = columns => new Structure(columns);
-            Func<Structure, string> modelToCSV = structure => $"{structure.Id},{structure.Name},{structure.Type.Id}";
-
-            return CreateModel(structureModel, StructuresFileName, modelCreation, modelToCSV);
+            return CreateModel(structureModel, StructuresFileName, Structure.ModelCreation, Structure.ModelToCSV);
         }
 
         public StructureType CreateStructureType(StructureType structureTypeModel)
         {
-            Func<string[], StructureType> modelCreation = columns => new StructureType(columns);
-            Func<StructureType, string> modelToCSV = structureType => $"{structureType.Id},{structureType.Name}";
-
-            return CreateModel(structureTypeModel, StructureTypesFileName, modelCreation, modelToCSV);
+            return CreateModel(structureTypeModel, StructureTypesFileName, StructureType.ModelCreation, StructureType.ModelToCSV);
         }
+
 
         public User CreateUser(User userModel)
         {
-            Func<string[], User> modelCreation = columns => new User(columns);
-            Func<User, string> modelToCSV = user => $"{user.Id},{user.Name},{user.Surname},{user.Patronymic}," +
-            $"{user.Password},{user.PhoneNumber},{user.Email},{user.Position.Id},{user.Supervisor.Id},{user.IsAdmin}";
-
-            return CreateModel(userModel, UsersFileName, modelCreation, modelToCSV);
+            return CreateModel(userModel, UsersFileName, User.ModelCreation, User.ModelToCSV);
         }
 
+        public ConcreteBattery CreateConcreteBattery(ConcreteBattery concreteBatteryModel)
+        {
+            return CreateModel(concreteBatteryModel, ConcreteBatteriesFileName, ConcreteBattery.ModelCreation, ConcreteBattery.ModelToCSV);
+        }
+
+        public BatterySoHMeasure CreateBatterySoHMeasure(BatterySoHMeasure batterySoHMeasureModel)
+        {
+            return CreateModel(batterySoHMeasureModel, SoHMeasuresFileName, BatterySoHMeasure.ModelCreation, BatterySoHMeasure.ModelToCSV);
+        }
+
+        public void CreateBatteryModelPhotos(List<Photo> photos, BatteryModel batteryModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateConcreteBatteryPhotos(List<Photo> photos, ConcreteBattery concreteBattery)
+        {
+            throw new NotImplementedException();
+        }
+        //
+        // UPDATE
+        //
         public BatteryClampType UpdateBatteryClampType(BatteryClampType clampTypeModel)
         {
-            throw new NotImplementedException();
-        }
-
-        public BatteryModel UpdateBatteryModel(BatteryModel batteryModel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public BatterySoHMeasure UpdateBatterySoHMeasure(BatterySoHMeasure batterySoHMeasureModel)
-        {
-            throw new NotImplementedException();
+            return UpdateModel(clampTypeModel, BatteryClampTypesFileName, BatteryClampType.ModelCreation, BatteryClampType.ModelToCSV);
         }
 
         public BatterySubsystem UpdateBatterySubsystem(BatterySubsystem batterySubsystemModel)
         {
-            throw new NotImplementedException();
+            return UpdateModel(batterySubsystemModel, BatterySubsystemsFileName, BatterySubsystem.ModelCreation, BatterySubsystem.ModelToCSV);
         }
 
         public BatteryTechnology UpdateBatteryTechnology(BatteryTechnology batteryTechnologyModel)
         {
-            throw new NotImplementedException();
+            return UpdateModel(batteryTechnologyModel, BatteryTechnologiesFileName, BatteryTechnology.ModelCreation, BatteryTechnology.ModelToCSV);
         }
 
-        public ConcreteBattery UpdateConcreteBattery(ConcreteBattery concreteBatteryModel)
+        public BatteryModel UpdateBatteryModel(BatteryModel batteryModel)
         {
-            throw new NotImplementedException();
+            return UpdateModel(batteryModel, BatteryModelsFileName, BatteryModel.ModelCreation, BatteryModel.ModelToCSV);
         }
 
-        public Position UpdatePosition(Position newPositionModel)
+        public Position UpdatePosition(Position positionModel)
         {
-            var positions = PositionsFileName.GetFullFilePath().LoadFile().ConvertToModels(columns => new Position(columns[0], columns[1]));
-            var oldPositionModel = positions.Where(p => p.Id == newPositionModel.Id).FirstOrDefault();
-            oldPositionModel = newPositionModel;
-            positions.SaveToTextFile(PositionsFileName, position => ($"{position.Id},{position.Name}"));
-            return newPositionModel;
+            return UpdateModel(positionModel, PositionsFileName, Position.ModelCreation, Position.ModelToCSV);
         }
 
         public Structure UpdateStructure(Structure structureModel)
         {
-            throw new NotImplementedException();
+            return UpdateModel(structureModel, StructuresFileName, Structure.ModelCreation, Structure.ModelToCSV);
         }
 
         public StructureType UpdateStructureType(StructureType structureTypeModel)
         {
-            throw new NotImplementedException();
+            return UpdateModel(structureTypeModel, StructureTypesFileName, StructureType.ModelCreation, StructureType.ModelToCSV);
         }
 
         public User UpdateUser(User userModel)
         {
-            throw new NotImplementedException();
+            return UpdateModel(userModel, UsersFileName, User.ModelCreation, User.ModelToCSV);
         }
 
+        public ConcreteBattery UpdateConcreteBattery(ConcreteBattery concreteBatteryModel)
+        {
+            return UpdateModel(concreteBatteryModel, ConcreteBatteriesFileName, ConcreteBattery.ModelCreation, ConcreteBattery.ModelToCSV);
+        }
+
+        public BatterySoHMeasure UpdateBatterySoHMeasure(BatterySoHMeasure batterySoHMeasureModel)
+        {
+            return UpdateModel(batterySoHMeasureModel, SoHMeasuresFileName, BatterySoHMeasure.ModelCreation, BatterySoHMeasure.ModelToCSV);
+        }
+        //
+        // DELETE
+        //
         public BatteryClampType DeleteBatteryClampType(BatteryClampType clampTypeModel)
         {
-            throw new NotImplementedException();
-        }
-
-        public BatteryModel DeleteBatteryModel(BatteryModel batteryModel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public BatterySoHMeasure DeleteBatterySoHMeasure(BatterySoHMeasure batterySoHMeasureModel)
-        {
-            throw new NotImplementedException();
+            return DeleteModel(clampTypeModel, BatteryClampTypesFileName, BatteryClampType.ModelCreation, BatteryClampType.ModelToCSV);
         }
 
         public BatterySubsystem DeleteBatterySubsystem(BatterySubsystem batterySubsystemModel)
         {
-            throw new NotImplementedException();
+            return DeleteModel(batterySubsystemModel, BatterySubsystemsFileName, BatterySubsystem.ModelCreation, BatterySubsystem.ModelToCSV);
         }
 
         public BatteryTechnology DeleteBatteryTechnology(BatteryTechnology batteryTechnologyModel)
         {
-            throw new NotImplementedException();
+            return DeleteModel(batteryTechnologyModel, BatteryTechnologiesFileName, BatteryTechnology.ModelCreation, BatteryTechnology.ModelToCSV);
         }
 
-        public ConcreteBattery DeleteConcreteBattery(ConcreteBattery concreteBatteryModel)
+        public BatteryModel DeleteBatteryModel(BatteryModel batteryModel)
         {
-            throw new NotImplementedException();
+            return DeleteModel(batteryModel, BatteryModelsFileName, BatteryModel.ModelCreation, BatteryModel.ModelToCSV);
         }
 
         public Position DeletePosition(Position positionModel)
         {
-            throw new NotImplementedException();
+            return DeleteModel(positionModel, PositionsFileName, Position.ModelCreation, Position.ModelToCSV);
         }
 
         public Structure DeleteStructure(Structure structureModel)
         {
-            throw new NotImplementedException();
+            return DeleteModel(structureModel, StructuresFileName, Structure.ModelCreation, Structure.ModelToCSV);
         }
 
         public StructureType DeleteStructureType(StructureType structureTypeModel)
         {
-            throw new NotImplementedException();
+            return DeleteModel(structureTypeModel, StructureTypesFileName, StructureType.ModelCreation, StructureType.ModelToCSV);
         }
 
         public User DeleteUser(User userModel)
         {
-            throw new NotImplementedException();
+            return DeleteModel(userModel, UsersFileName, User.ModelCreation, User.ModelToCSV);
+        }
+
+        public ConcreteBattery DeleteConcreteBattery(ConcreteBattery concreteBatteryModel)
+        {
+            return DeleteModel(concreteBatteryModel, ConcreteBatteriesFileName, ConcreteBattery.ModelCreation, ConcreteBattery.ModelToCSV);
+        }
+
+        public BatterySoHMeasure DeleteBatterySoHMeasure(BatterySoHMeasure batterySoHMeasureModel)
+        {
+            return DeleteModel(batterySoHMeasureModel, SoHMeasuresFileName, BatterySoHMeasure.ModelCreation, BatterySoHMeasure.ModelToCSV);
         }
 
         public void DeleteBatteryModelPhoto(List<Photo> photos, BatteryModel batteryModel)
@@ -255,24 +255,104 @@ namespace BatteriesConditionTrackerLib.DataAccess
             throw new NotImplementedException();
         }
 
-        public void CreateBatteryModelPhotos(List<Photo> photos, BatteryModel batteryModel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CreateConcreteBatteryPhotos(List<Photo> photos, ConcreteBattery concreteBattery)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<BatteryExploitationStatus> GetBatteryExploitationStatus_All()
         {
-            throw new NotImplementedException();
+            return BatteryExploitationStatusesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryExploitationStatus.ModelCreation); 
         }
 
         public List<BatteryReplacementStatus> GetBatteryReplacementStatus_All()
         {
-            throw new NotImplementedException();
+            return BatteryReplacementStatusesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryReplacementStatus.ModelCreation); 
+        }
+
+        public BindingList<BatteryClampType> GetBatteryClampType_All()
+        {
+            return new BindingList<BatteryClampType>(BatteryClampTypesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryClampType.ModelCreation));
+        }
+
+        public BindingList<BatterySubsystem> GetBatterySubsystem_All()
+        {
+            return new BindingList<BatterySubsystem>(BatterySubsystemsFileName.GetFullFilePath().LoadFile().ConvertToModels(BatterySubsystem.ModelCreation));
+        }
+
+        public BindingList<BatteryTechnology> GetBatteryTechnology_All()
+        {
+            return new BindingList<BatteryTechnology>(BatteryTechnologiesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryTechnology.ModelCreation));
+        }
+
+        public BindingList<Position> GetPosition_All()
+        {
+            return new BindingList<Position>(PositionsFileName.GetFullFilePath().LoadFile().ConvertToModels(Position.ModelCreation));
+        }
+
+        public BindingList<User> GetUser_All()
+        {
+            return new BindingList<User>(UsersFileName.GetFullFilePath().LoadFile().ConvertToModels(User.ModelCreation));
+        }
+
+        public BindingList<BatteryModel> GetBatteryModel_All()
+        {
+            return new BindingList<BatteryModel>(BatteryModelsFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryModel.ModelCreation));
+        }
+
+        public BindingList<StructureType> GetStructureType_All()
+        {
+            return new BindingList<StructureType>(StructureTypesFileName.GetFullFilePath().LoadFile().ConvertToModels(StructureType.ModelCreation));
+        }
+
+        public BindingList<Structure> GetStructure_All()
+        {
+            return new BindingList<Structure>(StructuresFileName.GetFullFilePath().LoadFile().ConvertToModels(Structure.ModelCreation));
+        }
+
+        public BatteryExploitationStatus GetBatteryExploitationStatus_ById(int id)
+        {
+            return BatteryExploitationStatusesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryExploitationStatus.ModelCreation).Where(model => model.Id == id).First();
+        }
+
+        public BatteryReplacementStatus GetBatteryReplacementStatus_ById(int id)
+        {
+            return BatteryReplacementStatusesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryReplacementStatus.ModelCreation).Where(model => model.Id == id).First();
+        }
+
+        public BatteryClampType GetBatteryClampType_ById(int id)
+        {
+            return BatteryClampTypesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryClampType.ModelCreation).Where(model => model.Id == id).First();
+        }
+
+        public BatterySubsystem GetBatterySubsystem_ById(int id)
+        {
+            return BatterySubsystemsFileName.GetFullFilePath().LoadFile().ConvertToModels(BatterySubsystem.ModelCreation).Where(model => model.Id == id).First();
+        }
+
+        public BatteryTechnology GetBatteryTechnology_ById(int id)
+        {
+            return BatteryTechnologiesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryTechnology.ModelCreation).Where(model => model.Id == id).First();
+        }
+
+        public Position GetPosition_ById(int id)
+        {
+            return PositionsFileName.GetFullFilePath().LoadFile().ConvertToModels(Position.ModelCreation).Where(model => model.Id == id).First();
+        }
+
+        public User GetUser_ById(int id)
+        {
+            return UsersFileName.GetFullFilePath().LoadFile().ConvertToModels(User.ModelCreation).Where(model => model.Id == id).First();
+        }
+
+        public BatteryModel GetBatteryModel_ById(int id)
+        {
+            return BatteryModelsFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryModel.ModelCreation).Where(model => model.Id == id).First();
+        }
+
+        public StructureType GetStructureType_ById(int id)
+        {
+            return StructureTypesFileName.GetFullFilePath().LoadFile().ConvertToModels(StructureType.ModelCreation).Where(model => model.Id == id).First();
+        }
+
+        public Structure GetStructure_ById(int id)
+        {
+            return StructuresFileName.GetFullFilePath().LoadFile().ConvertToModels(Structure.ModelCreation).Where(model => model.Id == id).First();
         }
     }
 }

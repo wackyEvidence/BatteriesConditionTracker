@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BatteriesConditionTrackerLib.Models
+namespace BatteriesConditionTrackerLib.Models.Interfaces
 {
     public interface IHaveId
     {
-        public int Id { get; set;  }
+        public int Id { get; set; }
     }
 }

@@ -26,7 +26,6 @@ D:\Автоматизация учета состояния аккумулято
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Debug\net6.0-windows\BatteriesConditionTrackerUI.pdb
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Debug\net6.0-windows\BCrypt.Net-Next.dll
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.csproj.AssemblyReference.cache
-D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.AdminPanelForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTracker.AuthorizationForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.BatteriesListForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.BatteryAddingForm.resources

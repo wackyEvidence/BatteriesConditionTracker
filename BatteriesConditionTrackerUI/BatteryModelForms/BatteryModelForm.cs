@@ -16,10 +16,9 @@ namespace BatteriesConditionTrackerUI
 {
     public partial class BatteryModelForm : Form, IValidatable
     {
-        private BindingList<BatteryTechnology> availableTechnologies = new BindingList<BatteryTechnology>();
-        private List<BatteryClampType> availableClampTypes = new List<BatteryClampType>();
+        private BindingList<BatteryTechnology> availableTechnologies = GlobalConfig.Connection.GetBatteryTechnology_All();
+        private BindingList<BatteryClampType> availableClampTypes = GlobalConfig.Connection.GetBatteryClampType_All();
 
-        private List<Photo> photosList = new List<Photo>();
         private FormMode mode;
         private BatteryModel? batteryModel;
 
@@ -27,7 +26,7 @@ namespace BatteriesConditionTrackerUI
         {
             InitializeComponent();
             this.mode = mode;
-            //CreateSampleData();
+            headerLabel.Text = "Добавление модели аккумулятора";
             WireUpLists();
         }
 
@@ -36,16 +35,8 @@ namespace BatteriesConditionTrackerUI
             InitializeComponent();
             this.mode = mode;
             this.batteryModel = batteryModel;
-            //CreateSampleData();
+            headerLabel.Text = "Изменение модели аккумулятора";
             WireUpLists();
-        }
-
-        private void CreateSampleData()
-        {
-            availableTechnologies.Add(new BatteryTechnology() { Id = 1, Name = "AGM" });
-            availableTechnologies.Add(new BatteryTechnology() { Id = 2, Name = "Li-On" });
-            availableClampTypes.Add(new BatteryClampType() { Id = 1, Name = "F1" });
-            availableClampTypes.Add(new BatteryClampType() { Id = 2, Name = "F2" });
         }
 
         private void WireUpLists()
@@ -75,12 +66,11 @@ namespace BatteriesConditionTrackerUI
                     length,
                     height,
                     width,
-                    technologyComboBox.ValueMember,
-                    clampTypeComboBox.ValueMember,
+                    (BatteryTechnology)technologyComboBox.SelectedItem,
+                    (BatteryClampType)clampTypeComboBox.SelectedItem,
                     costValue.Text,
                     bufferServiceTimeValue.Text,
-                    minSoHValue.Text,
-                    photosList
+                    minSoHValue.Text
                     );
                     #endregion
                     GlobalConfig.Connection.CreateBatteryModel(batteryModel);

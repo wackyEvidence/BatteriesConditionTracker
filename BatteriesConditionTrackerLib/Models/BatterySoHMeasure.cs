@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using BatteriesConditionTrackerLib.Models.Interfaces;
 
 namespace BatteriesConditionTrackerLib.Models
 {
@@ -30,16 +30,22 @@ namespace BatteriesConditionTrackerLib.Models
         /// </summary>
         public double SoHValue { get; set; }
 
+        public static readonly Func<string[], BatterySoHMeasure> ModelCreation = columns => new BatterySoHMeasure(columns);
+        public static readonly Func<BatterySoHMeasure, string> ModelToCSV = soh => $"{soh.Id},{soh.Battery.Id},{soh.PerformingEmployee.Id},{soh.MeasureDate},{soh.SoHValue}";
+
         public BatterySoHMeasure() { }
 
-        public BatterySoHMeasure(string id, string battery, string employee, string measureDate, string soh)
+        public BatterySoHMeasure(string id, ConcreteBattery battery, User performingEmployee, string measureDate, string soh)
         {
-            // TO DO - Написать конструктор с получением экземпляров классов ConcreteBattery и User по Id 
+            Id = int.Parse(id); 
+            Battery = battery;
+            PerformingEmployee = performingEmployee;
+            MeasureDate = DateTime.Parse(measureDate);
+            SoHValue = int.Parse(soh);
         }
 
         public BatterySoHMeasure(string[] columns)
         {
-            // TO DO - Разобраться с СoncreteBattery и PerformingEmployee
             Id = int.Parse(columns[0]);
             var batteryId = int.Parse(columns[1]);
             var performingEmployeeId = int.Parse(columns[2]); 

@@ -73,26 +73,26 @@ create table Users --created
 	foreign key (supervisor_id) references Users(id),
 	unique(login, email, phone_number)
 )
-
-create table BatteryModels --created
+drop table BatteryModels
+create table BatteryModels
 (
 	id serial primary key, 
 	brand varchar(50) not null, 
-	capacity float not null check(capacity > 0), 
-	voltage float not null check(voltage > 0), 
-	length float not null check (length > 0), 
-	height float not null check (height > 0), 
-	width float not null check (width > 0), 
+	capacity real not null check(capacity > 0), 
+	voltage real not null check(voltage > 0), 
+	length integer not null check (length > 0), 
+	height integer not null check (height > 0), 
+	width integer not null check (width > 0), 
 	technology_id int, 
 	clamp_type_id int,
 	cost money not null check (cost::numeric::int > 0),
-	buffer_mode_service_time float not null check (buffer_mode_service_time > 0), 
+	buffer_mode_service_time real not null check (buffer_mode_service_time > 0), 
 	soh_threshold int not null check (soh_threshold > 0), 
 	foreign key (technology_id) references BatteryTechnologies(id) on delete set null,
 	foreign key (clamp_type_id) references BatteryClampTypes(id) on delete set null
 )
-
-create table ConcreteBatteries --created
+drop table ConcreteBatteries
+create table ConcreteBatteries 
 (
 	id serial primary key, 
 	model_id int, 
@@ -113,7 +113,7 @@ create table ConcreteBatteries --created
 	foreign key (replacement_status_id) references BatteryReplacementStatuses(id) on delete set null
 )
 
-
+drop table BatterySoHMeasures
 create table BatterySoHMeasures
 (
 	id serial primary key, 
@@ -125,7 +125,7 @@ create table BatterySoHMeasures
 	foreign key (performing_employee_id) references Users(id) on delete set null
 )
 
-create table BatteryModelPhotos --created
+create table BatteryModelPhotos
 (
 	id serial primary key, 
 	model_id int not null, 

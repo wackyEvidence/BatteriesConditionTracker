@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BatteriesConditionTrackerLib.Models.Interfaces;
 
 namespace BatteriesConditionTrackerLib.Models
 {
@@ -67,12 +68,15 @@ namespace BatteriesConditionTrackerLib.Models
         public List<Photo> AddedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public List<Photo> DeletedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
+        public static readonly Func<string[], BatteryModel> ModelCreation = columns => new BatteryModel(columns);
+        public static readonly Func<BatteryModel, string> ModelToCSV = bm =>
+            $"{bm.Id},{bm.Name},{bm.Brand},{bm.Capacity},{bm.Voltage},{bm.Length},{bm.Height},{bm.Width},{bm.Technology.Id}," +
+            $"{bm.ClampType.Id},{bm.Cost},{bm.BufferModeServiceTime},{bm.MinSoH}";
+
         public BatteryModel() { }
 
-        // TODO - Разобраться с назначением полей Technology и ClampType в конструкторах.
-        public BatteryModel(string name, string brand, string capacity, string voltage, 
-            string length, string height, string width, string technology, string clampType, string cost, 
-            string bufferModeServiceTime, string minSoH, List<Photo> photoPaths)
+        public BatteryModel(string name, string brand, string capacity, string voltage, string length, string height, 
+            string width, BatteryTechnology technology, BatteryClampType clampType, string cost, string bufferModeServiceTime, string minSoH)
         {
             Name = name; 
             Brand = brand;
@@ -81,12 +85,11 @@ namespace BatteriesConditionTrackerLib.Models
             Length = int.Parse(length); 
             Height = int.Parse(height);
             Width = int.Parse(width);
-            Technology = new BatteryTechnology() { Id = int.Parse(technology) }; 
-            ClampType = new BatteryClampType() { Id = int.Parse(clampType) };
+            Technology = technology; 
+            ClampType = clampType;
             Cost = decimal.Parse(cost);
-            BufferModeServiceTime = int.Parse(bufferModeServiceTime); 
+            BufferModeServiceTime = double.Parse(bufferModeServiceTime); 
             MinSoH = int.Parse(minSoH);
-            DisplayedPhotos = photoPaths;
         }
 
         public BatteryModel(string[] columns)
@@ -99,26 +102,11 @@ namespace BatteriesConditionTrackerLib.Models
             Length = int.Parse(columns[5]);
             Height = int.Parse(columns[6]);
             Width = int.Parse(columns[7]);
-            Technology = new BatteryTechnology() { Id = int.Parse(columns[8]) };
-            ClampType = new BatteryClampType() { Id = int.Parse(columns[9]) };
+            Technology = GlobalConfig.Connection.GetBatteryTechnology_ById(int.Parse(columns[8]));
+            ClampType = GlobalConfig.Connection.GetBatteryClampType_ById(int.Parse(columns[9]));
             Cost = decimal.Parse(columns[10]);
             BufferModeServiceTime = double.Parse(columns[11]);
             MinSoH = int.Parse(columns[12]); 
-        }
-
-        public void SavePhotos()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeletePhotos()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> GetPhotos()
-        {
-            throw new NotImplementedException();
         }
     }
 }

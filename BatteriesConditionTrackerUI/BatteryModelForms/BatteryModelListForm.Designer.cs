@@ -34,9 +34,6 @@
             editBatteryModelButton = new Button();
             dataGridView1 = new DataGridView();
             headerLabel = new Label();
-            structureNameColumn = new DataGridViewTextBoxColumn();
-            structureTypeColumn = new DataGridViewTextBoxColumn();
-            batteriesAmountColumn = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -95,7 +92,6 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BackgroundColor = Color.Gainsboro;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { structureNameColumn, structureTypeColumn, batteriesAmountColumn });
             dataGridView1.Location = new Point(13, 77);
             dataGridView1.Margin = new Padding(6);
             dataGridView1.Name = "dataGridView1";
@@ -118,30 +114,6 @@
             headerLabel.TabIndex = 14;
             headerLabel.Text = "Список моделей аккумуляторов";
             // 
-            // structureNameColumn
-            // 
-            structureNameColumn.HeaderText = "Наименование";
-            structureNameColumn.MinimumWidth = 6;
-            structureNameColumn.Name = "structureNameColumn";
-            structureNameColumn.ReadOnly = true;
-            structureNameColumn.Width = 350;
-            // 
-            // structureTypeColumn
-            // 
-            structureTypeColumn.HeaderText = "Емкость (Ач)";
-            structureTypeColumn.MinimumWidth = 6;
-            structureTypeColumn.Name = "structureTypeColumn";
-            structureTypeColumn.ReadOnly = true;
-            structureTypeColumn.Width = 175;
-            // 
-            // batteriesAmountColumn
-            // 
-            batteriesAmountColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            batteriesAmountColumn.HeaderText = "Напряжение (В)";
-            batteriesAmountColumn.MinimumWidth = 6;
-            batteriesAmountColumn.Name = "batteriesAmountColumn";
-            batteriesAmountColumn.ReadOnly = true;
-            // 
             // BatteryModelListForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
@@ -153,7 +125,7 @@
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "BatteryModelListForm";
             Text = "BatteryModelListForm";
             groupBox1.ResumeLayout(false);
@@ -169,9 +141,6 @@
         private Button addBatteryModelButton;
         private Button editBatteryModelButton;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn structureNameColumn;
-        private DataGridViewTextBoxColumn structureTypeColumn;
-        private DataGridViewTextBoxColumn batteriesAmountColumn;
         private Label headerLabel;
     }
 }

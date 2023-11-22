@@ -33,7 +33,6 @@
             addClampTypeButton = new Button();
             editClampTypeButton = new Button();
             dataGridView1 = new DataGridView();
-            structureTypeColumn = new DataGridViewTextBoxColumn();
             headerLabel = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -62,6 +61,7 @@
             deleteClampTypeButton.TabIndex = 16;
             deleteClampTypeButton.Text = "Удалить";
             deleteClampTypeButton.UseVisualStyleBackColor = true;
+            deleteClampTypeButton.Click += deleteClampTypeButton_Click;
             // 
             // addClampTypeButton
             // 
@@ -73,6 +73,7 @@
             addClampTypeButton.TabIndex = 14;
             addClampTypeButton.Text = "Добавить";
             addClampTypeButton.UseVisualStyleBackColor = true;
+            addClampTypeButton.Click += addClampTypeButton_Click;
             // 
             // editClampTypeButton
             // 
@@ -84,6 +85,7 @@
             editClampTypeButton.TabIndex = 15;
             editClampTypeButton.Text = "Редактировать";
             editClampTypeButton.UseVisualStyleBackColor = true;
+            editClampTypeButton.Click += editClampTypeButton_Click;
             // 
             // dataGridView1
             // 
@@ -91,7 +93,6 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BackgroundColor = Color.Gainsboro;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { structureTypeColumn });
             dataGridView1.Location = new Point(26, 98);
             dataGridView1.Margin = new Padding(11);
             dataGridView1.Name = "dataGridView1";
@@ -101,14 +102,6 @@
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(342, 241);
             dataGridView1.TabIndex = 21;
-            // 
-            // structureTypeColumn
-            // 
-            structureTypeColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            structureTypeColumn.HeaderText = "Наименование";
-            structureTypeColumn.MinimumWidth = 6;
-            structureTypeColumn.Name = "structureTypeColumn";
-            structureTypeColumn.ReadOnly = true;
             // 
             // headerLabel
             // 
@@ -133,7 +126,7 @@
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "BatteryClampTypesListForm";
             Text = "BatteryClampTypesListForm";
             groupBox1.ResumeLayout(false);
@@ -149,7 +142,6 @@
         private Button addClampTypeButton;
         private Button editClampTypeButton;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn structureTypeColumn;
         private Label headerLabel;
     }
 }

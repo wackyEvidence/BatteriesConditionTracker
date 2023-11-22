@@ -40,9 +40,6 @@
     <Compile Update="FilterAndSortForms\AddSortLayerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="AdminPanelForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="AuthorizationForm.cs">
       <SubType>Form</SubType>
     </Compile>

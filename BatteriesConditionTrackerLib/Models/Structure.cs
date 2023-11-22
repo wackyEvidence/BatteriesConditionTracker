@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BatteriesConditionTrackerLib.Models.Interfaces;
 
 namespace BatteriesConditionTrackerLib.Models
 {
@@ -20,6 +21,9 @@ namespace BatteriesConditionTrackerLib.Models
         /// Тип объекта
         /// </summary>
         public StructureType Type { get; set; }
+
+        public static readonly Func<string[], Structure> ModelCreation = columns => new Structure(columns);
+        public static readonly Func<Structure, string> ModelToCSV = structure => $"{structure.Id},{structure.Name},{structure.Type.Id}";
 
         public Structure() { }
 

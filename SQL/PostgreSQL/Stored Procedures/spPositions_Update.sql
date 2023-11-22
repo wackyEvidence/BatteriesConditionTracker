@@ -1,7 +1,7 @@
-create procedure spPositions_Update(position_id integer, position_name varchar(50))
+create procedure spPositions_Update(p_id integer, p_name varchar(50))
 as $$ 
 begin 
-	update Positions set name = position_name 
-	where id = position_id; 
+	update Positions set name = p_name 
+	where id = p_id; 
 end; 
 $$ language plpgsql; 

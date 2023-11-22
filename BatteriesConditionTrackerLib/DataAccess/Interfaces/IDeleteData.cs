@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BatteriesConditionTrackerLib.DataAccess
+namespace BatteriesConditionTrackerLib.DataAccess.Interfaces
 {
     public interface IDeleteData
     {
@@ -20,6 +20,6 @@ namespace BatteriesConditionTrackerLib.DataAccess
         ConcreteBattery DeleteConcreteBattery(ConcreteBattery concreteBatteryModel);
         BatterySoHMeasure DeleteBatterySoHMeasure(BatterySoHMeasure batterySoHMeasureModel);
         void DeleteBatteryModelPhoto(List<Photo> photos, BatteryModel batteryModel);
-        void DeleteConcreteBatteryPhoto(List<Photo> photos, ConcreteBattery concreteBattery); 
+        void DeleteConcreteBatteryPhoto(List<Photo> photos, ConcreteBattery concreteBattery);
     }
 }

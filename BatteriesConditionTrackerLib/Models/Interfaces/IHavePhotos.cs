@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BatteriesConditionTrackerLib.Models
+namespace BatteriesConditionTrackerLib.Models.Interfaces
 {
     internal interface IHavePhotos
     {

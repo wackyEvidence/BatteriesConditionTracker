@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BatteriesConditionTrackerLib.Models.Interfaces;
 
 namespace BatteriesConditionTrackerLib.Models
 {
@@ -53,10 +54,11 @@ namespace BatteriesConditionTrackerLib.Models
         /// </summary>
         public DateTime? LastCapacityMeasureDate { get; set; }
 
-        /// <summary>
-        /// Список фотографий этого аккумулятора
-        /// </summary>
-     
+        public static readonly Func<string[], ConcreteBattery> ModelCreation = columns => new ConcreteBattery(columns);
+        public static readonly Func<ConcreteBattery, string> ModelToCSV = b => $"{b.Id},{b.Model.Id},{b.ExploitationStart},{b.ExploitationEnd}," +
+           $"{b.InstallationStructure.Id},{b.Subsystem.Id},{b.ResponsibleWorker.Id},{b.ExploitationStatus.Id}," +
+           $"{b.ReplacementStatus.Id},{b.AdditionalNotes},{b.LastCapacityMeasureDate}";
+
         public List<Photo> DisplayedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public List<Photo> AddedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public List<Photo> DeletedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -66,32 +68,17 @@ namespace BatteriesConditionTrackerLib.Models
         public ConcreteBattery(string[] columns)
         {
             Id = int.Parse(columns[0]);
-            Model = new BatteryModel() { Id = int.Parse(columns[1]) };
+            Model = GlobalConfig.Connection.GetBatteryModel_ById(int.Parse(columns[1]));
             ExploitationStart = DateTime.Parse(columns[2]);
             DateTime.TryParse(columns[3], out DateTime exploitationEnd);
             ExploitationEnd = exploitationEnd;
-            InstallationStructure = new Structure() { Id = int.Parse(columns[4]) }; 
-            Subsystem = new BatterySubsystem() {  Id = int.Parse(columns[5]) };
-            ResponsibleWorker = new User() { Id = int.Parse(columns[6]) }; 
-            ExploitationStatus = new BatteryExploitationStatus() {  Id = int.Parse(columns[7]) };
-            ReplacementStatus = new BatteryReplacementStatus() {  Id = int.Parse(columns[8]) };
+            InstallationStructure = GlobalConfig.Connection.GetStructure_ById(int.Parse(columns[4])); 
+            Subsystem = GlobalConfig.Connection.GetBatterySubsystem_ById(int.Parse(columns[5]));
+            ResponsibleWorker = GlobalConfig.Connection.GetUser_ById(int.Parse(columns[6])); 
+            ExploitationStatus = GlobalConfig.Connection.GetBatteryExploitationStatus_ById(int.Parse(columns[7]));
+            ReplacementStatus = GlobalConfig.Connection.GetBatteryReplacementStatus_ById(int.Parse(columns[8]));
             AdditionalNotes = columns[9];
             LastCapacityMeasureDate = DateTime.Parse(columns[10]);
-        }
-
-        public void DeletePhotos()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> GetPhotos()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SavePhotos()
-        {
-            throw new NotImplementedException();
         }
     }
 }

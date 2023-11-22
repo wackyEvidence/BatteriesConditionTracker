@@ -1,6 +1,7 @@
 ﻿using BatteriesConditionTrackerLib;
 using BatteriesConditionTrackerLib.Models;
 using BatteriesConditionTrackerLib.Validation;
+using BatteriesConditionTrackerUI.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,21 +17,17 @@ namespace BatteriesConditionTrackerUI
     public partial class PositionForm : Form, IValidatable
     {
         private FormMode mode;
-        private Position? oldPositionModel; 
+        private Position? inputedPositionModel;
+        private IRequester<Position> callingForm; 
 
-        public PositionForm(FormMode mode)
+        public PositionForm(FormMode mode, IRequester<Position> caller, Position? positionModel = null)
         {
             InitializeComponent();
             this.mode = mode;
-            headerLabel.Text = "Добавление должности"; 
-        }
-
-        public PositionForm(FormMode mode, Position positionModel)
-        {
-            InitializeComponent();
-            this.mode = mode;
-            oldPositionModel = positionModel;
-            headerLabel.Text = "Изменение должности"; 
+            inputedPositionModel = positionModel;
+            headerLabel.Text = mode == FormMode.Adding ? "Добавление должности" : "Изменение должности";
+            positionNameValue.Text = mode == FormMode.Adding ? "" : positionModel.Name;
+            callingForm = caller; 
         }
 
         public Dictionary<string, string> ValidateForm()
@@ -50,12 +47,16 @@ namespace BatteriesConditionTrackerUI
                 {
                     var positionModel = new Position() { Name = positionNameValue.Text };
 
-                    GlobalConfig.Connection.CreatePosition(positionModel); 
+                    GlobalConfig.Connection.CreatePosition(positionModel);
+                    callingForm.ModelCreated(positionModel);
+                    Close(); 
                 }
                 else
                 {
-                    var positionModel = new Position() { Id = oldPositionModel.Id, Name = positionNameValue.Text };
-                    GlobalConfig.Connection.UpdatePosition(positionModel);
+                    inputedPositionModel.Name = positionNameValue.Text;
+                    GlobalConfig.Connection.UpdatePosition(inputedPositionModel);
+                    callingForm.ModelUpdated(inputedPositionModel); 
+                    Close(); 
                 }
             }
             else
@@ -64,7 +65,7 @@ namespace BatteriesConditionTrackerUI
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-
+            Close(); 
         }
     }
 }

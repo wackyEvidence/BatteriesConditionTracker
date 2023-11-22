@@ -28,90 +28,96 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button5 = new Button();
-            OkButton = new Button();
-            textBox2 = new TextBox();
-            label2 = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BatteryClampTypeForm));
+            cancelButton = new Button();
+            OKButton = new Button();
+            clampTypeNameValue = new TextBox();
+            clampTypeNameLabel = new Label();
             headerLabel = new Label();
             SuspendLayout();
             // 
-            // button5
+            // cancelButton
             // 
-            button5.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button5.ForeColor = Color.FromArgb(0, 121, 194);
-            button5.Location = new Point(377, 159);
-            button5.Name = "button5";
-            button5.Size = new Size(129, 55);
-            button5.TabIndex = 85;
-            button5.Text = "Отмена";
-            button5.UseVisualStyleBackColor = true;
+            cancelButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cancelButton.ForeColor = Color.FromArgb(0, 121, 194);
+            cancelButton.Location = new Point(377, 207);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(129, 55);
+            cancelButton.TabIndex = 85;
+            cancelButton.Text = "Отмена";
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += cancelButton_Click;
             // 
-            // OkButton
+            // OKButton
             // 
-            OkButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            OkButton.ForeColor = Color.FromArgb(0, 121, 194);
-            OkButton.Location = new Point(512, 159);
-            OkButton.Name = "OkButton";
-            OkButton.Size = new Size(129, 55);
-            OkButton.TabIndex = 84;
-            OkButton.Text = "ОК";
-            OkButton.UseVisualStyleBackColor = true;
-            OkButton.Click += button4_Click;
+            OKButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            OKButton.ForeColor = Color.FromArgb(0, 121, 194);
+            OKButton.Location = new Point(512, 209);
+            OKButton.Name = "OKButton";
+            OKButton.Size = new Size(129, 55);
+            OKButton.TabIndex = 84;
+            OKButton.Text = "ОК";
+            OKButton.UseVisualStyleBackColor = true;
+            OKButton.Click += OKButton_Click;
             // 
-            // textBox2
+            // clampTypeNameValue
             // 
-            textBox2.Location = new Point(12, 112);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(260, 43);
-            textBox2.TabIndex = 83;
+            clampTypeNameValue.Location = new Point(12, 135);
+            clampTypeNameValue.Name = "clampTypeNameValue";
+            clampTypeNameValue.Size = new Size(260, 43);
+            clampTypeNameValue.TabIndex = 83;
             // 
-            // label2
+            // clampTypeNameLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 71);
-            label2.Name = "label2";
-            label2.Size = new Size(210, 38);
-            label2.TabIndex = 82;
-            label2.Text = "Наименование";
+            clampTypeNameLabel.AutoSize = true;
+            clampTypeNameLabel.Location = new Point(12, 94);
+            clampTypeNameLabel.Name = "clampTypeNameLabel";
+            clampTypeNameLabel.Size = new Size(210, 38);
+            clampTypeNameLabel.TabIndex = 82;
+            clampTypeNameLabel.Text = "Наименование";
             // 
             // headerLabel
             // 
             headerLabel.AutoSize = true;
-            headerLabel.Font = new Font("Segoe UI Light", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            headerLabel.Font = new Font("Segoe UI Light", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
-            headerLabel.Location = new Point(2, 9);
+            headerLabel.Location = new Point(12, 9);
             headerLabel.Margin = new Padding(21, 0, 21, 0);
             headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(270, 62);
+            headerLabel.Size = new Size(253, 60);
             headerLabel.TabIndex = 81;
             headerLabel.Text = "headerLabel";
             // 
-            // BatteryClampType
+            // BatteryClampTypeForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(653, 226);
-            Controls.Add(button5);
-            Controls.Add(OkButton);
-            Controls.Add(textBox2);
-            Controls.Add(label2);
+            ClientSize = new Size(653, 274);
+            Controls.Add(cancelButton);
+            Controls.Add(OKButton);
+            Controls.Add(clampTypeNameValue);
+            Controls.Add(clampTypeNameLabel);
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(6);
-            Name = "BatteryClampType";
-            Text = "BatteryClampType";
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "BatteryClampTypeForm";
+            Text = "Тип клемм";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button5;
-        private Button OkButton;
-        private TextBox textBox2;
-        private Label label2;
+        private Button cancelButton;
+        private Button OKButton;
+        private TextBox clampTypeNameValue;
+        private Label clampTypeNameLabel;
         private Label headerLabel;
     }
 }

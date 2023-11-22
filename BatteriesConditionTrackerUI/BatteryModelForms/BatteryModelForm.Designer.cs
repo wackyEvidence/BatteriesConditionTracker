@@ -211,10 +211,11 @@
             // 
             // bufferServiceTimeValue
             // 
+            bufferServiceTimeValue.DecimalPlaces = 1;
             bufferServiceTimeValue.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
             bufferServiceTimeValue.Location = new Point(368, 34);
             bufferServiceTimeValue.Name = "bufferServiceTimeValue";
-            bufferServiceTimeValue.Size = new Size(70, 43);
+            bufferServiceTimeValue.Size = new Size(94, 43);
             bufferServiceTimeValue.TabIndex = 44;
             // 
             // minSoHLabel
@@ -405,8 +406,9 @@
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
             Margin = new Padding(6);
+            MaximizeBox = false;
             Name = "BatteryModelForm";
-            Text = "BatteryModelForm";
+            Text = "Модель аккумулятора";
             serviceTimeGroupBox.ResumeLayout(false);
             serviceTimeGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)bufferServiceTimeValue).EndInit();

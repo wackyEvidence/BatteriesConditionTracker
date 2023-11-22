@@ -1,5 +1,6 @@
 ﻿using BatteriesConditionTrackerLib;
 using BatteriesConditionTrackerLib.Models;
+using BatteriesConditionTrackerUI.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,26 +13,68 @@ using System.Windows.Forms;
 
 namespace BatteriesConditionTrackerUI
 {
-    public partial class PositionsListForm : Form
-    { 
+    public partial class PositionsListForm : Form, IRequester<Position>
+    {
+        private BindingList<Position> displayedPositions = GlobalConfig.Connection.GetPosition_All();
+
         public PositionsListForm()
         {
             InitializeComponent();
+            WireUpLists();
+            AdjustDataGridView();
+        }
+
+        private void AdjustDataGridView()
+        {
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].HeaderText = "Наименование";
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        public void ModelCreated(Position model)
+        {
+            displayedPositions.Add(model);
+        }
+
+        public void ModelUpdated(Position model)
+        {
+            Refresh();
+        }
+
+        public void WireUpLists()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = displayedPositions;
         }
 
         private void addPositionButton_Click(object sender, EventArgs e)
         {
-            var positionAddingForm = new PositionForm(FormMode.Adding); 
+            var positionAddingForm = new PositionForm(FormMode.Adding, this);
             positionAddingForm.ShowDialog();
         }
 
         private void editPositionButton_Click(object sender, EventArgs e)
         {
-            // TO DO - добавить проверку на то, что выбрана строка 
-            var currentRow = dataGridView1.CurrentRow; 
-            var positionModel = new Position(currentRow.Cells[0].Value.ToString(), currentRow.Cells[1].Value.ToString());
-            var positionEditingForm = new PositionForm(FormMode.Editing, positionModel);
-            positionEditingForm.ShowDialog();
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                var positionModel = displayedPositions[dataGridView1.CurrentRow.Index];
+                var positionEditingForm = new PositionForm(FormMode.Editing, this, positionModel);
+                positionEditingForm.ShowDialog();
+            }
+            else
+                MessageBox.Show("Выберите строку таблицы для редактирования", "Ошибка редактирования", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void deletePositionButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                var positionModel = displayedPositions[dataGridView1.CurrentRow.Index];
+                GlobalConfig.Connection.DeletePosition(positionModel);
+                displayedPositions.RemoveAt(dataGridView1.CurrentRow.Index);
+            }
+            else
+                MessageBox.Show("Выберите строку таблицы для удаления", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
