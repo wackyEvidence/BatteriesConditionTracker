@@ -18,16 +18,16 @@ namespace BatteriesConditionTrackerUI
     {
         private FormMode mode;
         private Position? inputedPositionModel;
-        private IRequester<Position> callingForm; 
+        private IRequester<Position> callingForm;
 
         public PositionForm(FormMode mode, IRequester<Position> caller, Position? positionModel = null)
         {
             InitializeComponent();
             this.mode = mode;
             inputedPositionModel = positionModel;
+            callingForm = caller;
             headerLabel.Text = mode == FormMode.Adding ? "Добавление должности" : "Изменение должности";
             positionNameValue.Text = mode == FormMode.Adding ? "" : positionModel.Name;
-            callingForm = caller; 
         }
 
         public Dictionary<string, string> ValidateForm()
@@ -41,7 +41,7 @@ namespace BatteriesConditionTrackerUI
         {
             var errors = ValidateForm();
 
-            if(errors.Count == 0)
+            if (errors.Count == 0)
             {
                 if (mode == FormMode.Adding)
                 {
@@ -49,14 +49,14 @@ namespace BatteriesConditionTrackerUI
 
                     GlobalConfig.Connection.CreatePosition(positionModel);
                     callingForm.ModelCreated(positionModel);
-                    Close(); 
+                    Close();
                 }
                 else
                 {
                     inputedPositionModel.Name = positionNameValue.Text;
                     GlobalConfig.Connection.UpdatePosition(inputedPositionModel);
-                    callingForm.ModelUpdated(inputedPositionModel); 
-                    Close(); 
+                    callingForm.ModelUpdated(inputedPositionModel);
+                    Close();
                 }
             }
             else
@@ -65,7 +65,7 @@ namespace BatteriesConditionTrackerUI
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            Close(); 
+            Close();
         }
     }
 }

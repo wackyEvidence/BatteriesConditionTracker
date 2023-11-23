@@ -28,6 +28,9 @@
     <Compile Update="BatteryCharacteristicsForms\BatteryTechnologyForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="InitialSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ReportForms\BadBatteriesReport.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StructureTypesListForm));
             headerLabel = new Label();
             dataGridView1 = new DataGridView();
-            structureTypeColumn = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
             deleteStructureTypeButton = new Button();
             addStructureTypeButton = new Button();
@@ -55,26 +55,22 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dataGridView1.BackgroundColor = Color.Gainsboro;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { structureTypeColumn });
             dataGridView1.Location = new Point(20, 96);
             dataGridView1.Margin = new Padding(11);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(342, 241);
             dataGridView1.TabIndex = 15;
-            // 
-            // structureTypeColumn
-            // 
-            structureTypeColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            structureTypeColumn.HeaderText = "Наименование";
-            structureTypeColumn.MinimumWidth = 6;
-            structureTypeColumn.Name = "structureTypeColumn";
-            structureTypeColumn.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -99,6 +95,7 @@
             deleteStructureTypeButton.TabIndex = 16;
             deleteStructureTypeButton.Text = "Удалить";
             deleteStructureTypeButton.UseVisualStyleBackColor = true;
+            deleteStructureTypeButton.Click += deleteStructureTypeButton_Click;
             // 
             // addStructureTypeButton
             // 
@@ -135,9 +132,10 @@
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(6);
             Name = "StructureTypesListForm";
-            Text = "StructureTypesList";
+            Text = "Типы объектов";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
@@ -148,7 +146,6 @@
 
         private Label headerLabel;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn structureTypeColumn;
         private GroupBox groupBox1;
         private Button deleteStructureTypeButton;
         private Button addStructureTypeButton;

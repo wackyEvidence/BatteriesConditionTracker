@@ -76,3 +76,4 @@ D:\Автоматизация учета состояния аккумулято
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.About.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.BatteryClampTypeForm.resources
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Debug\net6.0-windows\BatteriesConditionTrackerUI.InitialSettings.resources

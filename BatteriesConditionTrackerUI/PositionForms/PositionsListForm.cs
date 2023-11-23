@@ -24,6 +24,11 @@ namespace BatteriesConditionTrackerUI
             AdjustDataGridView();
         }
 
+        private void WireUpLists()
+        {
+            dataGridView1.DataSource = displayedPositions;
+        }
+
         private void AdjustDataGridView()
         {
             dataGridView1.Columns[0].Visible = false;
@@ -31,6 +36,7 @@ namespace BatteriesConditionTrackerUI
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
+        #region IRequester<Position>
         public void ModelCreated(Position model)
         {
             displayedPositions.Add(model);
@@ -40,12 +46,7 @@ namespace BatteriesConditionTrackerUI
         {
             Refresh();
         }
-
-        public void WireUpLists()
-        {
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = displayedPositions;
-        }
+        #endregion
 
         private void addPositionButton_Click(object sender, EventArgs e)
         {

@@ -34,7 +34,7 @@ namespace BatteriesConditionTrackerUI
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            if(formMode == FormMode.Adding)
+            if (formMode == FormMode.Adding)
             {
                 var createdClampTypeModel = new BatteryClampType() { Name = clampTypeNameValue.Text };
                 GlobalConfig.Connection.CreateBatteryClampType(createdClampTypeModel);

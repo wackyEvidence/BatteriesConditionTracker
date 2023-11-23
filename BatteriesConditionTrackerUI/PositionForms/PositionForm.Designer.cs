@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PositionForm));
             cancelButton = new Button();
             actionButton = new Button();
             positionNameValue = new TextBox();
@@ -37,9 +38,13 @@
             // 
             // cancelButton
             // 
+            cancelButton.FlatAppearance.BorderColor = Color.Silver;
+            cancelButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            cancelButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             cancelButton.ForeColor = Color.FromArgb(0, 121, 194);
-            cancelButton.Location = new Point(377, 159);
+            cancelButton.Location = new Point(312, 202);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(129, 55);
             cancelButton.TabIndex = 80;
@@ -49,9 +54,13 @@
             // 
             // actionButton
             // 
+            actionButton.FlatAppearance.BorderColor = Color.Silver;
+            actionButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            actionButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            actionButton.FlatStyle = FlatStyle.Flat;
             actionButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             actionButton.ForeColor = Color.FromArgb(0, 121, 194);
-            actionButton.Location = new Point(512, 159);
+            actionButton.Location = new Point(447, 202);
             actionButton.Name = "actionButton";
             actionButton.Size = new Size(129, 55);
             actionButton.TabIndex = 79;
@@ -61,15 +70,16 @@
             // 
             // positionNameValue
             // 
-            positionNameValue.Location = new Point(12, 112);
+            positionNameValue.Location = new Point(12, 131);
+            positionNameValue.MaxLength = 100;
             positionNameValue.Name = "positionNameValue";
-            positionNameValue.Size = new Size(260, 43);
+            positionNameValue.Size = new Size(564, 43);
             positionNameValue.TabIndex = 78;
             // 
             // positionNameLabel
             // 
             positionNameLabel.AutoSize = true;
-            positionNameLabel.Location = new Point(12, 71);
+            positionNameLabel.Location = new Point(12, 90);
             positionNameLabel.Name = "positionNameLabel";
             positionNameLabel.Size = new Size(210, 38);
             positionNameLabel.TabIndex = 77;
@@ -78,12 +88,12 @@
             // headerLabel
             // 
             headerLabel.AutoSize = true;
-            headerLabel.Font = new Font("Segoe UI Light", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            headerLabel.Font = new Font("Segoe UI Light", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
             headerLabel.Location = new Point(2, 9);
             headerLabel.Margin = new Padding(21, 0, 21, 0);
             headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(270, 62);
+            headerLabel.Size = new Size(253, 60);
             headerLabel.TabIndex = 76;
             headerLabel.Text = "headerLabel";
             // 
@@ -92,7 +102,7 @@
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(653, 226);
+            ClientSize = new Size(588, 269);
             Controls.Add(cancelButton);
             Controls.Add(actionButton);
             Controls.Add(positionNameValue);
@@ -100,9 +110,14 @@
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(6);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "PositionForm";
-            Text = "PositionForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Должность";
             ResumeLayout(false);
             PerformLayout();
         }

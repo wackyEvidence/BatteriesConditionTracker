@@ -1,4 +1,6 @@
 using BatteriesConditionTrackerLib;
+using BatteriesConditionTrackerUI;
+using System.Configuration;
 
 namespace BatteriesConditionTracker
 {
@@ -14,6 +16,10 @@ namespace BatteriesConditionTracker
             // see https://aka.ms/applicationconfiguration.
             GlobalConfig.InitializeConnection(DatabaseType.SqlServer); 
             ApplicationConfiguration.Initialize();
+            if (ConfigurationManager.AppSettings["isConfigured"] == "false")
+            {
+                Application.Run(new InitialSettings());
+            }
             Application.Run(new AuthorizationForm());
         }
     }

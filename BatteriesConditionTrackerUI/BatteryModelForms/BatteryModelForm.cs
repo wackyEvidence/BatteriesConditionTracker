@@ -58,7 +58,7 @@ namespace BatteriesConditionTrackerUI
                     GetBatteryModelSizes(out string length, out string width, out string height);
                     // Создание модели
                     #region 
-                    var batteryModel = new BatteryModel(
+                    var newBatteryModel = new BatteryModel(
                     nameValue.Text,
                     brandValue.Text,
                     capacityValue.Text,
@@ -73,10 +73,11 @@ namespace BatteriesConditionTrackerUI
                     minSoHValue.Text
                     );
                     #endregion
-                    GlobalConfig.Connection.CreateBatteryModel(batteryModel);
+                    GlobalConfig.Connection.CreateBatteryModel(newBatteryModel);
                 }
                 else
                 {
+                    GlobalConfig.Connection.UpdateBatteryModel(batteryModel);
                     // TODO - дописать обработку случая изменения аккумулятора
                 }
             }

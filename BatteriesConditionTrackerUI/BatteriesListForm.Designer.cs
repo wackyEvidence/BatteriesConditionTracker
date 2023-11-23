@@ -261,6 +261,7 @@
             // addBatteryButton
             // 
             addBatteryButton.FlatAppearance.BorderColor = Color.Silver;
+            addBatteryButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
             addBatteryButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
             addBatteryButton.FlatStyle = FlatStyle.Flat;
             addBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);

@@ -433,7 +433,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 var parameters = new DynamicParameters();
                 parameters.Add("@Id", positionModel.Id, dbType: DbType.Int32);
 
-                connection.Execute("dbo.spBatteryPositions_Delete", parameters, commandType: CommandType.StoredProcedure);
+                connection.Execute("dbo.spPositions_Delete", parameters, commandType: CommandType.StoredProcedure);
 
                 return positionModel;
             }

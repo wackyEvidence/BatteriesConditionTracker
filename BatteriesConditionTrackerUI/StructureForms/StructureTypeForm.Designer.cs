@@ -28,79 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StructureTypeForm));
             headerLabel = new Label();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            button5 = new Button();
-            button4 = new Button();
+            structureTypeNameValue = new TextBox();
+            structureTypeNameLabel = new Label();
+            cancelButton = new Button();
+            actionButton = new Button();
             SuspendLayout();
             // 
             // headerLabel
             // 
             headerLabel.AutoSize = true;
-            headerLabel.Font = new Font("Segoe UI Light", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            headerLabel.Font = new Font("Segoe UI Light", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
             headerLabel.Location = new Point(2, 9);
             headerLabel.Margin = new Padding(21, 0, 21, 0);
             headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(270, 62);
+            headerLabel.Size = new Size(253, 60);
             headerLabel.TabIndex = 15;
             headerLabel.Text = "headerLabel";
             // 
-            // textBox2
+            // structureTypeNameValue
             // 
-            textBox2.Location = new Point(12, 112);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(260, 43);
-            textBox2.TabIndex = 20;
+            structureTypeNameValue.Location = new Point(12, 131);
+            structureTypeNameValue.Name = "structureTypeNameValue";
+            structureTypeNameValue.Size = new Size(507, 43);
+            structureTypeNameValue.TabIndex = 20;
             // 
-            // label2
+            // structureTypeNameLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 71);
-            label2.Name = "label2";
-            label2.Size = new Size(210, 38);
-            label2.TabIndex = 19;
-            label2.Text = "Наименование";
+            structureTypeNameLabel.AutoSize = true;
+            structureTypeNameLabel.Location = new Point(12, 90);
+            structureTypeNameLabel.Name = "structureTypeNameLabel";
+            structureTypeNameLabel.Size = new Size(210, 38);
+            structureTypeNameLabel.TabIndex = 19;
+            structureTypeNameLabel.Text = "Наименование";
             // 
-            // button5
+            // cancelButton
             // 
-            button5.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button5.ForeColor = Color.FromArgb(0, 121, 194);
-            button5.Location = new Point(377, 159);
-            button5.Name = "button5";
-            button5.Size = new Size(129, 55);
-            button5.TabIndex = 75;
-            button5.Text = "Отмена";
-            button5.UseVisualStyleBackColor = true;
+            cancelButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cancelButton.ForeColor = Color.FromArgb(0, 121, 194);
+            cancelButton.Location = new Point(255, 202);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(129, 55);
+            cancelButton.TabIndex = 75;
+            cancelButton.Text = "Отмена";
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += cancelButton_Click;
             // 
-            // button4
+            // actionButton
             // 
-            button4.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.ForeColor = Color.FromArgb(0, 121, 194);
-            button4.Location = new Point(512, 159);
-            button4.Name = "button4";
-            button4.Size = new Size(129, 55);
-            button4.TabIndex = 74;
-            button4.Text = "ОК";
-            button4.UseVisualStyleBackColor = true;
+            actionButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            actionButton.ForeColor = Color.FromArgb(0, 121, 194);
+            actionButton.Location = new Point(390, 202);
+            actionButton.Name = "actionButton";
+            actionButton.Size = new Size(129, 55);
+            actionButton.TabIndex = 74;
+            actionButton.Text = "ОК";
+            actionButton.UseVisualStyleBackColor = true;
+            actionButton.Click += actionButton_Click;
             // 
-            // StructureTypeAddingForm
+            // StructureTypeForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(653, 226);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(textBox2);
-            Controls.Add(label2);
+            ClientSize = new Size(531, 269);
+            Controls.Add(cancelButton);
+            Controls.Add(actionButton);
+            Controls.Add(structureTypeNameValue);
+            Controls.Add(structureTypeNameLabel);
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
-            Margin = new Padding(6, 6, 6, 6);
-            Name = "StructureTypeAddingForm";
-            Text = "StructureTypeAddingForm";
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(6);
+            Name = "StructureTypeForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Тип объекта";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -108,9 +113,9 @@
         #endregion
 
         private Label headerLabel;
-        private TextBox textBox2;
-        private Label label2;
-        private Button button5;
-        private Button button4;
+        private TextBox structureTypeNameValue;
+        private Label structureTypeNameLabel;
+        private Button cancelButton;
+        private Button actionButton;
     }
 }

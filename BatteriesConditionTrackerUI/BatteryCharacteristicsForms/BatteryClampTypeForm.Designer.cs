@@ -38,9 +38,13 @@
             // 
             // cancelButton
             // 
+            cancelButton.FlatAppearance.BorderColor = Color.Silver;
+            cancelButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            cancelButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             cancelButton.ForeColor = Color.FromArgb(0, 121, 194);
-            cancelButton.Location = new Point(377, 207);
+            cancelButton.Location = new Point(220, 200);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(129, 55);
             cancelButton.TabIndex = 85;
@@ -50,9 +54,13 @@
             // 
             // OKButton
             // 
+            OKButton.FlatAppearance.BorderColor = Color.Silver;
+            OKButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            OKButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            OKButton.FlatStyle = FlatStyle.Flat;
             OKButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             OKButton.ForeColor = Color.FromArgb(0, 121, 194);
-            OKButton.Location = new Point(512, 209);
+            OKButton.Location = new Point(355, 202);
             OKButton.Name = "OKButton";
             OKButton.Size = new Size(129, 55);
             OKButton.TabIndex = 84;
@@ -62,15 +70,15 @@
             // 
             // clampTypeNameValue
             // 
-            clampTypeNameValue.Location = new Point(12, 135);
+            clampTypeNameValue.Location = new Point(12, 131);
             clampTypeNameValue.Name = "clampTypeNameValue";
-            clampTypeNameValue.Size = new Size(260, 43);
+            clampTypeNameValue.Size = new Size(264, 43);
             clampTypeNameValue.TabIndex = 83;
             // 
             // clampTypeNameLabel
             // 
             clampTypeNameLabel.AutoSize = true;
-            clampTypeNameLabel.Location = new Point(12, 94);
+            clampTypeNameLabel.Location = new Point(12, 90);
             clampTypeNameLabel.Name = "clampTypeNameLabel";
             clampTypeNameLabel.Size = new Size(210, 38);
             clampTypeNameLabel.TabIndex = 82;
@@ -81,7 +89,7 @@
             headerLabel.AutoSize = true;
             headerLabel.Font = new Font("Segoe UI Light", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
-            headerLabel.Location = new Point(12, 9);
+            headerLabel.Location = new Point(2, 9);
             headerLabel.Margin = new Padding(21, 0, 21, 0);
             headerLabel.Name = "headerLabel";
             headerLabel.Size = new Size(253, 60);
@@ -93,7 +101,7 @@
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(653, 274);
+            ClientSize = new Size(496, 269);
             Controls.Add(cancelButton);
             Controls.Add(OKButton);
             Controls.Add(clampTypeNameValue);
@@ -107,6 +115,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "BatteryClampTypeForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Тип клемм";
             ResumeLayout(false);
             PerformLayout();
