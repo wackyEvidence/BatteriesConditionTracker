@@ -1,5 +1,7 @@
 ﻿using BatteriesConditionTrackerLib;
 using BatteriesConditionTrackerLib.Models;
+using BatteriesConditionTrackerLib.Validation;
+using BatteriesConditionTrackerUI.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,38 +14,52 @@ using System.Windows.Forms;
 
 namespace BatteriesConditionTrackerUI
 {
-    public partial class BatteryClampTypeForm : Form
+    public partial class BatteryClampTypeForm : Form, IValidatable
     {
-        private FormMode formMode;
+        private FormMode mode;
+        private IRequester<BatteryClampType> callingForm;
         private BatteryClampType? inputedClampTypeModel;
 
-        public BatteryClampTypeForm(FormMode mode)
+        public BatteryClampTypeForm(FormMode mode, IRequester<BatteryClampType> caller, BatteryClampType? clampTypeModel = null)
         {
             InitializeComponent();
-            formMode = mode;
-            headerLabel.Text = "Добавление типа клемм";
-        }
-
-        public BatteryClampTypeForm(FormMode mode, BatteryClampType clampTypeModel)
-        {
-            InitializeComponent();
-            formMode = mode;
+            this.mode = mode;
+            callingForm = caller;
             inputedClampTypeModel = clampTypeModel;
-            headerLabel.Text = "Редактирование типа клемм";
+            headerLabel.Text = mode == FormMode.Adding ? "Добавление типа клемм" : "Редактирование типа клемм";
         }
 
-        private void OKButton_Click(object sender, EventArgs e)
+        public Dictionary<string, string> ValidateForm()
         {
-            if (formMode == FormMode.Adding)
+            var errors = new Dictionary<string, string>();
+            FieldValidator.ValidateStringEmptiness(errors, clampTypeNameLabel.Text, clampTypeNameValue.Text);
+            return errors;
+        }
+
+        private void actionButton_Click(object sender, EventArgs e)
+        {
+            var errors = ValidateForm();
+
+            if (errors.Count == 0)
             {
-                var createdClampTypeModel = new BatteryClampType() { Name = clampTypeNameValue.Text };
-                GlobalConfig.Connection.CreateBatteryClampType(createdClampTypeModel);
+                if (mode == FormMode.Adding)
+                {
+                    var batteryClampTypeModel = new BatteryClampType() { Name = clampTypeNameValue.Text };
+
+                    GlobalConfig.Connection.CreateBatteryClampType(batteryClampTypeModel);
+                    callingForm.ModelCreated(batteryClampTypeModel);
+                    Close();
+                }
+                else
+                {
+                    inputedClampTypeModel.Name = clampTypeNameValue.Text;
+                    GlobalConfig.Connection.UpdateBatteryClampType(inputedClampTypeModel);
+                    callingForm.ModelUpdated(inputedClampTypeModel);
+                    Close();
+                }
             }
             else
-            {
-                inputedClampTypeModel.Name = clampTypeNameValue.Text;
-                GlobalConfig.Connection.UpdateBatteryClampType(inputedClampTypeModel);
-            }
+                ValidationErrorsDisplayer.DisplayErrors(errors);
         }
 
         private void cancelButton_Click(object sender, EventArgs e)

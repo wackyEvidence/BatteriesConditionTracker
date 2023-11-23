@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BatteryClampTypeForm));
             cancelButton = new Button();
-            OKButton = new Button();
+            actionButton = new Button();
             clampTypeNameValue = new TextBox();
             clampTypeNameLabel = new Label();
             headerLabel = new Label();
@@ -44,7 +44,7 @@
             cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             cancelButton.ForeColor = Color.FromArgb(0, 121, 194);
-            cancelButton.Location = new Point(220, 200);
+            cancelButton.Location = new Point(183, 202);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(129, 55);
             cancelButton.TabIndex = 85;
@@ -52,27 +52,27 @@
             cancelButton.UseVisualStyleBackColor = true;
             cancelButton.Click += cancelButton_Click;
             // 
-            // OKButton
+            // actionButton
             // 
-            OKButton.FlatAppearance.BorderColor = Color.Silver;
-            OKButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
-            OKButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
-            OKButton.FlatStyle = FlatStyle.Flat;
-            OKButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            OKButton.ForeColor = Color.FromArgb(0, 121, 194);
-            OKButton.Location = new Point(355, 202);
-            OKButton.Name = "OKButton";
-            OKButton.Size = new Size(129, 55);
-            OKButton.TabIndex = 84;
-            OKButton.Text = "ОК";
-            OKButton.UseVisualStyleBackColor = true;
-            OKButton.Click += OKButton_Click;
+            actionButton.FlatAppearance.BorderColor = Color.Silver;
+            actionButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            actionButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            actionButton.FlatStyle = FlatStyle.Flat;
+            actionButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            actionButton.ForeColor = Color.FromArgb(0, 121, 194);
+            actionButton.Location = new Point(318, 202);
+            actionButton.Name = "actionButton";
+            actionButton.Size = new Size(129, 55);
+            actionButton.TabIndex = 84;
+            actionButton.Text = "ОК";
+            actionButton.UseVisualStyleBackColor = true;
+            actionButton.Click += actionButton_Click;
             // 
             // clampTypeNameValue
             // 
             clampTypeNameValue.Location = new Point(12, 131);
             clampTypeNameValue.Name = "clampTypeNameValue";
-            clampTypeNameValue.Size = new Size(264, 43);
+            clampTypeNameValue.Size = new Size(435, 43);
             clampTypeNameValue.TabIndex = 83;
             // 
             // clampTypeNameLabel
@@ -87,12 +87,12 @@
             // headerLabel
             // 
             headerLabel.AutoSize = true;
-            headerLabel.Font = new Font("Segoe UI Light", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            headerLabel.Font = new Font("Segoe UI Light", 24F, FontStyle.Regular, GraphicsUnit.Point);
             headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
             headerLabel.Location = new Point(2, 9);
             headerLabel.Margin = new Padding(21, 0, 21, 0);
             headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(253, 60);
+            headerLabel.Size = new Size(227, 54);
             headerLabel.TabIndex = 81;
             headerLabel.Text = "headerLabel";
             // 
@@ -101,9 +101,9 @@
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(496, 269);
+            ClientSize = new Size(459, 269);
             Controls.Add(cancelButton);
-            Controls.Add(OKButton);
+            Controls.Add(actionButton);
             Controls.Add(clampTypeNameValue);
             Controls.Add(clampTypeNameLabel);
             Controls.Add(headerLabel);
@@ -124,7 +124,7 @@
         #endregion
 
         private Button cancelButton;
-        private Button OKButton;
+        private Button actionButton;
         private TextBox clampTypeNameValue;
         private Label clampTypeNameLabel;
         private Label headerLabel;
