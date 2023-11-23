@@ -28,60 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button5 = new Button();
-            button4 = new Button();
-            textBox2 = new TextBox();
-            label2 = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BatteryTechnologyForm));
+            cancelButton = new Button();
+            actionButton = new Button();
+            technologyNameValue = new TextBox();
+            technologyNameLabel = new Label();
             headerLabel = new Label();
             SuspendLayout();
             // 
-            // button5
+            // cancelButton
             // 
-            button5.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button5.ForeColor = Color.FromArgb(0, 121, 194);
-            button5.Location = new Point(377, 159);
-            button5.Name = "button5";
-            button5.Size = new Size(129, 55);
-            button5.TabIndex = 85;
-            button5.Text = "Отмена";
-            button5.UseVisualStyleBackColor = true;
+            cancelButton.FlatAppearance.BorderColor = Color.Silver;
+            cancelButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            cancelButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            cancelButton.FlatStyle = FlatStyle.Flat;
+            cancelButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cancelButton.ForeColor = Color.FromArgb(0, 121, 194);
+            cancelButton.Location = new Point(164, 202);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(129, 55);
+            cancelButton.TabIndex = 85;
+            cancelButton.Text = "Отмена";
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += cancelButton_Click;
             // 
-            // button4
+            // actionButton
             // 
-            button4.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.ForeColor = Color.FromArgb(0, 121, 194);
-            button4.Location = new Point(512, 159);
-            button4.Name = "button4";
-            button4.Size = new Size(129, 55);
-            button4.TabIndex = 84;
-            button4.Text = "ОК";
-            button4.UseVisualStyleBackColor = true;
+            actionButton.FlatAppearance.BorderColor = Color.Silver;
+            actionButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            actionButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            actionButton.FlatStyle = FlatStyle.Flat;
+            actionButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            actionButton.ForeColor = Color.FromArgb(0, 121, 194);
+            actionButton.Location = new Point(299, 202);
+            actionButton.Name = "actionButton";
+            actionButton.Size = new Size(129, 55);
+            actionButton.TabIndex = 84;
+            actionButton.Text = "ОК";
+            actionButton.UseVisualStyleBackColor = true;
+            actionButton.Click += actionButton_Click;
             // 
-            // textBox2
+            // technologyNameValue
             // 
-            textBox2.Location = new Point(12, 112);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(260, 43);
-            textBox2.TabIndex = 83;
+            technologyNameValue.Location = new Point(12, 131);
+            technologyNameValue.Name = "technologyNameValue";
+            technologyNameValue.Size = new Size(416, 43);
+            technologyNameValue.TabIndex = 83;
             // 
-            // label2
+            // technologyNameLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 71);
-            label2.Name = "label2";
-            label2.Size = new Size(210, 38);
-            label2.TabIndex = 82;
-            label2.Text = "Наименование";
+            technologyNameLabel.AutoSize = true;
+            technologyNameLabel.Location = new Point(12, 90);
+            technologyNameLabel.Name = "technologyNameLabel";
+            technologyNameLabel.Size = new Size(210, 38);
+            technologyNameLabel.TabIndex = 82;
+            technologyNameLabel.Text = "Наименование";
             // 
             // headerLabel
             // 
             headerLabel.AutoSize = true;
-            headerLabel.Font = new Font("Segoe UI Light", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            headerLabel.Font = new Font("Segoe UI Light", 24F, FontStyle.Regular, GraphicsUnit.Point);
             headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
             headerLabel.Location = new Point(2, 9);
             headerLabel.Margin = new Padding(21, 0, 21, 0);
             headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(270, 62);
+            headerLabel.Size = new Size(227, 54);
             headerLabel.TabIndex = 81;
             headerLabel.Text = "headerLabel";
             // 
@@ -90,27 +101,32 @@
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(653, 226);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(textBox2);
-            Controls.Add(label2);
+            ClientSize = new Size(437, 269);
+            Controls.Add(cancelButton);
+            Controls.Add(actionButton);
+            Controls.Add(technologyNameValue);
+            Controls.Add(technologyNameLabel);
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
-            Margin = new Padding(6, 6, 6, 6);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(6);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "BatteryTechnologyForm";
-            Text = "BatteryTechnologyForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Технология аккумулятора";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button5;
-        private Button button4;
-        private TextBox textBox2;
-        private Label label2;
+        private Button cancelButton;
+        private Button actionButton;
+        private TextBox technologyNameValue;
+        private Label technologyNameLabel;
         private Label headerLabel;
     }
 }

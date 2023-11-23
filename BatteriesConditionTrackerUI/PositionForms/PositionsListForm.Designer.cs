@@ -148,6 +148,7 @@
             ForeColor = Color.FromArgb(0, 121, 194);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(6);
+            MaximizeBox = false;
             MinimumSize = new Size(650, 400);
             Name = "PositionsListForm";
             StartPosition = FormStartPosition.CenterParent;
