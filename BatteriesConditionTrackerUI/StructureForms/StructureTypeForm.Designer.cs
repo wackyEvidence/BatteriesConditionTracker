@@ -39,12 +39,12 @@
             // headerLabel
             // 
             headerLabel.AutoSize = true;
-            headerLabel.Font = new Font("Segoe UI Light", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            headerLabel.Font = new Font("Segoe UI Light", 24F, FontStyle.Regular, GraphicsUnit.Point);
             headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
             headerLabel.Location = new Point(2, 9);
             headerLabel.Margin = new Padding(21, 0, 21, 0);
             headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(253, 60);
+            headerLabel.Size = new Size(227, 54);
             headerLabel.TabIndex = 15;
             headerLabel.Text = "headerLabel";
             // 
@@ -52,7 +52,7 @@
             // 
             structureTypeNameValue.Location = new Point(12, 131);
             structureTypeNameValue.Name = "structureTypeNameValue";
-            structureTypeNameValue.Size = new Size(507, 43);
+            structureTypeNameValue.Size = new Size(452, 43);
             structureTypeNameValue.TabIndex = 20;
             // 
             // structureTypeNameLabel
@@ -66,9 +66,13 @@
             // 
             // cancelButton
             // 
+            cancelButton.FlatAppearance.BorderColor = Color.Silver;
+            cancelButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            cancelButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             cancelButton.ForeColor = Color.FromArgb(0, 121, 194);
-            cancelButton.Location = new Point(255, 202);
+            cancelButton.Location = new Point(200, 202);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(129, 55);
             cancelButton.TabIndex = 75;
@@ -78,9 +82,13 @@
             // 
             // actionButton
             // 
+            actionButton.FlatAppearance.BorderColor = Color.Silver;
+            actionButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            actionButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            actionButton.FlatStyle = FlatStyle.Flat;
             actionButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             actionButton.ForeColor = Color.FromArgb(0, 121, 194);
-            actionButton.Location = new Point(390, 202);
+            actionButton.Location = new Point(335, 202);
             actionButton.Name = "actionButton";
             actionButton.Size = new Size(129, 55);
             actionButton.TabIndex = 74;
@@ -93,7 +101,7 @@
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(531, 269);
+            ClientSize = new Size(476, 269);
             Controls.Add(cancelButton);
             Controls.Add(actionButton);
             Controls.Add(structureTypeNameValue);
@@ -101,8 +109,11 @@
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(6);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "StructureTypeForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Тип объекта";

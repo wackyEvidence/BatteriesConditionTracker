@@ -28,113 +28,130 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StructureForm));
             headerLabel = new Label();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            comboBox1 = new ComboBox();
-            label2 = new Label();
-            button5 = new Button();
-            button4 = new Button();
+            structureNameValue = new TextBox();
+            structureNameLabel = new Label();
+            structureTypeValue = new ComboBox();
+            structureTypeLabel = new Label();
+            cancelButton = new Button();
+            actionButton = new Button();
             addStructureTypeLinkLabel = new LinkLabel();
             SuspendLayout();
             // 
             // headerLabel
             // 
             headerLabel.AutoSize = true;
-            headerLabel.Font = new Font("Segoe UI Light", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            headerLabel.Font = new Font("Segoe UI Light", 24F, FontStyle.Regular, GraphicsUnit.Point);
             headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
             headerLabel.Location = new Point(2, 9);
             headerLabel.Margin = new Padding(11, 0, 11, 0);
             headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(270, 62);
+            headerLabel.Size = new Size(227, 54);
             headerLabel.TabIndex = 12;
             headerLabel.Text = "headerLabel";
             // 
-            // textBox1
+            // structureNameValue
             // 
-            textBox1.Location = new Point(12, 123);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(327, 43);
-            textBox1.TabIndex = 13;
+            structureNameValue.Location = new Point(12, 131);
+            structureNameValue.Name = "structureNameValue";
+            structureNameValue.Size = new Size(364, 43);
+            structureNameValue.TabIndex = 13;
             // 
-            // label1
+            // structureNameLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 82);
-            label1.Name = "label1";
-            label1.Size = new Size(210, 38);
-            label1.TabIndex = 14;
-            label1.Text = "Наименование";
+            structureNameLabel.AutoSize = true;
+            structureNameLabel.Location = new Point(12, 90);
+            structureNameLabel.Name = "structureNameLabel";
+            structureNameLabel.Size = new Size(210, 38);
+            structureNameLabel.TabIndex = 14;
+            structureNameLabel.Text = "Наименование";
             // 
-            // comboBox1
+            // structureTypeValue
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(12, 210);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(327, 45);
-            comboBox1.TabIndex = 15;
+            structureTypeValue.FormattingEnabled = true;
+            structureTypeValue.Location = new Point(12, 218);
+            structureTypeValue.Name = "structureTypeValue";
+            structureTypeValue.Size = new Size(364, 45);
+            structureTypeValue.TabIndex = 15;
             // 
-            // label2
+            // structureTypeLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 169);
-            label2.Name = "label2";
-            label2.Size = new Size(175, 38);
-            label2.TabIndex = 16;
-            label2.Text = "Тип объекта";
+            structureTypeLabel.AutoSize = true;
+            structureTypeLabel.Location = new Point(12, 177);
+            structureTypeLabel.Name = "structureTypeLabel";
+            structureTypeLabel.Size = new Size(175, 38);
+            structureTypeLabel.TabIndex = 16;
+            structureTypeLabel.Text = "Тип объекта";
             // 
-            // button5
+            // cancelButton
             // 
-            button5.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button5.ForeColor = Color.FromArgb(0, 121, 194);
-            button5.Location = new Point(282, 264);
-            button5.Name = "button5";
-            button5.Size = new Size(129, 55);
-            button5.TabIndex = 71;
-            button5.Text = "Отмена";
-            button5.UseVisualStyleBackColor = true;
+            cancelButton.FlatAppearance.BorderColor = Color.Silver;
+            cancelButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            cancelButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            cancelButton.FlatStyle = FlatStyle.Flat;
+            cancelButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cancelButton.ForeColor = Color.FromArgb(0, 121, 194);
+            cancelButton.Location = new Point(112, 289);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(129, 55);
+            cancelButton.TabIndex = 71;
+            cancelButton.Text = "Отмена";
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += cancelButton_Click;
             // 
-            // button4
+            // actionButton
             // 
-            button4.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.ForeColor = Color.FromArgb(0, 121, 194);
-            button4.Location = new Point(417, 264);
-            button4.Name = "button4";
-            button4.Size = new Size(129, 55);
-            button4.TabIndex = 70;
-            button4.Text = "ОК";
-            button4.UseVisualStyleBackColor = true;
+            actionButton.FlatAppearance.BorderColor = Color.Silver;
+            actionButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            actionButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            actionButton.FlatStyle = FlatStyle.Flat;
+            actionButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            actionButton.ForeColor = Color.FromArgb(0, 121, 194);
+            actionButton.Location = new Point(247, 289);
+            actionButton.Name = "actionButton";
+            actionButton.Size = new Size(129, 55);
+            actionButton.TabIndex = 70;
+            actionButton.Text = "ОК";
+            actionButton.UseVisualStyleBackColor = true;
+            actionButton.Click += actionButton_Click;
             // 
             // addStructureTypeLinkLabel
             // 
             addStructureTypeLinkLabel.AutoSize = true;
             addStructureTypeLinkLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            addStructureTypeLinkLabel.Location = new Point(236, 176);
+            addStructureTypeLinkLabel.Location = new Point(273, 184);
             addStructureTypeLinkLabel.Name = "addStructureTypeLinkLabel";
             addStructureTypeLinkLabel.Size = new Size(103, 28);
             addStructureTypeLinkLabel.TabIndex = 72;
             addStructureTypeLinkLabel.TabStop = true;
             addStructureTypeLinkLabel.Text = "добавить ";
+            addStructureTypeLinkLabel.LinkClicked += addStructureTypeLinkLabel_LinkClicked;
             // 
             // StructureForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(558, 331);
+            ClientSize = new Size(388, 357);
             Controls.Add(addStructureTypeLinkLabel);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(label2);
-            Controls.Add(comboBox1);
-            Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(cancelButton);
+            Controls.Add(actionButton);
+            Controls.Add(structureTypeLabel);
+            Controls.Add(structureTypeValue);
+            Controls.Add(structureNameLabel);
+            Controls.Add(structureNameValue);
             Controls.Add(headerLabel);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(6);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "StructureForm";
-            Text = "StructureEditingAndAddingForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Объект";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -142,12 +159,12 @@
         #endregion
 
         private Label headerLabel;
-        private TextBox textBox1;
-        private Label label1;
-        private ComboBox comboBox1;
-        private Label label2;
-        private Button button5;
-        private Button button4;
+        private TextBox structureNameValue;
+        private Label structureNameLabel;
+        private ComboBox structureTypeValue;
+        private Label structureTypeLabel;
+        private Button cancelButton;
+        private Button actionButton;
         private LinkLabel addStructureTypeLinkLabel;
     }
 }

@@ -57,6 +57,7 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dataGridView1.BackgroundColor = Color.Gainsboro;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -69,16 +70,17 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(342, 241);
+            dataGridView1.Size = new Size(333, 244);
             dataGridView1.TabIndex = 15;
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             groupBox1.Controls.Add(deleteStructureTypeButton);
             groupBox1.Controls.Add(addStructureTypeButton);
             groupBox1.Controls.Add(editStructureTypeButton);
             groupBox1.ForeColor = Color.FromArgb(0, 121, 194);
-            groupBox1.Location = new Point(376, 78);
+            groupBox1.Location = new Point(367, 79);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(352, 259);
             groupBox1.TabIndex = 16;
@@ -87,6 +89,10 @@
             // 
             // deleteStructureTypeButton
             // 
+            deleteStructureTypeButton.FlatAppearance.BorderColor = Color.Silver;
+            deleteStructureTypeButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            deleteStructureTypeButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            deleteStructureTypeButton.FlatStyle = FlatStyle.Flat;
             deleteStructureTypeButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             deleteStructureTypeButton.ForeColor = Color.FromArgb(0, 121, 194);
             deleteStructureTypeButton.Location = new Point(6, 201);
@@ -99,6 +105,10 @@
             // 
             // addStructureTypeButton
             // 
+            addStructureTypeButton.FlatAppearance.BorderColor = Color.Silver;
+            addStructureTypeButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            addStructureTypeButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            addStructureTypeButton.FlatStyle = FlatStyle.Flat;
             addStructureTypeButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             addStructureTypeButton.ForeColor = Color.FromArgb(0, 121, 194);
             addStructureTypeButton.Location = new Point(6, 85);
@@ -111,11 +121,15 @@
             // 
             // editStructureTypeButton
             // 
+            editStructureTypeButton.FlatAppearance.BorderColor = Color.Silver;
+            editStructureTypeButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
+            editStructureTypeButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            editStructureTypeButton.FlatStyle = FlatStyle.Flat;
             editStructureTypeButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             editStructureTypeButton.ForeColor = Color.FromArgb(0, 121, 194);
             editStructureTypeButton.Location = new Point(6, 143);
             editStructureTypeButton.Name = "editStructureTypeButton";
-            editStructureTypeButton.Size = new Size(213, 52);
+            editStructureTypeButton.Size = new Size(224, 52);
             editStructureTypeButton.TabIndex = 15;
             editStructureTypeButton.Text = "Редактировать";
             editStructureTypeButton.UseVisualStyleBackColor = true;
@@ -126,7 +140,7 @@
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(743, 350);
+            ClientSize = new Size(732, 353);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             Controls.Add(headerLabel);
@@ -134,7 +148,9 @@
             ForeColor = Color.FromArgb(0, 121, 194);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(6);
+            MaximizeBox = false;
             Name = "StructureTypesListForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Типы объектов";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
