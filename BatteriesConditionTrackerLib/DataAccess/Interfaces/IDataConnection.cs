@@ -8,7 +8,7 @@ using BatteriesConditionTrackerLib.Models;
 
 namespace BatteriesConditionTrackerLib.DataAccess.Interfaces
 {
-    public interface IDataConnection : ICreateData, IUpdateData, IDeleteData, IGetData_All, IGetData_ById
+    public interface IDataConnection : ICreateData, IUpdateData, IDeleteData, IGetData_All, IGetData_ById, IGetAuthData
     {
     }
 }

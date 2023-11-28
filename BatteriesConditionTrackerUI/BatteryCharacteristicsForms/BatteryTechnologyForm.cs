@@ -18,9 +18,9 @@ namespace BatteriesConditionTrackerUI
     {
         private FormMode mode;
         private BatteryTechnology? inputedBatteryTechnologyModel;
-        private IRequester<BatteryTechnology> callingForm;
+        private IModelRequester<BatteryTechnology> callingForm;
 
-        public BatteryTechnologyForm(FormMode mode, IRequester<BatteryTechnology> caller, BatteryTechnology? batteryTechnologyModel = null)
+        public BatteryTechnologyForm(FormMode mode, IModelRequester<BatteryTechnology> caller, BatteryTechnology? batteryTechnologyModel = null)
         {
             InitializeComponent();
             this.mode = mode;

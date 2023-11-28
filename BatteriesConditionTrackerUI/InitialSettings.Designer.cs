@@ -30,17 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitialSettings));
             optionsGroupBox = new GroupBox();
-            headerLabel = new Label();
-            postgreRadioButton = new RadioButton();
-            sqlServerRadioButton = new RadioButton();
+            usingDefaultDirectory = new CheckBox();
             textFilesRadioButton = new RadioButton();
-            supplementaryLabel = new Label();
+            sqlServerRadioButton = new RadioButton();
+            postgreRadioButton = new RadioButton();
+            headerLabel = new Label();
             actionButton = new Button();
             optionsGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // optionsGroupBox
             // 
+            optionsGroupBox.Controls.Add(usingDefaultDirectory);
             optionsGroupBox.Controls.Add(textFilesRadioButton);
             optionsGroupBox.Controls.Add(sqlServerRadioButton);
             optionsGroupBox.Controls.Add(postgreRadioButton);
@@ -48,43 +49,23 @@
             optionsGroupBox.ForeColor = Color.FromArgb(0, 121, 194);
             optionsGroupBox.Location = new Point(31, 122);
             optionsGroupBox.Name = "optionsGroupBox";
-            optionsGroupBox.Size = new Size(326, 191);
+            optionsGroupBox.Size = new Size(464, 241);
             optionsGroupBox.TabIndex = 0;
             optionsGroupBox.TabStop = false;
             optionsGroupBox.Text = "Доступные варианты";
             // 
-            // headerLabel
+            // usingDefaultDirectory
             // 
-            headerLabel.AutoSize = true;
-            headerLabel.Location = new Point(31, 26);
-            headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(464, 76);
-            headerLabel.TabIndex = 1;
-            headerLabel.Text = "Пожалуйста, выберите тип \r\nиспользуемого хранилища данных";
-            // 
-            // postgreRadioButton
-            // 
-            postgreRadioButton.AutoSize = true;
-            postgreRadioButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            postgreRadioButton.Location = new Point(15, 42);
-            postgreRadioButton.Name = "postgreRadioButton";
-            postgreRadioButton.Size = new Size(180, 42);
-            postgreRadioButton.TabIndex = 0;
-            postgreRadioButton.TabStop = true;
-            postgreRadioButton.Text = "PostgreSQL";
-            postgreRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // sqlServerRadioButton
-            // 
-            sqlServerRadioButton.AutoSize = true;
-            sqlServerRadioButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            sqlServerRadioButton.Location = new Point(15, 90);
-            sqlServerRadioButton.Name = "sqlServerRadioButton";
-            sqlServerRadioButton.Size = new Size(173, 42);
-            sqlServerRadioButton.TabIndex = 1;
-            sqlServerRadioButton.TabStop = true;
-            sqlServerRadioButton.Text = "SQL Server";
-            sqlServerRadioButton.UseVisualStyleBackColor = true;
+            usingDefaultDirectory.AutoSize = true;
+            usingDefaultDirectory.Checked = true;
+            usingDefaultDirectory.CheckState = CheckState.Checked;
+            usingDefaultDirectory.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            usingDefaultDirectory.Location = new Point(15, 186);
+            usingDefaultDirectory.Name = "usingDefaultDirectory";
+            usingDefaultDirectory.Size = new Size(425, 32);
+            usingDefaultDirectory.TabIndex = 3;
+            usingDefaultDirectory.Text = "Использовать директорию по умолчанию";
+            usingDefaultDirectory.UseVisualStyleBackColor = true;
             // 
             // textFilesRadioButton
             // 
@@ -97,25 +78,52 @@
             textFilesRadioButton.TabStop = true;
             textFilesRadioButton.Text = "Текстовые файлы*";
             textFilesRadioButton.UseVisualStyleBackColor = true;
+            textFilesRadioButton.CheckedChanged += textFilesRadioButton_CheckedChanged;
             // 
-            // supplementaryLabel
+            // sqlServerRadioButton
             // 
-            supplementaryLabel.AutoSize = true;
-            supplementaryLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            supplementaryLabel.Location = new Point(31, 316);
-            supplementaryLabel.Name = "supplementaryLabel";
-            supplementaryLabel.Size = new Size(330, 28);
-            supplementaryLabel.TabIndex = 2;
-            supplementaryLabel.Text = "* потребуется указать директорию";
+            sqlServerRadioButton.AutoSize = true;
+            sqlServerRadioButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            sqlServerRadioButton.Location = new Point(15, 90);
+            sqlServerRadioButton.Name = "sqlServerRadioButton";
+            sqlServerRadioButton.Size = new Size(173, 42);
+            sqlServerRadioButton.TabIndex = 1;
+            sqlServerRadioButton.TabStop = true;
+            sqlServerRadioButton.Text = "SQL Server";
+            sqlServerRadioButton.UseVisualStyleBackColor = true;
+            sqlServerRadioButton.CheckedChanged += sqlServerRadioButton_CheckedChanged;
+            // 
+            // postgreRadioButton
+            // 
+            postgreRadioButton.AutoSize = true;
+            postgreRadioButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            postgreRadioButton.Location = new Point(15, 42);
+            postgreRadioButton.Name = "postgreRadioButton";
+            postgreRadioButton.Size = new Size(180, 42);
+            postgreRadioButton.TabIndex = 0;
+            postgreRadioButton.TabStop = true;
+            postgreRadioButton.Text = "PostgreSQL";
+            postgreRadioButton.UseVisualStyleBackColor = true;
+            postgreRadioButton.CheckedChanged += postgreRadioButton_CheckedChanged;
+            // 
+            // headerLabel
+            // 
+            headerLabel.AutoSize = true;
+            headerLabel.Location = new Point(31, 26);
+            headerLabel.Name = "headerLabel";
+            headerLabel.Size = new Size(464, 76);
+            headerLabel.TabIndex = 1;
+            headerLabel.Text = "Пожалуйста, выберите тип \r\nиспользуемого хранилища данных";
             // 
             // actionButton
             // 
-            actionButton.Location = new Point(369, 366);
+            actionButton.Location = new Point(369, 369);
             actionButton.Name = "actionButton";
             actionButton.Size = new Size(126, 53);
             actionButton.TabIndex = 3;
             actionButton.Text = "OK";
             actionButton.UseVisualStyleBackColor = true;
+            actionButton.Click += actionButton_Click;
             // 
             // InitialSettings
             // 
@@ -124,13 +132,12 @@
             BackColor = Color.White;
             ClientSize = new Size(527, 431);
             Controls.Add(actionButton);
-            Controls.Add(supplementaryLabel);
             Controls.Add(headerLabel);
             Controls.Add(optionsGroupBox);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "InitialSettings";
             Text = "Первоначальная настройка";
             optionsGroupBox.ResumeLayout(false);
@@ -146,7 +153,7 @@
         private RadioButton sqlServerRadioButton;
         private RadioButton postgreRadioButton;
         private Label headerLabel;
-        private Label supplementaryLabel;
         private Button actionButton;
+        private CheckBox usingDefaultDirectory;
     }
 }

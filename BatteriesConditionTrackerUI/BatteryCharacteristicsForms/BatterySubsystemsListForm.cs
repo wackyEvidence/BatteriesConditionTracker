@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace BatteriesConditionTrackerUI
 {
-    public partial class BatterySubsystemsListForm : Form, IRequester<BatterySubsystem>
+    public partial class BatterySubsystemsListForm : Form, IModelRequester<BatterySubsystem>
     {
         private BindingList<BatterySubsystem> displayedButterySubsystems = GlobalConfig.Connection.GetBatterySubsystem_All();
 
@@ -22,6 +22,11 @@ namespace BatteriesConditionTrackerUI
             InitializeComponent();
             WireUpLists();
             AdjustDataGridView();
+        }
+
+        private void BatterySubsystemsListForm_Load(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
         }
 
         private void WireUpLists()
@@ -39,12 +44,12 @@ namespace BatteriesConditionTrackerUI
         #region IRequster<BatterySubsystem>
         public void ModelCreated(BatterySubsystem model)
         {
-            displayedButterySubsystems.Add(model);  
+            displayedButterySubsystems.Add(model);
         }
 
         public void ModelUpdated(BatterySubsystem model)
         {
-            Refresh(); 
+            Refresh();
         }
         #endregion
 

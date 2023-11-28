@@ -140,6 +140,7 @@
             Name = "BatteryTechnologiesListForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Технологии аккумуляторов";
+            Load += BatteryTechnologiesListForm_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

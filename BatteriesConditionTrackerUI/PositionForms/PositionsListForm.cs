@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace BatteriesConditionTrackerUI
 {
-    public partial class PositionsListForm : Form, IRequester<Position>
+    public partial class PositionsListForm : Form, IModelRequester<Position>
     {
         private BindingList<Position> displayedPositions = GlobalConfig.Connection.GetPosition_All();
 
@@ -22,6 +22,11 @@ namespace BatteriesConditionTrackerUI
             InitializeComponent();
             WireUpLists();
             AdjustDataGridView();
+        }
+
+        private void PositionsListForm_Load(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
         }
 
         private void WireUpLists()

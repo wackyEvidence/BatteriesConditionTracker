@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BatteryAddingForm));
             headerLabel = new Label();
             modelComboBox = new ComboBox();
             modelLabel = new Label();
-            linkLabel1 = new LinkLabel();
+            addBatteryModel = new LinkLabel();
             exploitationEndValue = new DateTimePicker();
             exploitationStartValue = new DateTimePicker();
             replacementStatusComboBox = new ComboBox();
@@ -48,29 +49,21 @@
             structureLabel = new Label();
             exploitationStartLabel = new Label();
             exploitationEndLabel = new Label();
-            photosGroupBox = new GroupBox();
-            pictureBox1 = new PictureBox();
-            previousPhotoButton = new Button();
-            nextPhotoButton = new Button();
-            addPhotoButton = new Button();
-            deletePhotoButton = new Button();
-            addBatteryButton = new Button();
+            actionButton = new Button();
             cancelButton = new Button();
-            photosGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // headerLabel
             // 
             headerLabel.AutoSize = true;
-            headerLabel.Font = new Font("Segoe UI Light", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            headerLabel.Font = new Font("Segoe UI Light", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
             headerLabel.Location = new Point(15, 9);
             headerLabel.Margin = new Padding(6, 0, 6, 0);
             headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(345, 62);
+            headerLabel.Size = new Size(525, 60);
             headerLabel.TabIndex = 9;
-            headerLabel.Text = "headerLabelText";
+            headerLabel.Text = "Добавление аккумулятора";
             // 
             // modelComboBox
             // 
@@ -78,7 +71,7 @@
             modelComboBox.Location = new Point(15, 130);
             modelComboBox.Name = "modelComboBox";
             modelComboBox.Size = new Size(369, 45);
-            modelComboBox.TabIndex = 11;
+            modelComboBox.TabIndex = 0;
             // 
             // modelLabel
             // 
@@ -90,51 +83,52 @@
             modelLabel.TabIndex = 12;
             modelLabel.Text = "Модель";
             // 
-            // linkLabel1
+            // addBatteryModel
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            linkLabel1.Location = new Point(212, 99);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(172, 28);
-            linkLabel1.TabIndex = 13;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Добавить новую ";
+            addBatteryModel.AutoSize = true;
+            addBatteryModel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            addBatteryModel.Location = new Point(212, 99);
+            addBatteryModel.Name = "addBatteryModel";
+            addBatteryModel.Size = new Size(172, 28);
+            addBatteryModel.TabIndex = 13;
+            addBatteryModel.TabStop = true;
+            addBatteryModel.Text = "Добавить новую ";
+            addBatteryModel.LinkClicked += addBatteryModel_LinkClicked;
             // 
             // exploitationEndValue
             // 
-            exploitationEndValue.Location = new Point(15, 395);
+            exploitationEndValue.Location = new Point(322, 308);
             exploitationEndValue.Name = "exploitationEndValue";
-            exploitationEndValue.Size = new Size(250, 43);
-            exploitationEndValue.TabIndex = 61;
+            exploitationEndValue.Size = new Size(287, 43);
+            exploitationEndValue.TabIndex = 4;
             // 
             // exploitationStartValue
             // 
             exploitationStartValue.Location = new Point(15, 308);
             exploitationStartValue.Name = "exploitationStartValue";
-            exploitationStartValue.Size = new Size(250, 43);
-            exploitationStartValue.TabIndex = 60;
+            exploitationStartValue.Size = new Size(287, 43);
+            exploitationStartValue.TabIndex = 3;
             // 
             // replacementStatusComboBox
             // 
             replacementStatusComboBox.FormattingEnabled = true;
-            replacementStatusComboBox.Location = new Point(319, 219);
+            replacementStatusComboBox.Location = new Point(322, 219);
             replacementStatusComboBox.Name = "replacementStatusComboBox";
-            replacementStatusComboBox.Size = new Size(249, 45);
-            replacementStatusComboBox.TabIndex = 58;
+            replacementStatusComboBox.Size = new Size(300, 45);
+            replacementStatusComboBox.TabIndex = 2;
             // 
             // responsibleEmployeeComboBox
             // 
             responsibleEmployeeComboBox.FormattingEnabled = true;
-            responsibleEmployeeComboBox.Location = new Point(12, 737);
+            responsibleEmployeeComboBox.Location = new Point(15, 650);
             responsibleEmployeeComboBox.Name = "responsibleEmployeeComboBox";
-            responsibleEmployeeComboBox.Size = new Size(553, 45);
-            responsibleEmployeeComboBox.TabIndex = 59;
+            responsibleEmployeeComboBox.Size = new Size(610, 45);
+            responsibleEmployeeComboBox.TabIndex = 8;
             // 
             // replacementStatusLabel
             // 
             replacementStatusLabel.AutoSize = true;
-            replacementStatusLabel.Location = new Point(319, 178);
+            replacementStatusLabel.Location = new Point(322, 178);
             replacementStatusLabel.Name = "replacementStatusLabel";
             replacementStatusLabel.Size = new Size(202, 38);
             replacementStatusLabel.TabIndex = 56;
@@ -143,7 +137,7 @@
             // responsibleEmployeeLabel
             // 
             responsibleEmployeeLabel.AutoSize = true;
-            responsibleEmployeeLabel.Location = new Point(12, 696);
+            responsibleEmployeeLabel.Location = new Point(15, 609);
             responsibleEmployeeLabel.Name = "responsibleEmployeeLabel";
             responsibleEmployeeLabel.Size = new Size(339, 38);
             responsibleEmployeeLabel.TabIndex = 57;
@@ -154,17 +148,20 @@
             exploitationStatusComboBox.FormattingEnabled = true;
             exploitationStatusComboBox.Location = new Point(15, 219);
             exploitationStatusComboBox.Name = "exploitationStatusComboBox";
-            exploitationStatusComboBox.Size = new Size(278, 45);
-            exploitationStatusComboBox.TabIndex = 54;
+            exploitationStatusComboBox.Size = new Size(287, 45);
+            exploitationStatusComboBox.TabIndex = 1;
+            exploitationStatusComboBox.SelectedIndexChanged += exploitationStatusComboBox_SelectedIndexChanged;
             // 
             // additionalNotesValue
             // 
             additionalNotesValue.ForeColor = Color.Gray;
-            additionalNotesValue.Location = new Point(12, 571);
+            additionalNotesValue.Location = new Point(15, 484);
             additionalNotesValue.Name = "additionalNotesValue";
             additionalNotesValue.Size = new Size(553, 122);
-            additionalNotesValue.TabIndex = 55;
+            additionalNotesValue.TabIndex = 7;
             additionalNotesValue.Text = "Место установки, особенности эксплуатации АКБ и т.п.";
+            additionalNotesValue.Enter += additionalNotesValue_Enter;
+            additionalNotesValue.Leave += additionalNotesValue_Leave;
             // 
             // exploitationStatusLabel
             // 
@@ -178,7 +175,7 @@
             // additionalNotesLabel
             // 
             additionalNotesLabel.AutoSize = true;
-            additionalNotesLabel.Location = new Point(12, 530);
+            additionalNotesLabel.Location = new Point(15, 443);
             additionalNotesLabel.Name = "additionalNotesLabel";
             additionalNotesLabel.Size = new Size(180, 38);
             additionalNotesLabel.TabIndex = 53;
@@ -187,23 +184,23 @@
             // structureComboBox
             // 
             structureComboBox.FormattingEnabled = true;
-            structureComboBox.Location = new Point(15, 482);
+            structureComboBox.Location = new Point(15, 395);
             structureComboBox.Name = "structureComboBox";
-            structureComboBox.Size = new Size(283, 45);
-            structureComboBox.TabIndex = 51;
+            structureComboBox.Size = new Size(307, 45);
+            structureComboBox.TabIndex = 5;
             // 
             // subsystemComboBox
             // 
             subsystemComboBox.FormattingEnabled = true;
-            subsystemComboBox.Location = new Point(319, 482);
+            subsystemComboBox.Location = new Point(344, 395);
             subsystemComboBox.Name = "subsystemComboBox";
-            subsystemComboBox.Size = new Size(249, 45);
-            subsystemComboBox.TabIndex = 50;
+            subsystemComboBox.Size = new Size(280, 45);
+            subsystemComboBox.TabIndex = 6;
             // 
             // subsystemLabel
             // 
             subsystemLabel.AutoSize = true;
-            subsystemLabel.Location = new Point(319, 441);
+            subsystemLabel.Location = new Point(342, 354);
             subsystemLabel.Name = "subsystemLabel";
             subsystemLabel.Size = new Size(170, 38);
             subsystemLabel.TabIndex = 49;
@@ -212,7 +209,7 @@
             // structureLabel
             // 
             structureLabel.AutoSize = true;
-            structureLabel.Location = new Point(15, 441);
+            structureLabel.Location = new Point(15, 354);
             structureLabel.Name = "structureLabel";
             structureLabel.Size = new Size(111, 38);
             structureLabel.TabIndex = 48;
@@ -223,118 +220,51 @@
             exploitationStartLabel.AutoSize = true;
             exploitationStartLabel.Location = new Point(15, 267);
             exploitationStartLabel.Name = "exploitationStartLabel";
-            exploitationStartLabel.Size = new Size(353, 38);
+            exploitationStartLabel.Size = new Size(293, 38);
             exploitationStartLabel.TabIndex = 46;
-            exploitationStartLabel.Text = "Дата начала эксплуатации";
+            exploitationStartLabel.Text = "Начало эксплуатации";
             // 
             // exploitationEndLabel
             // 
             exploitationEndLabel.AutoSize = true;
-            exploitationEndLabel.Location = new Point(15, 354);
+            exploitationEndLabel.Location = new Point(322, 267);
             exploitationEndLabel.Name = "exploitationEndLabel";
-            exploitationEndLabel.Size = new Size(402, 38);
+            exploitationEndLabel.Size = new Size(342, 38);
             exploitationEndLabel.TabIndex = 47;
-            exploitationEndLabel.Text = "Дата окончания эксплуатации";
+            exploitationEndLabel.Text = "Окончание эксплуатации";
             // 
-            // photosGroupBox
+            // actionButton
             // 
-            photosGroupBox.Controls.Add(pictureBox1);
-            photosGroupBox.Controls.Add(previousPhotoButton);
-            photosGroupBox.Controls.Add(nextPhotoButton);
-            photosGroupBox.Controls.Add(addPhotoButton);
-            photosGroupBox.Controls.Add(deletePhotoButton);
-            photosGroupBox.ForeColor = Color.FromArgb(0, 121, 194);
-            photosGroupBox.Location = new Point(574, 107);
-            photosGroupBox.Name = "photosGroupBox";
-            photosGroupBox.Size = new Size(402, 604);
-            photosGroupBox.TabIndex = 68;
-            photosGroupBox.TabStop = false;
-            photosGroupBox.Text = "Фотографии";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.InitialImage = null;
-            pictureBox1.Location = new Point(6, 42);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(388, 419);
-            pictureBox1.TabIndex = 16;
-            pictureBox1.TabStop = false;
-            // 
-            // previousPhotoButton
-            // 
-            previousPhotoButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            previousPhotoButton.ForeColor = Color.FromArgb(0, 121, 194);
-            previousPhotoButton.Location = new Point(6, 468);
-            previousPhotoButton.Name = "previousPhotoButton";
-            previousPhotoButton.Size = new Size(78, 55);
-            previousPhotoButton.TabIndex = 27;
-            previousPhotoButton.Text = "<";
-            previousPhotoButton.UseVisualStyleBackColor = true;
-            // 
-            // nextPhotoButton
-            // 
-            nextPhotoButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            nextPhotoButton.ForeColor = Color.FromArgb(0, 121, 194);
-            nextPhotoButton.Location = new Point(313, 467);
-            nextPhotoButton.Name = "nextPhotoButton";
-            nextPhotoButton.Size = new Size(81, 55);
-            nextPhotoButton.TabIndex = 28;
-            nextPhotoButton.Text = ">";
-            nextPhotoButton.UseVisualStyleBackColor = true;
-            // 
-            // addPhotoButton
-            // 
-            addPhotoButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            addPhotoButton.ForeColor = Color.FromArgb(0, 121, 194);
-            addPhotoButton.Location = new Point(90, 468);
-            addPhotoButton.Name = "addPhotoButton";
-            addPhotoButton.Size = new Size(217, 55);
-            addPhotoButton.TabIndex = 25;
-            addPhotoButton.Text = "Добавить фото";
-            addPhotoButton.UseVisualStyleBackColor = true;
-            // 
-            // deletePhotoButton
-            // 
-            deletePhotoButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            deletePhotoButton.ForeColor = Color.FromArgb(0, 121, 194);
-            deletePhotoButton.Location = new Point(90, 526);
-            deletePhotoButton.Name = "deletePhotoButton";
-            deletePhotoButton.Size = new Size(217, 55);
-            deletePhotoButton.TabIndex = 26;
-            deletePhotoButton.Text = "Удалить фото";
-            deletePhotoButton.UseVisualStyleBackColor = true;
-            // 
-            // addBatteryButton
-            // 
-            addBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            addBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            addBatteryButton.Location = new Point(847, 727);
-            addBatteryButton.Name = "addBatteryButton";
-            addBatteryButton.Size = new Size(129, 55);
-            addBatteryButton.TabIndex = 29;
-            addBatteryButton.Text = "ОК";
-            addBatteryButton.UseVisualStyleBackColor = true;
+            actionButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            actionButton.ForeColor = Color.FromArgb(0, 121, 194);
+            actionButton.Location = new Point(496, 701);
+            actionButton.Name = "actionButton";
+            actionButton.Size = new Size(129, 55);
+            actionButton.TabIndex = 29;
+            actionButton.Text = "ОК";
+            actionButton.UseVisualStyleBackColor = true;
+            actionButton.Click += actionButton_Click;
             // 
             // cancelButton
             // 
             cancelButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             cancelButton.ForeColor = Color.FromArgb(0, 121, 194);
-            cancelButton.Location = new Point(712, 727);
+            cancelButton.Location = new Point(361, 701);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(129, 55);
             cancelButton.TabIndex = 69;
             cancelButton.Text = "Отмена";
             cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += cancelButton_Click;
             // 
             // BatteryAddingForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(987, 791);
+            ClientSize = new Size(667, 763);
             Controls.Add(cancelButton);
-            Controls.Add(addBatteryButton);
-            Controls.Add(photosGroupBox);
+            Controls.Add(actionButton);
             Controls.Add(exploitationEndValue);
             Controls.Add(exploitationStartValue);
             Controls.Add(replacementStatusComboBox);
@@ -351,17 +281,17 @@
             Controls.Add(structureLabel);
             Controls.Add(exploitationStartLabel);
             Controls.Add(exploitationEndLabel);
-            Controls.Add(linkLabel1);
+            Controls.Add(addBatteryModel);
             Controls.Add(modelLabel);
             Controls.Add(headerLabel);
             Controls.Add(modelComboBox);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(6);
             Name = "BatteryAddingForm";
-            Text = "BatteryAddingForm";
-            photosGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Text = "Аккумулятор";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -371,7 +301,7 @@
         private Label headerLabel;
         private ComboBox modelComboBox;
         private Label modelLabel;
-        private LinkLabel linkLabel1;
+        private LinkLabel addBatteryModel;
         private DateTimePicker exploitationEndValue;
         private DateTimePicker exploitationStartValue;
         private ComboBox replacementStatusComboBox;
@@ -388,13 +318,7 @@
         private Label structureLabel;
         private Label exploitationStartLabel;
         private Label exploitationEndLabel;
-        private GroupBox photosGroupBox;
-        private PictureBox pictureBox1;
-        private Button previousPhotoButton;
-        private Button nextPhotoButton;
-        private Button addPhotoButton;
-        private Button deletePhotoButton;
-        private Button addBatteryButton;
+        private Button actionButton;
         private Button cancelButton;
     }
 }

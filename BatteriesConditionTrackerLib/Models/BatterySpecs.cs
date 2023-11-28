@@ -29,6 +29,11 @@ namespace BatteriesConditionTrackerLib.Models
             Id = int.Parse(columns[0]); 
             Name = columns[1];
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
     public class BatteryClampType : IHaveId

@@ -20,5 +20,6 @@ namespace BatteriesConditionTrackerLib.DataAccess.Interfaces
         public Structure GetStructure_ById(int id);
         public StructureType GetStructureType_ById(int id);
         public User GetUser_ById(int id);
+        public BindingList<BatterySoHMeasure> GetBatterySoHMeasure_ById(int id);
     }
 }

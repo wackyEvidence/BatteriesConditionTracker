@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using BatteriesConditionTrackerLib.Models.Interfaces;
@@ -26,10 +27,6 @@ namespace BatteriesConditionTrackerLib.Models
         /// </summary>
         public string Patronymic { get; set; }
         /// <summary>
-        /// Хэш пароля пользователя
-        /// </summary>
-        public string Password { get; set; }
-        /// <summary>
         /// Номер телефона пользователя
         /// </summary>
         public string PhoneNumber { get; set; }
@@ -40,12 +37,11 @@ namespace BatteriesConditionTrackerLib.Models
         /// <summary>
         /// Должность пользователя
         /// </summary>
-        public Position Position { get; set; }
+        public Position? Position { get; set; }
         /// <summary>
-        /// Руководитель пользователя
+        /// Хэш пароля пользователя
         /// </summary>
-        public User Supervisor { get; set; }
-
+        public string Password { get; set; }
         /// <summary>
         /// Администраторские права пользователя 
         /// </summary>
@@ -53,13 +49,25 @@ namespace BatteriesConditionTrackerLib.Models
         /// <summary>
         /// ФИО пользователя
         /// </summary>
-        public string FullName { get { return Surname + Name + Patronymic; } }
+        public string FullName { get { return $"{Surname} {Name} {Patronymic}"; } }
 
         public static readonly Func<string[], User> ModelCreation = columns => new User(columns);
         public static readonly Func<User, string> ModelToCSV = user => $"{user.Id},{user.Name},{user.Surname},{user.Patronymic}," +
-            $"{user.Password},{user.PhoneNumber},{user.Email},{user.Position.Id},{user.Supervisor.Id},{user.IsAdmin}";
+            $"{user.Password},{user.PhoneNumber},{user.Email},{(user.Position == null? "" : user.Position.Id)},{user.IsAdmin}";
 
-        public User() { }
+        public User() { } 
+
+        public User(string name, string surname, string patronymic, string password, string phoneNumber, string email, Position position, bool isAdmin) 
+        {
+            Name = name; 
+            Surname = surname;
+            Patronymic = patronymic; 
+            Password = password;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            Position = position;
+            IsAdmin = isAdmin;
+        }
 
         public User(string[] columns)
         {
@@ -70,9 +78,13 @@ namespace BatteriesConditionTrackerLib.Models
             Password = columns[4];
             PhoneNumber = columns[5];
             Email = columns[6];
-            Position = GlobalConfig.Connection.GetPosition_ById(int.Parse(columns[7]));
-            Supervisor = GlobalConfig.Connection.GetUser_ById(int.Parse(columns[8]));
-            IsAdmin = bool.Parse(columns[9]);   
+            Position = string.IsNullOrEmpty(columns[7])? null : GlobalConfig.Connection.GetPosition_ById(int.Parse(columns[7]));
+            IsAdmin = bool.Parse(columns[8]);   
+        }
+
+        public override string ToString()
+        {
+            return FullName; 
         }
     }
 }

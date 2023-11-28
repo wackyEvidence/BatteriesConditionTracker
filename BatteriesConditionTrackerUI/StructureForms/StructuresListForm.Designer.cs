@@ -150,6 +150,7 @@
             MinimumSize = new Size(750, 400);
             Name = "StructuresListForm";
             Text = "Объекты";
+            Load += StructuresListForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);

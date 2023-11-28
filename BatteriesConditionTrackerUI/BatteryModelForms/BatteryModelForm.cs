@@ -1,43 +1,59 @@
 ﻿using BatteriesConditionTrackerLib;
 using BatteriesConditionTrackerLib.Models;
 using BatteriesConditionTrackerLib.Validation;
-using System;
-using System.Collections.Generic;
+using BatteriesConditionTrackerUI.Interfaces;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace BatteriesConditionTrackerUI
 {
-    public partial class BatteryModelForm : Form, IValidatable
+    public partial class BatteryModelForm : Form, IValidatable, IModelRequester<BatteryTechnology>, IModelRequester<BatteryClampType>
     {
         private BindingList<BatteryTechnology> availableTechnologies = GlobalConfig.Connection.GetBatteryTechnology_All();
         private BindingList<BatteryClampType> availableClampTypes = GlobalConfig.Connection.GetBatteryClampType_All();
 
-        private FormMode mode;
-        private BatteryModel? batteryModel;
+        private readonly FormMode mode;
+        private readonly BatteryModel? inputedBatteryModel;
+        private readonly IModelRequester<BatteryModel> callingForm;
 
-        public BatteryModelForm(FormMode mode)
+        public BatteryModelForm(FormMode mode, IModelRequester<BatteryModel> caller, BatteryModel? batteryModel = null)
         {
             InitializeComponent();
             this.mode = mode;
-            headerLabel.Text = "Добавление модели аккумулятора";
+            callingForm = caller;
+            inputedBatteryModel = batteryModel;
+            headerLabel.Text = mode == FormMode.Adding ? "Добавление модели" : "Изменение модели";
             WireUpLists();
+
+            if (mode == FormMode.Editing)
+                FillFormFields();
         }
 
-        public BatteryModelForm(FormMode mode, BatteryModel batteryModel)
+        #region IRequester<BatteryTechnology>
+        public void ModelCreated(BatteryTechnology model)
         {
-            InitializeComponent();
-            this.mode = mode;
-            this.batteryModel = batteryModel;
-            headerLabel.Text = "Изменение модели аккумулятора";
-            WireUpLists();
+            availableTechnologies.Add(model);
+            technologyComboBox.SelectedItem = model;
         }
+
+        public void ModelUpdated(BatteryTechnology model)
+        {
+            technologyComboBox.Refresh();
+        }
+        #endregion
+
+        #region IRequester<BatteryClampType>
+        public void ModelCreated(BatteryClampType model)
+        {
+            availableClampTypes.Add(model);
+            clampTypeComboBox.SelectedItem = model;
+        }
+
+        public void ModelUpdated(BatteryClampType model)
+        {
+            clampTypeComboBox.Refresh();
+        }
+        #endregion
 
         private void WireUpLists()
         {
@@ -47,48 +63,28 @@ namespace BatteriesConditionTrackerUI
             clampTypeComboBox.DisplayMember = "Name";
         }
 
-        private void OkButton_Click(object sender, EventArgs e)
+        private void FillFormFields()
         {
-            var errors = ValidateForm();
-
-            if (errors.Count == 0) // ввод верен 
+            if (inputedBatteryModel != null)
             {
-                if (mode == FormMode.Adding)
-                {
-                    GetBatteryModelSizes(out string length, out string width, out string height);
-                    // Создание модели
-                    #region 
-                    var newBatteryModel = new BatteryModel(
-                    nameValue.Text,
-                    brandValue.Text,
-                    capacityValue.Text,
-                    voltageValue.Text,
-                    length,
-                    height,
-                    width,
-                    (BatteryTechnology)technologyComboBox.SelectedItem,
-                    (BatteryClampType)clampTypeComboBox.SelectedItem,
-                    costValue.Text,
-                    bufferServiceTimeValue.Text,
-                    minSoHValue.Text
-                    );
-                    #endregion
-                    GlobalConfig.Connection.CreateBatteryModel(newBatteryModel);
-                }
-                else
-                {
-                    GlobalConfig.Connection.UpdateBatteryModel(batteryModel);
-                    // TODO - дописать обработку случая изменения аккумулятора
-                }
+                nameValue.Text = inputedBatteryModel.Name;
+                brandValue.Text = inputedBatteryModel.Brand;
+                costValue.Text = inputedBatteryModel.Cost.ToString();
+                capacityValue.Text = inputedBatteryModel.Capacity.ToString();
+                voltageValue.Text = inputedBatteryModel.Voltage.ToString();
+                technologyComboBox.SelectedItem = availableTechnologies.Where(t => t.Id == inputedBatteryModel.Technology.Id).First();
+                clampTypeComboBox.SelectedItem = availableClampTypes.Where(ct => ct.Id == inputedBatteryModel.ClampType.Id).First();
+                lengthValue.Text = inputedBatteryModel.Length.ToString();
+                widthValue.Text = inputedBatteryModel.Width.ToString();
+                heightValue.Text = inputedBatteryModel.Height.ToString();
+                bufferServiceTimeValue.Value = decimal.Parse(inputedBatteryModel.BufferModeServiceTime.ToString());
+                minSoHValue.Text = inputedBatteryModel.SoHThreshold.ToString();
             }
-            else
-                ValidationErrorsDisplayer.DisplayErrors(errors);
         }
 
         public Dictionary<string, string> ValidateForm()
         {
             var errors = new Dictionary<string, string>();
-            GetBatteryModelSizes(out string length, out string width, out string height);
 
             var stringParams = new List<Parameter>
             {
@@ -97,9 +93,9 @@ namespace BatteriesConditionTrackerUI
             };
             var intParams = new List<Parameter>
             {
-                new Parameter("Длина", length),
-                new Parameter("Ширина", width),
-                new Parameter("Высота", height),
+                new Parameter("Длина", lengthValue.Text),
+                new Parameter("Ширина", widthValue.Text),
+                new Parameter("Высота", heightValue.Text),
                 new Parameter(costLabel.Text, costValue.Text),
                 new Parameter(minSoHLabel.Text, minSoHValue.Text)
             };
@@ -117,18 +113,72 @@ namespace BatteriesConditionTrackerUI
             return errors;
         }
 
-        /// <summary>
-        /// Парсит данные о размерах аккумулятора из маски ввода.
-        /// </summary>
-        /// <param name="length">Длина аккумулятора</param>
-        /// <param name="width">Ширина аккумулятора</param>
-        /// <param name="height">Высота аккумулятора</param>
-        private void GetBatteryModelSizes(out string length, out string width, out string height)
+        private void actionButton_Click(object sender, EventArgs e)
         {
-            var sizes = sizesMaskedTextBox.Text.Split('x');
-            length = sizes[0];
-            width = sizes[1];
-            height = sizes[2];
+            var errors = ValidateForm();
+
+            if (errors.Count == 0)
+            {
+                if (mode == FormMode.Adding)
+                {
+                    #region ModelCreation 
+                    var newBatteryModel = new BatteryModel(
+                    "0",
+                    nameValue.Text,
+                    brandValue.Text,
+                    capacityValue.Text.Replace('.', ','),
+                    voltageValue.Text.Replace('.', ','),
+                    lengthValue.Text,
+                    heightValue.Text,
+                    widthValue.Text,
+                    (BatteryTechnology)technologyComboBox.SelectedItem,
+                    (BatteryClampType)clampTypeComboBox.SelectedItem,
+                    costValue.Text,
+                    bufferServiceTimeValue.Text,
+                    minSoHValue.Text
+                    );
+                    #endregion
+
+                    GlobalConfig.Connection.CreateBatteryModel(newBatteryModel);
+                    callingForm.ModelCreated(newBatteryModel);
+                    Close();
+                }
+                else
+                {
+                    #region ModelUpdate
+                    inputedBatteryModel.Name = nameValue.Text;
+                    inputedBatteryModel.Brand = brandValue.Text;
+                    inputedBatteryModel.Cost = int.Parse(costValue.Text);
+                    inputedBatteryModel.Technology = (BatteryTechnology)technologyComboBox.SelectedItem;
+                    inputedBatteryModel.ClampType = (BatteryClampType)clampTypeComboBox.SelectedItem;
+                    inputedBatteryModel.Capacity = double.Parse(capacityValue.Text.Replace('.', ','));
+                    inputedBatteryModel.Voltage = double.Parse(voltageValue.Text.Replace('.', ','));
+                    inputedBatteryModel.Length = int.Parse(lengthValue.Text);
+                    inputedBatteryModel.Width = int.Parse(widthValue.Text);
+                    inputedBatteryModel.Height = int.Parse(heightValue.Text);
+                    inputedBatteryModel.BufferModeServiceTime = double.Parse(bufferServiceTimeValue.Value.ToString());
+                    inputedBatteryModel.SoHThreshold = int.Parse(minSoHValue.Text);
+                    #endregion
+
+                    GlobalConfig.Connection.UpdateBatteryModel(inputedBatteryModel);
+                    callingForm.ModelUpdated(inputedBatteryModel);
+                    Close();
+                }
+            }
+            else
+                ValidationErrorsDisplayer.DisplayErrors(errors);
+        }
+
+        private void addBatteryTechnologyLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var technologyAddingForm = new BatteryTechnologyForm(FormMode.Adding, this);
+            technologyAddingForm.ShowDialog();
+        }
+
+        private void addClampTypeLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var clampTypeAddingForm = new BatteryClampTypeForm(FormMode.Adding, this);
+            clampTypeAddingForm.ShowDialog();
         }
     }
 }

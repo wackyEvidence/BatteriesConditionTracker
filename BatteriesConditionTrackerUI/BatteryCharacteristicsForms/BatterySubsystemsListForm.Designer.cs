@@ -149,6 +149,7 @@
             MinimumSize = new Size(750, 400);
             Name = "BatterySubsystemsListForm";
             Text = "Подсистемы аккумулятора";
+            Load += BatterySubsystemsListForm_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

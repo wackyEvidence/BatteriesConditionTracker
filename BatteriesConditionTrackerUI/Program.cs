@@ -14,13 +14,29 @@ namespace BatteriesConditionTracker
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            GlobalConfig.InitializeConnection(DatabaseType.SqlServer); 
             ApplicationConfiguration.Initialize();
-            if (ConfigurationManager.AppSettings["isConfigured"] == "false")
-            {
+
+            if (ConfigurationManager.AppSettings["dbTypeConfigured"] == "false")
                 Application.Run(new InitialSettings());
-            }
-            Application.Run(new AuthorizationForm());
+
+            GlobalConfig.InitializeConnection();
+            
+            var lastReplacementStatusesUpdate = GlobalConfig.Connection.GetLastReplacementStatusesUpdateDate();
+            if (lastReplacementStatusesUpdate.ToShortDateString() != DateTime.Now.ToShortDateString())
+            {
+                // TODO Использовать в этом месте async/await
+                GlobalConfig.Connection.UpdateReplacementStatuses();
+                GlobalConfig.Connection.UpdateReplacementStatusesUpdateDate();
+            } 
+
+            var authorizationForm = new AuthorizationForm();
+            Application.Run(authorizationForm);
+
+            if (authorizationForm.AuthorizationSuccessful)
+                Application.Run(new BatteriesListForm());
+            else
+                Application.Exit();
+            //Application.Run(new BatteriesListForm());
         }
     }
 }

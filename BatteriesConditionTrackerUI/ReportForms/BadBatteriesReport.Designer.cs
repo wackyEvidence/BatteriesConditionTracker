@@ -28,61 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            headerLabel = new Label();
-            dataGridView1 = new DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BadBatteriesReport));
+            dataGridView = new DataGridView();
             label1 = new Label();
             label2 = new Label();
-            groupBoxFilters = new GroupBox();
-            batterySubsystemLabel = new Label();
-            subsystemCheckedListBox = new CheckedListBox();
-            batteryStructureLabel = new Label();
-            structureCheckedListBox = new CheckedListBox();
-            batteryCapacityLabel = new Label();
-            capacityCheckedListBox = new CheckedListBox();
-            batteryManufacturerLabel = new Label();
-            manufacturerCheckedListBox = new CheckedListBox();
-            groupBoxSort = new GroupBox();
-            removeSortButton = new Button();
-            sortSettingsButton = new Button();
-            deleteBatteryButton = new Button();
-            button1 = new Button();
-            button2 = new Button();
-            groupBox1 = new GroupBox();
-            label3 = new Label();
-            label4 = new Label();
+            quantityLabel = new Label();
+            replacementCostLabel = new Label();
             groupBox2 = new GroupBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            groupBoxFilters.SuspendLayout();
-            groupBoxSort.SuspendLayout();
-            groupBox1.SuspendLayout();
+            groupBoxFilters = new GroupBox();
+            resetAllFiltersLinkLabel = new LinkLabel();
+            replacementStatusComboBox = new ComboBox();
+            exploitationStatusComboBox = new ComboBox();
+            subsystemLabel = new Label();
+            subsystemCheckedListBox = new CheckedListBox();
+            structureLabel = new Label();
+            structuresCheckedListBox = new CheckedListBox();
+            capacityLabel = new Label();
+            capacitiesCheckedListBox = new CheckedListBox();
+            brandLabel = new Label();
+            brandsCheckedListBox = new CheckedListBox();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             groupBox2.SuspendLayout();
+            groupBoxFilters.SuspendLayout();
             SuspendLayout();
             // 
-            // headerLabel
+            // dataGridView
             // 
-            headerLabel.AutoSize = true;
-            headerLabel.Font = new Font("Segoe UI Light", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            headerLabel.ForeColor = Color.FromArgb(0, 121, 194);
-            headerLabel.Location = new Point(12, 9);
-            headerLabel.Margin = new Padding(6, 0, 6, 0);
-            headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(270, 62);
-            headerLabel.TabIndex = 9;
-            headerLabel.Text = "headerLabel";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.BackgroundColor = Color.Gainsboro;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 74);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(783, 577);
-            dataGridView1.TabIndex = 11;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.BackgroundColor = Color.Gainsboro;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Location = new Point(12, 12);
+            dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.RowHeadersWidth = 51;
+            dataGridView.RowTemplate.Height = 29;
+            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.Size = new Size(629, 577);
+            dataGridView.TabIndex = 11;
             // 
             // label1
             // 
@@ -104,269 +88,224 @@
             label2.TabIndex = 13;
             label2.Text = "Стоимость замены: ";
             // 
-            // groupBoxFilters
+            // quantityLabel
             // 
-            groupBoxFilters.BackColor = Color.White;
-            groupBoxFilters.Controls.Add(batterySubsystemLabel);
-            groupBoxFilters.Controls.Add(subsystemCheckedListBox);
-            groupBoxFilters.Controls.Add(batteryStructureLabel);
-            groupBoxFilters.Controls.Add(structureCheckedListBox);
-            groupBoxFilters.Controls.Add(batteryCapacityLabel);
-            groupBoxFilters.Controls.Add(capacityCheckedListBox);
-            groupBoxFilters.Controls.Add(batteryManufacturerLabel);
-            groupBoxFilters.Controls.Add(manufacturerCheckedListBox);
-            groupBoxFilters.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBoxFilters.ForeColor = Color.FromArgb(0, 121, 194);
-            groupBoxFilters.Location = new Point(806, 56);
-            groupBoxFilters.Name = "groupBoxFilters";
-            groupBoxFilters.Size = new Size(631, 480);
-            groupBoxFilters.TabIndex = 14;
-            groupBoxFilters.TabStop = false;
-            groupBoxFilters.Text = "Фильтрация";
+            quantityLabel.AutoSize = true;
+            quantityLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            quantityLabel.Location = new Point(372, 39);
+            quantityLabel.Name = "quantityLabel";
+            quantityLabel.Size = new Size(221, 38);
+            quantityLabel.TabIndex = 34;
+            quantityLabel.Text = "<quantityLabel>";
             // 
-            // batterySubsystemLabel
+            // replacementCostLabel
             // 
-            batterySubsystemLabel.AutoSize = true;
-            batterySubsystemLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            batterySubsystemLabel.Location = new Point(295, 313);
-            batterySubsystemLabel.Name = "batterySubsystemLabel";
-            batterySubsystemLabel.Size = new Size(176, 38);
-            batterySubsystemLabel.TabIndex = 31;
-            batterySubsystemLabel.Text = "Подсистема:";
-            // 
-            // subsystemCheckedListBox
-            // 
-            subsystemCheckedListBox.FormattingEnabled = true;
-            subsystemCheckedListBox.Location = new Point(295, 354);
-            subsystemCheckedListBox.Name = "subsystemCheckedListBox";
-            subsystemCheckedListBox.Size = new Size(329, 118);
-            subsystemCheckedListBox.TabIndex = 30;
-            // 
-            // batteryStructureLabel
-            // 
-            batteryStructureLabel.AutoSize = true;
-            batteryStructureLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            batteryStructureLabel.Location = new Point(295, 37);
-            batteryStructureLabel.Name = "batteryStructureLabel";
-            batteryStructureLabel.Size = new Size(117, 38);
-            batteryStructureLabel.TabIndex = 29;
-            batteryStructureLabel.Text = "Объект:";
-            // 
-            // structureCheckedListBox
-            // 
-            structureCheckedListBox.FormattingEnabled = true;
-            structureCheckedListBox.Location = new Point(295, 78);
-            structureCheckedListBox.Name = "structureCheckedListBox";
-            structureCheckedListBox.Size = new Size(329, 232);
-            structureCheckedListBox.TabIndex = 28;
-            // 
-            // batteryCapacityLabel
-            // 
-            batteryCapacityLabel.AutoSize = true;
-            batteryCapacityLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            batteryCapacityLabel.Location = new Point(6, 313);
-            batteryCapacityLabel.Name = "batteryCapacityLabel";
-            batteryCapacityLabel.Size = new Size(125, 38);
-            batteryCapacityLabel.TabIndex = 27;
-            batteryCapacityLabel.Text = "Емкость:";
-            // 
-            // capacityCheckedListBox
-            // 
-            capacityCheckedListBox.FormattingEnabled = true;
-            capacityCheckedListBox.Location = new Point(6, 354);
-            capacityCheckedListBox.Name = "capacityCheckedListBox";
-            capacityCheckedListBox.Size = new Size(264, 118);
-            capacityCheckedListBox.TabIndex = 26;
-            // 
-            // batteryManufacturerLabel
-            // 
-            batteryManufacturerLabel.AutoSize = true;
-            batteryManufacturerLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            batteryManufacturerLabel.Location = new Point(6, 37);
-            batteryManufacturerLabel.Name = "batteryManufacturerLabel";
-            batteryManufacturerLabel.Size = new Size(220, 38);
-            batteryManufacturerLabel.TabIndex = 25;
-            batteryManufacturerLabel.Text = "Производитель:";
-            // 
-            // manufacturerCheckedListBox
-            // 
-            manufacturerCheckedListBox.FormattingEnabled = true;
-            manufacturerCheckedListBox.Location = new Point(6, 78);
-            manufacturerCheckedListBox.Name = "manufacturerCheckedListBox";
-            manufacturerCheckedListBox.Size = new Size(264, 232);
-            manufacturerCheckedListBox.TabIndex = 24;
-            // 
-            // groupBoxSort
-            // 
-            groupBoxSort.BackColor = Color.White;
-            groupBoxSort.Controls.Add(removeSortButton);
-            groupBoxSort.Controls.Add(sortSettingsButton);
-            groupBoxSort.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBoxSort.ForeColor = Color.FromArgb(0, 121, 194);
-            groupBoxSort.Location = new Point(806, 542);
-            groupBoxSort.Name = "groupBoxSort";
-            groupBoxSort.Size = new Size(631, 109);
-            groupBoxSort.TabIndex = 32;
-            groupBoxSort.TabStop = false;
-            groupBoxSort.Text = "Сортировка";
-            // 
-            // removeSortButton
-            // 
-            removeSortButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            removeSortButton.ForeColor = Color.FromArgb(0, 121, 194);
-            removeSortButton.Location = new Point(328, 42);
-            removeSortButton.Name = "removeSortButton";
-            removeSortButton.Size = new Size(290, 55);
-            removeSortButton.TabIndex = 20;
-            removeSortButton.Text = "Убрать сортировку";
-            removeSortButton.UseVisualStyleBackColor = true;
-            // 
-            // sortSettingsButton
-            // 
-            sortSettingsButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            sortSettingsButton.ForeColor = Color.FromArgb(0, 121, 194);
-            sortSettingsButton.Location = new Point(4, 42);
-            sortSettingsButton.Name = "sortSettingsButton";
-            sortSettingsButton.Size = new Size(318, 55);
-            sortSettingsButton.TabIndex = 21;
-            sortSettingsButton.Text = "Настройка сортировки ";
-            sortSettingsButton.UseVisualStyleBackColor = true;
-            // 
-            // deleteBatteryButton
-            // 
-            deleteBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            deleteBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            deleteBatteryButton.Location = new Point(555, 674);
-            deleteBatteryButton.Name = "deleteBatteryButton";
-            deleteBatteryButton.Size = new Size(240, 92);
-            deleteBatteryButton.TabIndex = 33;
-            deleteBatteryButton.Text = "Удалить элемент\r\nсписка";
-            deleteBatteryButton.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.FromArgb(0, 121, 194);
-            button1.Location = new Point(6, 47);
-            button1.Name = "button1";
-            button1.Size = new Size(247, 52);
-            button1.TabIndex = 34;
-            button1.Text = "Экспорт в Excel";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ForeColor = Color.FromArgb(0, 121, 194);
-            button2.Location = new Point(259, 47);
-            button2.Name = "button2";
-            button2.Size = new Size(359, 52);
-            button2.TabIndex = 35;
-            button2.Text = "Прислать мне на почту";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            groupBox1.BackColor = Color.White;
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.ForeColor = Color.FromArgb(0, 121, 194);
-            groupBox1.Location = new Point(806, 657);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(631, 109);
-            groupBox1.TabIndex = 33;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Дополнительно";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(372, 39);
-            label3.Name = "label3";
-            label3.Size = new Size(221, 38);
-            label3.TabIndex = 34;
-            label3.Text = "<quantityLabel>";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(265, 77);
-            label4.Name = "label4";
-            label4.Size = new Size(328, 38);
-            label4.TabIndex = 35;
-            label4.Text = "<replacementCostLabel>";
+            replacementCostLabel.AutoSize = true;
+            replacementCostLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            replacementCostLabel.Location = new Point(265, 77);
+            replacementCostLabel.Name = "replacementCostLabel";
+            replacementCostLabel.Size = new Size(328, 38);
+            replacementCostLabel.TabIndex = 35;
+            replacementCostLabel.Text = "<replacementCostLabel>";
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(label1);
-            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(replacementCostLabel);
             groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(quantityLabel);
             groupBox2.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox2.ForeColor = Color.FromArgb(0, 121, 194);
-            groupBox2.Location = new Point(12, 657);
+            groupBox2.Location = new Point(12, 595);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(532, 119);
             groupBox2.TabIndex = 36;
             groupBox2.TabStop = false;
             groupBox2.Text = "Статистика";
             // 
+            // groupBoxFilters
+            // 
+            groupBoxFilters.BackColor = Color.White;
+            groupBoxFilters.Controls.Add(resetAllFiltersLinkLabel);
+            groupBoxFilters.Controls.Add(replacementStatusComboBox);
+            groupBoxFilters.Controls.Add(exploitationStatusComboBox);
+            groupBoxFilters.Controls.Add(subsystemLabel);
+            groupBoxFilters.Controls.Add(subsystemCheckedListBox);
+            groupBoxFilters.Controls.Add(structureLabel);
+            groupBoxFilters.Controls.Add(structuresCheckedListBox);
+            groupBoxFilters.Controls.Add(capacityLabel);
+            groupBoxFilters.Controls.Add(capacitiesCheckedListBox);
+            groupBoxFilters.Controls.Add(brandLabel);
+            groupBoxFilters.Controls.Add(brandsCheckedListBox);
+            groupBoxFilters.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBoxFilters.ForeColor = Color.FromArgb(0, 121, 194);
+            groupBoxFilters.Location = new Point(647, -5);
+            groupBoxFilters.Name = "groupBoxFilters";
+            groupBoxFilters.Size = new Size(633, 715);
+            groupBoxFilters.TabIndex = 37;
+            groupBoxFilters.TabStop = false;
+            groupBoxFilters.Text = "Фильтрация";
+            // 
+            // resetAllFiltersLinkLabel
+            // 
+            resetAllFiltersLinkLabel.AutoSize = true;
+            resetAllFiltersLinkLabel.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            resetAllFiltersLinkLabel.Location = new Point(376, 104);
+            resetAllFiltersLinkLabel.Name = "resetAllFiltersLinkLabel";
+            resetAllFiltersLinkLabel.Size = new Size(252, 31);
+            resetAllFiltersLinkLabel.TabIndex = 36;
+            resetAllFiltersLinkLabel.TabStop = true;
+            resetAllFiltersLinkLabel.Text = "Сбросить все фильтры";
+            resetAllFiltersLinkLabel.LinkClicked += resetAllFiltersLinkLabel_LinkClicked;
+            // 
+            // replacementStatusComboBox
+            // 
+            replacementStatusComboBox.ForeColor = Color.Gray;
+            replacementStatusComboBox.FormattingEnabled = true;
+            replacementStatusComboBox.Location = new Point(6, 90);
+            replacementStatusComboBox.Name = "replacementStatusComboBox";
+            replacementStatusComboBox.Size = new Size(288, 45);
+            replacementStatusComboBox.TabIndex = 35;
+            replacementStatusComboBox.Text = "Статус замены";
+            replacementStatusComboBox.SelectedIndexChanged += replacementStatusComboBox_SelectedIndexChanged;
+            // 
+            // exploitationStatusComboBox
+            // 
+            exploitationStatusComboBox.ForeColor = Color.Gray;
+            exploitationStatusComboBox.FormattingEnabled = true;
+            exploitationStatusComboBox.Location = new Point(6, 39);
+            exploitationStatusComboBox.Name = "exploitationStatusComboBox";
+            exploitationStatusComboBox.Size = new Size(421, 45);
+            exploitationStatusComboBox.TabIndex = 34;
+            exploitationStatusComboBox.Text = "Статус эксплуатации";
+            exploitationStatusComboBox.SelectedIndexChanged += exploitationStatusComboBox_SelectedIndexChanged;
+            // 
+            // subsystemLabel
+            // 
+            subsystemLabel.AutoSize = true;
+            subsystemLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            subsystemLabel.Location = new Point(6, 462);
+            subsystemLabel.Name = "subsystemLabel";
+            subsystemLabel.Size = new Size(176, 38);
+            subsystemLabel.TabIndex = 31;
+            subsystemLabel.Text = "Подсистема:";
+            // 
+            // subsystemCheckedListBox
+            // 
+            subsystemCheckedListBox.CheckOnClick = true;
+            subsystemCheckedListBox.FormattingEnabled = true;
+            subsystemCheckedListBox.Location = new Point(6, 503);
+            subsystemCheckedListBox.Name = "subsystemCheckedListBox";
+            subsystemCheckedListBox.Size = new Size(256, 194);
+            subsystemCheckedListBox.TabIndex = 30;
+            subsystemCheckedListBox.SelectedIndexChanged += subsystemCheckedListBox_SelectedIndexChanged;
+            // 
+            // structureLabel
+            // 
+            structureLabel.AutoSize = true;
+            structureLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            structureLabel.Location = new Point(291, 138);
+            structureLabel.Name = "structureLabel";
+            structureLabel.Size = new Size(117, 38);
+            structureLabel.TabIndex = 29;
+            structureLabel.Text = "Объект:";
+            // 
+            // structuresCheckedListBox
+            // 
+            structuresCheckedListBox.CheckOnClick = true;
+            structuresCheckedListBox.FormattingEnabled = true;
+            structuresCheckedListBox.Location = new Point(291, 179);
+            structuresCheckedListBox.Name = "structuresCheckedListBox";
+            structuresCheckedListBox.Size = new Size(329, 498);
+            structuresCheckedListBox.TabIndex = 28;
+            structuresCheckedListBox.SelectedIndexChanged += structuresCheckedListBox_SelectedIndexChanged;
+            // 
+            // capacityLabel
+            // 
+            capacityLabel.AutoSize = true;
+            capacityLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            capacityLabel.Location = new Point(6, 300);
+            capacityLabel.Name = "capacityLabel";
+            capacityLabel.Size = new Size(125, 38);
+            capacityLabel.TabIndex = 27;
+            capacityLabel.Text = "Емкость:";
+            // 
+            // capacitiesCheckedListBox
+            // 
+            capacitiesCheckedListBox.CheckOnClick = true;
+            capacitiesCheckedListBox.FormattingEnabled = true;
+            capacitiesCheckedListBox.Location = new Point(6, 341);
+            capacitiesCheckedListBox.Name = "capacitiesCheckedListBox";
+            capacitiesCheckedListBox.Size = new Size(256, 118);
+            capacitiesCheckedListBox.TabIndex = 26;
+            capacitiesCheckedListBox.SelectedIndexChanged += capacitiesCheckedListBox_SelectedIndexChanged;
+            // 
+            // brandLabel
+            // 
+            brandLabel.AutoSize = true;
+            brandLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            brandLabel.Location = new Point(6, 138);
+            brandLabel.Name = "brandLabel";
+            brandLabel.Size = new Size(101, 38);
+            brandLabel.TabIndex = 25;
+            brandLabel.Text = "Бренд:";
+            // 
+            // brandsCheckedListBox
+            // 
+            brandsCheckedListBox.CheckOnClick = true;
+            brandsCheckedListBox.FormattingEnabled = true;
+            brandsCheckedListBox.Location = new Point(6, 179);
+            brandsCheckedListBox.Name = "brandsCheckedListBox";
+            brandsCheckedListBox.Size = new Size(256, 118);
+            brandsCheckedListBox.TabIndex = 24;
+            brandsCheckedListBox.SelectedIndexChanged += brandsCheckedListBox_SelectedIndexChanged;
+            // 
             // BadBatteriesReport
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1442, 784);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
-            Controls.Add(deleteBatteryButton);
-            Controls.Add(groupBoxSort);
+            ClientSize = new Size(1284, 721);
             Controls.Add(groupBoxFilters);
-            Controls.Add(dataGridView1);
-            Controls.Add(headerLabel);
+            Controls.Add(groupBox2);
+            Controls.Add(dataGridView);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
-            Margin = new Padding(6, 6, 6, 6);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(6);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "BadBatteriesReport";
-            Text = "BadBatteriesReport";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            groupBoxFilters.ResumeLayout(false);
-            groupBoxFilters.PerformLayout();
-            groupBoxSort.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Отчет";
+            Load += BadBatteriesReport_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBoxFilters.ResumeLayout(false);
+            groupBoxFilters.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label headerLabel;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridView;
         private Label label1;
         private Label label2;
-        private GroupBox groupBoxFilters;
-        private Label batterySubsystemLabel;
-        private CheckedListBox subsystemCheckedListBox;
-        private Label batteryStructureLabel;
-        private CheckedListBox structureCheckedListBox;
-        private Label batteryCapacityLabel;
-        private CheckedListBox capacityCheckedListBox;
-        private Label batteryManufacturerLabel;
-        private CheckedListBox manufacturerCheckedListBox;
-        private GroupBox groupBoxSort;
-        private Button removeSortButton;
-        private Button sortSettingsButton;
-        private Button deleteBatteryButton;
-        private Button button1;
-        private Button button2;
-        private GroupBox groupBox1;
-        private Label label3;
-        private Label label4;
+        private Label quantityLabel;
+        private Label replacementCostLabel;
         private GroupBox groupBox2;
+        private GroupBox groupBoxFilters;
+        private LinkLabel resetAllFiltersLinkLabel;
+        private ComboBox replacementStatusComboBox;
+        private ComboBox exploitationStatusComboBox;
+        private Label subsystemLabel;
+        private CheckedListBox subsystemCheckedListBox;
+        private Label structureLabel;
+        private CheckedListBox structuresCheckedListBox;
+        private Label capacityLabel;
+        private CheckedListBox capacitiesCheckedListBox;
+        private Label brandLabel;
+        private CheckedListBox brandsCheckedListBox;
     }
 }

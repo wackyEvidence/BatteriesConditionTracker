@@ -153,6 +153,7 @@
             Name = "PositionsListForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Должности";
+            Load += PositionsListForm_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

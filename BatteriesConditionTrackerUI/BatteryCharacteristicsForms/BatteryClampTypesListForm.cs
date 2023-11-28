@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace BatteriesConditionTrackerUI
 {
-    public partial class BatteryClampTypesListForm : Form, IRequester<BatteryClampType>
+    public partial class BatteryClampTypesListForm : Form, IModelRequester<BatteryClampType>
     {
         private BindingList<BatteryClampType> displayedClampTypes = GlobalConfig.Connection.GetBatteryClampType_All();
         public BatteryClampTypesListForm()
@@ -21,6 +21,11 @@ namespace BatteriesConditionTrackerUI
             InitializeComponent();
             WireUpLists();
             AdjustDataGridView();
+        }
+
+        private void BatteryClampTypesListForm_Load(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
         }
 
         private void WireUpLists()

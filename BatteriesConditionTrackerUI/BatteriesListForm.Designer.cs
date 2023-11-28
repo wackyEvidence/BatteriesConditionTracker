@@ -31,9 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BatteriesListForm));
             menuStrip1 = new MenuStrip();
             настройкиToolStripMenuItem = new ToolStripMenuItem();
-            печатьToolStripMenuItem = new ToolStripMenuItem();
-            экспортToolStripMenuItem1 = new ToolStripMenuItem();
-            cSVToolStripMenuItem1 = new ToolStripMenuItem();
             выходToolStripMenuItem = new ToolStripMenuItem();
             панельАдминистратораToolStripMenuItem = new ToolStripMenuItem();
             batteryModelsToolStripMenuItem = new ToolStripMenuItem();
@@ -64,18 +61,9 @@
             capacitiesCheckedListBox = new CheckedListBox();
             brandLabel = new Label();
             brandsCheckedListBox = new CheckedListBox();
-            deleteUserFilterButton = new Button();
-            addUserFilterButton = new Button();
-            userFiltersLabel = new Label();
-            userFiltersListBox = new ListBox();
-            removeSortButton = new Button();
-            sortSettingsButton = new Button();
-            highlightButton = new Button();
-            groupBoxSort = new GroupBox();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             groupBoxFilters.SuspendLayout();
-            groupBoxSort.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -92,35 +80,17 @@
             // 
             // настройкиToolStripMenuItem
             // 
-            настройкиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { печатьToolStripMenuItem, экспортToolStripMenuItem1, выходToolStripMenuItem });
+            настройкиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { выходToolStripMenuItem });
             настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             настройкиToolStripMenuItem.Size = new Size(96, 42);
             настройкиToolStripMenuItem.Text = "Файл";
             // 
-            // печатьToolStripMenuItem
-            // 
-            печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
-            печатьToolStripMenuItem.Size = new Size(211, 42);
-            печатьToolStripMenuItem.Text = "Печать";
-            // 
-            // экспортToolStripMenuItem1
-            // 
-            экспортToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { cSVToolStripMenuItem1 });
-            экспортToolStripMenuItem1.Name = "экспортToolStripMenuItem1";
-            экспортToolStripMenuItem1.Size = new Size(211, 42);
-            экспортToolStripMenuItem1.Text = "Экспорт";
-            // 
-            // cSVToolStripMenuItem1
-            // 
-            cSVToolStripMenuItem1.Name = "cSVToolStripMenuItem1";
-            cSVToolStripMenuItem1.Size = new Size(157, 42);
-            cSVToolStripMenuItem1.Text = "CSV";
-            // 
             // выходToolStripMenuItem
             // 
             выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(211, 42);
+            выходToolStripMenuItem.Size = new Size(188, 42);
             выходToolStripMenuItem.Text = "Выход";
+            выходToolStripMenuItem.Click += выходToolStripMenuItem_Click;
             // 
             // панельАдминистратораToolStripMenuItem
             // 
@@ -217,15 +187,21 @@
             // 
             dataGridView.AllowUserToAddRows = false;
             dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.AllowUserToResizeRows = false;
+            dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dataGridView.BackgroundColor = Color.Gainsboro;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(11, 64);
+            dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
+            dataGridView.RowHeadersVisible = false;
             dataGridView.RowHeadersWidth = 51;
             dataGridView.RowTemplate.Height = 29;
-            dataGridView.Size = new Size(809, 808);
+            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.Size = new Size(809, 632);
             dataGridView.TabIndex = 10;
+            dataGridView.CellMouseDoubleClick += dataGridView_CellMouseDoubleClick;
             // 
             // deleteBatteryButton
             // 
@@ -235,12 +211,13 @@
             deleteBatteryButton.FlatStyle = FlatStyle.Flat;
             deleteBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             deleteBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            deleteBatteryButton.Location = new Point(677, 878);
+            deleteBatteryButton.Location = new Point(677, 702);
             deleteBatteryButton.Name = "deleteBatteryButton";
             deleteBatteryButton.Size = new Size(143, 52);
             deleteBatteryButton.TabIndex = 15;
             deleteBatteryButton.Text = "Удалить";
             deleteBatteryButton.UseVisualStyleBackColor = true;
+            deleteBatteryButton.Click += deleteBatteryButton_Click;
             // 
             // editBatteryButton
             // 
@@ -250,7 +227,7 @@
             editBatteryButton.FlatStyle = FlatStyle.Flat;
             editBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             editBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            editBatteryButton.Location = new Point(170, 878);
+            editBatteryButton.Location = new Point(170, 702);
             editBatteryButton.Name = "editBatteryButton";
             editBatteryButton.Size = new Size(222, 52);
             editBatteryButton.TabIndex = 14;
@@ -266,7 +243,7 @@
             addBatteryButton.FlatStyle = FlatStyle.Flat;
             addBatteryButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             addBatteryButton.ForeColor = Color.FromArgb(0, 121, 194);
-            addBatteryButton.Location = new Point(11, 878);
+            addBatteryButton.Location = new Point(11, 702);
             addBatteryButton.Name = "addBatteryButton";
             addBatteryButton.Size = new Size(153, 52);
             addBatteryButton.TabIndex = 13;
@@ -288,15 +265,11 @@
             groupBoxFilters.Controls.Add(capacitiesCheckedListBox);
             groupBoxFilters.Controls.Add(brandLabel);
             groupBoxFilters.Controls.Add(brandsCheckedListBox);
-            groupBoxFilters.Controls.Add(deleteUserFilterButton);
-            groupBoxFilters.Controls.Add(addUserFilterButton);
-            groupBoxFilters.Controls.Add(userFiltersLabel);
-            groupBoxFilters.Controls.Add(userFiltersListBox);
             groupBoxFilters.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             groupBoxFilters.ForeColor = Color.FromArgb(0, 121, 194);
             groupBoxFilters.Location = new Point(826, 46);
             groupBoxFilters.Name = "groupBoxFilters";
-            groupBoxFilters.Size = new Size(633, 781);
+            groupBoxFilters.Size = new Size(633, 708);
             groupBoxFilters.TabIndex = 12;
             groupBoxFilters.TabStop = false;
             groupBoxFilters.Text = "Фильтрация";
@@ -311,6 +284,7 @@
             resetAllFiltersLinkLabel.TabIndex = 36;
             resetAllFiltersLinkLabel.TabStop = true;
             resetAllFiltersLinkLabel.Text = "Сбросить все фильтры";
+            resetAllFiltersLinkLabel.LinkClicked += resetAllFiltersLinkLabel_LinkClicked;
             // 
             // replacementStatusComboBox
             // 
@@ -321,6 +295,7 @@
             replacementStatusComboBox.Size = new Size(288, 45);
             replacementStatusComboBox.TabIndex = 35;
             replacementStatusComboBox.Text = "Статус замены";
+            replacementStatusComboBox.SelectedIndexChanged += replacementStatusComboBox_SelectedIndexChanged;
             // 
             // exploitationStatusComboBox
             // 
@@ -331,6 +306,7 @@
             exploitationStatusComboBox.Size = new Size(421, 45);
             exploitationStatusComboBox.TabIndex = 34;
             exploitationStatusComboBox.Text = "Статус эксплуатации";
+            exploitationStatusComboBox.SelectedIndexChanged += exploitationStatusComboBox_SelectedIndexChanged;
             // 
             // subsystemLabel
             // 
@@ -344,11 +320,13 @@
             // 
             // subsystemCheckedListBox
             // 
+            subsystemCheckedListBox.CheckOnClick = true;
             subsystemCheckedListBox.FormattingEnabled = true;
             subsystemCheckedListBox.Location = new Point(6, 503);
             subsystemCheckedListBox.Name = "subsystemCheckedListBox";
-            subsystemCheckedListBox.Size = new Size(256, 118);
+            subsystemCheckedListBox.Size = new Size(256, 194);
             subsystemCheckedListBox.TabIndex = 30;
+            subsystemCheckedListBox.SelectedIndexChanged += subsystemCheckedListBox_SelectedIndexChanged;
             // 
             // structureLabel
             // 
@@ -362,11 +340,13 @@
             // 
             // structuresCheckedListBox
             // 
+            structuresCheckedListBox.CheckOnClick = true;
             structuresCheckedListBox.FormattingEnabled = true;
             structuresCheckedListBox.Location = new Point(291, 179);
             structuresCheckedListBox.Name = "structuresCheckedListBox";
-            structuresCheckedListBox.Size = new Size(329, 422);
+            structuresCheckedListBox.Size = new Size(329, 498);
             structuresCheckedListBox.TabIndex = 28;
+            structuresCheckedListBox.SelectedIndexChanged += structuresCheckedListBox_SelectedIndexChanged;
             // 
             // capacityLabel
             // 
@@ -380,11 +360,13 @@
             // 
             // capacitiesCheckedListBox
             // 
+            capacitiesCheckedListBox.CheckOnClick = true;
             capacitiesCheckedListBox.FormattingEnabled = true;
             capacitiesCheckedListBox.Location = new Point(6, 341);
             capacitiesCheckedListBox.Name = "capacitiesCheckedListBox";
             capacitiesCheckedListBox.Size = new Size(256, 118);
             capacitiesCheckedListBox.TabIndex = 26;
+            capacitiesCheckedListBox.SelectedIndexChanged += capacitiesCheckedListBox_SelectedIndexChanged;
             // 
             // brandLabel
             // 
@@ -398,130 +380,20 @@
             // 
             // brandsCheckedListBox
             // 
+            brandsCheckedListBox.CheckOnClick = true;
             brandsCheckedListBox.FormattingEnabled = true;
             brandsCheckedListBox.Location = new Point(6, 179);
             brandsCheckedListBox.Name = "brandsCheckedListBox";
             brandsCheckedListBox.Size = new Size(256, 118);
             brandsCheckedListBox.TabIndex = 24;
-            // 
-            // deleteUserFilterButton
-            // 
-            deleteUserFilterButton.FlatAppearance.BorderColor = Color.Silver;
-            deleteUserFilterButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
-            deleteUserFilterButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
-            deleteUserFilterButton.FlatStyle = FlatStyle.Flat;
-            deleteUserFilterButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            deleteUserFilterButton.ForeColor = Color.FromArgb(0, 121, 194);
-            deleteUserFilterButton.Location = new Point(376, 720);
-            deleteUserFilterButton.Name = "deleteUserFilterButton";
-            deleteUserFilterButton.Size = new Size(248, 55);
-            deleteUserFilterButton.TabIndex = 23;
-            deleteUserFilterButton.Text = "Удалить фильтр";
-            deleteUserFilterButton.UseVisualStyleBackColor = true;
-            // 
-            // addUserFilterButton
-            // 
-            addUserFilterButton.FlatAppearance.BorderColor = Color.Silver;
-            addUserFilterButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
-            addUserFilterButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
-            addUserFilterButton.FlatStyle = FlatStyle.Flat;
-            addUserFilterButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            addUserFilterButton.ForeColor = Color.FromArgb(0, 121, 194);
-            addUserFilterButton.Location = new Point(376, 661);
-            addUserFilterButton.Name = "addUserFilterButton";
-            addUserFilterButton.Size = new Size(248, 55);
-            addUserFilterButton.TabIndex = 22;
-            addUserFilterButton.Text = "Добавить фильтр";
-            addUserFilterButton.UseVisualStyleBackColor = true;
-            addUserFilterButton.Click += addUserFilterButton_Click;
-            // 
-            // userFiltersLabel
-            // 
-            userFiltersLabel.AutoSize = true;
-            userFiltersLabel.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            userFiltersLabel.Location = new Point(6, 620);
-            userFiltersLabel.Name = "userFiltersLabel";
-            userFiltersLabel.Size = new Size(377, 38);
-            userFiltersLabel.TabIndex = 1;
-            userFiltersLabel.Text = "Пользовательские фильтры:";
-            // 
-            // userFiltersListBox
-            // 
-            userFiltersListBox.FormattingEnabled = true;
-            userFiltersListBox.ItemHeight = 37;
-            userFiltersListBox.Location = new Point(6, 661);
-            userFiltersListBox.Name = "userFiltersListBox";
-            userFiltersListBox.Size = new Size(364, 115);
-            userFiltersListBox.TabIndex = 0;
-            // 
-            // removeSortButton
-            // 
-            removeSortButton.FlatAppearance.BorderColor = Color.Silver;
-            removeSortButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
-            removeSortButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
-            removeSortButton.FlatStyle = FlatStyle.Flat;
-            removeSortButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            removeSortButton.ForeColor = Color.FromArgb(0, 121, 194);
-            removeSortButton.Location = new Point(330, 42);
-            removeSortButton.Name = "removeSortButton";
-            removeSortButton.Size = new Size(290, 55);
-            removeSortButton.TabIndex = 20;
-            removeSortButton.Text = "Убрать сортировку";
-            removeSortButton.UseVisualStyleBackColor = true;
-            // 
-            // sortSettingsButton
-            // 
-            sortSettingsButton.FlatAppearance.BorderColor = Color.Silver;
-            sortSettingsButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
-            sortSettingsButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
-            sortSettingsButton.FlatStyle = FlatStyle.Flat;
-            sortSettingsButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            sortSettingsButton.ForeColor = Color.FromArgb(0, 121, 194);
-            sortSettingsButton.Location = new Point(6, 42);
-            sortSettingsButton.Name = "sortSettingsButton";
-            sortSettingsButton.Size = new Size(318, 55);
-            sortSettingsButton.TabIndex = 21;
-            sortSettingsButton.Text = "Настройка сортировки ";
-            sortSettingsButton.UseVisualStyleBackColor = true;
-            sortSettingsButton.Click += sortSettingsButton_Click;
-            // 
-            // highlightButton
-            // 
-            highlightButton.FlatAppearance.BorderColor = Color.Silver;
-            highlightButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
-            highlightButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
-            highlightButton.FlatStyle = FlatStyle.Flat;
-            highlightButton.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            highlightButton.ForeColor = Color.FromArgb(0, 121, 194);
-            highlightButton.Location = new Point(398, 878);
-            highlightButton.Name = "highlightButton";
-            highlightButton.Size = new Size(273, 52);
-            highlightButton.TabIndex = 16;
-            highlightButton.Text = "Выделить цветом...";
-            highlightButton.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxSort
-            // 
-            groupBoxSort.BackColor = Color.White;
-            groupBoxSort.Controls.Add(removeSortButton);
-            groupBoxSort.Controls.Add(sortSettingsButton);
-            groupBoxSort.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBoxSort.ForeColor = Color.FromArgb(0, 121, 194);
-            groupBoxSort.Location = new Point(826, 833);
-            groupBoxSort.Name = "groupBoxSort";
-            groupBoxSort.Size = new Size(633, 104);
-            groupBoxSort.TabIndex = 22;
-            groupBoxSort.TabStop = false;
-            groupBoxSort.Text = "Сортировка";
+            brandsCheckedListBox.SelectedIndexChanged += brandsCheckedListBox_SelectedIndexChanged;
             // 
             // BatteriesListForm
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1466, 943);
-            Controls.Add(groupBoxSort);
-            Controls.Add(highlightButton);
+            ClientSize = new Size(1466, 766);
             Controls.Add(deleteBatteryButton);
             Controls.Add(groupBoxFilters);
             Controls.Add(editBatteryButton);
@@ -530,18 +402,20 @@
             Controls.Add(menuStrip1);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Margin = new Padding(6);
+            MaximizeBox = false;
             Name = "BatteriesListForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Список аккумуляторов";
+            Load += BatteriesListForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             groupBoxFilters.ResumeLayout(false);
             groupBoxFilters.PerformLayout();
-            groupBoxSort.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -558,13 +432,6 @@
         private Button deleteBatteryButton;
         private Button editBatteryButton;
         private Button addBatteryButton;
-        private Label userFiltersLabel;
-        private ListBox userFiltersListBox;
-        private Button highlightButton;
-        private Button sortSettingsButton;
-        private Button removeSortButton;
-        private Button deleteUserFilterButton;
-        private Button addUserFilterButton;
         private Label structureLabel;
         private CheckedListBox structuresCheckedListBox;
         private Label capacityLabel;
@@ -573,12 +440,8 @@
         private CheckedListBox brandsCheckedListBox;
         private Label subsystemLabel;
         private CheckedListBox subsystemCheckedListBox;
-        private ToolStripMenuItem печатьToolStripMenuItem;
-        private ToolStripMenuItem экспортToolStripMenuItem1;
-        private ToolStripMenuItem cSVToolStripMenuItem1;
         private ToolStripMenuItem выходToolStripMenuItem;
         private ComboBox exploitationStatusComboBox;
-        private GroupBox groupBoxSort;
         private ComboBox replacementStatusComboBox;
         private ToolStripMenuItem отчётToolStripMenuItem;
         private ToolStripMenuItem аккумуляторыТребующиеЗаменыToolStripMenuItem;

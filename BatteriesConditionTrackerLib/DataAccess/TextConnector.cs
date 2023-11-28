@@ -13,7 +13,7 @@ using System.CodeDom;
 
 namespace BatteriesConditionTrackerLib.DataAccess
 {
-    public class TextConnector : IDataConnection, IGetData_All, IGetData_ById
+    public class TextConnector : IDataConnection
     {
         private const string BatteryExploitationStatusesFileName = "BatteryExploitationStatuses.csv";
         private const string BatteryReplacementStatusesFileName = "BatteryReplacementStatuses.csv";
@@ -27,12 +27,12 @@ namespace BatteriesConditionTrackerLib.DataAccess
         private const string BatteryTechnologiesFileName = "BatteryTechnologies.csv";
         private const string ConcreteBatteriesFileName = "ConcreteBatteries.csv";
         private const string SoHMeasuresFileName = "SoHMeasures.csv";
+        private const string LastReplacementStatusesUpdate = "LastReplacementStatusesUpdate.csv"; 
+
         private const string ConcreteBatteryPhotosFileName = "ConcreteBatteryPhotos.csv";
         private const string BatteryModelPhotosFileName = "BatteryModelPhotos.csv";
 
-        //
-        // GENERIC METHODS
-        //
+        #region GenericMethods
         /// <summary>
         /// Добавляет в файл .csv запись о модели. 
         /// </summary>
@@ -77,9 +77,9 @@ namespace BatteriesConditionTrackerLib.DataAccess
 
             return model;
         }
-        //
-        // CREATE
-        //
+        #endregion
+
+        #region ICreateData
         public BatteryClampType CreateBatteryClampType(BatteryClampType clampTypeModel)
         {
             return CreateModel(clampTypeModel, BatteryClampTypesFileName, BatteryClampType.ModelCreation, BatteryClampType.ModelToCSV); 
@@ -140,9 +140,10 @@ namespace BatteriesConditionTrackerLib.DataAccess
         {
             throw new NotImplementedException();
         }
-        //
-        // UPDATE
-        //
+
+        #endregion
+
+        #region IUpdateData
         public BatteryClampType UpdateBatteryClampType(BatteryClampType clampTypeModel)
         {
             return UpdateModel(clampTypeModel, BatteryClampTypesFileName, BatteryClampType.ModelCreation, BatteryClampType.ModelToCSV);
@@ -192,9 +193,29 @@ namespace BatteriesConditionTrackerLib.DataAccess
         {
             return UpdateModel(batterySoHMeasureModel, SoHMeasuresFileName, BatterySoHMeasure.ModelCreation, BatterySoHMeasure.ModelToCSV);
         }
-        //
-        // DELETE
-        //
+
+        
+        public void UpdateReplacementStatuses()
+        {
+            var concreteBatteries = new List<ConcreteBattery>(GetConcreteBattery_All());
+            var batteryModels = GetBatteryModel_All();
+
+            concreteBatteries
+                .Where(cb => (DateTime.Now - cb.ExploitationStart).Days > cb.Model.BufferModeServiceTime * 365)
+                .ToList()
+                .ForEach(cb => cb.ReplacementStatus = new BatteryReplacementStatus("1", "Требует замены"));
+
+            concreteBatteries.SaveToTextFile(ConcreteBatteriesFileName, ConcreteBattery.ModelToCSV);
+        }
+
+        public void UpdateReplacementStatusesUpdateDate()
+        {
+            var currentDate = DateTime.Now.ToShortDateString();
+            File.WriteAllText(LastReplacementStatusesUpdate.GetFullFilePath(), currentDate);
+        }
+        #endregion
+
+        #region IDeleteData 
         public BatteryClampType DeleteBatteryClampType(BatteryClampType clampTypeModel)
         {
             return DeleteModel(clampTypeModel, BatteryClampTypesFileName, BatteryClampType.ModelCreation, BatteryClampType.ModelToCSV);
@@ -255,6 +276,9 @@ namespace BatteriesConditionTrackerLib.DataAccess
             throw new NotImplementedException();
         }
 
+        #endregion
+
+        #region IGetData_All
         public List<BatteryExploitationStatus> GetBatteryExploitationStatus_All()
         {
             return BatteryExploitationStatusesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryExploitationStatus.ModelCreation); 
@@ -287,7 +311,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
 
         public BindingList<User> GetUser_All()
         {
-            return new BindingList<User>(UsersFileName.GetFullFilePath().LoadFile().ConvertToModels(User.ModelCreation));
+            return new BindingList<User>(UsersFileName.GetFullFilePath().LoadFile().ConvertToModels(User.ModelCreation).Where(u => u.Id > 1).ToList());
         }
 
         public BindingList<BatteryModel> GetBatteryModel_All()
@@ -304,6 +328,30 @@ namespace BatteriesConditionTrackerLib.DataAccess
         {
             return new BindingList<Structure>(StructuresFileName.GetFullFilePath().LoadFile().ConvertToModels(Structure.ModelCreation));
         }
+
+        public BindingList<ConcreteBattery> GetConcreteBattery_All()
+        {
+            return new BindingList<ConcreteBattery>(ConcreteBatteriesFileName.GetFullFilePath().LoadFile().ConvertToModels(ConcreteBattery.ModelCreation));
+        }
+
+        public DateTime GetLastReplacementStatusesUpdateDate()
+        {
+            var date = File.ReadAllText(LastReplacementStatusesUpdate.GetFullFilePath());
+            return DateTime.Parse(date);
+        }
+
+        public List<string> GetAvailableBrands_All()
+        {
+            return BatteryModelsFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryModel.ModelCreation).Select(model => model.Brand).Distinct().ToList();
+        }
+
+        public List<string> GetAvailableCapacities_All()
+        {
+            return BatteryModelsFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryModel.ModelCreation).Select(model => model.Capacity.ToString()).Distinct().ToList();
+        }
+        #endregion
+
+        #region IGetData_ById
 
         public BatteryExploitationStatus GetBatteryExploitationStatus_ById(int id)
         {
@@ -353,6 +401,18 @@ namespace BatteriesConditionTrackerLib.DataAccess
         public Structure GetStructure_ById(int id)
         {
             return StructuresFileName.GetFullFilePath().LoadFile().ConvertToModels(Structure.ModelCreation).Where(model => model.Id == id).First();
+        }
+
+        public BindingList<BatterySoHMeasure> GetBatterySoHMeasure_ById(int id)
+        {
+            return new BindingList<BatterySoHMeasure>(SoHMeasuresFileName.GetFullFilePath().LoadFile().ConvertToModels(BatterySoHMeasure.ModelCreation).Where(model => model.Id == id).ToList());
+        }
+
+        #endregion
+
+        public User GetUser_ByLogin(string login)
+        {
+            return UsersFileName.GetFullFilePath().LoadFile().ConvertToModels(User.ModelCreation).Where(model => model.Email == login).FirstOrDefault();
         }
     }
 }

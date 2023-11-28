@@ -1,46 +1,46 @@
-create table BatterySubsystems --created 
+create table BatterySubsystems 
 (
 	id serial primary key, 
 	name varchar(50) not null,
 	unique(name)
 )
 
-create table BatteryReplacementStatuses --created
+create table BatteryReplacementStatuses 
 (
 	id serial primary key, 
 	name varchar(50) not null, 
 	unique(name)
 )
 
-create table BatteryExploitationStatuses --created 
+create table BatteryExploitationStatuses 
 (
 	id serial primary key, 
 	name varchar(50) not null, 
 	unique(name)
 )
 
-create table BatteryClampTypes --created
+create table BatteryClampTypes 
 (
 	id serial primary key, 
 	name varchar(50) not null, 
 	unique(name)
 )
 
-create table BatteryTechnologies --created
+create table BatteryTechnologies 
 (
 	id serial primary key, 
 	name varchar(50) not null, 
 	unique(name)
 )
 
-create table StructureTypes --created
+create table StructureTypes 
 (
 	id serial primary key, 
 	name varchar(50) not null, 
 	unique(name)
 )
 
-create table Structures --created 
+create table Structures 
 (
 	id serial primary key, 
 	name varchar(100) not null, 
@@ -49,14 +49,15 @@ create table Structures --created
 	unique(name)
 )
 
-create table Positions --created
+create table Positions 
 (
 	id serial primary key, 
 	name varchar(50) not null, 
 	unique(name)
 )
 
-create table Users --created 
+drop table Users
+create table Users 
 (
 	id serial primary key, 
 	name varchar(100) not null, 
@@ -64,15 +65,14 @@ create table Users --created
 	patronymic varchar(100), 
 	phone_number varchar(16), 
 	email varchar(200), 
-	position_id int,
-	supervisor_id int null,
+	position_id int null,
 	login varchar(100) not null, 
-	password text not null, 
+	password varchar(500) not null, 
 	is_admin boolean not null, 
 	foreign key (position_id) references Positions(id) on delete set null, 
-	foreign key (supervisor_id) references Users(id),
 	unique(login, email, phone_number)
 )
+
 drop table BatteryModels
 create table BatteryModels
 (
@@ -91,6 +91,7 @@ create table BatteryModels
 	foreign key (technology_id) references BatteryTechnologies(id) on delete set null,
 	foreign key (clamp_type_id) references BatteryClampTypes(id) on delete set null
 )
+
 drop table ConcreteBatteries
 create table ConcreteBatteries 
 (
@@ -140,8 +141,3 @@ create table ConcreteBatteryPhotos
 	file_path text not null, 
 	foreign key (battery_id) references ConcreteBatteries(id) on delete cascade
 )
-
-
-
-
-

@@ -20,5 +20,9 @@ namespace BatteriesConditionTrackerLib.DataAccess.Interfaces
         public BindingList<Structure> GetStructure_All();
         public BindingList<StructureType> GetStructureType_All();
         public BindingList<User> GetUser_All();
+        public BindingList<ConcreteBattery> GetConcreteBattery_All();
+        public DateTime GetLastReplacementStatusesUpdateDate(); 
+        public List<string> GetAvailableBrands_All();
+        public List<string> GetAvailableCapacities_All();
     }
 }

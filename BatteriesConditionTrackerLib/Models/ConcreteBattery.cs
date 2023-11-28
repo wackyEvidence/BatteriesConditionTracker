@@ -7,7 +7,7 @@ using BatteriesConditionTrackerLib.Models.Interfaces;
 
 namespace BatteriesConditionTrackerLib.Models
 {
-    public class ConcreteBattery : IHaveId, IHavePhotos
+    public class ConcreteBattery : IHaveId//, IHavePhotos
     {
         /// <summary>
         /// Id данного аккумулятора
@@ -36,7 +36,7 @@ namespace BatteriesConditionTrackerLib.Models
         /// <summary>
         /// Ответственный работник
         /// </summary> 
-        public User ResponsibleWorker { get; set; }
+        public User ResponsibleEmployee { get; set; }
         /// <summary>
         /// Статус эксплуатации аккумулятора. Принимает два значения: эксплутируется/не эксплуатируется.
         /// </summary>
@@ -56,14 +56,28 @@ namespace BatteriesConditionTrackerLib.Models
 
         public static readonly Func<string[], ConcreteBattery> ModelCreation = columns => new ConcreteBattery(columns);
         public static readonly Func<ConcreteBattery, string> ModelToCSV = b => $"{b.Id},{b.Model.Id},{b.ExploitationStart},{b.ExploitationEnd}," +
-           $"{b.InstallationStructure.Id},{b.Subsystem.Id},{b.ResponsibleWorker.Id},{b.ExploitationStatus.Id}," +
-           $"{b.ReplacementStatus.Id},{b.AdditionalNotes},{b.LastCapacityMeasureDate}";
+           $"{b.InstallationStructure.Id},{b.Subsystem.Id},{b.ResponsibleEmployee.Id},{b.ExploitationStatus.Id}," +
+           $"{b.ReplacementStatus.Id},{b.AdditionalNotes.Replace(",", "%%%")},{b.LastCapacityMeasureDate}";
 
-        public List<Photo> DisplayedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<Photo> AddedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<Photo> DeletedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public List<Photo> DisplayedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public List<Photo> AddedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public List<Photo> DeletedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public ConcreteBattery() { }
+
+        public ConcreteBattery(string id, BatteryModel model, BatteryExploitationStatus exploitationStatus, BatteryReplacementStatus replacementStatus, DateTime exploitationStart, DateTime? exploitationEnd, Structure structure, BatterySubsystem subsystem, User user, string additionalNotes)
+        {
+            Id = int.Parse(id);
+            Model = model;
+            ExploitationStart = exploitationStart; 
+            ExploitationEnd = exploitationEnd == null? null : exploitationEnd;
+            InstallationStructure = structure;
+            Subsystem = subsystem;
+            ResponsibleEmployee = user; 
+            ExploitationStatus = exploitationStatus;
+            ReplacementStatus = replacementStatus;
+            AdditionalNotes = additionalNotes;
+        }
 
         public ConcreteBattery(string[] columns)
         {
@@ -74,11 +88,11 @@ namespace BatteriesConditionTrackerLib.Models
             ExploitationEnd = exploitationEnd;
             InstallationStructure = GlobalConfig.Connection.GetStructure_ById(int.Parse(columns[4])); 
             Subsystem = GlobalConfig.Connection.GetBatterySubsystem_ById(int.Parse(columns[5]));
-            ResponsibleWorker = GlobalConfig.Connection.GetUser_ById(int.Parse(columns[6])); 
+            ResponsibleEmployee = GlobalConfig.Connection.GetUser_ById(int.Parse(columns[6])); 
             ExploitationStatus = GlobalConfig.Connection.GetBatteryExploitationStatus_ById(int.Parse(columns[7]));
             ReplacementStatus = GlobalConfig.Connection.GetBatteryReplacementStatus_ById(int.Parse(columns[8]));
-            AdditionalNotes = columns[9];
-            LastCapacityMeasureDate = DateTime.Parse(columns[10]);
+            AdditionalNotes = columns[9].Replace("%%%", ",");
+            LastCapacityMeasureDate = columns[10] == ""? null : DateTime.Parse(columns[10]);
         }
     }
 }

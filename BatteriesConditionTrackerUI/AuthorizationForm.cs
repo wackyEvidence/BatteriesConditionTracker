@@ -1,10 +1,16 @@
 using BatteriesConditionTrackerUI;
 using Npgsql;
+using BCrypt.Net;
+using BatteriesConditionTrackerLib;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BatteriesConditionTracker
 {
     public partial class AuthorizationForm : Form
     {
+        public bool AuthorizationSuccessful { get; private set; }
+
         public AuthorizationForm()
         {
             InitializeComponent();
@@ -12,12 +18,13 @@ namespace BatteriesConditionTracker
 
         private void authorizeButton_Click(object sender, EventArgs e)
         {
-            var batteriesViewForm = new BatteriesListForm();
-            //var connection = new NpgsqlConnection(@"");
-            //connection.Open();
-            //MessageBox.Show($"Соединение установлено: UserName: {connection.UserName}");
-            //MessageBox.Show($"{Environment.CurrentDirectory}");
-            batteriesViewForm.ShowDialog();
+            if(Authorizer.Authorize(loginTextBox.Text, passwordTextBox.Text))
+            {
+                AuthorizationSuccessful = true;
+                Close();
+            }
+            else
+                MessageBox.Show("Введен неправильный логин или пароль", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

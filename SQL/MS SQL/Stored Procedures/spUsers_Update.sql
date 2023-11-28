@@ -5,8 +5,7 @@ CREATE PROCEDURE spUsers_Update
 	@Patronymic NVARCHAR(100), 
 	@PhoneNumber NVARCHAR(16),
 	@Email NVARCHAR(200), 
-	@PositionId INT, 
-	@SupervisorId INT, 
+	@PositionId INT,  
 	@Password TEXT, 
 	@IsAdmin BIT
 AS
@@ -14,6 +13,6 @@ BEGIN
 	SET NOCOUNT ON;
 	UPDATE Users 
 	SET name = @Name, surname = @Surname, patronymic = @Patronymic, phone_number = @PhoneNumber, 
-	email = @Email, position_id = @PositionId, supervisor_id = @SupervisorId, password = @Password, is_admin = @IsAdmin	
+	email = @Email, position_id = @PositionId, password = @Password, is_admin = @IsAdmin	
 	WHERE id = @Id; 
 END

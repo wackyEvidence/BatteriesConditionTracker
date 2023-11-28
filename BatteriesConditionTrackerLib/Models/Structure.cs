@@ -34,5 +34,10 @@ namespace BatteriesConditionTrackerLib.Models
             Name = columns[1];
             Type = new StructureType() { Id = int.Parse(columns[2]) };
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

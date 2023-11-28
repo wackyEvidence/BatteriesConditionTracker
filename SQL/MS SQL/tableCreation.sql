@@ -53,7 +53,7 @@ create table Positions
 	name nvarchar(50) not null, 
 	unique(name)
 )
-
+drop table Users 
 create table Users
 (
 	id int primary key identity, 
@@ -63,7 +63,6 @@ create table Users
 	phone_number nvarchar(16), 
 	email nvarchar(200) not null, 
 	position_id int foreign key references Positions(id) on delete set null,
-	supervisor_id int foreign key references Users(id) on delete no action,
 	password text not null, 
 	is_admin bit not null, 
 	unique(email, phone_number)
@@ -85,7 +84,7 @@ create table BatteryModels
 	buffer_mode_service_time float not null check (buffer_mode_service_time > 0), 
 	soh_threshold int not null check (soh_threshold > 0)
 )
-
+drop table ConcreteBatteries 
 create table ConcreteBatteries 
 (
 	id int primary key identity, 
@@ -101,6 +100,7 @@ create table ConcreteBatteries
 	last_capacity_measure_date date	null
 )
 
+drop table BatterySoHMeasures
 create table BatterySoHMeasures
 (
 	id int primary key identity, 
@@ -110,6 +110,7 @@ create table BatterySoHMeasures
 	soh float not null check(soh > 0)
 )
 
+drop table BatteryModelPhotos 
 create table BatteryModelPhotos 
 (
 	id int primary key identity, 
@@ -117,6 +118,7 @@ create table BatteryModelPhotos
 	file_path text not null 
 )
 
+drop table ConcreteBatteryPhotos 
 create table ConcreteBatteryPhotos 
 (
 	id int primary key identity, 

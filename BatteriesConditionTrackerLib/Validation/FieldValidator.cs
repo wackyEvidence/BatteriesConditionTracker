@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace BatteriesConditionTrackerLib.Validation
 {
@@ -100,7 +101,7 @@ namespace BatteriesConditionTrackerLib.Validation
             if (errors.ContainsKey(parameterLabel))
                 return;
 
-            if (!double.TryParse(parameterValue, out double parsedParameter))
+            if (!double.TryParse(parameterValue.Replace('.', ','), out double parsedParameter))
                 errors.Add(parameterLabel, $"Неверное значение поля \"{parameterLabel}\", должно быть положительным числом."); 
             else
                 if (parsedParameter <= 0)
@@ -121,12 +122,41 @@ namespace BatteriesConditionTrackerLib.Validation
                 if (errors.ContainsKey(parameter.Name)) 
                     continue;
 
-                if (!double.TryParse(parameter.Value, out double parsedParameter))
+                if (!double.TryParse(parameter.Value.Replace('.', ','), out double parsedParameter))
                     errors.Add(parameter.Name, $"Неверное значение поля \"{parameter.Name}\", должно быть положительным числом.");
                 else
                     if (parsedParameter <= 0)
                         errors.Add(parameter.Name, $"Неверное значение поля \"{parameter.Name}\", оно должно быть больше 0.");
             }
+        }
+
+        public static void ValidatePasswordMatch(Dictionary<string, string> errors, List<Parameter> parameters)
+        {
+            ValidateStringEmptiness(errors, parameters);
+
+            foreach (var parameter in parameters)
+            {
+                if (errors.ContainsKey(parameter.Name))
+                    return; 
+            }
+           
+            var firstPassword = parameters[0];
+            var secondPassword = parameters[1];
+
+            if (firstPassword.Value != secondPassword.Value)
+                errors.Add("Пароль", "Введенные пароли не совпадают."); 
+        }
+
+        public static void ValidatePhoneNumber(Dictionary<string, string> errors, MaskedTextBox phoneNumber)
+        {
+            if (!phoneNumber.MaskCompleted)
+                errors.Add("Номер телефона", "Поле \"Номер телефона\" не заполнено полностью.");
+        }
+
+        public static void ValidateComboBox(Dictionary<string, string> errors, ComboBox comboBox, string comboBoxLabel)
+        {
+            if(comboBox.Items.Count == 0)
+                errors.Add(comboBoxLabel, $"Поле {comboBoxLabel} не может быть пустым. Добавьте значения во вкладке \"Данные\"");
         }
     }
 }

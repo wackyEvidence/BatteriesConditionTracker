@@ -19,5 +19,9 @@ namespace BatteriesConditionTrackerLib.DataAccess.Interfaces
         User UpdateUser(User userModel);
         ConcreteBattery UpdateConcreteBattery(ConcreteBattery concreteBatteryModel);
         BatterySoHMeasure UpdateBatterySoHMeasure(BatterySoHMeasure batterySoHMeasureModel);
+
+        void UpdateReplacementStatuses();
+
+        void UpdateReplacementStatusesUpdateDate();
     }
 }

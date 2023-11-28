@@ -152,6 +152,7 @@
             Name = "StructureTypesListForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Типы объектов";
+            Load += StructureTypesListForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);

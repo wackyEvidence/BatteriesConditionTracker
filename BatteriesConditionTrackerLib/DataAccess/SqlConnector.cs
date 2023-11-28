@@ -16,6 +16,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
 {
     public class SqlConnector : IDataConnection
     {
+        #region ICreateData
         public BatteryClampType CreateBatteryClampType(BatteryClampType clampTypeModel)
         {
             using (var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL")))
@@ -77,7 +78,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("@ClampTypeId", batteryModel.ClampType.Id);
                 parameters.Add("@Cost", batteryModel.Cost);
                 parameters.Add("@BufferModeServiceTime", batteryModel.BufferModeServiceTime);
-                parameters.Add("@SoHThreshold", batteryModel.MinSoH);
+                parameters.Add("@SoHThreshold", batteryModel.SoHThreshold);
                 parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute("dbo.spBatteryModels_Insert", parameters, commandType: CommandType.StoredProcedure);
@@ -140,11 +141,12 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 var parameters = new DynamicParameters();
                 parameters.Add("@Name", userModel.Name);
                 parameters.Add("@Surname", userModel.Surname);
-                parameters.Add("@Patronymic", userModel.PhoneNumber);
+                parameters.Add("@Patronymic", userModel.Patronymic);
+                parameters.Add("@PhoneNumber", userModel.PhoneNumber);
                 parameters.Add("@Email", userModel.Email);
                 parameters.Add("@PositionId", userModel.Position.Id);
-                parameters.Add("@SupervisorId", userModel.Supervisor == null ? null : userModel.Supervisor.Id);
                 parameters.Add("@Password", userModel.Password);
+                parameters.Add("@IsAdmin", userModel.IsAdmin);
                 parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute("dbo.spUsers_Insert", parameters, commandType: CommandType.StoredProcedure);
@@ -164,7 +166,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("@ExploitationEnd", concreteBatteryModel.ExploitationEnd == null? null : concreteBatteryModel.ExploitationEnd);
                 parameters.Add("@StructureId", concreteBatteryModel.InstallationStructure.Id);
                 parameters.Add("@SubsystemId", concreteBatteryModel.Subsystem.Id);
-                parameters.Add("@ResponsibleEmployeeId", concreteBatteryModel.ResponsibleWorker.Id);
+                parameters.Add("@ResponsibleEmployeeId", concreteBatteryModel.ResponsibleEmployee.Id);
                 parameters.Add("@ExploitationStatusId", concreteBatteryModel.ExploitationStatus.Id);
                 parameters.Add("@ReplacementStatusId", concreteBatteryModel.ReplacementStatus.Id);
                 parameters.Add("@AdditionalNotes", concreteBatteryModel.AdditionalNotes);
@@ -185,12 +187,12 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("@BatteryId", batterySoHMeasureModel.Battery.Id);
                 parameters.Add("@PerformingEmployeeId", batterySoHMeasureModel.PerformingEmployee.Id);
                 parameters.Add("@MeasureDate", batterySoHMeasureModel.MeasureDate);
-                parameters.Add("@SoH", batterySoHMeasureModel.SoHValue);
+                parameters.Add("@SoH", batterySoHMeasureModel.SoH);
                 parameters.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute("dbo.spBatterySoHMeasures_Insert", parameters, commandType: CommandType.StoredProcedure);
 
-                batterySoHMeasureModel.Id = parameters.Get<int>("id");
+                batterySoHMeasureModel.Id = parameters.Get<int>("@Id");
                 return batterySoHMeasureModel;
             }
         }
@@ -204,7 +206,9 @@ namespace BatteriesConditionTrackerLib.DataAccess
         {
             throw new NotImplementedException();
         }
+        #endregion
 
+        #region IUpdateData
         public BatteryClampType UpdateBatteryClampType(BatteryClampType clampTypeModel)
         {
             using (var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL")))
@@ -264,7 +268,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("@ClampTypeId", batteryModel.ClampType.Id);
                 parameters.Add("@Cost", batteryModel.Cost);
                 parameters.Add("@BufferModeServiceTime", batteryModel.BufferModeServiceTime);
-                parameters.Add("@SoHThreshold", batteryModel.MinSoH);
+                parameters.Add("@SoHThreshold", batteryModel.SoHThreshold);
 
                 connection.Execute("dbo.spBatteryModels_Update", parameters, commandType: CommandType.StoredProcedure);
 
@@ -323,11 +327,12 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("@Id", userModel.Id, dbType: DbType.Int32);
                 parameters.Add("@Name", userModel.Name);
                 parameters.Add("@Surname", userModel.Surname);
-                parameters.Add("@Patronymic", userModel.PhoneNumber);
+                parameters.Add("@Patronymic", userModel.Patronymic);
+                parameters.Add("@PhoneNumber", userModel.PhoneNumber);
                 parameters.Add("@Email", userModel.Email);
                 parameters.Add("@PositionId", userModel.Position.Id);
-                parameters.Add("@SupervisorId", userModel.Supervisor == null ? null : userModel.Supervisor.Id);
                 parameters.Add("@Password", userModel.Password);
+                parameters.Add("@IsAdmin", userModel.IsAdmin);
 
                 connection.Execute("dbo.spUsers_Update", parameters, commandType: CommandType.StoredProcedure);
 
@@ -346,7 +351,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("@ExploitationEnd", concreteBatteryModel.ExploitationEnd == null ? null : concreteBatteryModel.ExploitationEnd);
                 parameters.Add("@StructureId", concreteBatteryModel.InstallationStructure.Id);
                 parameters.Add("@SubsystemId", concreteBatteryModel.Subsystem.Id);
-                parameters.Add("@ResponsibleEmployeeId", concreteBatteryModel.ResponsibleWorker.Id);
+                parameters.Add("@ResponsibleEmployeeId", concreteBatteryModel.ResponsibleEmployee.Id);
                 parameters.Add("@ExploitationStatusId", concreteBatteryModel.ExploitationStatus.Id);
                 parameters.Add("@ReplacementStatusId", concreteBatteryModel.ReplacementStatus.Id);
                 parameters.Add("@AdditionalNotes", concreteBatteryModel.AdditionalNotes);
@@ -366,7 +371,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("@BatteryId", batterySoHMeasureModel.Battery.Id);
                 parameters.Add("@PerformingEmployeeId", batterySoHMeasureModel.PerformingEmployee.Id);
                 parameters.Add("@MeasureDate", batterySoHMeasureModel.MeasureDate);
-                parameters.Add("@SoH", batterySoHMeasureModel.SoHValue);
+                parameters.Add("@SoH", batterySoHMeasureModel.SoH);
 
                 connection.Execute("dbo.spBatterySoHMeasures_Update", parameters, commandType: CommandType.StoredProcedure);
 
@@ -374,6 +379,20 @@ namespace BatteriesConditionTrackerLib.DataAccess
             }
         }
 
+        public void UpdateReplacementStatuses()
+        {
+            using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
+            connection.Execute("spConcreteBatteries_UpdateReplacementStatuses", commandType: CommandType.StoredProcedure);
+        }
+
+        public void UpdateReplacementStatusesUpdateDate()
+        {
+            using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
+            connection.Execute("spLastReplacementStatusesUpdate_Update", commandType: CommandType.StoredProcedure);
+        }
+        #endregion
+
+        #region IDeleteData
         public BatteryClampType DeleteBatteryClampType(BatteryClampType clampTypeModel)
         {
             using (var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL")))
@@ -512,7 +531,9 @@ namespace BatteriesConditionTrackerLib.DataAccess
         {
             throw new NotImplementedException();
         }
+        #endregion
 
+        #region IGetData_All
         public List<BatteryExploitationStatus> GetBatteryExploitationStatus_All()
         {
             using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
@@ -545,8 +566,9 @@ namespace BatteriesConditionTrackerLib.DataAccess
 
         public BindingList<BatteryModel> GetBatteryModel_All()
         {
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
             using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
-            var sql = "select * from (BatteryModels bm left join BatteryTechnologies bt on bm.technology_id = bt.id) left join BatteryClampTypes bc on bm.clamp_type_id = bc.id;";
+            var sql = "SELECT * FROM (BatteryModels bm LEFT JOIN BatteryTechnologies bt on bm.technology_id = bt.id) LEFT JOIN BatteryClampTypes bc on bm.clamp_type_id = bc.id;";
             return new BindingList<BatteryModel>(connection.Query<BatteryModel, BatteryTechnology, BatteryClampType, BatteryModel>(sql, (bm, bt, bct) => { bm.Technology = bt; bm.ClampType = bct; return bm; }).ToList());
         }
 
@@ -559,7 +581,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
         public BindingList<Structure> GetStructure_All()
         {
             using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
-            var sql = "select * from Structures s left join StructureTypes t on s.type_id = t.id;";
+            var sql = "SELECT * FROM Structures s LEFT JOIN StructureTypes t on s.type_id = t.id;";
             return new BindingList<Structure>(connection.Query<Structure, StructureType, Structure>(sql, (structure, type) => { structure.Type = type; return structure; }).ToList());
         }
 
@@ -571,10 +593,79 @@ namespace BatteriesConditionTrackerLib.DataAccess
 
         public BindingList<User> GetUser_All()
         {
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true; 
             using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
-            var sql = "select * from (Users u left join Users m on u.supervisor_id = m.id) left join positions p on u.position_id = p.id;";
-            return new BindingList<User>(connection.Query<User, User, Position, User>(sql, (u, m, p) => { u.Supervisor = m; u.Position = p; return u; }).ToList());
+            var sql = "SELECT * FROM Users u LEFT JOIN Positions p on u.position_id = p.id WHERE u.id > 1;";
+            return new BindingList<User>(connection.Query<User, Position, User>(sql, (u, p) => { u.Position = p; return u; }).ToList());
         }
+
+        public BindingList<ConcreteBattery> GetConcreteBattery_All()
+        {
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+            using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
+            var sql = "SELECT * FROM ConcreteBatteries cb \r\n" +
+                "LEFT JOIN BatteryModels bm ON cb.model_id = bm.id\r\n" +
+                "LEFT JOIN Structures s ON cb.structure_id = s.id \r\n" +
+                "LEFT JOIN BatterySubsystems bs ON cb.subsystem_id = bs.id \r\n" +
+                "LEFT JOIN Users u ON cb.responsible_employee_id = u.id \r\n" +
+                "LEFT JOIN BatteryExploitationStatuses es ON cb.exploitation_status_id = es.id \r\n" +
+                "LEFT JOIN BatteryReplacementStatuses rs ON cb.replacement_status_id = rs.id ";
+            Func<ConcreteBattery, BatteryModel, Structure, BatterySubsystem, User, BatteryExploitationStatus, BatteryReplacementStatus, ConcreteBattery> mappingFunc =
+                ((cb, bm, s, bs, u, es, rs) =>
+                    {
+                        cb.Model = bm; 
+                        cb.InstallationStructure = s; 
+                        cb.Subsystem = bs; 
+                        cb.ResponsibleEmployee = u;
+                        cb.ExploitationStatus = es; 
+                        cb.ReplacementStatus = rs;
+                        return cb; 
+                    }
+                );
+            return new BindingList<ConcreteBattery>(connection.Query(sql, mappingFunc).ToList());
+        }
+        
+        public DateTime GetLastReplacementStatusesUpdateDate()
+        {
+            using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
+            var sql = "SELECT * FROM LastReplacementStatusesUpdate;";
+            return connection.QuerySingle<DateTime>(sql);
+        }
+
+        //TODO провести рефакторинг методов ниже, выделить метод GetDistinct 
+
+        public List<string> GetAvailableBrands_All()
+        {
+            var output = new List<string>(); 
+            using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
+            var sql = "SELECT DISTINCT brand FROM BatteryModels;";
+            var command = new SqlCommand(sql, connection);
+            connection.Open();
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+                output.Add(reader[0].ToString()); 
+
+            return output; 
+        }
+
+        public List<string> GetAvailableCapacities_All()
+        {
+            var output = new List<string>();
+            using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
+            var sql = "SELECT DISTINCT capacity FROM BatteryModels;";
+            var command = new SqlCommand(sql, connection);
+            connection.Open();
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+                output.Add(reader[0].ToString());
+
+            return output;
+        }
+        #endregion
+
+        #region IGetData_ById
 
         public BatteryExploitationStatus GetBatteryExploitationStatus_ById(int id)
         {
@@ -624,6 +715,24 @@ namespace BatteriesConditionTrackerLib.DataAccess
         public User GetUser_ById(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public BindingList<BatterySoHMeasure> GetBatterySoHMeasure_ById(int id)
+        {
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+            using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
+            var sql = "SELECT * FROM BatterySoHMeasures sm LEFT JOIN Users u ON sm.performing_employee_id = u.id WHERE sm.battery_id = @Id";
+            Func<BatterySoHMeasure, User, BatterySoHMeasure> mappingFunc = (measure, user) => { measure.PerformingEmployee = user; return measure; };
+            return new BindingList<BatterySoHMeasure>(connection.Query(sql, mappingFunc, new { Id = id }).ToList());
+        }
+
+        #endregion
+
+        public User GetUser_ByLogin(string login)
+        {
+            using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
+            var sql = "SELECT * FROM Users u LEFT JOIN Positions p on u.position_id = p.id WHERE u.email = @Login;";
+            return connection.Query<User, Position, User>(sql, (u, p) => { u.Position = p; return u; }, new { Login = login }).FirstOrDefault();
         }
     }
 }

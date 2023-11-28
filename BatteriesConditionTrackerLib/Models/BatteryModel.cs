@@ -7,7 +7,7 @@ using BatteriesConditionTrackerLib.Models.Interfaces;
 
 namespace BatteriesConditionTrackerLib.Models
 {
-    public class BatteryModel : IHaveId, IHavePhotos
+    public class BatteryModel : IHaveId//, IHavePhotos
     {
         /// <summary>
         /// Id модели аккумулятора
@@ -52,7 +52,7 @@ namespace BatteriesConditionTrackerLib.Models
         /// <summary>
         /// Стоимость данной модели аккумулятора
         /// </summary>
-        public decimal Cost { get; set; }
+        public int Cost { get; set; }
         /// <summary>
         /// Срок службы в буферном режиме (лет)
         /// </summary>
@@ -60,24 +60,25 @@ namespace BatteriesConditionTrackerLib.Models
         /// <summary>
         /// Срок службы в циклическом режиме (число циклов)
         /// </summary>
-        public int MinSoH { get; set; }
+        public int SoHThreshold { get; set; }
         /// <summary>
         /// Список фотографий этой модели аккумулятора
         /// </summary>
-        public List<Photo> DisplayedPhotos { get; set; }
-        public List<Photo> AddedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<Photo> DeletedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public List<Photo> DisplayedPhotos { get; set; }
+        //public List<Photo> AddedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public List<Photo> DeletedPhotos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public static readonly Func<string[], BatteryModel> ModelCreation = columns => new BatteryModel(columns);
         public static readonly Func<BatteryModel, string> ModelToCSV = bm =>
             $"{bm.Id},{bm.Name},{bm.Brand},{bm.Capacity},{bm.Voltage},{bm.Length},{bm.Height},{bm.Width},{bm.Technology.Id}," +
-            $"{bm.ClampType.Id},{bm.Cost},{bm.BufferModeServiceTime},{bm.MinSoH}";
+            $"{bm.ClampType.Id},{bm.Cost},{bm.BufferModeServiceTime.ToString().Replace(',', '.')},{bm.SoHThreshold}";
 
         public BatteryModel() { }
 
-        public BatteryModel(string name, string brand, string capacity, string voltage, string length, string height, 
+        public BatteryModel(string id, string name, string brand, string capacity, string voltage, string length, string height, 
             string width, BatteryTechnology technology, BatteryClampType clampType, string cost, string bufferModeServiceTime, string minSoH)
         {
+            Id = int.Parse(id); 
             Name = name; 
             Brand = brand;
             Capacity = double.Parse(capacity); 
@@ -87,9 +88,9 @@ namespace BatteriesConditionTrackerLib.Models
             Width = int.Parse(width);
             Technology = technology; 
             ClampType = clampType;
-            Cost = decimal.Parse(cost);
+            Cost = int.Parse(cost);
             BufferModeServiceTime = double.Parse(bufferModeServiceTime); 
-            MinSoH = int.Parse(minSoH);
+            SoHThreshold = int.Parse(minSoH);
         }
 
         public BatteryModel(string[] columns)
@@ -104,9 +105,14 @@ namespace BatteriesConditionTrackerLib.Models
             Width = int.Parse(columns[7]);
             Technology = GlobalConfig.Connection.GetBatteryTechnology_ById(int.Parse(columns[8]));
             ClampType = GlobalConfig.Connection.GetBatteryClampType_ById(int.Parse(columns[9]));
-            Cost = decimal.Parse(columns[10]);
-            BufferModeServiceTime = double.Parse(columns[11]);
-            MinSoH = int.Parse(columns[12]); 
+            Cost = int.Parse(columns[10]);
+            BufferModeServiceTime = double.Parse(columns[11].Replace('.', ','));
+            SoHThreshold = int.Parse(columns[12]); 
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

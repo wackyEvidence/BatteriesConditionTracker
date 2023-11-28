@@ -11,11 +11,13 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using NpgsqlTypes;
 using BatteriesConditionTrackerLib.DataAccess.Interfaces;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BatteriesConditionTrackerLib.DataAccess
 {
     internal class PostgreConnector : IDataConnection
     {
+        #region ICreateData
         public BatteryClampType CreateBatteryClampType(BatteryClampType clampTypeModel)
         {
             using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
@@ -76,7 +78,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("p_clamp_type_id", batteryModel.ClampType.Id);
                 parameters.Add("p_cost", batteryModel.Cost);
                 parameters.Add("p_buffer_mode_service_time", batteryModel.BufferModeServiceTime);
-                parameters.Add("p_soh_threshold", batteryModel.MinSoH);
+                parameters.Add("p_soh_threshold", batteryModel.SoHThreshold);
                 parameters.Add("p_name", batteryModel.Name, dbType: DbType.StringFixedLength, size: 50);
                 parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
 
@@ -144,7 +146,6 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("p_phone_number", userModel.PhoneNumber);
                 parameters.Add("p_email", userModel.Email);
                 parameters.Add("p_position_id", userModel.Position.Id);
-                parameters.Add("p_supervisor_id", userModel.Supervisor == null ? null : userModel.Supervisor.Id);
                 parameters.Add("p_password", userModel.Password);
                 parameters.Add("p_is_admin", userModel.IsAdmin);
                 parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
@@ -162,11 +163,11 @@ namespace BatteriesConditionTrackerLib.DataAccess
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("p_model_id", concreteBatteryModel.Model.Id);
-                parameters.Add("p_exploitation_start", concreteBatteryModel.ExploitationStart.ToShortDateString());
-                parameters.Add("p_exploitation_end", concreteBatteryModel.ExploitationEnd);
+                parameters.Add("p_exploitation_start", concreteBatteryModel.ExploitationStart, dbType: DbType.Date);
+                parameters.Add("p_exploitation_end", concreteBatteryModel.ExploitationEnd, dbType: DbType.Date);
                 parameters.Add("p_structure_id", concreteBatteryModel.InstallationStructure.Id);
                 parameters.Add("p_subsystem_id", concreteBatteryModel.Subsystem.Id);
-                parameters.Add("p_responsible_employee_id", concreteBatteryModel.ResponsibleWorker.Id);
+                parameters.Add("p_responsible_employee_id", concreteBatteryModel.ResponsibleEmployee.Id);
                 parameters.Add("p_exploitation_status_id", concreteBatteryModel.ExploitationStatus.Id);
                 parameters.Add("p_replacement_status_id", concreteBatteryModel.ReplacementStatus.Id);
                 parameters.Add("p_additional_notes", concreteBatteryModel.AdditionalNotes);
@@ -186,8 +187,8 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 var parameters = new DynamicParameters();
                 parameters.Add("p_battery_id", batterySoHMeasureModel.Battery.Id);
                 parameters.Add("p_performing_employee_id", batterySoHMeasureModel.PerformingEmployee.Id);
-                parameters.Add("p_measure_date", batterySoHMeasureModel.MeasureDate.ToShortDateString());    
-                parameters.Add("p_soh", batterySoHMeasureModel.SoHValue);    
+                parameters.Add("p_measure_date", batterySoHMeasureModel.MeasureDate, dbType: DbType.Date);    
+                parameters.Add("p_soh", batterySoHMeasureModel.SoH);    
                 parameters.Add("p_id", 0, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
 
                 connection.Execute("spBatterySoHMeasures_Insert", parameters, commandType: CommandType.StoredProcedure);
@@ -234,6 +235,10 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 }
             }
         }
+
+        #endregion
+
+        #region IUpdateData
 
         public BatteryClampType UpdateBatteryClampType(BatteryClampType clampTypeModel)
         {
@@ -293,7 +298,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("p_clamp_type_id", batteryModel.ClampType.Id);
                 parameters.Add("p_cost", batteryModel.Cost);
                 parameters.Add("p_buffer_mode_service_time", batteryModel.BufferModeServiceTime);
-                parameters.Add("p_soh_threshold", batteryModel.MinSoH, dbType: DbType.Int32);
+                parameters.Add("p_soh_threshold", batteryModel.SoHThreshold, dbType: DbType.Int32);
                 parameters.Add("p_name", batteryModel.Name, dbType: DbType.StringFixedLength, size: 50);
 
                 connection.Execute("spBatteryModels_Update", parameters, commandType: CommandType.StoredProcedure);
@@ -350,14 +355,13 @@ namespace BatteriesConditionTrackerLib.DataAccess
             using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("p_id", 0, dbType: DbType.Int32);
+                parameters.Add("p_id", userModel.Id, dbType: DbType.Int32);
                 parameters.Add("p_name", userModel.Name);
                 parameters.Add("p_surname", userModel.Surname);
                 parameters.Add("p_patronymic", userModel.Patronymic);
                 parameters.Add("p_phone_number", userModel.PhoneNumber);
                 parameters.Add("p_email", userModel.Email);
                 parameters.Add("p_position_id", userModel.Position.Id);
-                parameters.Add("p_supervisor_id", userModel.Supervisor == null ? null : userModel.Supervisor.Id);
                 parameters.Add("p_password", userModel.Password);
                 parameters.Add("p_is_admin", userModel.IsAdmin);
 
@@ -378,7 +382,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("p_exploitation_end", concreteBatteryModel.ExploitationEnd);
                 parameters.Add("p_structure_id", concreteBatteryModel.InstallationStructure.Id);
                 parameters.Add("p_subsystem_id", concreteBatteryModel.Subsystem.Id);
-                parameters.Add("p_responsible_employee_id", concreteBatteryModel.ResponsibleWorker.Id);
+                parameters.Add("p_responsible_employee_id", concreteBatteryModel.ResponsibleEmployee.Id);
                 parameters.Add("p_exploitation_status_id", concreteBatteryModel.ExploitationStatus.Id);
                 parameters.Add("p_replacement_status_id", concreteBatteryModel.ReplacementStatus.Id);
                 parameters.Add("p_additional_notes", concreteBatteryModel.AdditionalNotes);
@@ -397,14 +401,30 @@ namespace BatteriesConditionTrackerLib.DataAccess
                 parameters.Add("p_id", batterySoHMeasureModel.Id, dbType: DbType.Int32);
                 parameters.Add("p_battery_id", batterySoHMeasureModel.Battery.Id);
                 parameters.Add("p_performing_employee_id", batterySoHMeasureModel.PerformingEmployee.Id);
-                parameters.Add("p_measure_date", batterySoHMeasureModel.MeasureDate.ToShortDateString());
-                parameters.Add("p_soh", batterySoHMeasureModel.SoHValue);
+                parameters.Add("p_measure_date", batterySoHMeasureModel.MeasureDate, dbType: DbType.Date);
+                parameters.Add("p_soh", batterySoHMeasureModel.SoH);
 
                 connection.Execute("spBatterySoHMeasures_Update", parameters, commandType: CommandType.StoredProcedure);
 
                 return batterySoHMeasureModel;
             }
         }
+
+        public void UpdateReplacementStatuses()
+        {
+            using var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre"));
+            connection.Execute("spConcreteBatteries_UpdateReplacementStatuses", commandType: CommandType.StoredProcedure);
+        }
+
+        public void UpdateReplacementStatusesUpdateDate()
+        {
+            using var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre"));
+            connection.Execute("spLastReplacementStatusesUpdate_Update", commandType: CommandType.StoredProcedure);
+        }
+
+        #endregion
+
+        #region IDeleteData
 
         public BatteryClampType DeleteBatteryClampType(BatteryClampType clampTypeModel)
         {
@@ -538,6 +558,10 @@ namespace BatteriesConditionTrackerLib.DataAccess
             throw new NotImplementedException();
         }
 
+        #endregion
+
+        #region IGetData_All
+
         public List<BatteryExploitationStatus> GetBatteryExploitationStatus_All()
         {
             using var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre"));
@@ -596,10 +620,90 @@ namespace BatteriesConditionTrackerLib.DataAccess
         public BindingList<User> GetUser_All()
         {
             using var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre"));
-            var sql = "select * from (Users as u left join Users as m on u.supervisor_id = m.id) left join positions as p on u.position_id = p.id;";
-            return new BindingList<User>(connection.Query<User, User, Position, User>(sql, (u, m, p) => { u.Supervisor = m; u.Position = p; return u; }).ToList());
+
+            var sql = "select u.id as id, u.name as name, u.surname as surname, u.patronymic as patronymic, u.phone_number as phonenumber, u.email as email, u.password as password, u.is_admin as isadmin, " +
+                " p.* from Users as u left join Positions as p on u.position_id = p.id where u.id > 1";
+            
+            var usersList = connection.Query<User, Position, User>(
+                sql, 
+                (user, position) => { user.Position = position; return user; }
+                ).ToList();
+
+            return new BindingList<User>(usersList);
         }
 
+        public BindingList<ConcreteBattery> GetConcreteBattery_All()
+        {
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+            using var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre"));
+
+            var sql = 
+                "select * from ConcreteBatteries as cb \r\n" +
+                "left join BatteryModels as bm ON cb.model_id = bm.id \r\n" +
+                "left join Structures as s ON cb.structure_id = s.id \r\n" +
+                "left join BatterySubsystems as bs ON cb.subsystem_id = bs.id \r\n" +
+                "left join Users as u ON cb.responsible_employee_id = u.id \r\n" +
+                "left join BatteryExploitationStatuses as es ON cb.exploitation_status_id = es.id \r\n" +
+                "left join BatteryReplacementStatuses as rs ON cb.replacement_status_id = rs.id ";
+
+            Func<ConcreteBattery, BatteryModel, Structure, BatterySubsystem, User, BatteryExploitationStatus, BatteryReplacementStatus, ConcreteBattery> mappingFunc =
+                ((cb, bm, s, bs, u, es, rs) =>
+                    {
+                        cb.Model = bm;
+                        cb.InstallationStructure = s;
+                        cb.Subsystem = bs;
+                        cb.ResponsibleEmployee = u;
+                        cb.ExploitationStatus = es;
+                        cb.ReplacementStatus = rs;
+                        return cb;
+                    }
+                );
+
+            return new BindingList<ConcreteBattery>(connection.Query(sql, mappingFunc).ToList());
+        }
+
+        public DateTime GetLastReplacementStatusesUpdateDate()
+        {
+            using var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre"));
+            var sql = "SELECT * FROM LastReplacementStatusesUpdate;";
+            return connection.QuerySingle<DateTime>(sql);
+        }
+
+        //TODO провести рефакторинг методов ниже, выделить метод GetDistinct 
+
+        public List<string> GetAvailableBrands_All()
+        {
+            var output = new List<string>();
+            using var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre"));
+            var sql = "SELECT DISTINCT brand FROM BatteryModels;";
+            var command = new NpgsqlCommand(sql, connection);
+            connection.Open(); 
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+                output.Add(reader[0].ToString());
+
+            return output;
+        }
+
+        public List<string> GetAvailableCapacities_All()
+        {
+            var output = new List<string>();
+            using var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre"));
+            var sql = "SELECT DISTINCT capacity FROM BatteryModels;";
+            var command = new NpgsqlCommand(sql, connection);
+            connection.Open();
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+                output.Add(reader[0].ToString());
+
+            return output;
+        }
+
+        #endregion
+
+        #region IGetData_ById
         public BatteryExploitationStatus GetBatteryExploitationStatus_ById(int id)
         {
             throw new NotImplementedException();
@@ -649,5 +753,26 @@ namespace BatteriesConditionTrackerLib.DataAccess
         {
             throw new NotImplementedException();
         }
+
+        public BindingList<BatterySoHMeasure> GetBatterySoHMeasure_ById(int id)
+        {
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+            using var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre"));
+            var sql = "select * from BatterySoHMeasures as sm left join Users u on sm.performing_employee_id = u.id where sm.battery_id = @Id";
+            Func<BatterySoHMeasure, User, BatterySoHMeasure> mappingFunc = (measure, user) => { measure.PerformingEmployee = user; return measure; };
+            return new BindingList<BatterySoHMeasure>(connection.Query(sql, mappingFunc, new { Id = id }).ToList());
+        }
+
+        #endregion  
+
+        public User GetUser_ByLogin(string login)
+        {
+            using var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre"));
+            var sql = "select * from Users as u left join Positions as p on u.position_id = p.id where u.email = @Login;";
+            
+            return connection.Query<User, Position, User>(sql, (u, p) => { u.Position = p; return u; }, new { Login = login }).FirstOrDefault();
+        }
+
+       
     }
 }

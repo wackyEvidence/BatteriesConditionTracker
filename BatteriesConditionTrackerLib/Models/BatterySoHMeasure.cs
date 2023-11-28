@@ -28,10 +28,10 @@ namespace BatteriesConditionTrackerLib.Models
         /// <summary>
         /// Измеренное значение SoH
         /// </summary>
-        public double SoHValue { get; set; }
+        public int SoH { get; set; }
 
         public static readonly Func<string[], BatterySoHMeasure> ModelCreation = columns => new BatterySoHMeasure(columns);
-        public static readonly Func<BatterySoHMeasure, string> ModelToCSV = soh => $"{soh.Id},{soh.Battery.Id},{soh.PerformingEmployee.Id},{soh.MeasureDate},{soh.SoHValue}";
+        public static readonly Func<BatterySoHMeasure, string> ModelToCSV = soh => $"{soh.Id},{soh.Battery.Id},{soh.PerformingEmployee.Id},{soh.MeasureDate},{soh.SoH}";
 
         public BatterySoHMeasure() { }
 
@@ -41,7 +41,7 @@ namespace BatteriesConditionTrackerLib.Models
             Battery = battery;
             PerformingEmployee = performingEmployee;
             MeasureDate = DateTime.Parse(measureDate);
-            SoHValue = int.Parse(soh);
+            SoH = int.Parse(soh);
         }
 
         public BatterySoHMeasure(string[] columns)
@@ -50,7 +50,7 @@ namespace BatteriesConditionTrackerLib.Models
             var batteryId = int.Parse(columns[1]);
             var performingEmployeeId = int.Parse(columns[2]); 
             MeasureDate = DateTime.Parse(columns[3]);
-            SoHValue = double.Parse(columns[4]); 
+            SoH = int.Parse(columns[4]); 
         }
     }
 }

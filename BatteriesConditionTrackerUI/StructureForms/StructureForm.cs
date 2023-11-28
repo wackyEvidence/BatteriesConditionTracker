@@ -14,22 +14,29 @@ using System.Windows.Forms;
 
 namespace BatteriesConditionTrackerUI
 {
-    public partial class StructureForm : Form, IValidatable, IRequester<StructureType>
+    public partial class StructureForm : Form, IValidatable, IModelRequester<StructureType>
     {
         private BindingList<StructureType> displayedStructureTypes = GlobalConfig.Connection.GetStructureType_All();
         private FormMode mode;
         private Structure? inputedStructureModel;
-        private IRequester<Structure> callingForm;
+        private IModelRequester<Structure> callingForm;
 
-        public StructureForm(FormMode mode, IRequester<Structure> caller, Structure? structureModel = null)
+        public StructureForm(FormMode mode, IModelRequester<Structure> caller, Structure? structureModel = null)
         {
             InitializeComponent();
             this.mode = mode;
             inputedStructureModel = structureModel;
             callingForm = caller;
             headerLabel.Text = mode == FormMode.Adding ? "Добавление объекта" : "Изменение объекта";
-            structureNameValue.Text = mode == FormMode.Adding ? string.Empty : structureModel.Name;
             WireUpLists();
+            if(mode == FormMode.Editing)
+                FillFormFields(); 
+        }
+
+        private void FillFormFields()
+        {
+            structureNameValue.Text = inputedStructureModel.Name;
+            structureTypeValue.SelectedItem = displayedStructureTypes.Where(t => t.Id == inputedStructureModel.Type.Id).First(); 
         }
 
         private void WireUpLists()

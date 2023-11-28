@@ -9,9 +9,9 @@ namespace BatteriesConditionTrackerUI
     {
         private FormMode mode;
         private StructureType? inputedStructureTypeModel;
-        private IRequester<StructureType> callingForm;
+        private IModelRequester<StructureType> callingForm;
 
-        public StructureTypeForm(FormMode mode, IRequester<StructureType> caller, StructureType? structureTypeModel = null)
+        public StructureTypeForm(FormMode mode, IModelRequester<StructureType> caller, StructureType? structureTypeModel = null)
         {
             InitializeComponent();
             this.mode = mode;

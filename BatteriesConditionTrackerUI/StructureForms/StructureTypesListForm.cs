@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace BatteriesConditionTrackerUI
 {
-    public partial class StructureTypesListForm : Form, IRequester<StructureType>
+    public partial class StructureTypesListForm : Form, IModelRequester<StructureType>
     {
         private BindingList<StructureType> displayedStructureTypes = GlobalConfig.Connection.GetStructureType_All();
 
@@ -22,6 +22,11 @@ namespace BatteriesConditionTrackerUI
             InitializeComponent();
             WireUpLists();
             AdjustDataGridView();
+        }
+
+        private void StructureTypesListForm_Load(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
         }
 
         private void WireUpLists()

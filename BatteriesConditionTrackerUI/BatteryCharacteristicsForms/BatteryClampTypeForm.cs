@@ -17,10 +17,10 @@ namespace BatteriesConditionTrackerUI
     public partial class BatteryClampTypeForm : Form, IValidatable
     {
         private FormMode mode;
-        private IRequester<BatteryClampType> callingForm;
+        private IModelRequester<BatteryClampType> callingForm;
         private BatteryClampType? inputedClampTypeModel;
 
-        public BatteryClampTypeForm(FormMode mode, IRequester<BatteryClampType> caller, BatteryClampType? clampTypeModel = null)
+        public BatteryClampTypeForm(FormMode mode, IModelRequester<BatteryClampType> caller, BatteryClampType? clampTypeModel = null)
         {
             InitializeComponent();
             this.mode = mode;

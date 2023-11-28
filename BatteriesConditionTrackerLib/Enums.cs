@@ -9,13 +9,15 @@ namespace BatteriesConditionTrackerLib
     public enum FormMode
     {
         Adding, 
-        Editing
+        Editing,
+        Watching, 
+        Report
     }
 
     public enum DatabaseType
     {
         SqlServer, 
-        TextFile, 
+        TextFiles, 
         PostgreSql
     }
 }

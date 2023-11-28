@@ -20,7 +20,7 @@ namespace BatteriesConditionTrackerLib.Validation
             var errorNumber = 1; 
             foreach (var error in errorMessages)
             {
-                message.AppendLine($"{errorNumber}. " + error.Value.ToString());
+                message.AppendLine($"{errorNumber}. {error.Value}");
                 errorNumber++;
             }
 
