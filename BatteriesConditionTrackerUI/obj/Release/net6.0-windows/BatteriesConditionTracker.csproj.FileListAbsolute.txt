@@ -60,3 +60,4 @@ D:\Автоматизация учета состояния аккумулято
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.About.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.BatteryClampTypeForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.InitialSettings.resources
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTracker.DataSourceChange.resources

@@ -29,7 +29,7 @@ namespace BatteriesConditionTrackerLib
             var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             var settings = configFile.AppSettings.Settings;
 
-            if(dbTypeMap[settings["dbType"].Value] != DatabaseType.TextFiles)
+                if(dbTypeMap[settings["dbType"].Value] != DatabaseType.TextFiles)
             {
                 var columnMaps = new Dictionary<string, string>()
                 {

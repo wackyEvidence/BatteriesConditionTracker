@@ -8,8 +8,7 @@ create procedure spConcreteBatteries_Update(
 	p_responsible_employee_id int, 
 	p_exploitation_status_id int, 
 	p_replacement_status_id int, 
-	p_additional_notes text,
-	p_last_capacity_measure_date date
+	p_additional_notes text
 )
 as $$ 
 begin 
@@ -17,8 +16,7 @@ begin
 	set 
 	model_id = p_model_id, exploitation_start = p_exploitation_start, exploitation_end = p_exploitation_end, 
 	structure_id = p_structure_id, subsystem_id = p_subsystem_id, responsible_employee_id = p_responsible_employee_id, 
-	replacement_status_id = p_replacement_status_id, additional_notes = p_additional_notes, 
-	last_capacity_measure_date = p_last_capacity_measure_date
+	replacement_status_id = p_replacement_status_id, additional_notes = p_additional_notes
 	where id = p_id;
 end; 
 $$ language plpgsql; 

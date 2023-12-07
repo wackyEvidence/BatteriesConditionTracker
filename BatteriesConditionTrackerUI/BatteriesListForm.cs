@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BatteriesConditionTrackerLib.Filtering;
 using LinqKit;
+using BatteriesConditionTracker;
 
 namespace BatteriesConditionTrackerUI
 {
@@ -229,6 +230,12 @@ namespace BatteriesConditionTrackerUI
         public void ModelListUpdated(List<Structure> modelList)
         {
             availableStructures = new BindingList<Structure>(modelList);
+        }
+
+        private void источникДанныхToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dataSourceSettingForm = new DataSourceChange();
+            dataSourceSettingForm.ShowDialog();
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)

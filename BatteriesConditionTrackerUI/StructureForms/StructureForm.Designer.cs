@@ -69,6 +69,7 @@
             // 
             // structureTypeValue
             // 
+            structureTypeValue.DropDownStyle = ComboBoxStyle.DropDownList;
             structureTypeValue.FormattingEnabled = true;
             structureTypeValue.Location = new Point(12, 218);
             structureTypeValue.Name = "structureTypeValue";

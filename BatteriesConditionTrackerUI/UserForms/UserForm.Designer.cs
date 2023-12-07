@@ -222,6 +222,7 @@
             // 
             // positionValue
             // 
+            positionValue.DropDownStyle = ComboBoxStyle.DropDownList;
             positionValue.FormattingEnabled = true;
             positionValue.Location = new Point(19, 199);
             positionValue.Name = "positionValue";

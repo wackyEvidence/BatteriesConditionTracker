@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BatteriesListForm));
             menuStrip1 = new MenuStrip();
             настройкиToolStripMenuItem = new ToolStripMenuItem();
+            настройкиToolStripMenuItem1 = new ToolStripMenuItem();
+            источникДанныхToolStripMenuItem = new ToolStripMenuItem();
             выходToolStripMenuItem = new ToolStripMenuItem();
             панельАдминистратораToolStripMenuItem = new ToolStripMenuItem();
             batteryModelsToolStripMenuItem = new ToolStripMenuItem();
@@ -80,15 +82,29 @@
             // 
             // настройкиToolStripMenuItem
             // 
-            настройкиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { выходToolStripMenuItem });
+            настройкиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { настройкиToolStripMenuItem1, выходToolStripMenuItem });
             настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             настройкиToolStripMenuItem.Size = new Size(96, 42);
             настройкиToolStripMenuItem.Text = "Файл";
             // 
+            // настройкиToolStripMenuItem1
+            // 
+            настройкиToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { источникДанныхToolStripMenuItem });
+            настройкиToolStripMenuItem1.Name = "настройкиToolStripMenuItem1";
+            настройкиToolStripMenuItem1.Size = new Size(244, 42);
+            настройкиToolStripMenuItem1.Text = "Настройки";
+            // 
+            // источникДанныхToolStripMenuItem
+            // 
+            источникДанныхToolStripMenuItem.Name = "источникДанныхToolStripMenuItem";
+            источникДанныхToolStripMenuItem.Size = new Size(333, 42);
+            источникДанныхToolStripMenuItem.Text = "Источник данных";
+            источникДанныхToolStripMenuItem.Click += источникДанныхToolStripMenuItem_Click;
+            // 
             // выходToolStripMenuItem
             // 
             выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(188, 42);
+            выходToolStripMenuItem.Size = new Size(244, 42);
             выходToolStripMenuItem.Text = "Выход";
             выходToolStripMenuItem.Click += выходToolStripMenuItem_Click;
             // 
@@ -295,7 +311,7 @@
             replacementStatusComboBox.FormattingEnabled = true;
             replacementStatusComboBox.Location = new Point(6, 90);
             replacementStatusComboBox.Name = "replacementStatusComboBox";
-            replacementStatusComboBox.Size = new Size(288, 45);
+            replacementStatusComboBox.Size = new Size(339, 45);
             replacementStatusComboBox.TabIndex = 35;
             replacementStatusComboBox.Text = "Статус замены";
             replacementStatusComboBox.SelectedIndexChanged += replacementStatusComboBox_SelectedIndexChanged;
@@ -307,7 +323,7 @@
             exploitationStatusComboBox.FormattingEnabled = true;
             exploitationStatusComboBox.Location = new Point(6, 39);
             exploitationStatusComboBox.Name = "exploitationStatusComboBox";
-            exploitationStatusComboBox.Size = new Size(421, 45);
+            exploitationStatusComboBox.Size = new Size(440, 45);
             exploitationStatusComboBox.TabIndex = 34;
             exploitationStatusComboBox.Text = "Статус эксплуатации";
             exploitationStatusComboBox.SelectedIndexChanged += exploitationStatusComboBox_SelectedIndexChanged;
@@ -457,5 +473,7 @@
         private ToolStripMenuItem positionsToolStripMenuItem;
         private LinkLabel resetAllFiltersLinkLabel;
         private ToolStripMenuItem aboutMenuItem;
+        private ToolStripMenuItem настройкиToolStripMenuItem1;
+        private ToolStripMenuItem источникДанныхToolStripMenuItem;
     }
 }

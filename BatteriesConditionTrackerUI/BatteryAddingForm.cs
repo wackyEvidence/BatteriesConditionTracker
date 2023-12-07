@@ -22,13 +22,13 @@ namespace BatteriesConditionTrackerUI
         private List<BatteryExploitationStatus> availableExploitationStatuses = GlobalConfig.Connection.GetBatteryExploitationStatus_All();
         private List<BatteryReplacementStatus> availableReplacementStatuses = GlobalConfig.Connection.GetBatteryReplacementStatus_All();
         private BindingList<Structure> availableStructures = GlobalConfig.Connection.GetStructure_All();
-        private BindingList<BatterySubsystem> availableBatterySubsystems = GlobalConfig.Connection.GetBatterySubsystem_All(); 
+        private BindingList<BatterySubsystem> availableBatterySubsystems = GlobalConfig.Connection.GetBatterySubsystem_All();
         private BindingList<User> availableEmployees = GlobalConfig.Connection.GetUser_All();
 
         private readonly IModelRequester<ConcreteBattery> callingForm;
         private const string AdditionalNotesPlaceholder = "Место установки, особенности эксплуатации АКБ и т.п.";
 
-        public BatteryAddingForm(IModelRequester<ConcreteBattery> caller) 
+        public BatteryAddingForm(IModelRequester<ConcreteBattery> caller)
         {
             callingForm = caller;
             InitializeComponent();

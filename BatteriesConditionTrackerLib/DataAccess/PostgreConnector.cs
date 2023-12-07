@@ -376,10 +376,10 @@ namespace BatteriesConditionTrackerLib.DataAccess
             using (var connection = new NpgsqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerPostgre")))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("p_id", 0, dbType: DbType.Int32);
+                parameters.Add("p_id", concreteBatteryModel.Id, dbType: DbType.Int32);
                 parameters.Add("p_model_id", concreteBatteryModel.Model.Id);
-                parameters.Add("p_exploitation_start", concreteBatteryModel.ExploitationStart.ToShortDateString());
-                parameters.Add("p_exploitation_end", concreteBatteryModel.ExploitationEnd);
+                parameters.Add("p_exploitation_start", concreteBatteryModel.ExploitationStart, DbType.Date);
+                parameters.Add("p_exploitation_end", concreteBatteryModel.ExploitationEnd, DbType.Date);
                 parameters.Add("p_structure_id", concreteBatteryModel.InstallationStructure.Id);
                 parameters.Add("p_subsystem_id", concreteBatteryModel.Subsystem.Id);
                 parameters.Add("p_responsible_employee_id", concreteBatteryModel.ResponsibleEmployee.Id);

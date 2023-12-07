@@ -10,6 +10,7 @@ using System.ComponentModel;
 using BatteriesConditionTrackerLib.Models.Interfaces;
 using BatteriesConditionTrackerLib.DataAccess.Interfaces;
 using System.CodeDom;
+using System.Configuration;
 
 namespace BatteriesConditionTrackerLib.DataAccess
 {
@@ -28,9 +29,55 @@ namespace BatteriesConditionTrackerLib.DataAccess
         private const string ConcreteBatteriesFileName = "ConcreteBatteries.csv";
         private const string SoHMeasuresFileName = "SoHMeasures.csv";
         private const string LastReplacementStatusesUpdate = "LastReplacementStatusesUpdate.csv"; 
-
         private const string ConcreteBatteryPhotosFileName = "ConcreteBatteryPhotos.csv";
         private const string BatteryModelPhotosFileName = "BatteryModelPhotos.csv";
+
+        public static readonly string DefaultTextFilesPath = $"{Application.StartupPath}Data";
+
+        public static void ProcessSelectedFolder(KeyValueConfigurationCollection settings, FolderBrowserDialog filesDirectory)
+        {
+            CreateNecessaryTextFiles(filesDirectory.SelectedPath);
+            settings["textFilesPath"].Value = filesDirectory.SelectedPath;
+            settings["textFilesPathConfigured"].Value = "true";
+        }
+
+        public static FolderBrowserDialog CreateFolderBrowserDialog()
+        {
+            var folderBrowserDialog = new FolderBrowserDialog();
+            folderBrowserDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            folderBrowserDialog.ShowNewFolderButton = true;
+            return folderBrowserDialog;
+        }
+
+        public static void CreateNecessaryTextFiles(string path)
+        {
+            if (!File.Exists(path + "\\BatteryExploitationStatuses.csv"))
+            {
+                var lines = new List<string>()
+                {
+                    "1,Эксплуатируется",
+                    "2,Не эксплуатируется"
+                };
+                File.WriteAllLines(path + "\\BatteryExploitationStatuses.csv", lines);
+            }
+
+            if (!File.Exists(path + "\\BatteryReplacementStatuses.csv"))
+            {
+                var lines = new List<string>()
+                {
+                    "1,Требует замены",
+                    "2,Не требует замены",
+                    "3,Заменен"
+                };
+                File.WriteAllLines(path + "\\BatteryReplacementStatuses.csv", lines);
+            }
+
+            if (!File.Exists(path + "\\Users.csv"))
+                File.WriteAllText(path + "\\Users.csv", "1,Матвей,Жаков,Дмитриевич,$2a$11$IQozpg9DGqBELIlnJm./IOKl9cH0ZSqTwNXErzfAXph9LTfUC.YLO,+7(982)977-01-99,admin,,true");
+
+            if (!File.Exists(path + "\\LastReplacementStatusesUpdate.csv"))
+                File.WriteAllText(path + "\\LastReplacementStatusesUpdate.csv", $"{DateTime.Now.ToShortDateString()}");
+        }
 
         #region GenericMethods
         /// <summary>

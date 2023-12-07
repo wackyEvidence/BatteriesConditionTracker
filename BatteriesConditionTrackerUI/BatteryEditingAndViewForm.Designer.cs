@@ -382,16 +382,17 @@
             tabPageExtraInfo.Controls.Add(structureLabel);
             tabPageExtraInfo.Controls.Add(exploitationStartLabel);
             tabPageExtraInfo.Controls.Add(exploitationEndLabel);
-            tabPageExtraInfo.Location = new Point(4, 29);
+            tabPageExtraInfo.Location = new Point(4, 46);
             tabPageExtraInfo.Name = "tabPageExtraInfo";
             tabPageExtraInfo.Padding = new Padding(3);
-            tabPageExtraInfo.Size = new Size(582, 651);
+            tabPageExtraInfo.Size = new Size(582, 634);
             tabPageExtraInfo.TabIndex = 1;
             tabPageExtraInfo.Text = "Дополнительно";
             tabPageExtraInfo.UseVisualStyleBackColor = true;
             // 
             // replacementStatusValue
             // 
+            replacementStatusValue.DropDownStyle = ComboBoxStyle.DropDownList;
             replacementStatusValue.FormattingEnabled = true;
             replacementStatusValue.Items.AddRange(new object[] { "требует замены", "не требует замены", "заменен" });
             replacementStatusValue.Location = new Point(304, 44);
@@ -442,6 +443,7 @@
             // 
             // exploitationStatusValue
             // 
+            exploitationStatusValue.DropDownStyle = ComboBoxStyle.DropDownList;
             exploitationStatusValue.FormattingEnabled = true;
             exploitationStatusValue.Location = new Point(6, 44);
             exploitationStatusValue.Name = "exploitationStatusValue";
@@ -480,6 +482,7 @@
             // 
             // structureValue
             // 
+            structureValue.DropDownStyle = ComboBoxStyle.DropDownList;
             structureValue.FormattingEnabled = true;
             structureValue.Location = new Point(6, 307);
             structureValue.Name = "structureValue";
@@ -488,6 +491,7 @@
             // 
             // subsystemValue
             // 
+            subsystemValue.DropDownStyle = ComboBoxStyle.DropDownList;
             subsystemValue.FormattingEnabled = true;
             subsystemValue.Location = new Point(310, 307);
             subsystemValue.Name = "subsystemValue";
@@ -563,6 +567,7 @@
             // 
             // performingEmployeeValue
             // 
+            performingEmployeeValue.DropDownStyle = ComboBoxStyle.DropDownList;
             performingEmployeeValue.FormattingEnabled = true;
             performingEmployeeValue.Location = new Point(6, 166);
             performingEmployeeValue.Name = "performingEmployeeValue";

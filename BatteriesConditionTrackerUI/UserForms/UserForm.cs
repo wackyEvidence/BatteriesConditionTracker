@@ -31,7 +31,7 @@ namespace BatteriesConditionTrackerUI
             headerLabel.Text = mode == FormMode.Adding ? "Добавление пользователя" : "Изменение пользователя";
             fistPasswordValue.PlaceholderText = mode == FormMode.Adding ? "Введите пароль" : "Введите новый пароль";
             secondPasswordValue.PlaceholderText = mode == FormMode.Adding ? "Введите пароль еще раз" : "Новый пароль еще раз";
-        
+
             WireUpLists();
 
             if (mode == FormMode.Editing)

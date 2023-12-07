@@ -150,6 +150,7 @@
             // 
             // clampTypeComboBox
             // 
+            clampTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             clampTypeComboBox.FormattingEnabled = true;
             clampTypeComboBox.Location = new Point(290, 279);
             clampTypeComboBox.Name = "clampTypeComboBox";
@@ -167,6 +168,7 @@
             // 
             // technologyComboBox
             // 
+            technologyComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             technologyComboBox.FormattingEnabled = true;
             technologyComboBox.Location = new Point(15, 278);
             technologyComboBox.Name = "technologyComboBox";

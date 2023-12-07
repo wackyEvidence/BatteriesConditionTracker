@@ -111,6 +111,7 @@
             // 
             // replacementStatusComboBox
             // 
+            replacementStatusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             replacementStatusComboBox.FormattingEnabled = true;
             replacementStatusComboBox.Location = new Point(322, 219);
             replacementStatusComboBox.Name = "replacementStatusComboBox";
@@ -119,6 +120,7 @@
             // 
             // responsibleEmployeeComboBox
             // 
+            responsibleEmployeeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             responsibleEmployeeComboBox.FormattingEnabled = true;
             responsibleEmployeeComboBox.Location = new Point(15, 650);
             responsibleEmployeeComboBox.Name = "responsibleEmployeeComboBox";
@@ -145,6 +147,7 @@
             // 
             // exploitationStatusComboBox
             // 
+            exploitationStatusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             exploitationStatusComboBox.FormattingEnabled = true;
             exploitationStatusComboBox.Location = new Point(15, 219);
             exploitationStatusComboBox.Name = "exploitationStatusComboBox";
@@ -183,6 +186,7 @@
             // 
             // structureComboBox
             // 
+            structureComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             structureComboBox.FormattingEnabled = true;
             structureComboBox.Location = new Point(15, 395);
             structureComboBox.Name = "structureComboBox";
@@ -191,6 +195,7 @@
             // 
             // subsystemComboBox
             // 
+            subsystemComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             subsystemComboBox.FormattingEnabled = true;
             subsystemComboBox.Location = new Point(344, 395);
             subsystemComboBox.Name = "subsystemComboBox";

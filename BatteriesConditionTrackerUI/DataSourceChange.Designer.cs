@@ -1,6 +1,6 @@
-﻿namespace BatteriesConditionTrackerUI
+﻿namespace BatteriesConditionTracker
 {
-    partial class InitialSettings
+    partial class DataSourceChange
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitialSettings));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataSourceChange));
             optionsGroupBox = new GroupBox();
+            changeTextFilesDirectory = new LinkLabel();
             usingDefaultDirectory = new CheckBox();
             textFilesRadioButton = new RadioButton();
             sqlServerRadioButton = new RadioButton();
             postgreRadioButton = new RadioButton();
-            headerLabel = new Label();
             actionButton = new Button();
             optionsGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // optionsGroupBox
             // 
+            optionsGroupBox.Controls.Add(changeTextFilesDirectory);
             optionsGroupBox.Controls.Add(usingDefaultDirectory);
             optionsGroupBox.Controls.Add(textFilesRadioButton);
             optionsGroupBox.Controls.Add(sqlServerRadioButton);
             optionsGroupBox.Controls.Add(postgreRadioButton);
             optionsGroupBox.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             optionsGroupBox.ForeColor = Color.FromArgb(0, 121, 194);
-            optionsGroupBox.Location = new Point(31, 122);
+            optionsGroupBox.Location = new Point(12, 12);
             optionsGroupBox.Name = "optionsGroupBox";
             optionsGroupBox.Size = new Size(464, 241);
-            optionsGroupBox.TabIndex = 0;
+            optionsGroupBox.TabIndex = 1;
             optionsGroupBox.TabStop = false;
             optionsGroupBox.Text = "Доступные варианты";
+            // 
+            // changeTextFilesDirectory
+            // 
+            changeTextFilesDirectory.AutoSize = true;
+            changeTextFilesDirectory.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            changeTextFilesDirectory.Location = new Point(15, 190);
+            changeTextFilesDirectory.Name = "changeTextFilesDirectory";
+            changeTextFilesDirectory.Size = new Size(336, 28);
+            changeTextFilesDirectory.TabIndex = 14;
+            changeTextFilesDirectory.TabStop = true;
+            changeTextFilesDirectory.Text = "Изменить выбранную директорию";
+            changeTextFilesDirectory.LinkClicked += changeTextFilesDirectory_LinkClicked;
             // 
             // usingDefaultDirectory
             // 
@@ -106,54 +119,44 @@
             postgreRadioButton.UseVisualStyleBackColor = true;
             postgreRadioButton.CheckedChanged += postgreRadioButton_CheckedChanged;
             // 
-            // headerLabel
-            // 
-            headerLabel.AutoSize = true;
-            headerLabel.Location = new Point(31, 26);
-            headerLabel.Name = "headerLabel";
-            headerLabel.Size = new Size(464, 76);
-            headerLabel.TabIndex = 1;
-            headerLabel.Text = "Пожалуйста, выберите тип \r\nиспользуемого хранилища данных";
-            // 
             // actionButton
             // 
-            actionButton.Location = new Point(369, 369);
+            actionButton.Location = new Point(350, 259);
             actionButton.Name = "actionButton";
             actionButton.Size = new Size(126, 53);
-            actionButton.TabIndex = 3;
+            actionButton.TabIndex = 4;
             actionButton.Text = "OK";
             actionButton.UseVisualStyleBackColor = true;
             actionButton.Click += actionButton_Click;
             // 
-            // InitialSettings
+            // DataSourceChange
             // 
             AutoScaleDimensions = new SizeF(15F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(527, 431);
+            ClientSize = new Size(489, 321);
             Controls.Add(actionButton);
-            Controls.Add(headerLabel);
             Controls.Add(optionsGroupBox);
             Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(0, 121, 194);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(6);
-            Name = "InitialSettings";
-            Text = "Первоначальная настройка";
+            Name = "DataSourceChange";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Изменение источника данных";
             optionsGroupBox.ResumeLayout(false);
             optionsGroupBox.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private GroupBox optionsGroupBox;
+        private CheckBox usingDefaultDirectory;
         private RadioButton textFilesRadioButton;
         private RadioButton sqlServerRadioButton;
         private RadioButton postgreRadioButton;
-        private Label headerLabel;
         private Button actionButton;
-        private CheckBox usingDefaultDirectory;
+        private LinkLabel changeTextFilesDirectory;
     }
 }

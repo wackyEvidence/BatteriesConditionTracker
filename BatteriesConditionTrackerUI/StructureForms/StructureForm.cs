@@ -29,14 +29,14 @@ namespace BatteriesConditionTrackerUI
             callingForm = caller;
             headerLabel.Text = mode == FormMode.Adding ? "Добавление объекта" : "Изменение объекта";
             WireUpLists();
-            if(mode == FormMode.Editing)
-                FillFormFields(); 
+            if (mode == FormMode.Editing)
+                FillFormFields();
         }
 
         private void FillFormFields()
         {
             structureNameValue.Text = inputedStructureModel.Name;
-            structureTypeValue.SelectedItem = displayedStructureTypes.Where(t => t.Id == inputedStructureModel.Type.Id).First(); 
+            structureTypeValue.SelectedItem = displayedStructureTypes.Where(t => t.Id == inputedStructureModel.Type.Id).First();
         }
 
         private void WireUpLists()
