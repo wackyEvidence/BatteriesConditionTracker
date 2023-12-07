@@ -1,6 +1,7 @@
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerLib\bin\Debug\net6.0-windows\BatteriesConditionTrackerLib.deps.json
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerLib\bin\Debug\net6.0-windows\BatteriesConditionTrackerLib.dll
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerLib\bin\Debug\net6.0-windows\BatteriesConditionTrackerLib.pdb
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerLib\obj\Debug\net6.0-windows\BatteriesConditionTrackerLib.csproj.AssemblyReference.cache
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerLib\obj\Debug\net6.0-windows\BatteriesConditionTrackerLib.GeneratedMSBuildEditorConfig.editorconfig
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerLib\obj\Debug\net6.0-windows\BatteriesConditionTrackerLib.AssemblyInfoInputs.cache
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerLib\obj\Debug\net6.0-windows\BatteriesConditionTrackerLib.AssemblyInfo.cs
@@ -9,4 +10,3 @@ D:\Автоматизация учета состояния аккумулято
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerLib\obj\Debug\net6.0-windows\refint\BatteriesConditionTrackerLib.dll
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerLib\obj\Debug\net6.0-windows\BatteriesConditionTrackerLib.pdb
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerLib\obj\Debug\net6.0-windows\ref\BatteriesConditionTrackerLib.dll
-D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerLib\obj\Debug\net6.0-windows\BatteriesConditionTrackerLib.csproj.AssemblyReference.cache

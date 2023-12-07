@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BatteriesConditionTrackerUI", "BatteriesConditionTrackerUI.csproj", "{567D479F-9525-4607-BA46-4ED7FE9EBEC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BatteriesConditionTracker", "BatteriesConditionTracker.csproj", "{567D479F-9525-4607-BA46-4ED7FE9EBEC6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BatteriesConditionTrackerLib", "..\BatteriesConditionTrackerLib\BatteriesConditionTrackerLib.csproj", "{04A327C7-86D7-4383-BFD1-955FA37FEDF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AB451C1-F00D-42FB-98B9-1493052331BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

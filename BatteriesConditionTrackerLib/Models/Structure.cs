@@ -32,7 +32,7 @@ namespace BatteriesConditionTrackerLib.Models
             // TO DO Как и в остальных конструкторах 
             Id = int.Parse(columns[0]); 
             Name = columns[1];
-            Type = new StructureType() { Id = int.Parse(columns[2]) };
+            Type = GlobalConfig.Connection.GetStructureType_ById(int.Parse(columns[2]));
         }
 
         public override string ToString()

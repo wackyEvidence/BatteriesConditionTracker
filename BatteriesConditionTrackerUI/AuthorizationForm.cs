@@ -18,7 +18,7 @@ namespace BatteriesConditionTracker
 
         private void authorizeButton_Click(object sender, EventArgs e)
         {
-            if(Authorizer.Authorize(loginTextBox.Text, passwordTextBox.Text))
+            if (Authorizer.Authorize(loginTextBox.Text, passwordTextBox.Text))
             {
                 AuthorizationSuccessful = true;
                 Close();

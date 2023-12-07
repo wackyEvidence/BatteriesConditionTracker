@@ -37,6 +37,7 @@
             passwordLabel = new Label();
             authorizeButton = new Button();
             headerLabel = new Label();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             authorizationGroupBox.SuspendLayout();
             SuspendLayout();
@@ -132,12 +133,25 @@
             headerLabel.TabIndex = 7;
             headerLabel.Text = "Вход в систему";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Light", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(0, 121, 194);
+            label1.Location = new Point(61, 164);
+            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(380, 38);
+            label1.TabIndex = 9;
+            label1.Text = "САиМО Богандинское ЛПУМГ";
+            // 
             // AuthorizationForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(482, 576);
+            Controls.Add(label1);
             Controls.Add(authorizationGroupBox);
             Controls.Add(authorizeButton);
             Controls.Add(headerLabel);
@@ -167,5 +181,6 @@
         private TextBox loginTextBox;
         private Label passwordLabel;
         private Label headerLabel;
+        private Label label1;
     }
 }

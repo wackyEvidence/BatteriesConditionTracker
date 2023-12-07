@@ -53,6 +53,14 @@
               "target": "Package",
               "version": "[2.1.15, )"
             },
+            "LinqKit": {
+              "target": "Package",
+              "version": "[1.2.5, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[7.0.6, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.5, )"

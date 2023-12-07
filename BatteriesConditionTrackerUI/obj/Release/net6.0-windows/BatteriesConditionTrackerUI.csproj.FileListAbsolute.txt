@@ -5,11 +5,9 @@ D:\Автоматизация учета состояния аккумулято
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\BatteriesConditionTrackerUI.pdb
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\BCrypt.Net-Next.dll
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.csproj.AssemblyReference.cache
-D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.AdminPanelForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTracker.AuthorizationForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.BatteriesListForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.BatteryAddingForm.resources
-D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.BatteryClampType.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.BatteryClampTypesListForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.BatteryEditingAndViewForm.resources
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.BatteryModelForm.resources
@@ -55,3 +53,10 @@ D:\Автоматизация учета состояния аккумулято
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.UserForm.resources
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\EntityFramework.SqlServer.dll
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\EntityFramework.dll
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\LinqKit.dll
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\bin\Release\net6.0-windows\LinqKit.Core.dll
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.About.resources
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.BatteryClampTypeForm.resources
+D:\Автоматизация учета состояния аккумуляторов\BatteriesConditionTrackerUI\obj\Release\net6.0-windows\BatteriesConditionTrackerUI.InitialSettings.resources

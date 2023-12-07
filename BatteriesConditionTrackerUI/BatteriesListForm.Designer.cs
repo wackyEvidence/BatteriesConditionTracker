@@ -205,6 +205,7 @@
             // 
             // deleteBatteryButton
             // 
+            deleteBatteryButton.AutoSize = true;
             deleteBatteryButton.FlatAppearance.BorderColor = Color.Silver;
             deleteBatteryButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
             deleteBatteryButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
@@ -221,6 +222,7 @@
             // 
             // editBatteryButton
             // 
+            editBatteryButton.AutoSize = true;
             editBatteryButton.FlatAppearance.BorderColor = Color.Silver;
             editBatteryButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
             editBatteryButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
@@ -237,6 +239,7 @@
             // 
             // addBatteryButton
             // 
+            addBatteryButton.AutoSize = true;
             addBatteryButton.FlatAppearance.BorderColor = Color.Silver;
             addBatteryButton.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
             addBatteryButton.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
@@ -299,6 +302,7 @@
             // 
             // exploitationStatusComboBox
             // 
+            exploitationStatusComboBox.AccessibleRole = AccessibleRole.ComboBox;
             exploitationStatusComboBox.ForeColor = Color.Gray;
             exploitationStatusComboBox.FormattingEnabled = true;
             exploitationStatusComboBox.Location = new Point(6, 39);

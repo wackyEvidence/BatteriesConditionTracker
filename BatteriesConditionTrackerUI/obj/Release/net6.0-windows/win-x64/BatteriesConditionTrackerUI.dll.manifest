@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="BatteriesConditionTrackerUI.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="BatteriesConditionTrackerUI.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="car_battery_icon_194616.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -441,40 +441,40 @@
       <dsig:DigestValue>z7LuTkJrsAt2FjwaZs+M/vjXRQy/m7zjvJ6yBT9R4OU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="BatteriesConditionTrackerLib.dll" size="22528">
+  <file name="BatteriesConditionTrackerLib.dll" size="98304">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>HXGXfLhzI4lO1ytbYkWOeu5syOUVkvjv1fYzguBpmKk=</dsig:DigestValue>
+      <dsig:DigestValue>Oq5pa66jKSv0kpGYCaqL6BhQWgLSFrwAs3j1tbjZCaA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="BatteriesConditionTrackerUI.deps.json" size="50185">
+  <file name="BatteriesConditionTrackerUI.deps.json" size="56526">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>F97r+U+b9vmLElxWXIAeo1w9esS//sx0e3vTL1Imabs=</dsig:DigestValue>
+      <dsig:DigestValue>wObH7PcKuVIW5EH/pB6LQit+4zCB0F8JFVyG9zc7/lo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="BatteriesConditionTrackerUI.dll" size="120320">
+  <file name="BatteriesConditionTrackerUI.dll" size="197632">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LLMVs8dOm377F+oq0K6eHWcPjl7Dr3DZo4hIa0JHkyA=</dsig:DigestValue>
+      <dsig:DigestValue>9ghqi4NQXgZeYipDZxbeFBpO/sF5IYmn8ISoTXXNSUs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="BatteriesConditionTrackerUI.dll.config" size="544">
+  <file name="BatteriesConditionTrackerUI.dll.config" size="764">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>WDWSkVIbdWpgRL2w01hedgHClBn+f/LO6tGJOPpoxj4=</dsig:DigestValue>
+      <dsig:DigestValue>frypOJekR7VPty5rZOo69CZeMPJql28m5uRE5zowrjo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="BatteriesConditionTrackerUI.exe" size="150528">
@@ -889,6 +889,24 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>6u3uzNwOAk4grK5jQ604aekEXlQieQWycnKLtz7du08=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="EntityFramework.dll" size="4974456">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>QCfJIgwtNcuIpFw6MTUljuFgqiCEC6hmvBp30gFH6DU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="EntityFramework.SqlServer.dll" size="591224">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>0aVqrNzwv7j/qVE2QVffMbcWdMrLpMQ8AcA8cDqgvpE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="es\Microsoft.VisualBasic.Forms.resources.dll" size="25760">
@@ -1672,6 +1690,24 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>iKMCa2TqnfTc4szMiHgy3QSVdJQ7qdXHhwKlKfppH6A=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="LinqKit.Core.dll" size="38400">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Z7er/3zi6cuS2ovXMRUrOny2ooVdWsNNSwZ8MVvvgrk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="LinqKit.dll" size="15360">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>B1iXEL5Sfj1TfS2ReZOjDY+LsaBdFMiBzWBrtil5sBE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Microsoft.CSharp.dll" size="1042608">

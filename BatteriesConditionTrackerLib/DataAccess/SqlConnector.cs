@@ -595,7 +595,7 @@ namespace BatteriesConditionTrackerLib.DataAccess
         {
             Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true; 
             using var connection = new SqlConnection(GlobalConfig.GetConnectionString("BatteriesConditionTrackerSQL"));
-            var sql = "SELECT * FROM Users u LEFT JOIN Positions p on u.position_id = p.id WHERE u.id > 1;";
+            var sql = "SELECT * FROM Users u LEFT JOIN Positions p on u.position_id = p.id;";
             return new BindingList<User>(connection.Query<User, Position, User>(sql, (u, p) => { u.Position = p; return u; }).ToList());
         }
 

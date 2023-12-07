@@ -70,7 +70,7 @@ namespace BatteriesConditionTrackerLib.Models
 
         public static readonly Func<string[], BatteryModel> ModelCreation = columns => new BatteryModel(columns);
         public static readonly Func<BatteryModel, string> ModelToCSV = bm =>
-            $"{bm.Id},{bm.Name},{bm.Brand},{bm.Capacity},{bm.Voltage},{bm.Length},{bm.Height},{bm.Width},{bm.Technology.Id}," +
+            $"{bm.Id},{bm.Name},{bm.Brand},{bm.Capacity.ToString().Replace(',', '.')},{bm.Voltage.ToString().Replace(',', '.')},{bm.Length},{bm.Height},{bm.Width},{bm.Technology.Id}," +
             $"{bm.ClampType.Id},{bm.Cost},{bm.BufferModeServiceTime.ToString().Replace(',', '.')},{bm.SoHThreshold}";
 
         public BatteryModel() { }
@@ -98,8 +98,8 @@ namespace BatteriesConditionTrackerLib.Models
             Id = int.Parse(columns[0]); 
             Name = columns[1];
             Brand = columns[2];
-            Capacity = double.Parse(columns[3]);
-            Voltage = double.Parse(columns[4]); 
+            Capacity = double.Parse(columns[3].Replace('.', ','));
+            Voltage = double.Parse(columns[4].Replace('.', ',')); 
             Length = int.Parse(columns[5]);
             Height = int.Parse(columns[6]);
             Width = int.Parse(columns[7]);

@@ -1,0 +1,10 @@
+C:\Users\Huawei\OneDrive\Рабочий стол\BatteriesConditionTrackerRelease\BatteriesConditionTracker.pdb
+C:\Users\Huawei\OneDrive\Рабочий стол\BatteriesConditionTrackerRelease\BatteriesConditionTracker.dll.config
+C:\Users\Huawei\OneDrive\Рабочий стол\BatteriesConditionTrackerRelease\D3DCompiler_47_cor3.dll
+C:\Users\Huawei\OneDrive\Рабочий стол\BatteriesConditionTrackerRelease\PenImc_cor3.dll
+C:\Users\Huawei\OneDrive\Рабочий стол\BatteriesConditionTrackerRelease\PresentationNative_cor3.dll
+C:\Users\Huawei\OneDrive\Рабочий стол\BatteriesConditionTrackerRelease\vcruntime140_cor3.dll
+C:\Users\Huawei\OneDrive\Рабочий стол\BatteriesConditionTrackerRelease\wpfgfx_cor3.dll
+C:\Users\Huawei\OneDrive\Рабочий стол\BatteriesConditionTrackerRelease\sni.dll
+C:\Users\Huawei\OneDrive\Рабочий стол\BatteriesConditionTrackerRelease\BatteriesConditionTrackerLib.pdb
+C:\Users\Huawei\OneDrive\Рабочий стол\BatteriesConditionTrackerRelease\BatteriesConditionTracker.exe

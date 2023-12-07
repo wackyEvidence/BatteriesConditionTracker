@@ -119,7 +119,7 @@ namespace BatteriesConditionTrackerUI
             }
 
             if (!File.Exists(path + "\\Users.csv"))
-                File.WriteAllText(path + "\\Users.csv", "1,Матвей,Жаков,Дмитриевич,$2a$11$IQozpg9DGqBELIlnJm./IOKl9cH0ZSqTwNXErzfAXph9LTfUC.YLO,+7(982)977-01-99,admin,,,true");
+                File.WriteAllText(path + "\\Users.csv", "1,Матвей,Жаков,Дмитриевич,$2a$11$IQozpg9DGqBELIlnJm./IOKl9cH0ZSqTwNXErzfAXph9LTfUC.YLO,+7(982)977-01-99,admin,,true");
 
             if (!File.Exists(path + "\\LastReplacementStatusesUpdate.csv"))
                 File.WriteAllText(path + "\\LastReplacementStatusesUpdate.csv", $"{DateTime.Now.ToShortDateString()}");

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/vXWkW+A56I12V5fgPH2o5B4SiMTN55xLaYkfAK3NzMrIRUSm9f9MHFPcKsBMFZzqFGDU70tK+ZrvGAJmchGqA==",
+  "dgSpecHash": "QKT3XpC7aaN/Vec7tiyx5TRz7+DJr+OMooNkk8EbhPFllknUFkSx/chlZ2eDP3eWeDrF+qWIl0kGqQj8YNIpyQ==",
   "success": true,
-  "projectFilePath": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\BatteriesConditionTrackerUI.csproj",
+  "projectFilePath": "D:\\Автоматизация учета состояния аккумуляторов\\BatteriesConditionTrackerUI\\BatteriesConditionTracker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Huawei\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Huawei\\.nuget\\packages\\dapper\\2.1.15\\dapper.2.1.15.nupkg.sha512",

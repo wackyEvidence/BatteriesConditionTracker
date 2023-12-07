@@ -355,52 +355,52 @@ namespace BatteriesConditionTrackerLib.DataAccess
 
         public BatteryExploitationStatus GetBatteryExploitationStatus_ById(int id)
         {
-            return BatteryExploitationStatusesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryExploitationStatus.ModelCreation).Where(model => model.Id == id).First();
+            return BatteryExploitationStatusesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryExploitationStatus.ModelCreation).Where(model => model.Id == id).FirstOrDefault();
         }
 
         public BatteryReplacementStatus GetBatteryReplacementStatus_ById(int id)
         {
-            return BatteryReplacementStatusesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryReplacementStatus.ModelCreation).Where(model => model.Id == id).First();
+            return BatteryReplacementStatusesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryReplacementStatus.ModelCreation).Where(model => model.Id == id).FirstOrDefault();
         }
 
         public BatteryClampType GetBatteryClampType_ById(int id)
         {
-            return BatteryClampTypesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryClampType.ModelCreation).Where(model => model.Id == id).First();
+            return BatteryClampTypesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryClampType.ModelCreation).Where(model => model.Id == id).FirstOrDefault();
         }
 
         public BatterySubsystem GetBatterySubsystem_ById(int id)
         {
-            return BatterySubsystemsFileName.GetFullFilePath().LoadFile().ConvertToModels(BatterySubsystem.ModelCreation).Where(model => model.Id == id).First();
+            return BatterySubsystemsFileName.GetFullFilePath().LoadFile().ConvertToModels(BatterySubsystem.ModelCreation).Where(model => model.Id == id).FirstOrDefault();
         }
 
         public BatteryTechnology GetBatteryTechnology_ById(int id)
         {
-            return BatteryTechnologiesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryTechnology.ModelCreation).Where(model => model.Id == id).First();
+            return BatteryTechnologiesFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryTechnology.ModelCreation).Where(model => model.Id == id).FirstOrDefault();
         }
 
         public Position GetPosition_ById(int id)
         {
-            return PositionsFileName.GetFullFilePath().LoadFile().ConvertToModels(Position.ModelCreation).Where(model => model.Id == id).First();
+            return PositionsFileName.GetFullFilePath().LoadFile().ConvertToModels(Position.ModelCreation).Where(model => model.Id == id).FirstOrDefault();
         }
 
         public User GetUser_ById(int id)
         {
-            return UsersFileName.GetFullFilePath().LoadFile().ConvertToModels(User.ModelCreation).Where(model => model.Id == id).First();
+            return UsersFileName.GetFullFilePath().LoadFile().ConvertToModels(User.ModelCreation).Where(model => model.Id == id).FirstOrDefault();
         }
 
         public BatteryModel GetBatteryModel_ById(int id)
         {
-            return BatteryModelsFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryModel.ModelCreation).Where(model => model.Id == id).First();
+            return BatteryModelsFileName.GetFullFilePath().LoadFile().ConvertToModels(BatteryModel.ModelCreation).Where(model => model.Id == id).FirstOrDefault();
         }
 
         public StructureType GetStructureType_ById(int id)
         {
-            return StructureTypesFileName.GetFullFilePath().LoadFile().ConvertToModels(StructureType.ModelCreation).Where(model => model.Id == id).First();
+            return StructureTypesFileName.GetFullFilePath().LoadFile().ConvertToModels(StructureType.ModelCreation).Where(model => model.Id == id).FirstOrDefault();
         }
 
         public Structure GetStructure_ById(int id)
         {
-            return StructuresFileName.GetFullFilePath().LoadFile().ConvertToModels(Structure.ModelCreation).Where(model => model.Id == id).First();
+            return StructuresFileName.GetFullFilePath().LoadFile().ConvertToModels(Structure.ModelCreation).Where(model => model.Id == id).FirstOrDefault();
         }
 
         public BindingList<BatterySoHMeasure> GetBatterySoHMeasure_ById(int id)

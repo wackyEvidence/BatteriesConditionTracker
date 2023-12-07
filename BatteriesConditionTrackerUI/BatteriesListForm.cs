@@ -295,11 +295,11 @@ namespace BatteriesConditionTrackerUI
         {
             AdjustComboBoxes();
             brandsCheckedListBox.ClearSelected();
-            ClearCheckedListBoxSelection(brandsCheckedListBox); 
+            ClearCheckedListBoxSelection(brandsCheckedListBox);
             capacitiesCheckedListBox.ClearSelected();
             ClearCheckedListBoxSelection(capacitiesCheckedListBox);
             subsystemCheckedListBox.ClearSelected();
-            ClearCheckedListBoxSelection(subsystemCheckedListBox); 
+            ClearCheckedListBoxSelection(subsystemCheckedListBox);
             structuresCheckedListBox.ClearSelected();
             ClearCheckedListBoxSelection(structuresCheckedListBox);
             displayedConcreteBatteries = availableConcreteBatteries;
@@ -309,7 +309,7 @@ namespace BatteriesConditionTrackerUI
         // TODO выделить в extension-метод 
         private void ClearCheckedListBoxSelection(CheckedListBox checkedListBox)
         {
-            if(checkedListBox.CheckedItems.Count > 0)
+            if (checkedListBox.CheckedItems.Count > 0)
             {
                 for (int i = 0; i < checkedListBox.Items.Count; i++)
                     checkedListBox.SetItemCheckState(i, CheckState.Unchecked);
